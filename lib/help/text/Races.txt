@@ -974,5 +974,5 @@ Yeek         Good          Heroic        Bad           Fair            20'
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for Composband 7.1.0.
 

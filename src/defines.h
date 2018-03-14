@@ -13,7 +13,7 @@
 /*
  * Name of the version/variant
  */
-#define VERSION_NAME "FrogComposband"
+#define VERSION_NAME "Composband"
 
 
 #define VER_MAJOR 7

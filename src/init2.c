@@ -1023,7 +1023,7 @@ static errr init_other(void)
     /*** Pre-allocate space for the "format()" buffer ***/
 
     /* Hack -- Just call the "format()" function */
-    (void)format("%s (%s).", "FrogComposband", "Hack Whack");
+    (void)format("%s (%s).", "Composband", "Hack Whack");
 
 
     /* Success */

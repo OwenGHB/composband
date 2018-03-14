@@ -1,10 +1,10 @@
 <style:title>The Newbie Guide</style>
 
-Welcome to <color:keyword>FrogComposband</color>! This guide will attempt to give you a quick overview of the game and get you started on your path to slay the dreaded Serpent of Chaos.
+Welcome to <color:keyword>Composband</color>! This guide will attempt to give you a quick overview of the game and get you started on your path to slay the dreaded Serpent of Chaos.
 
 <topic:Overview><style:heading>Overview</style>
 
-FrogComposband is a single player role playing game where you, the brave adventurer, attempt to save the world by defeating evil monsters including, eventually, the <color:keyword>Serpent of Chaos</color>. The road is long, and the path is treacherous. Many have tried and failed, and the dungeons are littered with the bones of would be heroes. Do you have what it takes to succeed where so many others have failed? If so, read on.
+Composband is a single player role playing game where you, the brave adventurer, attempt to save the world by defeating evil monsters including, eventually, the <color:keyword>Serpent of Chaos</color>. The road is long, and the path is treacherous. Many have tried and failed, and the dungeons are littered with the bones of would be heroes. Do you have what it takes to succeed where so many others have failed? If so, read on.
 
 <topic:CreatingACharacter><style:heading>Creating a Character</style>
 
@@ -673,7 +673,7 @@ In the unpleasant event of your character's death, you can create a new characte
 </indent>
   <indent><color:B>On Death</color>
 
-Death in FrogComposband is permanent. Saving is meant only to let you pick up where you left off; if you die, your savefile is marked. The next time you try to use the savefile, you will get the new character dialogue. Ancestors of dead characters will retain their monster memory and preferences. Many people here have characters like "Yuppy XIV"; people die very often and death is common, so don't get discouraged. In general, you will kill monsters more often than they kill you!
+Death in Composband is permanent. Saving is meant only to let you pick up where you left off; if you die, your savefile is marked. The next time you try to use the savefile, you will get the new character dialogue. Ancestors of dead characters will retain their monster memory and preferences. Many people here have characters like "Yuppy XIV"; people die very often and death is common, so don't get discouraged. In general, you will kill monsters more often than they kill you!
 </indent>
 <topic:OnBigBoyPants><style:heading>On Big Boy Pants</style>
 

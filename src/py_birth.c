@@ -188,7 +188,7 @@ void py_birth_spellbooks(void)
 }
 
 /************************************************************************
- * Welcome to FrogComposband!
+ * Welcome to Composband!
  ***********************************************************************/ 
 static void _set_mode(int mode);
 static bool _stats_changed = FALSE;
@@ -202,7 +202,7 @@ static int _welcome_ui(void)
         doc_clear(_doc);
 
         doc_insert(_doc,
-            "Welcome to <color:keyword>FrogComposband</color>, a dungeon exploration "
+            "Welcome to <color:keyword>Composband</color>, a dungeon exploration "
             "role playing game. Your goal is to defeat the dreaded <color:keyword>"
             "Serpent of Chaos</color>, but before you can face it, you must battle "
             "many foes. Your first step is to create a character for this quest. "

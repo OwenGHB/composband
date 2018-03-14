@@ -1,12 +1,12 @@
 The Newbie Guide
 
-Welcome to FrogComposband! This guide will attempt to give you a quick 
+Welcome to Composband! This guide will attempt to give you a quick 
 overview of the game and get you started on your path to slay the 
 dreaded Serpent of Chaos.
 
 Overview
 
-FrogComposband is a single player role playing game where you, the 
+Composband is a single player role playing game where you, the 
 brave adventurer, attempt to save the world by defeating evil monsters 
 including, eventually, the Serpent of Chaos. The road is long, and the 
 path is treacherous. Many have tried and failed, and the dungeons are 
@@ -1129,7 +1129,7 @@ dungeon.
   
   On Death
   
-  Death in FrogComposband is permanent. Saving is meant only to let you 
+  Death in Composband is permanent. Saving is meant only to let you 
   pick up where you left off; if you die, your savefile is marked. The 
   next time you try to use the savefile, you will get the new character 
   dialogue. Ancestors of dead characters will retain their monster 
@@ -1157,5 +1157,5 @@ Updated    : Zangband DevTeam
 Updated    : Hengband 1.0.11
 Updated    : PosChengband 1.0.0
 Updated    : PosChengband 4.0.0
-Updated    : FrogComposband 7.0.strawberry
+Updated    : Composband 7.1.0
 

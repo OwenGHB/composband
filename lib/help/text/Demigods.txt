@@ -379,5 +379,5 @@ you will choose for your character.
 
 
 
-Automatically generated for FrogComposband 7.0.strawberry.
+Automatically generated for Composband 7.1.0.
 

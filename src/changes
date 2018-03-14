@@ -1,4 +1,4 @@
-Changes in FrogComposband 7.0.strawberry (compared to ComPosband 7.0.3):
+Changes in Composband 7.0.strawberry (compared to ComPosband 7.0.3):
 
 * Rebalanced artifact reforging. The goal was to prevent silly-powerful items
 while still allowing very strong items (so a character can reasonably expect
@@ -65,7 +65,7 @@ there is no need to attempt to do every quest in the game at depth)
 
 * In ComPosband, if a quest level was buggy and didn't generate properly, the
 game would crash and the player would be forced to fail it on resuming play.
-In FrogComposband, while the game will still crash, the player can continue
+In Composband, while the game will still crash, the player can continue
 normally on resumption and can retake the quest after it has been fixed.
 This should make life easier for both developers and test-players
 
@@ -107,9 +107,9 @@ Ctrl+O for ]
 
 * Made free action stronger because Chris's system was somewhat confusing
 and unpopular, though the change here is not as big as what Gwarl did in
-ComPosband 7.0.4. 1 source of free action works the same in FrogComposband
+ComPosband 7.0.4. 1 source of free action works the same in Composband
 as in ComPosband 7.0.3 (and the last versions of PosChengband). 2 sources
-are slightly stronger in FrogComposband (and give total paralysis immunity
+are slightly stronger in Composband (and give total paralysis immunity
 against low-level monsters), and 3 sources give total immunity against all
 monsters, except in special cases like ty_curse
 

@@ -12,7 +12,7 @@
 
             PosChengband:   Chris Kousky
               ComPosband:   Gwilim Owen
-          FrogComposband:   Antero Sulka
+          Composband:   Antero Sulka
 
     Special thanks to all the players who have encouraged me (and
     the previous maintainers) and provided new ideas, useful advice

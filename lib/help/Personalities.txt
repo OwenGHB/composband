@@ -214,4 +214,4 @@ Hasty        <color:D>Very Bad     </color> <color:r>Bad          </color> <colo
 </style>
 
 
-<color:s>Automatically generated for FrogComposband 7.0.strawberry.</color>
+<color:s>Automatically generated for Composband 7.1.0.</color>

@@ -15,10 +15,10 @@ lib/apex/*
 #################
 ## QtCreator
 #################
-src/frogcomposband.config
-src/frogcomposband.creator
-src/frogcomposband.files
-src/frogcomposband.includes
+src/composband.config
+src/composband.creator
+src/composband.files
+src/composband.includes
 
 #################
 ## Eclipse
@@ -240,8 +240,8 @@ pip-log.txt
 
 # Build output
 *.o
-/src/frogcomposband
-/frogcomposband
+/src/composband
+/composband
 /src/tags
 
 # Temporary (cache) files built during run-time

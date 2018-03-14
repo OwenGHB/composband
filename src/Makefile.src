@@ -7,7 +7,7 @@
 
 VERSION = 7.0.strawberry
 COPYRIGHT = (c) 1995-2018 Angband contributors
-PROGNAME = frogcomposband
+PROGNAME = composband
 
 HEADERS = \
     h-basic.h \

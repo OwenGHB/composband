@@ -1251,7 +1251,7 @@ void do_cmd_options(void)
         Term_clear();
 
         /* Why are we here */
-        prt("FrogComposband Options", 1, 0);
+        prt("Composband Options", 1, 0);
 
         while(1)
         {
@@ -3244,7 +3244,7 @@ void do_cmd_version(void)
 /*        if (VER_PATCH == 0) xtra = " (Alpha)"; */
         xtra = " (Beta)";
     }
-    msg_format("You are playing <color:B>FrogComposband</color> <color:r>%d.%d.%s%s</color>.",
+    msg_format("You are playing <color:B>Composband</color> <color:r>%d.%d.%s%s</color>.",
         VER_MAJOR, VER_MINOR, VER_PATCH, xtra);
     if (1)
     {
