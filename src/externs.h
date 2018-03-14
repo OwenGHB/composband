@@ -113,7 +113,7 @@ extern byte sf_extra;
 extern u32b sf_system;
 extern byte z_major;
 extern byte z_minor;
-extern byte z_patch;
+extern char z_patch[16];
 extern u32b sf_when;
 extern u16b sf_lives;
 extern u16b sf_saves;
@@ -204,6 +204,7 @@ extern bool auto_target;       /* Automatically target nearest monster */
 extern bool always_repeat;    /* Repeat obvious commands */
 extern bool confirm_destroy;    /* Prompt for destruction of known worthless items */
 extern bool confirm_wear;    /* Confirm to wear/wield known cursed items */
+extern bool prompt_on_failure; /* Give -more- prompt on device/spell fails */
 extern bool target_pet;    /* Allow targetting pets */
 
 #ifdef ALLOW_EASY_OPEN
@@ -261,7 +262,7 @@ extern bool exp_need;    /* Show the experience needed for next level */
 extern bool ignore_unview;    /* Ignore whenever any monster does */
 extern bool display_distance;    /* Display distance of LoS monsters in monster list */
 extern bool display_race; /* Display monster races with their racial char */
-
+extern bool easy_mimics;  /* Use the 'x' glyph for monsters that look like things */
 
 /*** Game-Play Options ***/
 
@@ -305,6 +306,7 @@ extern bool alert_trap_detect;    /* Alert when leaving trap detected area */
 extern bool easy_id;        /* Easy Identify */
 extern bool easy_lore;      /* Easy Monster Lore */
 extern bool allow_spoilers;
+extern bool power_tele;     /* Use old-style, non-fuzzy telepathy */
 extern bool smart_learn;    /* Monsters learn from their mistakes (*) */
 extern bool smart_cheat;    /* Monsters exploit players weaknesses (*) */
 extern bool no_wilderness;  /* Play without a normal wilderness */
@@ -321,6 +323,8 @@ extern bool random_artifacts;
 extern byte random_artifact_pct;
 extern bool no_artifacts;
 extern bool no_egos;
+extern bool enable_virtues;
+extern bool easy_thalos;
 extern bool reduce_uniques;
 extern byte reduce_uniques_pct;
 
@@ -523,6 +527,7 @@ extern s16b feat_mirror;
 extern s16b feat_rogue_trap1;
 extern s16b feat_rogue_trap2;
 extern s16b feat_rogue_trap3;
+extern s16b feat_semicolon;
 extern door_type feat_door[MAX_DOOR_TYPES];
 extern s16b feat_up_stair;
 extern s16b feat_down_stair;
@@ -743,6 +748,7 @@ extern void fix_object_list(void);
 
 /* cmd4.c */
 extern cptr get_ordinal_number_suffix(int num);
+extern void toggle_easy_mimics(bool kayta);
 extern bool redraw_hack;
 extern void do_cmd_redraw(void);
 extern void do_cmd_knowledge_shooter(void);
@@ -772,6 +778,7 @@ extern void msg_add_tiny_screenshot(int cx, int cy);
 
 /* cmd5.c */
 extern cptr spell_category_name(int tval);
+extern cptr spell_category_verb(int tval);
 extern void do_cmd_browse(void);
 extern void do_cmd_study(void);
 extern void do_cmd_cast(void);
@@ -782,6 +789,7 @@ extern int calculate_upkeep(void);
 extern void do_cmd_pet_dismiss(void);
 extern void do_cmd_pet(void);
 extern bool player_can_ride_aux(cave_type *c_ptr, bool now_riding);
+extern void failure_prompt(void);
 
 /* cmd6.c */
 extern void do_cmd_eat_food(void);
@@ -891,6 +899,7 @@ extern void play_game(bool new_game);
 extern bool psychometry(void);
 extern void leave_level(int level);
 extern void enter_level(int level);
+extern void do_alter_reality(void);
 extern s32b turn_real(s32b hoge);
 extern void prevent_turn_overflow(void);
 extern void process_world_aux_movement(void);  /* yuk!  refactor the recall code instead */
@@ -1311,6 +1320,7 @@ extern bool save_player(void);
 extern bool load_player(void);
 extern void remove_loc(void);
 extern bool save_floor(saved_floor_type *sf_ptr, u32b mode);
+extern byte versio_sovitus(void);
 
 /* spells1.c */
 extern bool allow_ticked_off(monster_race *r_ptr);
@@ -1610,7 +1620,7 @@ extern char *my_strchr(const char *ptr, char ch);
 extern int my_stricmp(cptr a, cptr b);
 extern void str_tolower(char *str);
 extern int inkey_special(bool numpad_cursor);
-
+extern unsigned int strpos(const char *mika, const char *missa);
 
 /* xtra1.c */
 extern void cnv_stat(int val, char *out_val);
@@ -1725,6 +1735,7 @@ extern bool set_oppose_elec(int v, bool do_dec);
 extern bool set_oppose_fire(int v, bool do_dec);
 extern bool set_oppose_cold(int v, bool do_dec);
 extern bool set_oppose_pois(int v, bool do_dec);
+extern bool set_spin(int v, bool do_dec);
 typedef struct { int level; cptr name; cptr msg; byte attr; } stun_info_t;
 extern stun_info_t stun_info(int v);
 extern bool set_stun(int v, bool do_dec);
@@ -1868,6 +1879,7 @@ extern int spell_exp_level(int spell_exp);
 
 /* mspells1.c */
 extern bool clean_shot(int y1, int x1, int y2, int x2, bool friend);
+extern bool very_clean_shot(int y1, int x1, int y2, int x2);
 extern bool summon_possible(int y1, int x1);
 extern bool raise_possible(monster_type *m_ptr);
 extern bool dispel_check(int m_idx);
@@ -1916,6 +1928,7 @@ extern bool create_named_art_aux_aux(int a_idx, object_type *o_ptr);
 extern bool create_replacement_art(int a_idx, object_type *o_ptr);
 extern bool reforge_artifact(object_type *src, object_type *dest, int fame);
 extern void get_random_name(char *return_name, object_type *o_ptr, int power);
+extern int get_slot_weight(obj_ptr obj);
 extern int get_slot_power(obj_ptr obj);
 
 /* scores.c */
@@ -1933,6 +1946,10 @@ extern void hissatsu_info(char *p, int power);
 extern void do_cmd_hissatsu(void);
 extern void do_cmd_hissatsu_browse(void);
 extern void do_cmd_gain_hissatsu(void);
+
+/* lawyer.c */
+extern byte lawyer_hack(magic_type *s_ptr, int tyyppi);
+extern cptr do_law_spell(int spell, int mode);
 
 /*
  * Hack -- conditional (or "bizarre") externs
@@ -2413,6 +2430,7 @@ extern cptr     gray_mage_speciality_desc(int psubclass);
 extern class_t *high_mage_get_class(void);
 extern bool     imitator_cast(bool revenge);
 extern class_t *imitator_get_class(void);
+extern class_t *lawyer_get_class(void);
 extern class_t *mage_get_class(void);
 extern equip_template_ptr mon_get_equip_template(void);
 extern cptr     mon_name(int r_idx);
@@ -2425,6 +2443,7 @@ extern void     monk_posture_get_flags(u32b flgs[OF_ARRAY_SIZE]);
 extern void     monk_ac_bonus(void);
 extern class_t *monster_get_class(void);
 extern class_t *ninja_get_class(void);
+extern class_t *ninja_lawyer_get_class(void);
 extern class_t *paladin_get_class(void);
 extern bool     player_is_monster_king(void);
 extern class_t *priest_get_class(void);
