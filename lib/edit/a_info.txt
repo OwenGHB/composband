@@ -3335,10 +3335,10 @@ D:sparks of white radiance shot with glints of the rainbow.
 
 N:330:Sword of the Winds
 I:23:17:3
-W:35:15:130:40000
+W:35:20:130:40000
 P:0:3d6:12:16:0
 F:VORPAL | RIDING | FULL_NAME | BLOWS
-F:SPEED | DEX | SHOW_MODS
+F:SPEED | SHOW_MODS
 D:This sword is light as a feather. The air howls as you swing it.
 
 N:331:'VainGlory'
@@ -3412,7 +3412,7 @@ F:VULN_LITE | DEC_INT | DEC_WIS | AGGRAVATE | SPEED
 D:As you lift this great hammer, all your doubts are dispelled: it's time to
 D: get going and crush your enemies into a pulp.
 
-N:339:of Curiosity
+N:339:'Curiosity'
 I:23:10:3
 W:20:20:80:40000
 P:0:2d8:16:5:0
