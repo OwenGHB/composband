@@ -89,6 +89,12 @@ N:330:Bolg, Son of Azog
 N:350:Ugluk, the Uruk
 N:356:Lugdush, the Uruk
 N:373:Azog, King of the Uruk-Hai
+N:1182:Balcmeg, the Relentless
+N:1183:Lug, the Grotesque
+N:1184:Boldog, the Merciless
+N:1185:Othrod, Lord of the Orcs
+N:1186:Orcogar, Son of Orcobal
+N:1187:Orcobal the Mighty
 screams, 'Hey, orcs have rights too!'
 says, 'You're just prejudiced against orc-kind, aren't you?'
 begs, 'Spare me and I'll get you Ringil! Really!'
