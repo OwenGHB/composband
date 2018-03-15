@@ -211,7 +211,7 @@ W:angband
 G:KILL(*)
 
 #####################################################################
-# New Quests adapted from Kangband
+# New Quests with layouts adapted from Kangband
 #####################################################################
 
 N:50:5:Trouble at Home (Outpost)
@@ -244,24 +244,51 @@ N:60:25:Clear the Tunnels (Anambar)
 T:TOWN | GENERATE
 F:q_tunnels.txt
 
-N:61:50:Clear the Wreckage (Thalos)
-T:TOWN | GENERATE
-F:q_shipwreck.txt
-
 N:62:15:Crow's Nest (Outpost)
 T:TOWN | GENERATE
 F:q_birds.txt
+
+#####################################################################
+# Fighters guild quests
+#####################################################################
+
+N:56:30:Troll Slayer (Morivant)
+T:TOWN
+W:orc
+G:KILL(^olog$, 10)
+F:q_trollslayer.txt
+
+N:57:35:Giant Slayer (Morivant)
+T:TOWN
+W:giant
+G:KILL(lesser titan, 10)
+F:q_giantslayer.txt
+
+N:58:38:Dragon Slayer (Morivant)
+T:TOWN
+W:lonely
+G:KILL(ancient gold dragon, 10)
+F:q_dragonslayer.txt
+
+N:59:45:Demon Slayer (Morivant)
+T:TOWN
+W:angband
+G:KILL(lesser balrog, 10)
+F:q_demonslayer.txt
+
+#####################################################################
+# Composband quests
+#####################################################################
+
+N:61:50:Clear the Wreckage (Thalos)
+T:TOWN | GENERATE
+F:q_shipwreck.txt
 
 N:63:10:Mushrooms (Thalos)
 T:TOWN
 W:icky
 G:KILL(magic mushroom, 5)
 F:q_mushrooms.txt
-
-N:64:50:The Renegade Sorcerer (Thalos)
-T:TOWN | GENERATE
-G:KILL(old sorcerer)
-F:q_sorcerer.txt
 
 N:65:20:Tidy the Laboratory (Thalos)
 T:TOWN | GENERATE
@@ -276,6 +303,15 @@ T:TOWN
 W:crystal
 G:KILL(great crystal drake, 5)
 F:q_crystal.txt
+
+#####################################################################
+# FrogComposband quests
+#####################################################################
+
+N:64:50:The Renegade Sorcerer (Thalos)
+T:TOWN | GENERATE
+G:KILL(old sorcerer)
+F:q_sorcerer.txt
 
 N:68:33:Dinosaur Quest (Anambar)
 T:TOWN | GENERATE
@@ -314,32 +350,6 @@ T:TOWN | GENERATE
 G:FIND(mokomagi)
 F:q_staff.txt
 
-#####################################################################
-# Fighters guild quests
-#####################################################################
 
-N:56:30:Troll Slayer (Morivant)
-T:TOWN
-W:orc
-G:KILL(^olog$, 10)
-F:q_trollslayer.txt
-
-N:57:35:Giant Slayer (Morivant)
-T:TOWN
-W:giant
-G:KILL(lesser titan, 10)
-F:q_giantslayer.txt
-
-N:58:38:Dragon Slayer (Morivant)
-T:TOWN
-W:lonely
-G:KILL(ancient gold dragon, 10)
-F:q_dragonslayer.txt
-
-N:59:45:Demon Slayer (Morivant)
-T:TOWN
-W:angband
-G:KILL(lesser balrog, 10)
-F:q_demonslayer.txt
 
 # vim: filetype=qi :
