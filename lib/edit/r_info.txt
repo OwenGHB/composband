@@ -20993,7 +20993,7 @@ D:mighty claws.
 N:1168:Cacodemon
 G:U:R
 I:106:60d12:10:110:40:200
-W:32:3:90:1000:0:0
+W:36:3:90:1000:0:0
 B:BITE:HURT(6d2)
 B:BITE:HURT(6d2)
 B:BITE:HURT(12d1):PLASMA(1d12)
@@ -22457,7 +22457,7 @@ D:guided to Osiris, those that are not are devoured by Ammit.
 N:1243:Ammit, the Devourer
 G:H:U
 I:135:60d100:30:135:80:530
-W:68:2:999:36300:0:0
+W:78:2:999:36300:0:0
 B:BITE:FIRE(12d12)
 B:BITE:TERRIFY(12d12)
 B:BITE:FIRE(12d12)
@@ -22519,7 +22519,7 @@ D:serpent god embodies chaos and darkness.
 N:1246:Thoth, the Voice of Ra
 G:Y:g
 I:125:45d100:20:95:50:100
-W:60:2:999:30000:0:0
+W:70:2:999:30000:0:0
 B:HIT:HURT(5d5)
 B:HIT:HURT(5d5)
 F:UNIQUE | OPEN_DOOR | BASH_DOOR | MALE |
@@ -22575,6 +22575,63 @@ P:Body:Naga
 D:Worshipped by the Apotecs as god of the sun and pointless deaths, the
 D:Melter of Snows is a gigantic serpentine monster apparently intent on
 D:melting you next.
+
+# Blame Gwarl for these
+
+# Skaven and other rodents
+
+N:1249:Plague Monk
+D:A crazed disease-ridden fanatic from clan Pestilens.
+
+N:1250:Skaven Assassin
+D:A swift and deadly killer trained by clan Eshin.
+
+N:1251:Rat-ogre
+D:A large creature resembling a skaven but with great size and strength.
+
+N:1252:Grey seer
+D:A skaven with white fur and horns, possessed of great skill and power.
+
+N:1253:Swamp rat
+D:A disgusting four foot rodent with grimy fur. It stinks of refuse.
+
+N:1254:Plague rat
+D:A large rat known to carry deadly diseases. It has sharp teeth.
+
+# For Doom purposes
+
+N:1255:Arachnotron
+D:A creature resembling a giant exposed brain with tiny arms.
+D:It is mounted on a mechanical contraption with four legs.
+
+N:1256:The Spider Mastermind
+D:A creature resembling a giant exposed brain with tiny arms.
+D:It is mounted on a mechanical contraption with four legs.
+
+# Some originals
+
+N:1257:Melissa the Emaciated Wight
+D:The creature you see here resembles the corpse of a woman, although not
+D:quite. It is not yet ridden with decay, but the skin is held tight across the
+D:bones, with little in the way of flesh to intervene.
+
+N:1258:Ychram the Anathema
+D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
+D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
+D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
+D:and citizenship. The Imperial death squads sent to dispose of their former
+D:champion so far have joined his countless victims, but without friends or refuge
+D:he grows more desperate by the hour. With unnerving speed and efficiency he moves
+D:in to relieve you of your loot.
+
+N:1259:Eleri the Blademistress
+D:An androgynous looking wood elf with a lithe and muscular build is here,
+D:standing around six feet tall. She is dressed for travel in a gray tunic and
+D:a brown cloak. Her hair is a deep auburn red. Her green eyes are spotted with
+D:freckles, and despite a strong jaw she shares the youthful features of her
+D:kin. A shortsword is sheathed to her waist and a large knife is strapped to
+D:her leg, ready to be drawn for combat.
+
 
 # N: serial number : monster name
 # G: symbol : color
