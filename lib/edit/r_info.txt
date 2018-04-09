@@ -21317,7 +21317,7 @@ D:A great captain of the orcs, who leads many raids into the
 D: lands of the elves.
 
 N:1185:Othrod, Lord of the Orcs
-G:o:g
+G:o:R
 I:120:180d10:20:105:20:200
 W:32:3:999:550:0:0
 B:HIT:HURT(4d8):STUN(1d4,10%)
@@ -21417,7 +21417,7 @@ O:DROP_MAGE
 D:An orc who has made a pact with evil forces for fell power.
 
 N:1190:Orc warlord
-G:o:g
+G:o:R
 I:113:25d10:20:85:20:190
 W:22:4:50:40:0:0
 B:HIT:HURT(3d8):STUN(1d4,10%)
@@ -22612,7 +22612,7 @@ P:Body:Scrawny
 D:A swift and deadly killer trained by clan Eshin.
 
 N:1251:Rat-ogre
-G:r:R
+G:r:U
 I:115:25d10:20:33:30:250
 W:15:3:50:50:0:0
 B:CLAW:HURT(2d8)
@@ -22624,7 +22624,7 @@ P:Copy:Ogre:Warrior
 D:A large creature resembling a skaven but with great size and strength.
 
 N:1252:Grey seer
-G:r:g
+G:r:w
 I:114:24d10:10:30:10:30
 W:13:4:50:110:0:0
 B:CLAW:HURT(1d8)
@@ -22642,32 +22642,32 @@ S:BLINK | CAUSE_2 | BO_COLD | BA_POISON | S_KIN
 D:A skaven with white fur and horns, possessed of great skill and power.
 
 N:1253:Swamp rat
-G:r:R
+G:r:g
 I:115:15d10:12:20:20:20
-W:10:1:40:70:0:0
+W:10:2:40:70:0:0
 B:BITE:HURT(2d3):POIS(1d3)
 B:BITE:HURT(3d2):ACID(1d3, 25%)
 F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
-F:DROP_CORPSE | POS_GAIN_AC
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS
 P:Copy:Yeek:Rogue
 P:Body:Scrawny
 D:A disgusting four foot rodent with grimy fur. It stinks of refuse.
 
 N:1254:Plague rat
-G:r:R
+G:r:y
 I:116:16d10:12:20:20:20
-W:11:1:40:80:0:0
+W:11:2:40:80:0:0
 B:BITE:HURT(2d3)
 B:BITE:HURT(3d2):LOSE_CON(50%)
 A:POISON(1d2)
 F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
-F:DROP_CORPSE | POS_GAIN_AC
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS
 P:Copy:Yeek:Rogue
 P:Body:Scrawny
 D:A large rat known to carry deadly diseases. It has sharp teeth.
 
 N:1255:Nizukil, Prince of Rats
-G:r:g
+G:r:w
 I:117:20d10:18:24:10:90
 W:13:3:999:240:0:0
 B:CLAW:HURT(1d9)
@@ -22684,7 +22684,7 @@ S:HEAL | BLINK | SHRIEK | BA_POIS | DARK |
 S:S_KIN
 P:Copy:Yeek:Mage
 P:Speed:+7
-D:A great white rat with sharp teeth and sorcerous powers.
+D:A great silver rat with sharp teeth and sorcerous powers.
 
 # For Doom purposes
 
