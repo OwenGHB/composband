@@ -572,8 +572,8 @@ static bool _general_create(obj_ptr obj, u32b mode)
     else if (one_in_(5))
         k_idx = lookup_kind(TV_DIGGING, SV_PICK);
     else
-        k_idx = _get_k_idx(_general_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+        k_idx = _get_k_idx(_general_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
@@ -605,8 +605,8 @@ static bool _armory_stock_p(int k_idx)
 
 static bool _armory_create(obj_ptr obj, u32b mode)
 {
-    int k_idx = _get_k_idx(_armory_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+    int k_idx = _get_k_idx(_armory_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
@@ -788,8 +788,8 @@ static bool _temple_create(obj_ptr obj, u32b mode)
     else if (one_in_(20))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_STAR_REMOVE_CURSE);
     else
-        k_idx = _get_k_idx(_temple_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+        k_idx = _get_k_idx(_temple_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
@@ -835,8 +835,8 @@ static bool _alchemist_create(obj_ptr obj, u32b mode)
     else if (one_in_(22))
         k_idx = lookup_kind(TV_SCROLL, SV_SCROLL_PHASE_DOOR);
     else
-        k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+        k_idx = _get_k_idx(_alchemist_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
@@ -932,8 +932,8 @@ static bool _magic_create(obj_ptr obj, u32b mode)
         return TRUE;
     }
     else
-        k_idx = _get_k_idx(_magic_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(15), mode);
+        k_idx = _get_k_idx(_magic_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(35), mode);
 }
 
 /************************************************************************
@@ -1046,8 +1046,8 @@ static bool _book_stock_p(int k_idx)
 
 static bool _book_create(obj_ptr obj, u32b mode)
 {
-    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(20));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(10));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
@@ -1106,8 +1106,8 @@ static bool _shroomery_stock_p(int k_idx)
 
 static bool _shroomery_create(obj_ptr obj, u32b mode)
 {
-	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(20));
-	return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
+	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(10));
+	return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
 }
 
 /************************************************************************
