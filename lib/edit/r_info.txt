@@ -1712,7 +1712,7 @@ D:Night dwarfs collecting new riches for their master, Alberich.
 N:112:Disembodied hand that strangled people
 G:z:g
 I:130:7d8:30:15:20:20
-W:6:2:40:20:0:0
+W:8:2:40:20:0:0
 B:CRUSH:HURT(1d10)
 F:EMPTY_MIND | COLD_BLOOD | OPEN_DOOR | BASH_DOOR |
 F:EVIL | UNDEAD | IM_POIS | CAN_FLY | RES_NETH |
@@ -1752,7 +1752,7 @@ D:It screeches as it attacks.
 N:115:Rat-thing
 G:r:R
 I:120:9d10:12:20:20:20
-W:6:1:40:10:0:0
+W:9:1:40:10:0:0
 B:BITE:HURT(3d3)
 B:BITE:HURT(3d2)
 F:EVIL | ANIMAL |
@@ -22581,56 +22581,142 @@ D:melting you next.
 # Skaven and other rodents
 
 N:1249:Plague Monk
+G:r:g
+I:112:19d10:10:20:10:90
+W:12:2:50:65:0:0
+B:CLAW:HURT(1d8):POISON(1d8)
+B:BITE:HURT(1d6):LOSE_CON(50%)
+A:POISON(1d3)
+F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
+S:1_IN_6 |
+S:BA_POISON
 D:A crazed disease-ridden fanatic from clan Pestilens.
 
 N:1250:Skaven Assassin
+G:r:D
+I:114:18d10:10:25:10:90
+W:12:2:50:70:0:0
+B:HIT:HURT(1d9):EAT_ITEM(30%)
+B:HIT:HURT(1d8):POISON(1d8)
+F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
 D:A swift and deadly killer trained by clan Eshin.
 
 N:1251:Rat-ogre
+G:r:R
+I:115:25d10:20:33:30:250
+W:15:3:50:50:0:0
+B:CLAW:HURT(2d8)
+B:BITE:HURT(1d8)
+F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
+F:OPEN_DOOR | BASH_DOOR |
+F:EVIL | ANIMAL
+P:Copy:Ogre:Warrior
 D:A large creature resembling a skaven but with great size and strength.
 
 N:1252:Grey seer
+G:r:g
+I:114:24d10:10:30:10:30
+W:13:4:50:110:0:0
+B:CLAW:HURT(1d8)
+B:CLAW:HURT(1d8)
+B:BITE:HURT(2d6)
+F:FORCE_SLEEP | ESCORT | FORCE_MAXHP
+F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
+F:OPEN_DOOR | BASH_DOOR |
+F:ANIMAL | EVIL | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Priest
+P:Body:Scrawny
+S:1_IN_4 |
+S:BLINK | CAUSE_2 | BO_COLD | BA_POISON | S_KIN
 D:A skaven with white fur and horns, possessed of great skill and power.
 
 N:1253:Swamp rat
+G:r:R
+I:115:15d10:12:20:20:20
+W:10:1:40:70:0:0
+B:BITE:HURT(2d3):POIS(1d3)
+B:BITE:HURT(3d2):ACID(1d3, 25%)
+F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Rogue
+P:Body:Scrawny
 D:A disgusting four foot rodent with grimy fur. It stinks of refuse.
 
 N:1254:Plague rat
+G:r:R
+I:116:16d10:12:20:20:20
+W:11:1:40:80:0:0
+B:BITE:HURT(2d3)
+B:BITE:HURT(3d2):LOSE_CON(50%)
+A:POISON(1d2)
+F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
+F:DROP_CORPSE | POS_GAIN_AC
+P:Copy:Yeek:Rogue
+P:Body:Scrawny
 D:A large rat known to carry deadly diseases. It has sharp teeth.
+
+N:1255:Nizukil, Prince of Rats
+G:r:g
+I:117:20d10:18:24:10:90
+W:13:3:999:240:0:0
+B:CLAW:HURT(1d9)
+B:CLAW:HURT(1d9)
+B:BITE:HURT(1d8)
+F:UNIQUE | MALE |
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ESCORT |
+F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | DROP_60
+F:SMART | OPEN_DOOR | BASH_DOOR | DROP_CORPSE
+F:ANIMAL | EVIL | RES_POIS
+S:1_IN_5 |
+S:HEAL | BLINK | SHRIEK | BA_POIS | DARK |
+S:S_KIN
+P:Copy:Yeek:Mage
+P:Speed:+7
+D:A great white rat with sharp teeth and sorcerous powers.
 
 # For Doom purposes
 
-N:1255:Arachnotron
-D:A creature resembling a giant exposed brain with tiny arms.
-D:It is mounted on a mechanical contraption with four legs.
+#N:1256:Arachnotron
+#D:A creature resembling a giant exposed brain with tiny arms.
+#D:It is mounted on a mechanical contraption with four legs.
 
-N:1256:The Spider Mastermind
-D:A creature resembling a giant exposed brain with tiny arms.
-D:It is mounted on a mechanical contraption with four legs.
+#N:1257:The Spider Mastermind
+#D:A creature resembling a giant exposed brain with tiny arms.
+#D:It is mounted on a mechanical contraption with four legs.
 
 # Some originals
 
-N:1257:Melissa the Emaciated Wight
-D:The creature you see here resembles the corpse of a woman, although not
-D:quite. It is not yet ridden with decay, but the skin is held tight across the
-D:bones, with little in the way of flesh to intervene.
+#N:1258:Melissa the Emaciated Wight
+#D:The creature you see here resembles the corpse of a woman, although not
+#D:quite. It is not yet ridden with decay, but the skin is held tight across the
+#D:bones, with little in the way of flesh to intervene.
 
-N:1258:Ychram the Anathema
-D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
-D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
-D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
-D:and citizenship. The Imperial death squads sent to dispose of their former
-D:champion so far have joined his countless victims, but without friends or refuge
-D:he grows more desperate by the hour. With unnerving speed and efficiency he moves
-D:in to relieve you of your loot.
+#N:1259:Ychram the Anathema
+#D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
+#D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
+#D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
+#D:and citizenship. The Imperial death squads sent to dispose of their former
+#D:champion so far have joined his countless victims, but without friends or refuge
+#D:he grows more desperate by the hour. With unnerving speed and efficiency he moves
+#D:in to relieve you of your loot.
 
-N:1259:Eleri the Blademistress
-D:An androgynous looking wood elf with a lithe and muscular build is here,
-D:standing around six feet tall. She is dressed for travel in a gray tunic and
-D:a brown cloak. Her hair is a deep auburn red. Her green eyes are spotted with
-D:freckles, and despite a strong jaw she shares the youthful features of her
-D:kin. A shortsword is sheathed to her waist and a large knife is strapped to
-D:her leg, ready to be drawn for combat.
+#N:1260:Eleri the Blademistress
+#D:An androgynous looking wood elf with a lithe and muscular build, standing
+#D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
+#D:freckles, and besides a strong jaw she shares the delicate features of her
+#D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
 
 
 # N: serial number : monster name
