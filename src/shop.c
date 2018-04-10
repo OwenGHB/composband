@@ -1046,8 +1046,8 @@ static bool _book_stock_p(int k_idx)
 
 static bool _book_create(obj_ptr obj, u32b mode)
 {
-    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(10));
-    return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
+    int k_idx = _get_k_idx(_book_stock_p, _mod_lvl(25));
+    return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
 /************************************************************************
@@ -1106,8 +1106,8 @@ static bool _shroomery_stock_p(int k_idx)
 
 static bool _shroomery_create(obj_ptr obj, u32b mode)
 {
-	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(10));
-	return _create(obj, k_idx, _mod_lvl(rand_range(1, 35)), mode);
+	int k_idx = _get_k_idx(_shroomery_stock_p, _mod_lvl(25));
+	return _create(obj, k_idx, _mod_lvl(rand_range(1, 15)), mode);
 }
 
 /************************************************************************
