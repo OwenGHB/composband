@@ -1309,12 +1309,6 @@ static int _sell_price(shop_ptr shop, int price)
 {
     int factor = _price_factor(shop);
 
-    if ((shop->type->id == SHOP_DRAGON) && (price > 31000))
-    {
-        int ylihinta = (price - 30000);
-        price += ((ylihinta / 200) * ylihinta) / 15;
-    }
-
     price = _sell_price_aux(price, factor);
     if (shop->type->id == SHOP_BLACK_MARKET)
     {
