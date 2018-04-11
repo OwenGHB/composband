@@ -606,7 +606,7 @@ M:%%%%%%%%%%%%%%%%%%%%%
 N:Object Vault +Potions?)
 T:ROOM:NORMAL
 W:16:50:32
-L:$:MON+potion mimic):OBJ(POTION, DEPTH+5)
+L:$:MON(potion mimic):OBJ(POTION, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
@@ -623,7 +623,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Object Vault +Swords?)
 T:ROOM:NORMAL
 W:16:30:32
-L:$:MON+death sword):OBJ(SWORD, DEPTH+5)
+L:$:MON(death sword):OBJ(SWORD, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
@@ -640,7 +640,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Object Vault +Scrolls?)
 T:ROOM:NORMAL
 W:16:50:32
-L:$:MON+scroll mimic):OBJ(SCROLL, DEPTH+5)
+L:$:MON(scroll mimic):OBJ(SCROLL, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
@@ -657,7 +657,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Library?
 T:ROOM:NORMAL
 W:32:*:32
-L:$:MON+raal's):OBJ(BOOK, DEPTH+5)
+L:$:MON(raal's):OBJ(BOOK, DEPTH+5)
 L:M:MON(*, DEPTH+20)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
@@ -674,7 +674,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Pantry?
 T:ROOM:NORMAL
 W:10:20:8
-L:$:MON+slime mold):OBJ(slime mold)
+L:$:MON(slime mold):OBJ(slime mold)
 L:M:MON(*)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
@@ -694,7 +694,7 @@ W:30:*:32
 L:,:DIRT+ROOM)
 L:_:SHALLOW_WATER+ROOM)
 L:~:DEEP_WATER+ROOM)
-L:M:DIRT+ROOM):MON+MAGICAL, NO_GROUP | NO_SLEEP | DEPTH+20):OBJ(*, DEPTH+5)
+L:M:DIRT+ROOM):MON(MAGICAL, NO_GROUP | NO_SLEEP | DEPTH+20):OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%...._....%%    
@@ -718,7 +718,7 @@ T:ROOM:NORMAL
 W:20:60:32
 L:~:DARK_PIT+ROOM)
 L:,:SHALLOW_LAVA+ROOM | GLOW)
-L:M:SHALLOW_LAVA+ROOM | GLOW):MON+arch-vile)
+L:M:SHALLOW_LAVA+ROOM | GLOW):MON(arch-vile)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%.........%%    
@@ -904,7 +904,7 @@ M:%%%%%######%%%%%
 N:Oval Crypt I
 T:ROOM:NORMAL
 W:16:*:4
-L:M:MON+UNDEAD, DEPTH+5):OBJ(*, DEPTH+3)
+L:M:MON(UNDEAD, DEPTH+5):OBJ(*, DEPTH+3)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%.........%%    
@@ -926,7 +926,7 @@ M:       %%%%%%%
 N:Oval Crypt II
 T:ROOM:NORMAL
 W:21:*:6
-L:M:MON+UNDEAD, DEPTH+6):OBJ(*, DEPTH+5)
+L:M:MON(UNDEAD, DEPTH+6):OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    ###.......###    
@@ -948,7 +948,7 @@ M:       %%%%%%%
 N:Oval Crypt III
 T:ROOM:NORMAL
 W:24:*:8
-L:M:MON+UNDEAD, DEPTH+6):OBJ(*, DEPTH+5)
+L:M:MON(UNDEAD, DEPTH+6):OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    ###.......###    
@@ -970,7 +970,7 @@ M:       %%%%%%%
 N:Oval Crypt IV
 T:ROOM:NORMAL
 W:30:*:12
-L:M:MON+UNDEAD, DEPTH+10):OBJ(*, DEPTH+5)
+L:M:MON(UNDEAD, DEPTH+10):OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    ###.......###    
@@ -992,7 +992,7 @@ M:       %%%%%%%
 N:Oval Crypt V
 T:ROOM:NORMAL:FORMATION
 W:30:*:16
-L:0:MON+UNDEAD, DEPTH+15):OBJ(*, DEPTH+20):EGO(*)
+L:0:MON(UNDEAD, DEPTH+15):OBJ(*, DEPTH+20):EGO(*)
 L:1:OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
@@ -1037,7 +1037,7 @@ M:       %%%%%%%
 N:Mausoleum I
 T:ROOM:NORMAL
 W:15:*:16
-L:M:MON+UNDEAD, DEPTH+5)
+L:M:MON(UNDEAD, DEPTH+5)
 M:%%%%%%%%%%%%%%%%%%%%%
 M:%...................%
 M:%.#################.%
@@ -1053,7 +1053,7 @@ M:%%%%%%%%%%%%%%%%%%%%%
 N:Mausoleum II
 T:ROOM:NORMAL
 W:20:*:24
-L:M:MON+UNDEAD, DEPTH+5)
+L:M:MON(UNDEAD, DEPTH+5)
 L:`:OBJ(STATUE)
 M:%%%%%%%%%%%%%%%%%%%%%%%%
 M:%......................%
@@ -1070,7 +1070,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%
 N:Dragon's Treasure
 T:ROOM:NORMAL
 W:35:*:128
-L:M:MON+HI_DRAGON, DEPTH+20)
+L:M:MON(HI_DRAGON, DEPTH+20)
 L:$:OBJ(GOLD)
 M:       %%%       
 M:     %%%.%%%     
@@ -1091,8 +1091,8 @@ M:       %%%
 N:Satanic Ritual
 T:ROOM:NORMAL:EVIL
 W:40:*:128
-L:M:SHALLOW_LAVA+ROOM | GLOW):MON+HI_DEMON, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
-L:p:MON+HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:M:SHALLOW_LAVA+ROOM | GLOW):MON(HI_DEMON, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
+L:p:MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:DEEP_LAVA+ROOM | GLOW)
 M:       %%%       
 M:     %%%.%%%     
@@ -1113,8 +1113,8 @@ M:       %%%
 N:Sacred Ritual
 T:ROOM:NORMAL:GOOD
 W:40:*:128
-L:M:MON+ANGEL, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
-L:p:MON+HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:M:MON(ANGEL, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
+L:p:MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:FLOOR
 M:       %%%       
 M:     %%%.%%%     
@@ -1136,8 +1136,8 @@ N:Natural Ritual
 T:ROOM:NORMAL:GOOD
 W:40:*:128
 L:):TREE+ROOM)
-L:M:GRASS+ROOM):MON+ENT, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
-L:p:GRASS+ROOM):MON+HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:M:GRASS+ROOM):MON(ENT, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
+L:p:GRASS+ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:GRASS+ROOM)
 M:       %%%       
 M:     %%%.%%%     
@@ -1158,8 +1158,8 @@ M:       %%%
 N:Poseidon's Ritual
 T:ROOM:NORMAL:EVIL
 W:50:*:128
-L:M:SHALLOW_WATER+ROOM):MON+KRAKEN, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
-L:p:SHALLOW_WATER+ROOM):MON+HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:M:SHALLOW_WATER+ROOM):MON(KRAKEN, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
+L:p:SHALLOW_WATER+ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:DEEP_WATER+ROOM)
 M:       %%%       
 M:     %%%.%%%     
@@ -1446,8 +1446,8 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:"They have a cave troll!"
 T:ROOM:NORMAL:FORMATION
 W:15:25:8
-L:T:MON+cave troll, NO_GROUP | NO_SLEEP | HASTE)
-L:0:MON+o, DEPTH+10)
+L:T:MON(cave troll, NO_GROUP | NO_SLEEP | HASTE)
+L:0:MON(o, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.......................%
 M:%.#####################.%
@@ -1591,8 +1591,8 @@ M:        %%%%%
 N:Cross V
 T:ROOM:NORMAL:FORMATION
 W:20:*:50
-L:+:MON+door mimic)
-L:#:MON+granite wall)
+L:+:MON(door mimic)
+L:#:MON(granite wall)
 L:0:MON(*)
 M:        %%%%%        
 M:        %.8.%        
@@ -1608,7 +1608,7 @@ M:        %%%%%
 N:Troll Bridge
 T:ROOM:NORMAL:FORMATION
 W:20:*:60
-L:0:MON+T, DEPTH+10)
+L:0:MON(T, DEPTH+10)
 L:~:DEEP_WATER
 M:       #######       
 M:     %%%~~~~~%%%     
@@ -1631,7 +1631,7 @@ M:       #######
 N:Khazad dum
 T:ROOM:NORMAL:FORMATION
 W:40:*:80
-L:0:MON+DEMON, DEPTH+10)
+L:0:MON(DEMON, DEPTH+10)
 L:~:DEEP_LAVA
 M:       #######       
 M:     %%%~~~~~%%%     
@@ -1954,7 +1954,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Mass
 T:ROOM:NORMAL:FORMATION
 W:30:*:32
-L:0:MON+CHAPEL_GOOD, DEPTH+10):OBJ(*, DEPTH+10)
+L:0:MON(CHAPEL_GOOD, DEPTH+10):OBJ(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.........................%
 M:%.#####################...%
@@ -1972,7 +1972,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Black Mass
 T:ROOM:NORMAL:FORMATION
 W:30:*:32
-L:0:MON+CHAPEL_EVIL, DEPTH+10):OBJ(*, DEPTH+10)
+L:0:MON(CHAPEL_EVIL, DEPTH+10):OBJ(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.........................%
 M:%.#####################...%
@@ -1990,7 +1990,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Black Mass II
 T:ROOM:NORMAL:FORMATION
 W:30:*:32
-L:0:MON+UNDEAD, DEPTH+10):OBJ(*, DEPTH+10)
+L:0:MON(UNDEAD, DEPTH+10):OBJ(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.........................%
 M:%.#####################...%
@@ -2109,7 +2109,7 @@ M:%%%%%%%%%%%%%
 N:Bank Vault II
 T:ROOM:NORMAL
 W:20:*:50
-L:$:MON+$, HASTE | DEPTH+20)
+L:$:MON($, HASTE | DEPTH+20)
 M:%%%%%%%%%%%%%
 M:%...........%
 M:%.#########.%
@@ -2615,7 +2615,7 @@ M:%%%%%%%%%%%%%
 N:The Nine
 T:ROOM:NORMAL:FORMATION
 W:27:*:32
-L:0:MON+UNDEAD, DEPTH+15):OBJ(*, DEPTH+5):EGO(*)
+L:0:MON(UNDEAD, DEPTH+15):OBJ(*, DEPTH+5):EGO(*)
 L:3:OBJ(*, DEPTH+3)
 M:%%%%%%%%%%%%%%%%%%%
 M:%.................%
@@ -2640,7 +2640,7 @@ M:%%%%%%%%%%%%%%%%%%%
 N:The Nine
 T:ROOM:NORMAL:FORMATION
 W:27:*:32
-L:0:MON+DEMON, DEPTH+15):OBJ(*, DEPTH+5):EGO(*)
+L:0:MON(DEMON, DEPTH+15):OBJ(*, DEPTH+5):EGO(*)
 L:3:OBJ(*, DEPTH+3)
 M:%%%%%%%%%%%%%%%%%%%
 M:%.................%
@@ -4166,8 +4166,8 @@ M:%%%%% %%%%%
 N:Graveyard
 T:ROOM:NORMAL
 W:5:*:8
-L:0:MON+UNDEAD)
-L:1:MON+UNDEAD, DEPTH+5)
+L:0:MON(UNDEAD)
+L:1:MON(UNDEAD, DEPTH+5)
 L:;:RUBBLE
 M:%%%%%%%%%%%%%
 M:%...........%
@@ -4769,7 +4769,7 @@ M:%%%%%%%%%%%%%
 N:Barrow 1
 T:ROOM:NORMAL
 W:1:*:6
-L:0:MON+UNDEAD)
+L:0:MON(UNDEAD)
 L:;:RUBBLE
 M:%%%%%%%%%
 M:%.......%
@@ -4784,8 +4784,8 @@ M:%%%%%%%%%
 N:Barrow 2
 T:ROOM:NORMAL
 W:6:*:10
-L:0:MON+UNDEAD, DEPTH+3)
-L:1:MON+UNDEAD, DEPTH+7)
+L:0:MON(UNDEAD, DEPTH+3)
+L:1:MON(UNDEAD, DEPTH+7)
 L:;:RUBBLE
 M:%%%%%%%%%%%%%
 M:%...........%
