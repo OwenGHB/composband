@@ -1091,9 +1091,9 @@ M:       %%%
 N:Satanic Ritual
 T:ROOM:NORMAL:EVIL
 W:40:*:128
-L:M:SHALLOW_LAVA+ROOM | GLOW):MON(HI_DEMON, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
+L:M:SHALLOW_LAVA(ROOM | GLOW):MON(HI_DEMON, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
 L:p:MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
-L:~:DEEP_LAVA+ROOM | GLOW)
+L:~:DEEP_LAVA(ROOM | GLOW)
 M:       %%%       
 M:     %%%.%%%     
 M:    %%.....%%    
@@ -1135,10 +1135,10 @@ M:       %%%
 N:Natural Ritual
 T:ROOM:NORMAL:GOOD
 W:40:*:128
-L:):TREE+ROOM)
-L:M:GRASS+ROOM):MON(ENT, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
-L:p:GRASS+ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
-L:~:GRASS+ROOM)
+L:):TREE(ROOM)
+L:M:GRASS(ROOM):MON(ENT, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
+L:p:GRASS(ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:~:GRASS(ROOM)
 M:       %%%       
 M:     %%%.%%%     
 M:    %%.....%%    
@@ -1158,9 +1158,9 @@ M:       %%%
 N:Poseidon's Ritual
 T:ROOM:NORMAL:EVIL
 W:50:*:128
-L:M:SHALLOW_WATER+ROOM):MON(KRAKEN, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
-L:p:SHALLOW_WATER+ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
-L:~:DEEP_WATER+ROOM)
+L:M:SHALLOW_WATER(ROOM):MON(KRAKEN, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
+L:p:SHALLOW_WATER(ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
+L:~:DEEP_WATER(ROOM)
 M:       %%%       
 M:     %%%.%%%     
 M:    %%.....%%    
@@ -3115,7 +3115,7 @@ M:%%%%%%%%%%%%%%%%%%%%%
 N:Black Market
 T:ROOM:NORMAL:SHOP
 W:20:*:8
-L:7:BLACK_MARKET+GLOW)
+L:7:BLACK_MARKET(GLOW)
 M:%%%%%%%%%%%%%
 M:%...........%
 M:%.####7####.%
@@ -3129,7 +3129,7 @@ M:%%%%%%%%%%%%%
 N:Black Market II
 T:ROOM:NORMAL:SHOP
 W:20:*:8
-L:7:BLACK_MARKET+GLOW)
+L:7:BLACK_MARKET(GLOW)
 M:%%%%%%%%%%%%%
 M:%...........%
 M:%.#########.%
@@ -3143,7 +3143,7 @@ M:%%%%%%%%%%%%%
 N:Black Market III
 T:ROOM:NORMAL:SHOP
 W:20:*:8
-L:7:BLACK_MARKET+GLOW)
+L:7:BLACK_MARKET(GLOW)
 M:%%%%%%%%%%%%%
 M:%...........%
 M:%.####'####.%
@@ -3157,7 +3157,7 @@ M:%%%%%%%%%%%%%
 N:Jeweler
 T:ROOM:NORMAL:SHOP
 W:20:*:32
-L:7:JEWELER+GLOW)
+L:7:JEWELER(GLOW)
 M:%%%%%%%%%%%%%
 M:%...........%
 M:%.####'####.%
@@ -3171,14 +3171,14 @@ M:%%%%%%%%%%%%%
 N:Vanilla Town
 T:ROOM:NORMAL:SHOP | NO_ROTATE
 W:20:*:3
-L:1:GENERAL_STORE+GLOW)
-L:2:ARMOURY+GLOW)
-L:3:WEAPON_SMITHS+GLOW)
-L:4:TEMPLE+GLOW)
-L:5:ALCHEMY_SHOP+GLOW)
-L:6:MAGIC_SHOP+GLOW)
-L:7:BLACK_MARKET+GLOW)
-L:9:BOOKSTORE+GLOW)
+L:1:GENERAL_STORE(GLOW)
+L:2:ARMOURY(GLOW)
+L:3:WEAPON_SMITHS(GLOW)
+L:4:TEMPLE(GLOW)
+L:5:ALCHEMY_SHOP(GLOW)
+L:6:MAGIC_SHOP(GLOW)
+L:7:BLACK_MARKET(GLOW)
+L:9:BOOKSTORE(GLOW)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 M:%.....................................................%
 M:%...............#########...................#########.%
@@ -3200,7 +3200,7 @@ M:%.....................................................%
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 ##############################
-# clouded +edited)
+# clouded (edited)
 # vvvvvvv
 
 N:Small Connected Rooms 1
@@ -9818,7 +9818,7 @@ M:      %.+.+.....%
 M:      #%#+#....#%
 M:        #.....## 
 M:        %...#%#  
-M:        %%%%#       
+M:        %%%%#    
 
 N:X rooms
 T:ROOM:NORMAL
@@ -10527,8 +10527,8 @@ M:%...5..+^..#6#..^+..5...%
 M:%......#^..###..^#......%
 M:##.....##.......##.....##
 M: ##.....##.#+#.##.....## 
-M:  #%#....###.###...#%#  
-M:    #%%%%%##%##%%%%%#   
+M:  #%#....###.###...#%#   
+M:    #%%%%%##%##%%%%%#    
 
 N:Capsule
 T:ROOM:NORMAL
@@ -10872,7 +10872,7 @@ M:#%##%%#%%##%#
 N:Mushroom Field
 T:ROOM:NORMAL
 W:1:*:6
-L:[:OBJ(MUSHROOM, DEPTH+5)
+L:[:OBJ(mushroom, DEPTH+5)
 M:%%%%%%%%#########
 M:%.......#.#.#5#.#
 M:%.[..[..+.#+#+#+#
@@ -10918,7 +10918,7 @@ M:    #%%%#%%%#
 N:Mining outpost
 T:ROOM:NORMAL
 W:1:*:6
-L:[:OBJ(DIGGER)
+L:[:OBJ(DIGGING)
 M: %%%%%#####   %%%%
 M:%%..#.#.5.#%%%%.#%
 M:%.[...+...#.##...%
