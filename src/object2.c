@@ -2023,7 +2023,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     int maxf2 = d_info[dungeon_type].obj_great;
 
     if (mode & AM_QUEST)
-        lev += 10;
+        lev += 12;
 
     /* Maximum "level" for various things */
     if (lev > MAX_DEPTH - 1) lev = MAX_DEPTH - 1;
@@ -2104,11 +2104,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
         }
 
         /* "Cursed" items become tedious in the late game ... */
-        if ( power == -1
-          && o_ptr->tval != TV_RING
-          && o_ptr->tval != TV_AMULET
-          && !object_is_device(o_ptr)
-          && randint1(lev) > 10 )
+        if ( power == -1 && randint1(lev) > 10 )
         {
             power = 0;
         }
