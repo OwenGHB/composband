@@ -691,10 +691,10 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 N:Island of Despair
 T:ROOM:NORMAL
 W:30:*:32
-L:,:DIRT+ROOM)
-L:_:SHALLOW_WATER+ROOM)
-L:~:DEEP_WATER+ROOM)
-L:M:DIRT+ROOM):MON(MAGICAL, NO_GROUP | NO_SLEEP | DEPTH+20):OBJ(*, DEPTH+5)
+L:,:DIRT(ROOM)
+L:_:SHALLOW_WATER(ROOM)
+L:~:DEEP_WATER(ROOM)
+L:M:DIRT(ROOM):MON(MAGICAL, NO_GROUP | NO_SLEEP | DEPTH+20):OBJ(*, DEPTH+5)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%...._....%%    
@@ -716,9 +716,9 @@ M:       %%%%%%%
 N:A Cruel Lesson
 T:ROOM:NORMAL
 W:20:60:32
-L:~:DARK_PIT+ROOM)
-L:,:SHALLOW_LAVA+ROOM | GLOW)
-L:M:SHALLOW_LAVA+ROOM | GLOW):MON(arch-vile)
+L:~:DARK_PIT(ROOM)
+L:,:SHALLOW_LAVA(ROOM | GLOW)
+L:M:SHALLOW_LAVA(ROOM | GLOW):MON(arch-vile)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%.........%%    
