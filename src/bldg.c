@@ -3002,7 +3002,7 @@ bool tele_town(void)
         char buf[80];
 
         if (i == p_ptr->town_num) continue;
-        if ((num) && (easy_thalos) && (i == TOWN_THALOS)) town_on_visit(i); /* Make people not hate me */
+        if ((num) && (easy_thalos)) town_on_visit(i); /* Make people not hate me */
         if (!town_visited(i) && !p_ptr->wizard) continue;
 
         sprintf(buf,"%c) %-20s", I2A(i-1), town_name(i));
