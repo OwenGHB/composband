@@ -1640,7 +1640,7 @@ D:It has a copper head and sharp venomous fangs.
 N:107:Death sword
 G:|:W
 I:130:6d6:20:40:0:15
-W:8:5:40:30:0:0
+W:16:5:40:30:0:0
 B:SLASH:HURT(5d5)
 B:SLASH:HURT(5d5)
 B:SLASH:HURT(20d1):TERRIFY:CUT(2d3, 30%)
@@ -21419,7 +21419,7 @@ N:1190:Orc warlord
 G:o:R
 I:117:35d10:20:85:20:190
 W:22:4:70:120:0:0
-B:HIT:HURT(3d8):STUN(1d4,10%)
+B:HIT:HURT(3d8):STUN(1d5,12%)
 B:HIT:HURT(3d5)
 B:HIT:HURT(3d5)
 F:DROP_90 |
@@ -22584,12 +22584,12 @@ D:melting you next.
 N:1249:Plague Monk
 G:r:g
 I:112:19d10:10:20:10:90
-W:12:2:50:65:0:0
+W:14:2:50:65:0:0
 B:CLAW:HURT(1d8):POISON(1d8)
-B:BITE:HURT(1d6):LOSE_CON(50%)
-A:POISON(1d3)
+B:BITE:HURT(1d6):LOSE_CON(20%)
+A:POISON(1d2)
 F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
-F:OPEN_DOOR | BASH_DOOR |
+F:OPEN_DOOR | BASH_DOOR | FRIENDS(1d3)
 F:ANIMAL | EVIL | RES_POIS
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Yeek:Priest
@@ -22601,15 +22601,17 @@ D:A crazed disease-ridden fanatic from clan Pestilens.
 N:1250:Skaven Assassin
 G:r:D
 I:114:18d10:10:25:10:90
-W:12:2:50:70:0:0
-B:HIT:HURT(1d9):EAT_ITEM(30%)
+W:14:2:50:70:0:0
+B:HIT:HURT(1d9):EAT_ITEM(10%)
 B:HIT:HURT(1d8):POISON(1d8)
 F:DROP_60 | DROP_90 | WILD_WASTE | WILD_SWAMP
-F:OPEN_DOOR | BASH_DOOR |
+F:OPEN_DOOR | BASH_DOOR | FRIENDS(1d2)
 F:ANIMAL | EVIL | RES_POIS
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Yeek:Priest
 P:Body:Scrawny
+S:1_IN_8 |
+S:DARKNESS
 D:A swift and deadly killer trained by clan Eshin.
 
 N:1251:Rat-ogre
@@ -22627,7 +22629,7 @@ D:A large creature resembling a skaven but with great size and strength.
 N:1252:Grey seer
 G:r:w
 I:114:24d10:10:30:10:30
-W:13:4:50:110:0:0
+W:17:4:50:110:0:0
 B:CLAW:HURT(1d8)
 B:CLAW:HURT(1d8)
 B:BITE:HURT(2d6)
@@ -22639,7 +22641,7 @@ F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Yeek:Priest
 P:Body:Scrawny
 S:1_IN_4 |
-S:BLINK | CAUSE_2 | BO_COLD | BA_POISON | S_KIN
+S:BLINK | CAUSE_2 | BLIND | BA_POISON | S_KIN | SLOW
 D:A skaven with white fur and horns, possessed of great skill and power.
 
 N:1253:Swamp rat
@@ -22647,9 +22649,9 @@ G:r:g
 I:115:15d10:12:20:20:20
 W:10:2:40:70:0:0
 B:BITE:HURT(2d3):POIS(1d3)
-B:BITE:HURT(3d2):ACID(1d3, 25%)
+B:BITE:HURT(3d2):ACID(1d3, 5%)
 F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
-F:DROP_CORPSE | POS_GAIN_AC | FRIENDS
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS(2d3)
 P:Copy:Yeek:Rogue
 P:Body:Scrawny
 D:A disgusting four foot rodent with grimy fur. It stinks of refuse.
@@ -22659,18 +22661,18 @@ G:r:y
 I:116:16d10:12:20:20:20
 W:11:2:40:80:0:0
 B:BITE:HURT(2d3)
-B:BITE:HURT(3d2):LOSE_CON(50%)
+B:BITE:HURT(3d2):LOSE_CON(15%)
 A:POISON(1d2)
 F:EVIL | ANIMAL | WILD_WASTE | WILD_SWAMP | RES_POIS
-F:DROP_CORPSE | POS_GAIN_AC | FRIENDS
+F:DROP_CORPSE | POS_GAIN_AC | FRIENDS(2d3)
 P:Copy:Yeek:Rogue
 P:Body:Scrawny
 D:A large rat known to carry deadly diseases. It has sharp teeth.
 
 N:1255:Nizukil, Prince of Rats
-G:r:w
-I:117:20d10:18:24:10:90
-W:13:3:999:240:0:0
+G:r:v
+I:117:20d10:18:28:20:90
+W:16:3:999:240:0:0
 B:CLAW:HURT(1d9)
 B:CLAW:HURT(1d9)
 B:BITE:HURT(1d8)
@@ -22681,11 +22683,10 @@ F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | DROP_60
 F:SMART | OPEN_DOOR | BASH_DOOR | DROP_CORPSE
 F:ANIMAL | EVIL | RES_POIS
 S:1_IN_5 |
-S:HEAL | BLINK | SHRIEK | BA_POISON | DARKNESS |
-S:S_KIN
+S:HEAL | BLINK | SHRIEK | DARKNESS | S_KIN | MISSILE
 P:Copy:Yeek:Mage
 P:Speed:+7
-D:A great silver rat with sharp teeth and sorcerous powers.
+D:A great purple rat with sharp teeth and sorcerous powers.
 
 # For Doom purposes
 
