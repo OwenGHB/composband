@@ -904,9 +904,8 @@ static bool detect_feat_flag(int range, int flag, bool known)
     {
         for (x = 1; x <= cur_wid - 1; x++)
         {
-            int dist = max(abs(px - x), abs(py - y));
+            int dist = MAX(ABS(px - x), ABS(py - y));
             if (dist > range) continue;
-
             /* Access the grid */
             c_ptr = &cave[y][x];
 
@@ -1060,7 +1059,7 @@ bool detect_objects_gold(int range)
         x = o_ptr->loc.x;
 
         /* Only detect nearby objects */
-        if (distance(py, px, y, x) > range2) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range2) continue;
 
         /* Detect "gold" objects */
         if (o_ptr->tval == TV_GOLD)
@@ -1123,7 +1122,7 @@ bool detect_objects_normal(int range)
         x = o_ptr->loc.x;
 
         /* Only detect nearby objects */
-        if (max(abs(px - x), abs(py - y)) > range2) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range2) continue;
 
         /* Detect "real" objects */
         if (o_ptr->tval != TV_GOLD)
@@ -1274,7 +1273,7 @@ bool detect_monsters_normal(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect all non-invisible monsters
          * N.B. update_mon() will roll the perception check for Invisibility */
@@ -1333,7 +1332,7 @@ bool detect_monsters_invis(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect invisible monsters */
         if (r_ptr->flags2 & RF2_INVISIBLE)
@@ -1399,7 +1398,7 @@ bool detect_monsters_evil(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect evil monsters */
         if (r_ptr->flags3 & RF3_EVIL)
@@ -1460,7 +1459,7 @@ bool detect_monsters_nonliving(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect non-living monsters */
         if (!monster_living(r_ptr))
@@ -1518,7 +1517,7 @@ bool detect_monsters_living(int range, cptr msg)
         y = m_ptr->fy;
         x = m_ptr->fx;
 
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         if (monster_living(r_ptr))
         {
@@ -1560,7 +1559,7 @@ bool detect_monsters_magical(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect non-living monsters */
         if (monster_magical(r_ptr))
@@ -1620,7 +1619,7 @@ bool detect_monsters_mind(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) continue;
 
         /* Detect non-living monsters */
         if (!(r_ptr->flags2 & RF2_EMPTY_MIND))
@@ -1683,7 +1682,7 @@ bool detect_monsters_string(int range, cptr Match)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect monsters with the same symbol */
         if (my_strchr(Match, r_ptr->d_char))
@@ -1749,7 +1748,7 @@ bool detect_monsters_xxx(int range, u32b match_flag)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (max(abs(px - x), abs(py - y)) > range) continue;
+        if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect evil monsters */
         if (r_ptr->flags3 & (match_flag))

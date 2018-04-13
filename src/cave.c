@@ -4262,7 +4262,7 @@ void map_area(int range)
     {
         for (x = 1; x < cur_wid - 1; x++)
         {
-            if (max(abs(px - x), abs(py - y)) > range) continue;
+            if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
             c_ptr = &cave[y][x];
             c_ptr->info |= CAVE_IN_MAP;
