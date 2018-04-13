@@ -2335,8 +2335,8 @@ option_type option_info[] =
 	{ &power_tele,					FALSE, OPT_PAGE_BIRTH, 6, 6,
 	"power_tele",					"Use enhanced telepathy" },
 
-	{ &easy_thalos,					TRUE, OPT_PAGE_BIRTH, 6, 28,
-	"easy_thalos",					"Allow easy teleportation to Thalos" },
+	{ &easy_thalos,					FALSE, OPT_PAGE_BIRTH, 6, 28,
+	"easy_thalos",					"Allow easy teleportation between towns" },
 
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
@@ -2359,7 +2359,7 @@ option_type option_info[] =
     { &ironman_nightmare,           FALSE, OPT_PAGE_BIRTH, 6, 18,
     "ironman_nightmare",            "Nightmare mode(it isn't even remotely fair!)(*)" },
 
-    { &enable_virtues,              FALSE, OPT_PAGE_BIRTH, 6, 13,
+    { &enable_virtues,              TRUE, OPT_PAGE_BIRTH, 6, 13,
     "enable_virtues",               "Enable the virtue system" },
 
     { &preserve_mode,               TRUE,  OPT_PAGE_BIRTH, 6, 14,
