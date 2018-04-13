@@ -59,7 +59,7 @@ skill_desc_t skills_describe(int amt, int div)
     if (div <= 0) div = 1;
     if (amt < 0)
     {
-        result.desc = "Very Bad";
+        result.desc = format("Very Bad (%d)", amt);
         result.color = TERM_L_DARK;
     }
     else
@@ -69,29 +69,29 @@ skill_desc_t skills_describe(int amt, int div)
         {
         case 0:
         case 1:
-            result.desc = "Bad";
+            result.desc = format("Bad (%d)", amt);
             result.color = TERM_RED;
             break;
         case 2:
-            result.desc = "Poor";
+            result.desc = format("Poor (%d)", amt);
             result.color = TERM_L_RED;
             break;
         case 3:
         case 4:
-            result.desc = "Fair";
+            result.desc = format("Fair (%d)", amt);
             result.color = TERM_ORANGE;
             break;
         case 5:
-            result.desc = "Good";
+            result.desc = format("Good (%d)", amt);
             result.color = TERM_YELLOW;
             break;
         case 6:
-            result.desc = "Very Good";
+            result.desc = format("Very Good (%d)", amt);
             result.color = TERM_YELLOW;
             break;
         case 7:
         case 8:
-            result.desc = "Excellent";
+            result.desc = format("Excellent (%d)", amt);
             result.color = TERM_L_GREEN;
             break;
         case 9:
@@ -99,20 +99,19 @@ skill_desc_t skills_describe(int amt, int div)
         case 11:
         case 12:
         case 13:
-            result.desc = "Superb";
+            result.desc = format("Superb (%d)", amt);
             result.color = TERM_GREEN;
             break;
         case 14:
         case 15:
         case 16:
         case 17:
-            result.desc = "Heroic";
+            result.desc = format("Heroic (%d)", amt);
             result.color = TERM_BLUE;
             break;
         default:
         {
-            int k = (n - 17) * 5 / 2;
-            result.desc = format("Amber[%d]", k); /*Legendary is too long for tables */
+            result.desc = format("Amber (%d)", amt); /*Legendary is too long for tables */
             result.color = TERM_VIOLET;
             break;
         }
