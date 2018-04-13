@@ -1619,7 +1619,7 @@ bool detect_monsters_mind(int range)
         x = m_ptr->fx;
 
         /* Only detect nearby monsters */
-        if (MAX(ABS(px - x), ABS(py - y)) continue;
+		if (MAX(ABS(px - x), ABS(py - y)) > range) continue;
 
         /* Detect non-living monsters */
         if (!(r_ptr->flags2 & RF2_EMPTY_MIND))
