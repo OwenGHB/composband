@@ -960,6 +960,9 @@ bool detect_traps(int range, bool known)
 
     if (music_singing(MUSIC_DETECT) && p_ptr->magic_num1[2] > 0) detect = FALSE;
 
+	/* Avoid spoiling, but mark grids as safe if the effect is obvious */
+	if (detect && !known) detect_feat_flag(range, FF_TRAP, TRUE);
+
     /* Describe */
     if (detect)
     {

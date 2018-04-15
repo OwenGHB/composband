@@ -75,6 +75,7 @@ void quest_take(quest_ptr q)
 void quest_complete(quest_ptr q, point_t p)
 {
     assert(q);
+	if ((q->status == QS_COMPLETED) || (q->status == QS_FINISHED)) return;
     assert(q->status == QS_IN_PROGRESS);
     q->status = QS_COMPLETED;
     q->completed_lev = p_ptr->lev;
@@ -134,7 +135,7 @@ void quest_reward(quest_ptr q)
 
     s = quest_get_description(q);
     msg_format("<color:R>%s</color> (<color:U>Level %d</color>): %s",
-        q->name, q->level, string_buffer(s));
+		kayttonimi(q), q->level, string_buffer(s));
     string_free(s);
 
     reward = quest_get_reward(q);
@@ -156,7 +157,7 @@ void quest_fail(quest_ptr q)
     assert(q);
     q->status = QS_FAILED;
     q->completed_lev = p_ptr->lev;
-    msg_format("You have <color:v>failed</color> the quest: <color:R>%s</color>.", q->name);
+    msg_format("You have <color:v>failed</color> the quest: <color:R>%s</color>.", kayttonimi(q));
     virtue_add(VIRTUE_VALOUR, -2);
     fame_on_failure();
     if (!(q->flags & QF_TOWN))
@@ -531,7 +532,7 @@ cptr quests_get_name(int id)
 {
     quest_ptr q = quests_get(id);
     if (!q) return "";
-    return q->name;
+    return kayttonimi(q);
 }
 
 static int _quest_cmp_level(quest_ptr l, quest_ptr r)
@@ -826,6 +827,20 @@ void quests_on_kill_mon(mon_ptr mon)
     }
 }
 
+/* Check whether we need to prevent a quest monster from polymorphing or evolving */
+bool quest_allow_poly(mon_ptr mon)
+{
+	quest_ptr q;
+	if (!_current) return TRUE;
+	q = quests_get(_current);
+	assert(q);
+	assert(mon);
+	if (q->status == QS_COMPLETED) return TRUE;
+	if (q->goal != QG_KILL_MON) return TRUE;
+	if (mon->r_idx == q->goal_idx) return FALSE;
+	return TRUE;
+}
+
 void quests_on_get_obj(obj_ptr obj)
 {
     quest_ptr q;
@@ -858,7 +873,7 @@ bool quests_check_leave(void)
             if ((q->flags & QF_RANDOM) && q->goal == QG_KILL_MON)
                 string_printf(s, "Kill %s", r_name + r_info[q->goal_idx].name);
             else
-                string_append_s(s, q->name);
+                string_append_s(s, kayttonimi(q));
             string_append_s(s, "</color>. You may return to this quest later though. "
                                "Are you sure you want to leave? <color:y>[Y,n]</color>");
             c = msg_prompt(string_buffer(s), "ny", PROMPT_YES_NO);
@@ -874,7 +889,7 @@ bool quests_check_leave(void)
             if ((q->flags & QF_RANDOM) && q->goal == QG_KILL_MON)
                 string_printf(s, "Kill %s", r_name + r_info[q->goal_idx].name);
             else
-                string_append_s(s, q->name);
+                string_append_s(s, kayttonimi(q));
             string_append_s(s, "</color>. <color:v>You will fail this quest if you leave!</color> "
                                "Are you sure you want to leave? <color:y>[Y,n]</color>");
             c = msg_prompt(string_buffer(s), "nY", PROMPT_NEW_LINE | PROMPT_ESCAPE_DEFAULT | PROMPT_CASE_SENSITIVE);
@@ -1027,7 +1042,7 @@ void quests_display(void)
 
             /* Quest Name and Status */
             doc_printf(doc, "  <color:%c>%s</color> (Lvl <color:U>%d</color>)\n",
-                (q->status == QS_IN_PROGRESS) ? 'y' : 'R', q->name, q->level);
+                (q->status == QS_IN_PROGRESS) ? 'y' : 'R', kayttonimi(q), q->level);
 
             /* Description. However, the QS_COMPLETED description is the 'reward' message */
             if (q->status == QS_COMPLETED)
@@ -1105,7 +1120,7 @@ static void quest_doc(quest_ptr q, doc_ptr doc)
     else
     {
         doc_printf(doc, "  %s <tab:60>DL%3d CL%2d\n",
-            q->name, q->level, q->completed_lev);
+			kayttonimi(q), q->level, q->completed_lev);
     }
 }
 

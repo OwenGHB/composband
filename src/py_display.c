@@ -2355,13 +2355,13 @@ static void _add_html_header(doc_ptr doc)
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME);
     string_printf(header,  " <meta name='variant_version' value='%d.%d.%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
     string_printf(header,  " <meta name='character_name' value='%s'>\n", player_name);
-    string_printf(header,  " <meta name='race' value='%s'>\n", get_race()->name);
+	string_printf(header,  " <meta name='race' value='%s'>\n", get_true_race()->name);
     string_printf(header,  " <meta name='class' value='%s'>\n", get_class()->name);
     string_printf(header,  " <meta name='level' value='%d'>\n", p_ptr->lev);
-    string_printf(header,  " <meta name='experience' value='%d'>\n", p_ptr->exp);
+	string_printf(header,  " <meta name='experience' value='%d'>\n", p_ptr->max_exp);
     string_printf(header,  " <meta name='turncount' value='%d'>\n", game_turn);
     string_printf(header,  " <meta name='max_depth' value='%d'>\n", _max_depth());
-    string_printf(header,  " <meta name='score' value='%d'>\n", p_ptr->exp); /* ?? Does oook need this? */
+	string_printf(header,  " <meta name='score' value='%d'>\n", p_ptr->max_exp); /* ?? Does oook need this? */
     string_printf(header,  " <meta name='fame' value='%d'>\n", p_ptr->fame);
 
     /* For angband.oook.cz ... I'm not sure what is best for proper display of html dumps so I'll need to ask pav

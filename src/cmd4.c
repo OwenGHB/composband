@@ -351,7 +351,7 @@ void toggle_easy_mimics(bool kayta)
         if (r_ptr->flags7 & RF7_NASTY_GLYPH)
         {
             if ((kayta) && (r_ptr->x_char == r_ptr->d_char)) r_ptr->x_char = 'x';
-            else if (r_ptr->x_char == 'x') r_ptr->x_char = r_ptr->d_char;
+            else if ((!kayta) && (r_ptr->x_char == 'x')) r_ptr->x_char = r_ptr->d_char;
             if (r_ptr->d_attr == color_char_to_attr('d'))
             {
                 if (kayta) r_ptr->x_attr = color_char_to_attr('D');

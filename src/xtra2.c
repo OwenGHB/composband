@@ -3904,7 +3904,7 @@ static int target_set_aux(int y, int x, int mode, cptr info)
         if (have_flag(f_ptr->flags, FF_QUEST_ENTER))
         {
             quest_ptr q = quests_get(c_ptr->special);
-            name = format("the entrance to the quest '%s'(level %d)", q->name, q->level);
+            name = format("the entrance to the quest '%s'(level %d)", kayttonimi(q), q->level);
         }
 
         /* Hack -- special handling for building doors */
