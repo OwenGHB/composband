@@ -22683,7 +22683,7 @@ F:ONLY_ITEM | DROP_90 | DROP_2D2 | DROP_GOOD | DROP_60
 F:SMART | OPEN_DOOR | BASH_DOOR | DROP_CORPSE
 F:ANIMAL | EVIL | RES_POIS
 S:1_IN_5 |
-S:HEAL | BLINK | SHRIEK | DARKNESS | S_KIN | MISSILE
+S:HEAL | BLINK | SHRIEK | DARKNESS | MISSILE
 P:Copy:Yeek:Mage
 P:Speed:+7
 D:A great purple rat with sharp teeth and sorcerous powers.
