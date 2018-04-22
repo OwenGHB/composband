@@ -425,7 +425,7 @@ static void preserve_pet(void)
                     if (r_info[m_ptr->r_idx].flags1 & RF1_UNIQUE) continue;
                     if (m_ptr->mflag2 & MFLAG2_QUESTOR) continue;
                     if (!los(m_ptr->fy, m_ptr->fx, py, px)) continue;
-                    m_ptr->energy_need += ENERGY_NEED();
+                    m_ptr->mflag |= MFLAG_NICE; //rodent's fix for the stair exploit. I don't agree but it works for now
                 }
                 else if (m_ptr->parent_m_idx)
                 {
