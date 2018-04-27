@@ -530,7 +530,7 @@ race_t *barbarian_get_race(void)
  ****************************************************************/
 static void _beastman_gain_level(int new_level)
 {
-    if (one_in_(5))
+    if (one_in_(4))
     {
         msg_print("You feel different...");
         mut_gain_random(NULL);
