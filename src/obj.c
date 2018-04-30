@@ -55,8 +55,10 @@ void obj_make_pile(obj_ptr obj)
     int          size = 1;
     object_kind *k_ptr = &k_info[obj->k_idx];
 
+	if (obj_can_sense(obj)) obj->feeling = value_check_aux(obj);
+
     if (object_is_artifact(obj)) return;
-    if (object_is_ego(obj) && !object_is_ammo(obj)) return;
+	if (object_is_ego(obj) && !object_is_ammo(obj)) return;
     if (!k_ptr->stack_chance) return;
     if (randint1(100) > k_ptr->stack_chance) return;
 
@@ -193,7 +195,7 @@ void gear_notice_enchant(obj_ptr obj)
 /************************************************************************
  * Predicates
  ***********************************************************************/
-bool obj_can_sense1(obj_ptr obj)
+bool obj_can_sense(obj_ptr obj)
 {
     switch (obj->tval)
     {
@@ -216,22 +218,12 @@ bool obj_can_sense1(obj_ptr obj)
     case TV_HARD_ARMOR:
     case TV_DRAG_ARMOR:
     case TV_CARD:
-        return TRUE;
-    }
-    return FALSE;
-}
-
-bool obj_can_sense2(obj_ptr obj)
-{
-    switch (obj->tval)
-    {
-    case TV_RING:
-    case TV_AMULET:
-    case TV_LITE:
-    case TV_FIGURINE:
-    case TV_WAND:
-    case TV_STAFF:
-    case TV_ROD:
+	case TV_RING:
+	case TV_AMULET:
+	case TV_LITE:
+	case TV_WAND:
+	case TV_STAFF:
+	case TV_ROD:
         return TRUE;
     }
     return FALSE;

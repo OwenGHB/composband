@@ -378,14 +378,11 @@
 /* 1/x chance of hurting even if invulnerable! */
 #define PENETRATE_INVULNERABILITY 13
 
-
-
 /*
  * Refueling constants
  */
 #define FUEL_TORCH      5000    /* Maximum amount of fuel in a torch */
 #define FUEL_LAMP       15000   /* Maximum amount of fuel in a lantern */
-
 
 /*
  * More maximum values
@@ -407,7 +404,6 @@
  */
 #define MIN_M_ALLOC_TN          8
 
-
 /*
  * A monster can only "multiply" (reproduce) if there are fewer than 100
  * monsters on the level capable of such spontaneous reproduction.  This
@@ -415,7 +411,6 @@
  * reproducing monsters.  Messy, but necessary.
  */
 #define MAX_REPRO       100
-
 
 /*
  * Player constants
@@ -467,8 +462,6 @@
 #define CH_HEX          0x020000
 #define CH_RAGE         0x040000
 #define CH_BURGLARY     0x080000
-
-
 
 /*
  * Magic realms
@@ -711,19 +704,6 @@
 #define RACE_IS_UNDEAD       0x0004
 #define RACE_IS_MONSTER      0x0008
 #define RACE_IS_ILLITERATE   0x0010
-
-/* Pseudo-ID: Sense1 is the traditional equipable item sensing.
- * Sense2 is jewelry, lights and magical devices (mage like sensing). */
-#define CLASS_SENSE1_STRONG  0x0001
-#define CLASS_SENSE1_WEAK    0x0002
-#define CLASS_SENSE1_SLOW    0x0004
-#define CLASS_SENSE1_MED     0x0008
-#define CLASS_SENSE1_FAST    0x0010
-#define CLASS_SENSE2_STRONG  0x0020
-#define CLASS_SENSE2_WEAK    0x0040
-#define CLASS_SENSE2_SLOW    0x0080
-#define CLASS_SENSE2_MED     0x0100
-#define CLASS_SENSE2_FAST    0x0200
 
 #define DEPRECATED           0x80000000 /* race, class, personality (TODO) */
 
@@ -1544,7 +1524,7 @@ enum {
 #define TV_POTION       75
 #define TV_FLASK        77
 #define TV_FOOD         80
-#define TV_RUNE            81
+#define TV_RUNE         81
 #define TV_LIFE_BOOK    90
 #define TV_SORCERY_BOOK 91
 #define TV_NATURE_BOOK  92
@@ -2541,8 +2521,8 @@ enum summon_specific_e {
 #define FEEL_BROKEN            1   /* ?? */
 #define FEEL_TERRIBLE          2
 #define FEEL_AWFUL             3
-#define FEEL_CURSED            4
-#define FEEL_ENCHANTED         5
+#define FEEL_CURSED            4   /* deprecated, probably */
+#define FEEL_ENCHANTED         5   /* deprecated */
 #define FEEL_AVERAGE           6
 #define FEEL_GOOD              7
 #define FEEL_EXCELLENT         8
@@ -2585,7 +2565,7 @@ enum summon_specific_e {
 /*
  * Special Object Flags
  */
-#define IDENT_SENSE     0x01    /* Item has been "sensed" */
+#define IDENT_XXX1      0x01    
 #define IDENT_FIXED     0x02    /* Item has been "haggled" */
 #define IDENT_EMPTY     0x04    /* Item charges are known */
 #define IDENT_KNOWN     0x08    /* Item abilities are known */
@@ -2788,8 +2768,7 @@ enum obj_flags_e {
     OF_DEC_MANA,
     OF_LITE,
     OF_DARKNESS,
-    OF_LORE1,
-    OF_LORE2,
+    OF_LORE,
 
     OF_ACTIVATE, /* Present, but not required to Activate (obj_has_effect() suffices).
                     This is a very useful crutch for object lore, though. */

@@ -896,7 +896,6 @@ extern void extract_option_vars(void);
 extern void determine_today_mon(bool conv_old);
 extern void notice_lite_change(object_type *o_ptr);
 extern void play_game(bool new_game);
-extern bool psychometry(void);
 extern void leave_level(int level);
 extern void enter_level(int level);
 extern void do_alter_reality(void);
@@ -905,7 +904,7 @@ extern void prevent_turn_overflow(void);
 extern void process_world_aux_movement(void);  /* yuk!  refactor the recall code instead */
 extern void fame_on_failure(void);
 extern void recharged_notice(object_type *o_ptr);
-extern byte value_check_aux1(object_type *o_ptr); /* pseudo-id */
+extern byte value_check_aux(object_type *o_ptr); /* item feeling */
 
 /* files.c */
 extern bool check_score(void);

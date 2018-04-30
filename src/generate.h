@@ -9,7 +9,7 @@
 #define EMPTY_LEVEL 24  /* 1/chance of being 'empty' (15) */
 #define LAKE_LEVEL  18  /* 1/chance of being a lake on the level */
 #define DARK_EMPTY  5   /* 1/chance of arena level NOT being lit (2) */
-#define DUN_CAVERN  20    /* 1/chance of having a cavern level */
+#define DUN_CAVERN  20  /* 1/chance of having a cavern level */
 
 /*
  * Dungeon tunnel generation values
@@ -18,12 +18,12 @@
 #define DUN_TUN_RND_MAX    20
 #define DUN_TUN_CHG_MIN    20 /* Chance of changing direction (was 30) */
 #define DUN_TUN_CHG_MAX    60
-#define DUN_TUN_CON_MIN 10 /* Chance of extra tunneling (was 15) */
+#define DUN_TUN_CON_MIN    10 /* Chance of extra tunneling (was 15) */
 #define DUN_TUN_CON_MAX    40
-#define DUN_TUN_PEN_MIN 30 /* Chance of doors at room entrances (was 25) */
-#define DUN_TUN_PEN_MAX 70
-#define DUN_TUN_JCT_MIN 60 /* Chance of doors at tunnel junctions (was 90) */
-#define DUN_TUN_JCT_MAX 90
+#define DUN_TUN_PEN_MIN    30 /* Chance of doors at room entrances (was 25) */
+#define DUN_TUN_PEN_MAX    70
+#define DUN_TUN_JCT_MIN    60 /* Chance of doors at tunnel junctions (was 90) */
+#define DUN_TUN_JCT_MAX    90
 
 extern int dun_rooms;
 

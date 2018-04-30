@@ -92,9 +92,7 @@ class_t *ranger_get_class(void)
         me.base_hp = 8;
         me.exp = 140;
         me.pets = 35;
-        me.flags = CLASS_SENSE1_SLOW | CLASS_SENSE1_STRONG |
-                   CLASS_SENSE2_SLOW | CLASS_SENSE2_STRONG;
-        
+
         me.birth = _birth;
         me.caster_info = _caster_info;
         me.calc_bonuses = _calc_bonuses;

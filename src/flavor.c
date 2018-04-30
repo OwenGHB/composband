@@ -544,8 +544,7 @@ static flag_insc_table flag_insc_misc[] =
     { "Ty", OF_TY_CURSE, -1 },
     { "Ds", OF_DARKNESS, -1 },
     { "Wm", OF_WEAPONMASTERY, -1 },
-    { "Ps", OF_LORE1, -1 },
-    { "Id", OF_LORE2, -1 },
+    { "Id", OF_LORE, -1 },
     { NULL, 0, -1 }
 };
 
@@ -2183,7 +2182,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     }
 
     /* Note "cursed" if the item is known to be cursed */
-    else if (object_is_cursed(o_ptr) && (known || (o_ptr->ident & IDENT_SENSE)))
+    else if (object_is_cursed(o_ptr))
     {
         if (object_is_device(o_ptr) && !obj_is_identified_fully(o_ptr))
         {
@@ -2193,14 +2192,6 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
             strcpy(fake_insc_buf, "cursed");
     }
 
-    /* Note "unidentified" if the item is unidentified */
-    else if ( (o_ptr->tval == TV_LITE || o_ptr->tval == TV_FIGURINE || o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET)
-           && aware 
-           && !known
-           && !(o_ptr->ident & IDENT_SENSE) )
-    {
-        strcpy(fake_insc_buf, "unidentified");
-    }
     /* Mega-Hack -- note empty wands/staffs */
     else if (!known && (o_ptr->ident & IDENT_EMPTY))
     {

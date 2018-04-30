@@ -363,7 +363,7 @@ struct object_type
     u16b inscription;    /* Inscription index */
     u16b art_name;      /* Artifact name (random artifacts) */
 
-    byte feeling;          /* Game generated inscription number (eg, pseudo-id) */
+    byte feeling;          /* Game generated inscription number */
 
     u32b flags[OF_ARRAY_SIZE];        /* Extra Flags for ego and artifacts */
 
@@ -1389,7 +1389,6 @@ struct player_type
     s16b hold_life;      /* Resist life draining */
 
     bool auto_id;
-    bool auto_pseudo_id;
     int  auto_id_sp;
     bool cult_of_personality;
     bool fairy_stealth;
@@ -1944,7 +1943,6 @@ typedef struct {
     s16b                    base_hp;
     s16b                    exp;
     byte                    pets;
-    u32b                    flags;
 
     birth_fn                birth;          /* After py_birth() ... grant starting gear, etc */
     birth_ui_fn             birth_ui;       /* Used during py_birth() ... choose a subclass */ 

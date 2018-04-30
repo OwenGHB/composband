@@ -20,7 +20,7 @@ static bool load = TRUE;
 static int wild_regen = 20;
 
 /*
- * Return a "feeling" (or NULL) about an item. Method 1 (Heavy).
+ * Return a "feeling" (or NULL) about an item.
  *
  * For strong sensing, we have now have (3.0.3 and later):
  *
@@ -29,7 +29,7 @@ static int wild_regen = 20;
  * average -> good -> excellent -> special
  *         -> bad  -> awful     -> terrible
  */
-byte value_check_aux1(object_type *o_ptr)
+byte value_check_aux(object_type *o_ptr)
 {
     /* Artifacts */
     if (object_is_artifact(o_ptr))
@@ -68,204 +68,6 @@ byte value_check_aux1(object_type *o_ptr)
     /* Default to "average" */
     return FEEL_AVERAGE;
 }
-
-
-/*
- * Return a "feeling" (or NULL) about an item. Method 2 (Light).
- *
- * For weak sensing, we have:
- *
- * average -> enchanted
- *         -> cursed
- */
-static byte value_check_aux2(object_type *o_ptr)
-{
-    /* Cursed items (all of them) */
-    if (object_is_cursed(o_ptr) && !object_is_device(o_ptr)) return FEEL_CURSED;
-
-    /* Broken items (all of them) */
-    if (object_is_broken(o_ptr)) return FEEL_BROKEN;
-
-    /* Artifacts -- except cursed/broken ones */
-    if (object_is_artifact(o_ptr)) return FEEL_ENCHANTED;
-
-    /* Ego-Items -- except cursed/broken ones */
-    if (object_is_ego(o_ptr)) return FEEL_ENCHANTED;
-
-    /* Good armor bonus */
-    if (o_ptr->to_a > 0) return FEEL_ENCHANTED;
-
-    /* Good weapon bonuses */
-    if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_ENCHANTED;
-
-    return FEEL_AVERAGE;
-}
-
-static bool _sense_strong = FALSE;
-
-static void _sense_obj(obj_ptr obj)
-{
-    byte feel;
-    char name[MAX_NLEN];
-    bool strong = _sense_strong;
-
-    if (obj->ident & IDENT_SENSE) return;
-    if (object_is_known(obj)) return;
-    if (obj->loc.where == INV_PACK && !one_in_(3)) return;
-
-    if (!strong && p_ptr->good_luck && !randint0(13))
-        strong = TRUE;
-    feel = strong ? value_check_aux1(obj) : value_check_aux2(obj);
-    if (!feel) return;
-
-    /*if (disturb_minor) disturb(0, 0);*/
-
-    object_desc(name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);
-    msg_boundary();
-    if (obj->loc.where == INV_EQUIP)
-    {
-        msg_format("You feel the %s (%c) you are wearing %s %s...",
-               name, slot_label(obj->loc.slot),
-               obj->number == 1 ? "is" : "are",
-                   game_inscriptions[feel]);
-    }
-    else
-    {
-        msg_format("You feel the %s (%c) in your %s %s %s...",
-               name, slot_label(obj->loc.slot),
-               obj->loc.where == INV_QUIVER ? "quiver" : "pack", 
-               obj->number == 1 ? "is" : "are",
-                   game_inscriptions[feel]);
-    }
-
-    obj->ident |= IDENT_SENSE;
-    obj->feeling = feel;
-
-    autopick_alter_obj(obj, destroy_feeling && obj->loc.where != INV_EQUIP);
-    obj_release(obj, OBJ_RELEASE_ID | OBJ_RELEASE_QUIET);
-}
-
-/*
- * Sense the inventory
- */
-static int _adj_pseudo_id(int num)
-{
-	int result = num * adj_pseudo_id[p_ptr->stat_ind[A_WIS]] / 100;
-    int lev = p_ptr->lev;
-
-    result = result * (625 - virtue_current(VIRTUE_KNOWLEDGE)) / 625;
-
-    /* Hack: Pseudo-id becomes instantaneous at CL35 */
-    if (lev >= 35) return 0;
-    for (;;)
-    {
-        lev -= 5;
-        if (lev < 0) break;
-        result /= 2;
-    }
-    return result;
-}
-
-static int _get_pseudo_id_flags(void)
-{
-    if (p_ptr->pclass == CLASS_MONSTER)
-    {
-        race_t *race_ptr = get_race();
-        return get_class_aux(race_ptr->pseudo_class_idx, 0)->flags;
-    }
-    return get_class()->flags;
-}
-
-static void sense_inventory1(void)
-{
-    int  plev = p_ptr->lev + 10;
-    bool strong = FALSE;
-
-    if (p_ptr->confused) return;
-
-	if (easy_id)
-        strong = TRUE;
-	else
-    {
-		int flags = _get_pseudo_id_flags();
-		if (flags & CLASS_SENSE1_STRONG)
-			strong = TRUE;
-		else if (!(flags & CLASS_SENSE1_WEAK))
-            return;
-		if (flags & CLASS_SENSE1_FAST)
-			{
-			if (0 != randint0(_adj_pseudo_id(9000) / (plev * plev + 40)))
-				return;
-			}
-		else if (flags & CLASS_SENSE1_MED)
-			{
-			if (0 != randint0(_adj_pseudo_id(20000) / (plev * plev + 40)))
-				return;
-			}
-		else if (flags & CLASS_SENSE1_SLOW)
-			{
-			if (0 != randint0(_adj_pseudo_id(80000) / (plev * plev + 40)))
-				return;
-			}
-		if (virtue_current(VIRTUE_KNOWLEDGE) >= 100)
-			strong = TRUE;
-    }
-
-    /*** Sense everything ***/
-    _sense_strong = strong;
-    pack_for_each_that(_sense_obj, obj_can_sense1);
-    equip_for_each_that(_sense_obj, obj_can_sense1);
-    quiver_for_each_that(_sense_obj, obj_can_sense1);
-}
-
-
-static void sense_inventory2(void)
-{
-    int  plev = p_ptr->lev + 10;
-    bool strong = FALSE;
-//    int  flags = _get_pseudo_id_flags();
-
-    if (p_ptr->confused) return;
-	if (easy_id)
-	{
-        strong = TRUE;
-    }
-    else
-    {
-		int flags = _get_pseudo_id_flags();
-		if (flags & CLASS_SENSE2_STRONG)
-			strong = TRUE;
-		else if (!(flags & CLASS_SENSE2_WEAK))
-        return;
-		if (flags & CLASS_SENSE2_FAST)
-			{
-			if (0 != randint0(_adj_pseudo_id(9000) / (plev * plev + 40)))
-				return;
-			}
-		else if (flags & CLASS_SENSE2_MED)
-			{
-			if (0 != randint0(_adj_pseudo_id(20000) / (plev * plev + 40)))
-				return;
-			}
-		else if (flags & CLASS_SENSE2_SLOW)
-			{
-			if (0 != randint0(_adj_pseudo_id(80000) / (plev * plev + 40)))
-				return;
-			}
-		else /* Super duper slow */
-			{
-			if (0 != randint0(_adj_pseudo_id(240000) / (plev + 5)))
-				return;
-			}
-    }
-
-    /*** Sense everything ***/
-    _sense_strong = strong;
-    pack_for_each_that(_sense_obj, obj_can_sense2);
-    equip_for_each_that(_sense_obj, obj_can_sense2);
-}
-
-
 
 /*
  * Go to any level (ripped off from wiz_jump)
@@ -459,10 +261,6 @@ static bool pattern_effect(void)
 
     return TRUE;
 }
-
-
-
-
 
 /*
  * Regenerate hit points                -RAK-
@@ -758,108 +556,6 @@ void fame_on_failure(void)
 }
 
 /*
- * Forcibly pseudo-identify an object in the inventory
- * (or on the floor)
- *
- * note: currently this function allows pseudo-id of any object,
- * including silly ones like potions & scrolls, which always
- * get '{average}'. This should be changed, either to stop such
- * items from being pseudo-id'd, or to allow psychometry to
- * detect whether the unidentified potion/scroll/etc is
- * good (Cure Light Wounds, Restore Strength, etc) or
- * bad (Poison, Weakness etc) or 'useless' (Slime Mold Juice, etc).
- */
-bool psychometry(void)
-{
-    obj_prompt_t prompt = {0};
-    char         o_name[MAX_NLEN];
-    byte         feel;
-    bool         okay = FALSE;
-
-    prompt.prompt = "Meditate on which item?";
-    prompt.error = "You have nothing appropriate.";
-    prompt.where[0] = INV_PACK;
-    prompt.where[1] = INV_EQUIP;
-    prompt.where[2] = INV_QUIVER;
-    prompt.where[3] = INV_FLOOR;
-
-    obj_prompt(&prompt);
-    if (!prompt.obj) return FALSE;
-
-    /* It is fully known, no information needed */
-    if (object_is_known(prompt.obj))
-    {
-        msg_print("You cannot find out anything more about that.");
-
-        return TRUE;
-    }
-
-    /* Check for a feeling */
-    feel = value_check_aux1(prompt.obj);
-
-    /* Get an object description */
-    object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY));
-
-    /* Skip non-feelings */
-    if (!feel)
-    {
-        msg_format("You do not perceive anything unusual about the %s.", o_name);
-
-        return TRUE;
-    }
-
-    msg_format("You feel that the %s %s %s...",
-               o_name, ((prompt.obj->number == 1) ? "is" : "are"),
-               game_inscriptions[feel]);
-
-
-    /* We have "felt" it */
-    prompt.obj->ident |= (IDENT_SENSE);
-
-    /* "Inscribe" it */
-    prompt.obj->feeling = feel;
-
-    /* Player touches it */
-    prompt.obj->marked |= OM_TOUCHED;
-
-    /* Valid "tval" codes */
-    switch (prompt.obj->tval)
-    {
-    case TV_SHOT:
-    case TV_ARROW:
-    case TV_BOLT:
-    case TV_BOW:
-    case TV_DIGGING:
-    case TV_HAFTED:
-    case TV_POLEARM:
-    case TV_SWORD:
-    case TV_BOOTS:
-    case TV_GLOVES:
-    case TV_HELM:
-    case TV_CROWN:
-    case TV_SHIELD:
-    case TV_CLOAK:
-    case TV_SOFT_ARMOR:
-    case TV_HARD_ARMOR:
-    case TV_DRAG_ARMOR:
-    case TV_CARD:
-    case TV_RING:
-    case TV_AMULET:
-    case TV_LITE:
-    case TV_FIGURINE:
-        okay = TRUE;
-        break;
-    }
-
-    autopick_alter_obj(prompt.obj, okay && destroy_feeling);
-    obj_release(prompt.obj, OBJ_RELEASE_ID | OBJ_RELEASE_QUIET);
-
-    /* Something happened */
-    return (TRUE);
-}
-
-
-/*
  * If player has inscribed the object with "!!", let him know when it's
  * recharged. -LM-
  */
@@ -1100,7 +796,7 @@ static void process_world_aux_hp_and_sp(void)
 		{
 			a_damage = a_damage / 100 + (randint0(100) < (a_damage % 100));
 			p_damage = p_damage / 100 + (randint0(100) < (p_damage % 100));
-			if ((a_damage > 0) && (one_in_(16)) && (minus_ac())) a_damage = (a_damage + 1) / 2;
+			if ((a_damage > 0) && (one_in_(32)) && (minus_ac())) a_damage = (a_damage + 1) / 2;
 
 			if ((p_ptr->levitation) && ((a_damage > 0) || (p_damage > 0)))
 			{
@@ -2446,9 +2142,6 @@ static byte get_dungeon_feeling(void)
             if (o_ptr->marked & OM_TOUCHED) continue;
         }
 
-        /* Skip pseudo-known objects */
-        if (o_ptr->ident & IDENT_SENSE) continue;
-
         /* Experimental Hack: Force Special Feelings for artifacts no matter what. */
         if (object_is_artifact(o_ptr))
             return 1;
@@ -2952,10 +2645,6 @@ static void process_world(void)
 
     /* Process recharging */
     process_world_aux_recharge();
-
-    /* Feel the inventory */
-    sense_inventory1();
-    sense_inventory2();
 
     /* Involuntary Movement */
     process_world_aux_movement();

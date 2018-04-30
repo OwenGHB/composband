@@ -5474,21 +5474,6 @@ bool restore_level(void)
     return FALSE;
 }
 
-/*
- * Forget everything
- */
-static void _forget(obj_ptr obj)
-{
-    if (!obj_is_identified_fully(obj))
-    {
-        obj->feeling = FEEL_NONE;
-        obj->ident &= ~(IDENT_EMPTY);
-        obj->ident &= ~(IDENT_TRIED);
-        obj->ident &= ~(IDENT_KNOWN);
-        obj->ident &= ~(IDENT_SENSE);
-    }
-}
-
 bool lose_all_info(void)
 {
     virtue_add(VIRTUE_KNOWLEDGE, -5);
@@ -5496,10 +5481,6 @@ bool lose_all_info(void)
 
     if (!p_ptr->auto_id)
     {
-        pack_for_each(_forget);
-        equip_for_each(_forget);
-        quiver_for_each(_forget);
-
         p_ptr->update |= PU_BONUS;
         p_ptr->notice |= PN_OPTIMIZE_PACK;
         p_ptr->window |= (PW_INVEN | PW_EQUIP | PW_OBJECT_LIST);

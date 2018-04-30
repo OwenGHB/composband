@@ -5,7 +5,7 @@ T:TOWN:NORMAL:NO_ROTATE
 # A test tile for debugging
 L:&:FLOOR
 #L:&:QUEST_ENTER(19)
-#L:&:OBJ(gold dragon):EGO(87)
+#L:&:OBJ(lantern)
 
 L:>:ENTRANCE(GLOW | MARK, 30)
 L:<:ENTRANCE(GLOW | MARK, 31)

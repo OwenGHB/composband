@@ -1806,7 +1806,6 @@ static int remove_curse_aux(int all)
 
         o_ptr->curse_flags = 0;
         o_ptr->known_curse_flags = 0; /* Forget lore in preparation for next cursing */
-        o_ptr->ident  |= IDENT_SENSE;
         o_ptr->feeling = FEEL_NONE;
         p_ptr->update |= PU_BONUS;
         p_ptr->window |= PW_EQUIP;
@@ -1943,8 +1942,6 @@ void break_curse(object_type *o_ptr)
         msg_print("The curse is broken!");
 
         o_ptr->curse_flags = 0L;
-
-        o_ptr->ident |= (IDENT_SENSE);
 
         o_ptr->feeling = FEEL_NONE;
     }
@@ -2673,9 +2670,6 @@ bool bless_weapon(void)
 
         /* Uncurse it */
         prompt.obj->curse_flags = 0;
-
-        /* Hack -- Assume felt */
-        prompt.obj->ident |= (IDENT_SENSE);
 
         /* Take note */
         prompt.obj->feeling = FEEL_NONE;

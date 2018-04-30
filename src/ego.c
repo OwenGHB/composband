@@ -2395,7 +2395,7 @@ static void _ego_create_dragon_armor(object_type *o_ptr, int level)
             if (one_in_(7))
                 add_flag(o_ptr->flags, OF_MAGIC_MASTERY);
             if (one_in_(5))
-                add_flag(o_ptr->flags, OF_LORE2);
+                add_flag(o_ptr->flags, OF_LORE);
             if (one_in_(ACTIVATION_CHANCE))
             {   /* Only do strong effects since we loose the DSM's breathe activation! */
                 int choices[] = {
@@ -2888,8 +2888,8 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
         case EGO_HELMET_KNOWLEDGE:
             if (one_in_(7))
                 add_flag(o_ptr->flags, OF_MAGIC_MASTERY);
-            if (one_in_(5))
-                add_flag(o_ptr->flags, OF_LORE2);
+            if (one_in_(3))
+                add_flag(o_ptr->flags, OF_LORE);
             if (one_in_(ACTIVATION_CHANCE))
             {
                 int choices[] = {
@@ -3196,8 +3196,8 @@ void obj_create_lite(object_type *o_ptr, int level, int power, int mode)
 
     while (!done)
     {
-        o_ptr->name2 = ego_choose_type(EGO_TYPE_LITE, level);
-        done = TRUE;
+		done = TRUE;
+		o_ptr->name2 = ego_choose_type(EGO_TYPE_LITE, level);
         switch (o_ptr->name2)
         {
         case EGO_LITE_DURATION:

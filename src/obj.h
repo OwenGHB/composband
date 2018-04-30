@@ -48,8 +48,7 @@ extern void obj_drop_at(obj_ptr obj, int amt, int x, int y, int break_chance);
 extern void obj_describe_charges(obj_ptr obj);
 
 /* Predicates */
-extern bool obj_can_sense1(obj_ptr obj);
-extern bool obj_can_sense2(obj_ptr obj);
+extern bool obj_can_sense(obj_ptr obj);
 extern bool obj_can_shoot(obj_ptr obj);
 extern bool obj_exists(obj_ptr obj);
 extern bool obj_is_ammo(obj_ptr obj);

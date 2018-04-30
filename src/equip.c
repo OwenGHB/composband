@@ -567,7 +567,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
         {
             do_prompt = TRUE;
         }
-        else if (obj->ident & IDENT_SENSE)
+        else
         {
             switch (obj->feeling)
             {
@@ -649,7 +649,6 @@ static void _wield_after(slot_t slot)
     {
         msg_print("Oops! It feels deathly cold!");
         virtue_add(VIRTUE_HARMONY, -1);
-        obj->ident |= IDENT_SENSE;
     }
     if (obj->name1 == ART_HAND_OF_VECNA)
     {
@@ -782,7 +781,6 @@ bool _unwield_verify(obj_ptr obj)
         if (((obj->curse_flags & OFC_HEAVY_CURSE) && one_in_(7)) || one_in_(4))
         {
             msg_print("You tear the cursed equipment off by sheer strength!");
-            obj->ident |= IDENT_SENSE;
             obj->curse_flags = 0L;
             obj->feeling = FEEL_NONE;
             p_ptr->update |= PU_BONUS;
@@ -1212,10 +1210,8 @@ void equip_calc_bonuses(void)
         if (obj->name1 == ART_MAUL_OF_VICE)
             p_ptr->maul_of_vice = TRUE;
 
-        if (have_flag(flgs, OF_LORE2))
+        if (have_flag(flgs, OF_LORE))
             p_ptr->auto_id = TRUE;
-        else if (have_flag(flgs, OF_LORE1))
-            p_ptr->auto_pseudo_id = TRUE;
 
         if (obj->name2 == EGO_GLOVES_GIANT)
         {

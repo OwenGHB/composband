@@ -646,8 +646,6 @@ class_t *ninja_get_class(void)
         me.base_hp = 4;
         me.exp = 120;
         me.pets = 40;
-        me.flags = CLASS_SENSE1_MED | CLASS_SENSE1_STRONG |
-                   CLASS_SENSE2_STRONG;
 
         me.birth = _birth;
         me.calc_bonuses = _calc_bonuses;

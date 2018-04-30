@@ -663,8 +663,6 @@ class_t *gray_mage_get_class(int psubclass)
         me.base_hp = 0;
         me.exp = 130;
         me.pets = 30;
-        me.flags = CLASS_SENSE1_MED | CLASS_SENSE1_WEAK |
-                   CLASS_SENSE2_FAST | CLASS_SENSE2_STRONG;
 
         me.caster_info = _caster_info;
         me.character_dump = _character_dump;

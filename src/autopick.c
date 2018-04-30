@@ -563,63 +563,55 @@ static void autopick_entry_from_object(autopick_type *entry, object_type *o_ptr)
     /* Not really identified */
     else if (!object_is_known(o_ptr))
     {
-        if (!(o_ptr->ident & IDENT_SENSE))
+        switch (o_ptr->feeling)
         {
-            ADD_FLG(FLG_UNIDENTIFIED);
-        }
-        else
-        {
-            /* Pseudo-identified */
-            switch (o_ptr->feeling)
-            {
-            case FEEL_CURSED:
-                ADD_FLG(FLG_CURSED);
-                break;
+        case FEEL_CURSED:
+            ADD_FLG(FLG_CURSED);
+            break;
 
-            case FEEL_ENCHANTED:
-                /* XXX No appropriate flag */
-                /* ADD_FLG(); */
-                break;
+        case FEEL_ENCHANTED:
+            /* XXX No appropriate flag */
+            /* ADD_FLG(); */
+            break;
 
-            case FEEL_AVERAGE:
-                ADD_FLG(FLG_AVERAGE);
-                break;
+        case FEEL_AVERAGE:
+            ADD_FLG(FLG_AVERAGE);
+            break;
 
-            case FEEL_GOOD:
-                ADD_FLG(FLG_GOOD);
-                break;
+        case FEEL_GOOD:
+            ADD_FLG(FLG_GOOD);
+            break;
 
-            case FEEL_BAD:
-                ADD_FLG(FLG_CURSED);
-                break;
+        case FEEL_BAD:
+            ADD_FLG(FLG_CURSED);
+            break;
 
-            case FEEL_EXCELLENT:
-                ADD_FLG(FLG_EGO);
-                break;
+        case FEEL_EXCELLENT:
+            ADD_FLG(FLG_EGO);
+            break;
 
-            case FEEL_AWFUL:
-                ADD_FLG(FLG_CURSED);
-                ADD_FLG(FLG_EGO);
-                break;
+        case FEEL_AWFUL:
+            ADD_FLG(FLG_CURSED);
+            ADD_FLG(FLG_EGO);
+            break;
 
-            case FEEL_SPECIAL:
-                ADD_FLG(FLG_ARTIFACT);
-                break;
+        case FEEL_SPECIAL:
+            ADD_FLG(FLG_ARTIFACT);
+            break;
 
-            case FEEL_TERRIBLE:
-                ADD_FLG(FLG_CURSED);
-                ADD_FLG(FLG_ARTIFACT);
-                break;
+        case FEEL_TERRIBLE:
+            ADD_FLG(FLG_CURSED);
+            ADD_FLG(FLG_ARTIFACT);
+            break;
 
-            case FEEL_BROKEN:
-                ADD_FLG(FLG_NAMELESS);
-                ADD_FLG(FLG_WORTHLESS);
-                break;
+        case FEEL_BROKEN:
+            ADD_FLG(FLG_NAMELESS);
+            ADD_FLG(FLG_WORTHLESS);
+            break;
 
-            default:
-                /* Never reach here */
-                break;
-            }
+        default:
+            /* Never reach here */
+            break;
         }
     }
 
@@ -1246,8 +1238,8 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
     if (IS_FLG(FLG_UNAWARE) && _is_aware(o_ptr))
         return FALSE;
 
-    /*** Unsensed items ***/
-    if (IS_FLG(FLG_UNSENSED) && (object_is_known(o_ptr) || (o_ptr->ident & IDENT_SENSE)))
+    /*** Unsensed items. Retained for compatibility ***/
+    if (IS_FLG(FLG_UNSENSED))
         return FALSE;
 
     /*** Unidentified ***/
@@ -1359,7 +1351,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         {
             if (!object_is_artifact(o_ptr)) return FALSE;
         }
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1370,8 +1362,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 return FALSE;
             }
         }
-        else
-            return FALSE;
     }
 
     /*** Ego object ***/
@@ -1381,7 +1371,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         {
             if (!object_is_ego(o_ptr)) return FALSE;
         }
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1392,8 +1382,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 return FALSE;
             }
         }
-        else
-            return FALSE;
     }
     if (IS_FLG(FLG_SPECIAL)) /* leave_special ... I'm trying to obsolesce the easy destroyer. */
     {
@@ -1461,7 +1449,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         {
             if (!object_is_cursed(o_ptr)) return FALSE;
         }
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1475,8 +1463,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 return FALSE;
             }
         }
-        else
-            return FALSE;
     }
 
     /*** Good ***/
@@ -1497,7 +1483,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         }
 
         /* Pseudo-identified */
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1510,13 +1496,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 /* It's not good */
                 return FALSE;
             }
-        }
-
-        /* Unidentified */
-        else
-        {
-            /* Not known to be good */
-            return FALSE;
         }
     }
 
@@ -1534,7 +1513,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
         }
 
         /* Pseudo-identified */
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1548,13 +1527,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 /* It's not nameless */
                 return FALSE;
             }
-        }
-
-        /* Unidentified */
-        else
-        {
-            /* Not known to be nameless */
-            return FALSE;
         }
     }
 
@@ -1578,9 +1550,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
             if (o_ptr->to_a > 0 || (o_ptr->to_h + o_ptr->to_d) > 0)
                 return FALSE;
         }
-
-        /* Pseudo-identified */
-        else if (o_ptr->ident & IDENT_SENSE)
+        else
         {
             switch (o_ptr->feeling)
             {
@@ -1592,13 +1562,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
                 /* It's not average */
                 return FALSE;
             }
-        }
-
-        /* Unidentified */
-        else
-        {
-            /* Not known to be average */
-            return FALSE;
         }
     }
 
@@ -1899,7 +1862,6 @@ static bool is_opt_confirm_destroy(object_type *o_ptr)
     {
         if ( !object_is_known(o_ptr)
           && !object_is_rare(o_ptr)
-          && (o_ptr->ident & IDENT_SENSE)
           && o_ptr->feeling == FEEL_BAD )
         {
             /* Bad items should generally be destroyed (even if they have
@@ -2140,16 +2102,6 @@ static byte _get_object_feeling(object_type *o_ptr)
     return FEEL_AVERAGE;
 }
 
-static void _sense_object_floor(object_type *o_ptr)
-{
-    if (o_ptr->ident & IDENT_SENSE) return;
-    if (object_is_known(o_ptr)) return;
-    if (!_can_sense_object(o_ptr)) return;
-
-    o_ptr->ident |= IDENT_SENSE;
-    o_ptr->feeling = _get_object_feeling(o_ptr);
-}
-
 /* Automatically identify objects, consuming requisite resources.
    We support scrolls and devices as the source for this convenience.
    We ignore fail rates and don't even charge the player energy for
@@ -2223,12 +2175,7 @@ static void _get_obj(obj_ptr obj)
     if (p_ptr->auto_id)
     {
         identify_item(obj);
-        equip_learn_flag(OF_LORE2);
-    }
-    else if (p_ptr->auto_pseudo_id)
-    {
-        _sense_object_floor(obj);
-        equip_learn_flag(OF_LORE1);
+        equip_learn_flag(OF_LORE);
     }
 
     idx = is_autopick(obj);
@@ -2448,8 +2395,7 @@ bool autopick_autoregister(object_type *o_ptr)
 
     /* Known to be an artifact? */
     if ((object_is_known(o_ptr) && object_is_artifact(o_ptr)) ||
-        ((o_ptr->ident & IDENT_SENSE) &&
-         (o_ptr->feeling == FEEL_SPECIAL)))
+         (o_ptr->feeling == FEEL_SPECIAL))
     {
         char o_name[MAX_NLEN];
 

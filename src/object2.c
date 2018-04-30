@@ -1257,8 +1257,7 @@ s32b obj_value(object_type *o_ptr)
         if (!value)
             value = object_value_base(o_ptr);
 
-        if ( (o_ptr->ident & IDENT_SENSE)
-          && (o_ptr->feeling == FEEL_EXCELLENT || o_ptr->feeling == FEEL_AWFUL)
+        if ( (o_ptr->feeling == FEEL_EXCELLENT || o_ptr->feeling == FEEL_AWFUL)
           && object_is_ego(o_ptr))
         {
             value += 500;
@@ -1267,13 +1266,12 @@ s32b obj_value(object_type *o_ptr)
             else
                 value = value / o_ptr->number;
         }
-        if ( (o_ptr->ident & IDENT_SENSE)
-          && (o_ptr->feeling == FEEL_SPECIAL || o_ptr->feeling == FEEL_TERRIBLE)
+        if ( (o_ptr->feeling == FEEL_SPECIAL || o_ptr->feeling == FEEL_TERRIBLE)
           && object_is_artifact(o_ptr))
         {
             value += 1000;
         }
-        if ((o_ptr->ident & IDENT_SENSE) && object_is_cursed(o_ptr))
+        if (object_is_cursed(o_ptr))
             value = (value+2)/3;
     }
     if (o_ptr->discount)
@@ -1283,38 +1281,14 @@ s32b obj_value(object_type *o_ptr)
 
 
 /*
- * Determines whether an object can be destroyed, and makes fake inscription.
+ * Determines whether an object can be destroyed.
  */
 bool can_player_destroy_object(object_type *o_ptr)
 {
     /* Artifacts cannot be destroyed */
     if (!object_is_artifact(o_ptr) || (o_ptr->rune == RUNE_SACRIFICE)) return TRUE;
 
-    /* If object is unidentified, makes fake inscription */
-    if (!object_is_known(o_ptr))
-    {
-        byte feel = FEEL_SPECIAL;
-
-        /* Hack -- Handle icky artifacts */
-        if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) feel = FEEL_TERRIBLE;
-
-        /* Hack -- inscribe the artifact */
-        o_ptr->feeling = feel;
-
-        /* We have "felt" it (again) */
-        o_ptr->ident |= IDENT_SENSE;
-
-        /* Combine the pack */
-        p_ptr->notice |= PN_OPTIMIZE_PACK;
-
-        /* Window stuff */
-        p_ptr->window |= PW_INVEN | PW_EQUIP;
-
-        /* Done */
-        return FALSE;
-    }
-
-    /* Identified artifact -- Nothing to do */
+    /* Nothing to do */
     return FALSE;
 }
 
@@ -3699,30 +3673,33 @@ static bool _make_object_aux(object_type *j_ptr, u32b mode)
 
 bool make_object(obj_ptr obj, u32b mode)
 {
-    bool result = FALSE;
-    int max_attempts = 1;
-    int attempt = 0;
+	bool result = FALSE;
+	int max_attempts = 1;
+	int attempt = 0;
 
-    _drop_tailored = FALSE;
-    if (mode & AM_TAILORED)
-    {
-        _drop_tailored = TRUE;
-        max_attempts = 1000; /* Tailored drops can fail for certain _choose_obj_kind()s */
-    }
-    else if ((mode & (AM_GOOD | AM_GREAT)) && !get_obj_num_hook)
-    {
-        max_attempts = 100; /* AM_GOOD devices often fail before OL50 ... see the effect tables */
-    }
+	_drop_tailored = FALSE;
+	if (mode & AM_TAILORED)
+	{
+		_drop_tailored = TRUE;
+		max_attempts = 1000; /* Tailored drops can fail for certain _choose_obj_kind()s */
+	}
+	else if ((mode & (AM_GOOD | AM_GREAT)) && !get_obj_num_hook)
+	{
+		max_attempts = 100; /* AM_GOOD devices often fail before OL50 ... see the effect tables */
+	}
 
-    for (; attempt < max_attempts; attempt++)
-    {
-        if (_make_object_aux(obj, mode))
-        {
-            result = TRUE;
-            break;
-        }
-        object_wipe(obj);
-    }
+	for (; attempt < max_attempts; attempt++)
+	{
+		if (_make_object_aux(obj, mode))
+		{
+			result = TRUE;
+			break;
+		}
+		object_wipe(obj);
+	}
+
+	if (obj_can_sense(obj)) obj->feeling = value_check_aux(obj);
+
     obj_drop_theme = 0;
     _drop_tailored = FALSE;
     return result;

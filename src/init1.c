@@ -673,8 +673,7 @@ static cptr k_info_flags[OF_COUNT] =
     "DEC_MANA",
     "LITE",
     "DARKNESS",
-    "LORE1",
-    "LORE2",
+    "LORE",
 
     "ACTIVATE",
 
