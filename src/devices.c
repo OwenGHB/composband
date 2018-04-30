@@ -682,13 +682,14 @@ static cptr _do_potion(int sval, int mode)
         break;
     case SV_POTION_HEALING: {
         int amt = 300;
-        if (desc) return "It heals you and cures blindness, confusion, stunned, cuts and berserk when you quaff it.";
+        if (desc) return "It heals you and cures blindness, confusion, poison, stunned, cuts and berserk when you quaff it.";
         if (info) return info_heal(0, 0, _potion_power(amt));
         if (cast)
         {
             if (hp_player(_potion_power(amt))) device_noticed = TRUE;
             if (set_blind(0, TRUE)) device_noticed = TRUE;
             if (set_confused(0, TRUE)) device_noticed = TRUE;
+			if (set_poisoned(0, TRUE)) device_noticed = TRUE;
             if (set_stun(0, TRUE)) device_noticed = TRUE;
             if (set_cut(0, TRUE)) device_noticed = TRUE;
             if (set_shero(0,TRUE)) device_noticed = TRUE;
