@@ -4910,6 +4910,8 @@ enum mon_save_fields_e {
 #define IS_OPPOSE_FIRE() (p_ptr->oppose_fire || music_singing(MUSIC_RESIST) || (p_ptr->special_defense & KATA_MUSOU) || wild_has_power(WILD_RESIST))
 #define IS_OPPOSE_COLD() (p_ptr->oppose_cold || music_singing(MUSIC_RESIST) || (p_ptr->special_defense & KATA_MUSOU) || wild_has_power(WILD_RESIST))
 #define IS_OPPOSE_POIS() (p_ptr->oppose_pois || music_singing(MUSIC_RESIST) || (p_ptr->special_defense & KATA_MUSOU) || wild_has_power(WILD_RESIST))
+#define IS_OPPOSE_CONF() (p_ptr->oppose_conf)
+#define IS_OPPOSE_BLIND() (p_ptr->oppose_blind)
 #define IS_SPINNING() (p_ptr->spin > 0)
 #define IS_RESIST() ((p_ptr->oppose_acid && p_ptr->oppose_elec && p_ptr->oppose_fire && p_ptr->oppose_cold && p_ptr->oppose_pois) || music_singing(MUSIC_RESIST) || (p_ptr->special_defense & KATA_MUSOU) || wild_has_power(WILD_RESIST))
 #define IS_TIM_ESP() (p_ptr->tim_esp || music_singing(MUSIC_MIND) || (p_ptr->concent >= CONCENT_TELE_THRESHOLD) || wild_has_power(WILD_ESP))

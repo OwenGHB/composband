@@ -1488,6 +1488,10 @@ void tim_player_flags(u32b flgs[OF_ARRAY_SIZE])
         add_flag(flgs, OF_RES_COLD);
     if (IS_OPPOSE_POIS())
         add_flag(flgs, OF_RES_POIS);
+	if (IS_OPPOSE_CONF())
+		add_flag(flgs, OF_RES_CONF);
+	if (IS_OPPOSE_BLIND())
+		add_flag(flgs, OF_RES_BLIND);
 
     if (p_ptr->tim_sustain_str) add_flag(flgs, OF_SUST_STR);
     if (p_ptr->tim_sustain_int) add_flag(flgs, OF_SUST_INT);

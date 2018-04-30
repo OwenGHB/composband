@@ -849,6 +849,18 @@ void report_magics(void)
         info[i++] = "You are resistant to poison";
 
     }
+	if (p_ptr->oppose_conf)
+	{
+		info2[i] = report_magics_aux(p_ptr->oppose_conf);
+		info[i++] = "You are resistant to confusion";
+
+	}
+	if (p_ptr->oppose_blind)
+	{
+		info2[i] = report_magics_aux(p_ptr->oppose_blind);
+		info[i++] = "You are resistant to blindness";
+
+	}
 
     /* Save the screen */
     screen_save();

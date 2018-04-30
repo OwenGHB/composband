@@ -529,7 +529,7 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_SIGHT:
-        if (desc) return "It gives temporary see invisible and infravision and cures blindness when you quaff it.";
+        if (desc) return "It gives temporary see invisible, infravision and blindess resistance and cures blindness when you quaff it.";
         if (info) return info_duration(_potion_power(100), _potion_power(100));
         if (cast)
         {
@@ -539,6 +539,10 @@ static cptr _do_potion(int sval, int mode)
                 device_noticed = TRUE;
             }
 			if (set_tim_invis(p_ptr->tim_invis + dur, FALSE))
+			{
+				device_noticed = TRUE;
+			}
+			if (set_oppose_blind(p_ptr->oppose_blind + dur, FALSE))
 			{
 				device_noticed = TRUE;
 			}
@@ -552,7 +556,7 @@ static cptr _do_potion(int sval, int mode)
 			int dur = _potion_power(10 + randint1(10));
 			if (set_poisoned(p_ptr->poisoned - MAX(400, p_ptr->poisoned / 2), TRUE))
                 device_noticed = TRUE;
-			if (set_oppose_pois(p_ptr->oppose_cold + dur, FALSE))
+			if (set_oppose_pois(p_ptr->oppose_pois + dur, FALSE))
 			{
 				device_noticed = TRUE;
 			}
@@ -733,12 +737,12 @@ static cptr _do_potion(int sval, int mode)
         }
         break;
     case SV_POTION_CLARITY:
-        if (desc) return "It clears your mind a bit when you quaff it and cures confusion.";
+        if (desc) return "It clears your mind a bit when you quaff it and cures confusion and grants temporary confusion resistance.";
         if (info) return format("3d%d + %d", _potion_power(6), _potion_power(3));
         if (cast)
         {
             int amt = _potion_power(damroll(3, 6) + 3);
-
+			int dur = _potion_power(100 + randint1(100));
             if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
@@ -746,16 +750,20 @@ static cptr _do_potion(int sval, int mode)
                 msg_print("You feel your mind clear.");
                 device_noticed = TRUE;
             }
+			if (set_oppose_conf(p_ptr->oppose_conf + dur, FALSE))
+			{
+				device_noticed = TRUE;
+			}
 			if (set_confused(0, TRUE)) device_noticed = TRUE;
         }
         break;
     case SV_POTION_GREAT_CLARITY:
-        if (desc) return "It greatly clears your mind when you quaff it and cures confusion and hallucinations.";
+        if (desc) return "It greatly clears your mind when you quaff it and cures confusion and hallucinations and grants temporary confusion resistance.";
         if (info) return format("10d%d + %d", _potion_power(10), _potion_power(15));
         if (cast)
         {
             int amt = _potion_power(damroll(10, 10) + 15);
-
+			int dur = _potion_power(300 + randint1(300));
             if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
@@ -763,6 +771,10 @@ static cptr _do_potion(int sval, int mode)
                 msg_print("You feel your mind clear.");
                 device_noticed = TRUE;
             }
+			if (set_oppose_conf(p_ptr->oppose_conf + dur, FALSE))
+			{
+				device_noticed = TRUE;
+			}
 			if (set_confused(0, TRUE)) device_noticed = TRUE;
 			if (set_image(0, TRUE)) device_noticed = TRUE;
         }

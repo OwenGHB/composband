@@ -485,6 +485,8 @@ static void rd_extra(savefile_ptr file)
     p_ptr->oppose_acid = savefile_read_s16b(file);
     p_ptr->oppose_elec = savefile_read_s16b(file);
     p_ptr->oppose_pois = savefile_read_s16b(file);
+	p_ptr->oppose_conf = savefile_read_s16b(file);
+	p_ptr->oppose_blind = savefile_read_s16b(file);
     p_ptr->spin = savefile_read_s16b(file);
     p_ptr->tsuyoshi = savefile_read_s16b(file);
     p_ptr->tim_esp = savefile_read_s16b(file);

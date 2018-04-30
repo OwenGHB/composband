@@ -570,6 +570,8 @@ static void wr_extra(savefile_ptr file)
     savefile_write_s16b(file, p_ptr->oppose_acid);
     savefile_write_s16b(file, p_ptr->oppose_elec);
     savefile_write_s16b(file, p_ptr->oppose_pois);
+	savefile_write_s16b(file, p_ptr->oppose_conf);
+	savefile_write_s16b(file, p_ptr->oppose_blind);
     savefile_write_s16b(file, p_ptr->spin);
     savefile_write_s16b(file, p_ptr->tsuyoshi);
     savefile_write_s16b(file, p_ptr->tim_esp);

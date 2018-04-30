@@ -1079,6 +1079,8 @@ struct player_type
     s16b oppose_fire;    /* Timed -- oppose heat */
     s16b oppose_cold;    /* Timed -- oppose cold */
     s16b oppose_pois;    /* Timed -- oppose poison */
+	s16b oppose_conf;    /* Timed -- oppose confusion */
+	s16b oppose_blind;   /* Timed -- oppose blindness */
     s16b spin;           /* Timed -- spinning */
 
     s16b tim_esp;       /* Timed ESP */

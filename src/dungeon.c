@@ -1297,6 +1297,18 @@ static void process_world_aux_timeout(void)
         (void)set_oppose_pois(p_ptr->oppose_pois - 1, TRUE);
     }
 
+	/* Oppose confusion */
+	if (p_ptr->oppose_conf)
+	{
+		(void)set_oppose_conf(p_ptr->oppose_conf - 1, TRUE);
+	}
+
+	/* Oppose blindness */
+	if (p_ptr->oppose_conf)
+	{
+		(void)set_oppose_blind(p_ptr->oppose_blind - 1, TRUE);
+	}
+
     /* Spin */
     if (p_ptr->spin)
     {

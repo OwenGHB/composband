@@ -599,6 +599,8 @@ static void prt_stat(int stat)
 #define BAR_HOARDING 173
 #define BAR_CAREFUL_AIM 174
 #define BAR_SPIN 175
+#define BAR_RESCONF 176
+#define BAR_RESBLIND 177
 
 static struct {
     byte attr;
@@ -783,6 +785,8 @@ static struct {
     {TERM_YELLOW, "$$", "Hoarding"},
     {TERM_L_BLUE, "Aim", "Aim"},
     {TERM_GREEN, "Spn", "Spin"},
+	{TERM_UMBER, "rCf", "rConf" },
+	{TERM_L_DARK, "rBl", "rBlind" },
     {0, NULL, NULL}
 };
 
@@ -896,6 +900,12 @@ static void prt_status(void)
 
     /* Oppose Poison */
     if (IS_OPPOSE_POIS()) ADD_FLG(BAR_RESPOIS);
+
+	/* Oppose Confusion */
+	if (IS_OPPOSE_CONF()) ADD_FLG(BAR_RESCONF);
+
+	/* Oppose Confusion */
+	if (IS_OPPOSE_CONF()) ADD_FLG(BAR_RESBLIND);
 
     /* Spin/Oppose Nether */
     if (IS_SPINNING()) ADD_FLG(BAR_SPIN);
@@ -3868,6 +3878,8 @@ void calc_bonuses(void)
     if (IS_OPPOSE_FIRE()) res_add(RES_FIRE);
     if (IS_OPPOSE_COLD()) res_add(RES_COLD);
     if (IS_OPPOSE_POIS()) res_add(RES_POIS);
+	if (IS_OPPOSE_CONF()) res_add(RES_CONF);
+	if (IS_OPPOSE_BLIND()) res_add(RES_BLIND);
     if ((p_ptr->tim_res_nether) || (IS_SPINNING())) res_add(RES_NETHER);
     if (p_ptr->tim_res_disenchantment) res_add(RES_DISEN);
     if (p_ptr->tim_res_time) res_add(RES_TIME);

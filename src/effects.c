@@ -188,7 +188,9 @@ void reset_tim_flags(void)
     p_ptr->oppose_elec = 0;     /* Timed -- oppose lightning */
     p_ptr->oppose_fire = 0;     /* Timed -- oppose heat */
     p_ptr->oppose_cold = 0;     /* Timed -- oppose cold */
-    p_ptr->oppose_pois = 0;     /* Timed -- oppose poison */
+    p_ptr->oppose_pois = 0;		/* Timed -- oppose poison */
+	p_ptr->oppose_conf = 0;		/* Timed -- oppose confusion */
+	p_ptr->oppose_blind = 0;	/* Timed -- oppose blindness */
     p_ptr->spin = 0;            /* Timed -- spin (inc. oppose nether) */
 
     p_ptr->word_recall = 0;
@@ -379,13 +381,15 @@ bool disenchant_player(void)
             }
             break;
         case 19:
-            if (p_ptr->oppose_acid || p_ptr->oppose_cold || p_ptr->oppose_elec || p_ptr->oppose_fire || p_ptr->oppose_pois || p_ptr->spin)
+            if (p_ptr->oppose_acid || p_ptr->oppose_cold || p_ptr->oppose_elec || p_ptr->oppose_fire || p_ptr->oppose_pois || p_ptr->oppose_conf || p_ptr->oppose_blind || p_ptr->spin)
             {
                 (void)set_oppose_acid(0, TRUE);
                 (void)set_oppose_elec(0, TRUE);
                 (void)set_oppose_fire(0, TRUE);
                 (void)set_oppose_cold(0, TRUE);
                 (void)set_oppose_pois(0, TRUE);
+				(void)set_oppose_blind(0, TRUE);
+				(void)set_oppose_conf(0, TRUE);
                 (void)set_spin(0, TRUE);
                 result = TRUE;
                 return result;
@@ -4369,6 +4373,122 @@ bool set_oppose_pois(int v, bool do_dec)
 
     /* Result */
     return (TRUE);
+}
+
+/*
+* Set "p_ptr->oppose_conf", notice observable changes
+*/
+bool set_oppose_conf(int v, bool do_dec)
+{
+	bool notice = FALSE;
+
+	/* Hack -- Force good values */
+	v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
+
+	if (p_ptr->is_dead) return FALSE;
+
+	/* Open */
+	if (v)
+	{
+		if (p_ptr->oppose_conf && !do_dec)
+		{
+			if (p_ptr->oppose_conf > v) return FALSE;
+		}
+		else if (!IS_OPPOSE_CONF())
+		{
+			msg_print("You feel resistant to confusion!");
+
+			notice = TRUE;
+		}
+	}
+
+	/* Shut */
+	else
+	{
+		if (p_ptr->oppose_conf)
+		{
+			msg_print("You feel less resistant to confusion.");
+
+			notice = TRUE;
+		}
+	}
+
+	/* Use the value */
+	p_ptr->oppose_conf = v;
+
+	/* Nothing to notice */
+	if (!notice) return (FALSE);
+
+	/* Redraw status bar */
+	p_ptr->redraw |= (PR_STATUS);
+	p_ptr->update |= (PU_BONUS);
+
+	/* Disturb */
+	if (disturb_state) disturb(0, 0);
+
+	/* Handle stuff */
+	handle_stuff();
+
+	/* Result */
+	return (TRUE);
+}
+
+/*
+* Set "p_ptr->oppose_blind", notice observable changes
+*/
+bool set_oppose_blind(int v, bool do_dec)
+{
+	bool notice = FALSE;
+
+	/* Hack -- Force good values */
+	v = (v > 10000) ? 10000 : (v < 0) ? 0 : v;
+
+	if (p_ptr->is_dead) return FALSE;
+
+	/* Open */
+	if (v)
+	{
+		if (p_ptr->oppose_blind && !do_dec)
+		{
+			if (p_ptr->oppose_blind > v) return FALSE;
+		}
+		else if (!IS_OPPOSE_BLIND())
+		{
+			msg_print("You feel resistant to blindness!");
+
+			notice = TRUE;
+		}
+	}
+
+	/* Shut */
+	else
+	{
+		if (p_ptr->oppose_blind)
+		{
+			msg_print("You feel less resistant to blindness.");
+
+			notice = TRUE;
+		}
+	}
+
+	/* Use the value */
+	p_ptr->oppose_blind = v;
+
+	/* Nothing to notice */
+	if (!notice) return (FALSE);
+
+	/* Redraw status bar */
+	p_ptr->redraw |= (PR_STATUS);
+	p_ptr->update |= (PU_BONUS);
+
+	/* Disturb */
+	if (disturb_state) disturb(0, 0);
+
+	/* Handle stuff */
+	handle_stuff();
+
+	/* Result */
+	return (TRUE);
 }
 
 /*
