@@ -2176,7 +2176,7 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
     fake_insc_buf[0] = '\0';
 
     /* Use the game-generated "feeling" otherwise, if available */
-    if (o_ptr->feeling)
+    if (o_ptr->feeling && !((mode & OD_STORE) || (o_ptr->ident & IDENT_STORE)))
     {
         strcpy(fake_insc_buf, game_inscriptions[o_ptr->feeling]);
     }
