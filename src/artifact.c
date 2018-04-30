@@ -3389,6 +3389,7 @@ bool create_replacement_art(int a_idx, object_type *o_ptr)
     o_ptr->name3 = a_idx;
     o_ptr->weight = forge1.weight;
     o_ptr->level = a_ptr->level;
+	o_ptr->feeling = value_check_aux(o_ptr);
 
     return TRUE;
 }
@@ -3435,6 +3436,8 @@ bool create_named_art_aux(int a_idx, object_type *o_ptr)
     if (a_ptr->gen_flags & (OFG_RANDOM_CURSE2)) o_ptr->curse_flags |= get_curse(2, o_ptr);
 
     random_artifact_resistance(o_ptr, a_ptr);
+
+	o_ptr->feeling = value_check_aux(o_ptr);
 
     return TRUE;
 }
