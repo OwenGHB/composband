@@ -1304,7 +1304,7 @@ static void process_world_aux_timeout(void)
 	}
 
 	/* Oppose blindness */
-	if (p_ptr->oppose_conf)
+	if (p_ptr->oppose_blind)
 	{
 		(void)set_oppose_blind(p_ptr->oppose_blind - 1, TRUE);
 	}
