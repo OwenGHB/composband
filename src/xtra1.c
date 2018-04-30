@@ -905,7 +905,7 @@ static void prt_status(void)
 	if (IS_OPPOSE_CONF()) ADD_FLG(BAR_RESCONF);
 
 	/* Oppose Confusion */
-	if (IS_OPPOSE_CONF()) ADD_FLG(BAR_RESBLIND);
+	if (IS_OPPOSE_BLIND()) ADD_FLG(BAR_RESBLIND);
 
     /* Spin/Oppose Nether */
     if (IS_SPINNING()) ADD_FLG(BAR_SPIN);
