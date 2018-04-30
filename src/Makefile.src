@@ -5,7 +5,7 @@
 # across a range of different makefiles, to cut down on maintenance.
 #
 
-VERSION = 7.0.strawberry
+VERSION = 7.0.alpha
 COPYRIGHT = (c) 1995-2018 Angband contributors
 PROGNAME = composband
 
