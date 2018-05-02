@@ -1838,7 +1838,11 @@ static int _draw_obj_list(_obj_list_ptr list, int top, rect_t rect)
                     (info_ptr->dy > 0) ? 'S' : 'N', abs(info_ptr->dy),
                     (info_ptr->dx > 0) ? 'E' : 'W', abs(info_ptr->dx));
 
-            sprintf(name, "%s", f_name + f_ptr->name);
+			if (have_flag(f_ptr->flags, FF_BLDG) && !dun_level)
+			{
+				sprintf(name, "%s", building[f_ptr->subtype].name);
+			}
+            else sprintf(name, "%s", f_name + f_ptr->name);
             if (have_flag(f_ptr->flags, FF_QUEST_ENTER))
             {
                 int quest_id = cave[info_ptr->y][info_ptr->x].special;
