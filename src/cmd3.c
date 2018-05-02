@@ -1684,7 +1684,7 @@ static _obj_list_ptr _create_obj_list(void)
             {
                 cave_type *c_ptr = &cave[y][x];
                 feature_type *f_ptr = &f_info[c_ptr->feat];
-                if (have_flag(f_ptr->flags, FF_STORE) || have_flag(f_ptr->flags, FF_STAIRS))
+                if (have_flag(f_ptr->flags, FF_STORE) || have_flag(f_ptr->flags, FF_STAIRS) || have_flag(f_ptr->flags, FF_BLDG))
                 {
                     _obj_list_info_ptr info = _obj_list_info_alloc();
                     info->group = _GROUP_FEATURE;
