@@ -891,7 +891,7 @@ bool cast_destruction(void) { return cast_spell(destruction_spell); }
 static void _detect_curses(obj_ptr obj)
 {
     if (object_is_cursed(obj))
-        obj->feeling = FEEL_CURSED;
+		obj->known_curse_flags = obj->curse_flags;
 }
 
 void detect_curses_spell(int cmd, variant *res)

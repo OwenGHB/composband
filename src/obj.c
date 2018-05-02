@@ -1017,7 +1017,7 @@ void obj_destroy_ui(void)
     }
 
     /* Artifacts cannot be destroyed */
-    if (!can_player_destroy_object(prompt.obj)) /* side effect: obj->sense = FEEL_SPECIAL */
+    if (!can_player_destroy_object(prompt.obj))
     {
         object_desc(name, prompt.obj, OD_COLOR_CODED);
         msg_format("You cannot destroy %s.", name);

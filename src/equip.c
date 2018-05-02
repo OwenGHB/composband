@@ -561,26 +561,7 @@ static bool _wield_confirm(obj_ptr obj, slot_t slot)
 
     if (confirm_wear)
     {
-        bool do_prompt = FALSE;
-
         if (object_is_known(obj) && object_is_cursed(obj))
-        {
-            do_prompt = TRUE;
-        }
-        else
-        {
-            switch (obj->feeling)
-            {
-            case FEEL_BROKEN:
-            case FEEL_BAD:
-            case FEEL_TERRIBLE:
-            case FEEL_AWFUL:
-            case FEEL_CURSED:
-                do_prompt = TRUE;
-                break;
-            }
-        }
-        if (do_prompt)
         {
             char dummy[MAX_NLEN+80];
             object_desc(o_name, obj, OD_OMIT_PREFIX | OD_NAME_ONLY | OD_COLOR_CODED);

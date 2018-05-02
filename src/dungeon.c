@@ -22,50 +22,29 @@ static int wild_regen = 20;
 /*
  * Return a "feeling" (or NULL) about an item.
  *
- * For strong sensing, we have now have (3.0.3 and later):
- *
- *                    egos         artifacts
- *                    =========    =========
- * average -> good -> excellent -> special
- *         -> bad  -> awful     -> terrible
+ * This will reveal whether the item is an ego or artifact, as a preliminary to a flavour system for wearables
  */
 byte value_check_aux(object_type *o_ptr)
 {
     /* Artifacts */
     if (object_is_artifact(o_ptr))
     {
-        /* Cursed/Broken */
-        if (object_is_cursed(o_ptr) || object_is_broken(o_ptr)) return FEEL_TERRIBLE;
-
-        /* Normal */
-        return FEEL_SPECIAL;
+        return FEEL_ARTIFACT;
     }
 
     /* Ego-Items */
     if (object_is_ego(o_ptr))
     {
-        /* Cursed/Broken */
-        if ((object_is_cursed(o_ptr) || object_is_broken(o_ptr)) && !object_is_device(o_ptr)) return FEEL_AWFUL;
-
-        /* Normal */
-        return FEEL_EXCELLENT;
+        return FEEL_EGO;
     }
 
-    /* Cursed items */
-    if (object_is_cursed(o_ptr) && !object_is_device(o_ptr)) return FEEL_BAD;
+	/* Good items */
+	if (o_ptr->to_a > 5 || o_ptr->to_d + o_ptr->to_h > 5)
+	{
+		return FEEL_GOOD;
+	}
 
-    /* Broken items */
-    if (object_is_broken(o_ptr)) return FEEL_BROKEN;
-
-    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) return FEEL_AVERAGE;
-
-    /* Good "armor" bonus */
-    if (o_ptr->to_a > 0) return FEEL_GOOD;
-
-    /* Good "weapon" bonus */
-    if (o_ptr->to_h + o_ptr->to_d > 0) return FEEL_GOOD;
-
-    /* Default to "average" */
+    /* Default to "average" for now */
     return FEEL_AVERAGE;
 }
 

@@ -180,6 +180,7 @@ byte adj_mag_mana[] =
 
 /* Pseudo-id is currently 1 in (N/f(L)) where f(L) might be L*L+50 or L+5, etc, (class dependent)
    Wisdom will modify N = N * adj / 100 according to the following table. (sense_inventory1 and 2())
+   With pseudo-id gone, this helps determine level feeling only
 
    Level feelings take X turns to occur (depending on level and player FOS).
    Wisdom will modify X = X * adj / 100 according to the following table (update_dungeon_feeling())
@@ -2336,7 +2337,7 @@ option_type option_info[] =
 	"power_tele",					"Use enhanced telepathy" },
 
 	{ &easy_thalos,					FALSE, OPT_PAGE_BIRTH, 6, 28,
-	"easy_thalos",					"Allow easy teleportation between towns" },
+	"easy_towns",					"Allow easy teleportation between towns" },
 
     { &smart_learn,                 TRUE,  OPT_PAGE_BIRTH, 1, 14,
     "smart_learn",                  "Monsters learn from their mistakes (*)" },
@@ -2485,8 +2486,8 @@ cptr game_inscriptions[] =
     "broken",        /* FEEL_BROKEN */
     "terrible",      /* FEEL_TERRIBLE */
     "awful",         /* FEEL_AWFUL */
-    "cursed",        /* FEEL_CURSED */
-    "enchanted",     /* FEEL_ENCHANTED */
+    "artifact",      /* FEEL_ARTIFACT */
+    "ego",			 /* FEEL_EGO */
     "average",       /* FEEL_AVERAGE */
     "good",          /* FEEL_GOOD */
     "excellent",     /* FEEL_EXCELLENT */

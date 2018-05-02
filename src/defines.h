@@ -2500,29 +2500,15 @@ enum summon_specific_e {
  * Game generated inscription indices. These are stored in the object,
  * and are used to index the string array from tables.c (game_inscriptions).
  *
- * For strong sensing, we have now have (3.0.3 and later):
- *
- *                    egos         artifacts
- *                    =========    =========
- * average -> good -> excellent -> special
- *         -> bad  -> awful     -> terrible
- *
- * For weak sensing, we have:
- *
- * FEEL_NONE -> enchanted
- *           -> cursed
- *
- * This means that FEEL_CURSED items might be egos or artifacts, and should
- * never be automatically destroyed, whereas FEEL_BAD items are known to be
- * cursed non-egos/arts and can be autodestroyed with impunity. See autopick.c
- * for details. Is "broken" still used?
+ * Currently only artifact and ego are used, as pseudo-ID is gone.
+ * The plan is to use some kind of flavor system for wearables.
  */
 #define FEEL_NONE              0
-#define FEEL_BROKEN            1   /* ?? */
+#define FEEL_BROKEN            1
 #define FEEL_TERRIBLE          2
 #define FEEL_AWFUL             3
-#define FEEL_CURSED            4   /* deprecated, probably */
-#define FEEL_ENCHANTED         5   /* deprecated */
+#define FEEL_ARTIFACT          4   
+#define FEEL_EGO               5   
 #define FEEL_AVERAGE           6
 #define FEEL_GOOD              7
 #define FEEL_EXCELLENT         8

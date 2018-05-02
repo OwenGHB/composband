@@ -1257,7 +1257,7 @@ s32b obj_value(object_type *o_ptr)
         if (!value)
             value = object_value_base(o_ptr);
 
-        if ( (o_ptr->feeling == FEEL_EXCELLENT || o_ptr->feeling == FEEL_AWFUL)
+        if ( (o_ptr->feeling == FEEL_EGO)
           && object_is_ego(o_ptr))
         {
             value += 500;
@@ -1266,7 +1266,7 @@ s32b obj_value(object_type *o_ptr)
             else
                 value = value / o_ptr->number;
         }
-        if ( (o_ptr->feeling == FEEL_SPECIAL || o_ptr->feeling == FEEL_TERRIBLE)
+        if ( (o_ptr->feeling == FEEL_ARTIFACT)
           && object_is_artifact(o_ptr))
         {
             value += 1000;

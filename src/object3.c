@@ -378,7 +378,7 @@ s32b _finalize_p(s32b p, u32b flgs[OF_ARRAY_SIZE], object_type *o_ptr, int optio
     {
         /* Do we know this is an artifact? */
         if ( (known && object_is_artifact(o_ptr))
-          || (o_ptr->feeling & (FEEL_SPECIAL | FEEL_TERRIBLE)) )
+          || (o_ptr->feeling & (FEEL_ARTIFACT)) )
         {
         }
         else

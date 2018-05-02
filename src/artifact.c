@@ -2954,6 +2954,9 @@ s32b create_artifact(object_type *o_ptr, u32b mode)
     /* Save the inscription */
     o_ptr->art_name = quark_add(new_name);
 
+	/* this is probably redundant */
+	o_ptr->feeling = FEEL_ARTIFACT;
+
     /* Window stuff */
     p_ptr->window |= (PW_INVEN | PW_EQUIP);
 

@@ -565,13 +565,12 @@ static void autopick_entry_from_object(autopick_type *entry, object_type *o_ptr)
     {
         switch (o_ptr->feeling)
         {
-        case FEEL_CURSED:
-            ADD_FLG(FLG_CURSED);
+        case FEEL_ARTIFACT:
+			ADD_FLG(FLG_ARTIFACT);
             break;
 
-        case FEEL_ENCHANTED:
-            /* XXX No appropriate flag */
-            /* ADD_FLG(); */
+        case FEEL_EGO:
+			ADD_FLG(FLG_EGO);
             break;
 
         case FEEL_AVERAGE:
@@ -1457,7 +1456,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
             case FEEL_BAD:
             case FEEL_AWFUL:
             case FEEL_TERRIBLE:
-            case FEEL_CURSED:
                 break;
             default:
                 return FALSE;
@@ -1488,7 +1486,6 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
             switch (o_ptr->feeling)
             {
             case FEEL_GOOD:
-            case FEEL_ENCHANTED:
                 /* It's good */
                 break;
 
