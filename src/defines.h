@@ -3931,9 +3931,9 @@ extern int PlayerUID;
 
 /* Proficiency of weapons and misc. skills (except riding) */
 #define WEAPON_EXP_UNSKILLED     0
-#define WEAPON_EXP_BEGINNER   4000
-#define WEAPON_EXP_SKILLED    6000
-#define WEAPON_EXP_EXPERT     7000
+#define WEAPON_EXP_BEGINNER   2000
+#define WEAPON_EXP_SKILLED    4000
+#define WEAPON_EXP_EXPERT     6000
 #define WEAPON_EXP_MASTER     8000
 
 /* Proficiency of riding */

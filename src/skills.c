@@ -152,17 +152,7 @@ int skills_bow_max(int sval)
 
 static int _bow_calc_bonus_aux(int sval, int skill)
 {
-    int bonus;
-
-    /* XXX Historically, crossbows have never had proficiency penalties, while
-     * bows and slings have behaved just like melee weapons. I'm not sure why this
-     * has always been so ... */
-    if (sval == SV_LIGHT_XBOW || sval == SV_HEAVY_XBOW)
-        bonus = skill / 400; /* +0 to +20 */
-    else              /* v~~~~~~ WEAPON_EXP_BEGINNER */
-        bonus = (skill - WEAPON_EXP_MASTER/2) / 200; /* -20 to +20 */
-
-    return bonus;
+    return skill / 400;
 }
 
 int skills_bow_calc_bonus(int sval)
@@ -325,8 +315,7 @@ int skills_weapon_max(int tval, int sval)
  * [4] effects of skill are linear */
 static int _weapon_calc_bonus_aux(int skill)
 {
-    int bonus = (skill - WEAPON_EXP_BEGINNER) / 200; /* -20 to +20 */
-    return bonus;
+    return skill / 400;
 }
 
 int skills_weapon_calc_bonus(int tval, int sval)
