@@ -366,14 +366,14 @@
  * during the creation of an object (see "get_obj_num()" in "object.c").
  * Lower values yield better objects more often.
  */
-#define GREAT_OBJ        7
+#define GREAT_OBJ        8
 
 /*
  * There is a 1/50 (2%) chance of inflating the requested monster_level
  * during the creation of a monsters (see "get_mon_num()" in "monster.c").
  * Lower values yield harder monsters more often.
  */
-#define NASTY_MON       35              /* 1/chance of inflated monster level */
+#define NASTY_MON       40              /* 1/chance of inflated monster level */
 
 /* 1/x chance of hurting even if invulnerable! */
 #define PENETRATE_INVULNERABILITY 13
@@ -2500,20 +2500,19 @@ enum summon_specific_e {
  * Game generated inscription indices. These are stored in the object,
  * and are used to index the string array from tables.c (game_inscriptions).
  *
- * Currently only artifact and ego are used, as pseudo-ID is gone.
- * The plan is to use some kind of flavor system for wearables.
+ * This is used to create a system whereby potentially interesting objects
+ * can be known in advance
  */
 #define FEEL_NONE              0
-#define FEEL_BROKEN            1
-#define FEEL_TERRIBLE          2
-#define FEEL_AWFUL             3
-#define FEEL_ARTIFACT          4   
-#define FEEL_EGO               5   
-#define FEEL_AVERAGE           6
-#define FEEL_GOOD              7
-#define FEEL_EXCELLENT         8
-#define FEEL_SPECIAL           9
-#define FEEL_BAD               10
+#define FEEL_ORDINARY          1
+#define FEEL_GOOD              2
+#define FEEL_ENCHANTED         3
+#define FEEL_GREAT             4
+#define FEEL_EXCELLENT         5
+#define FEEL_SPLENDID		   6
+#define FEEL_SPECIAL		   7
+#define FEEL_WONDROUS          8
+#define FEEL_ARTIFACT		   9
 
 /*
  * Hack -- special "xtra" object powers
