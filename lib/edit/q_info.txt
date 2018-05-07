@@ -5,7 +5,7 @@
 #
 
 ########################################################################
-# FrogComposband Quests (cf quest.h and quest.c)
+# Composband Quests (cf quest.h and quest.c)
 #
 # N:id:lvl:name
 # T:type flags
@@ -284,7 +284,7 @@ N:61:50:Clear the Wreckage (Thalos)
 T:TOWN | GENERATE
 F:q_shipwreck.txt
 
-N:63:10:Mushrooms (Thalos)
+N:63:15:Mushrooms (Thalos)
 T:TOWN
 W:icky
 G:KILL(magic mushroom, 5)
