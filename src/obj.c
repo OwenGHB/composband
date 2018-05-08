@@ -58,7 +58,7 @@ void obj_make_pile(obj_ptr obj)
 	// most of this ended up here, because items are always processed here and not always in make_object
 	// the 'nasty games' in _make_object_aux means some artifacts are inscribed elsewhere
 	if (obj_can_sense(obj)) {
-		if ((obj->to_a - k_ptr->to_h) > 0 || (obj->to_d - k_ptr->to_d) + (obj->to_h - k_ptr->to_h) > 0)
+		if ((obj->to_a - k_ptr->to_a) > 0 || (obj->to_d - k_ptr->to_d) + (obj->to_h - k_ptr->to_h) > 0)
 		{
 			obj->feeling = FEEL_GOOD;
 		}
