@@ -2504,15 +2504,16 @@ enum summon_specific_e {
  * can be known in advance
  */
 #define FEEL_NONE              0
-#define FEEL_ORDINARY          1
-#define FEEL_GOOD              2
-#define FEEL_ENCHANTED         3
-#define FEEL_GREAT             4
-#define FEEL_EXCELLENT         5
-#define FEEL_SPLENDID		   6
-#define FEEL_SPECIAL		   7
-#define FEEL_WONDROUS          8
-#define FEEL_ARTIFACT		   9
+#define FEEL_BROKEN            1
+#define FEEL_TERRIBLE          2
+#define FEEL_AWFUL             3
+#define FEEL_ARTIFACT          4   
+#define FEEL_EGO               5   
+#define FEEL_AVERAGE           6
+#define FEEL_GOOD              7
+#define FEEL_EXCELLENT         8
+#define FEEL_SPECIAL           9
+#define FEEL_BAD			  10
 
 /*
  * Hack -- special "xtra" object powers

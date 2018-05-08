@@ -20,35 +20,6 @@ static bool load = TRUE;
 static int wild_regen = 20;
 
 /*
- * Return a "feeling" (or NULL) about an item.
- *
- * This will reveal whether the item is an ego or artifact, as a preliminary to a flavour system for wearables
- */
-byte value_check_aux(object_type *o_ptr)
-{
-    /* Artifacts */
-    if (object_is_artifact(o_ptr))
-    {
-        return FEEL_ARTIFACT;
-    }
-
-    /* Ego-Items */
-    if (object_is_ego(o_ptr))
-    {
-        return FEEL_EGO;
-    }
-
-	/* Good items */
-	if (o_ptr->to_a > 5 || o_ptr->to_d + o_ptr->to_h > 5)
-	{
-		return FEEL_GOOD;
-	}
-
-    /* Default to "average" for now */
-    return FEEL_AVERAGE;
-}
-
-/*
  * Go to any level (ripped off from wiz_jump)
  */
 static void pattern_teleport(void)
@@ -1276,13 +1247,13 @@ static void process_world_aux_timeout(void)
         (void)set_oppose_pois(p_ptr->oppose_pois - 1, TRUE);
     }
 
-	/* Oppose confusion */
+	/* Oppose Confusion */
 	if (p_ptr->oppose_conf)
 	{
 		(void)set_oppose_conf(p_ptr->oppose_conf - 1, TRUE);
 	}
 
-	/* Oppose blindness */
+	/* Oppose Blindness */
 	if (p_ptr->oppose_blind)
 	{
 		(void)set_oppose_blind(p_ptr->oppose_blind - 1, TRUE);

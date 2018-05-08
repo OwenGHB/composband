@@ -54,11 +54,31 @@ void obj_make_pile(obj_ptr obj)
 {
     int          size = 1;
     object_kind *k_ptr = &k_info[obj->k_idx];
+	
+	// most of this ended up here, because items are always processed here and not always in make_object
+	// the 'nasty games' in _make_object_aux means some artifacts are inscribed elsewhere
+	if (obj_can_sense(obj)) {
+		if ((obj->to_a - k_ptr->to_h) > 0 || (obj->to_d - k_ptr->to_d) + (obj->to_h - k_ptr->to_h) > 0)
+		{
+			obj->feeling = FEEL_GOOD;
+		}
+		else
+		{
+			obj->feeling = FEEL_AVERAGE;
+		}
+	}
+	if (object_is_artifact(obj))
+	{
+		if (obj_can_sense(obj)) obj->feeling = FEEL_ARTIFACT;
+		return;
+	}
+	if (object_is_ego(obj))
+	{
+		if (obj_can_sense(obj)) obj->feeling = FEEL_EGO;
+		if (!object_is_ammo(obj)) return;
+	}
+	
 
-	if (obj_can_sense(obj)) obj->feeling = value_check_aux(obj);
-
-    if (object_is_artifact(obj)) return;
-	if (object_is_ego(obj) && !object_is_ammo(obj)) return;
     if (!k_ptr->stack_chance) return;
     if (randint1(100) > k_ptr->stack_chance) return;
 

@@ -1615,6 +1615,10 @@ static bool make_artifact_special(object_type *o_ptr)
         else
             create_named_art_aux(i, o_ptr);
 
+		/* object feeling assigned on creation */
+		/* placed here for the 'nasty games' in _make_object_aux()*/
+		o_ptr->feeling = FEEL_ARTIFACT;
+
         /* Success */
         return (TRUE);
     }
@@ -1982,9 +1986,6 @@ static void a_m_aux_4(object_type *o_ptr, int level, int power, int mode)
  * if it is "cursed", there is a chance it will be "broken". These chances
  * are related to the "good" / "great" chances above.
  *
- * Otherwise "normal" rings and amulets will be "good" half the time and
- * "cursed" half the time, unless the ring/amulet is always good or cursed.
- *
  * If "okay" is true, and the object is going to be "great", then there is
  * a chance that an artifact will be created. This is true even if both the
  * "good" and "great" arguments are false. As a total hack, if "great" is
@@ -2006,25 +2007,27 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
         o_ptr->level = lev; /* Wizard statistics ... */
 
     /* Base chance of being "good" */
-    f1 = lev + 10;
+	switch (o_ptr->tval) {
+	case TV_RING:
+	case TV_AMULET:
+		f1 = lev + 40;
+		break;
+	default:
+		f1 = lev + 10;
+		break;
+	}
 
-    /* Maximal chance of being "good" */
-    if (f1 > maxf1) f1 = maxf1;
+	/* Maximal chance of being "good" */
+	if (f1 > maxf1) f1 = maxf1;
 
     /* Base chance of being "great" */
-    f2 = f1 * 2 / 3;
+    f2 = lev * 2 + 20 / 3;
 
     /* Maximal chance of being "great" */
     if (f2 > maxf2)
         f2 = maxf2;
 
-    /* Temp Hack: It's a bit too hard to find good rings early on. Note we hack after
-       calculating f2! */
-    if (o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET)
-    {
-        f1 += 30;
-        if (f1 > maxf1) f1 = maxf1;
-    }
+	
 
     if (p_ptr->good_luck)
     {
@@ -2068,7 +2071,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
         /* Assume "cursed" */
         power = -1;
 
-        /* Roll for "broken" */
+        /* Roll for interesting curse */
         if (no_egos && !object_is_jewelry(o_ptr))
         {
         }
@@ -2122,12 +2125,12 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
     if (mode & AM_FORCE_EGO)
     {
         rolls = 0;
-        /* AM_FORCE_EGO is used for granting quest rewards. Ego rings and amulets
-           can be achieved with just power 1 ... Indeed, power 2 is often too much! */
-        if ((o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) && lev < 50)
-            power = MAX(1, power);
-        else
-            power = 2;
+		/* AM_FORCE_EGO is used for granting quest rewards. Ego rings and amulets
+		can be achieved with just power 1 ... Indeed, power 2 is often too much! */
+		if ((o_ptr->tval == TV_RING || o_ptr->tval == TV_AMULET) && lev < 50)
+			power = MAX(1, power);
+		else 
+			power = 2;
     }
     else
         apply_magic_ego = 0;
@@ -2162,6 +2165,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
             a_ptr->floor_id = p_ptr->floor_id;
 
         if (cheat_peek) object_mention(o_ptr);
+		o_ptr->feeling = FEEL_ARTIFACT;
         return TRUE;
     }
 
@@ -2185,6 +2189,7 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
         o_ptr->to_h = a_ptr->to_h;
         o_ptr->to_d = a_ptr->to_d;
         o_ptr->weight = a_ptr->weight;
+		o_ptr->feeling = FEEL_ARTIFACT;
 
         /* Hack -- extract the "broken" flag */
         if (!a_ptr->cost) o_ptr->ident |= (IDENT_BROKEN);
@@ -2207,7 +2212,8 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
 
     if (o_ptr->art_name)
     {
-        return TRUE;
+		o_ptr->feeling = FEEL_ARTIFACT;
+		return TRUE;
     }
 
 
@@ -2288,10 +2294,10 @@ bool apply_magic(object_type *o_ptr, int lev, u32b mode)
             if (power) obj_create_armor(o_ptr, lev, power, mode);
             break;
         case TV_RING:
-            if (power) ego_create_ring(o_ptr, lev, power, mode);
+            if (power) obj_create_ring(o_ptr, lev, power, mode);
             break;
         case TV_AMULET:
-            if (power) ego_create_amulet(o_ptr, lev, power, mode);
+            if (power) obj_create_amulet(o_ptr, lev, power, mode);
             break;
         case TV_LITE:
             obj_create_lite(o_ptr, lev, power, mode);
@@ -3697,8 +3703,6 @@ bool make_object(obj_ptr obj, u32b mode)
 		}
 		object_wipe(obj);
 	}
-
-	if (obj_can_sense(obj)) obj->feeling = value_check_aux(obj);
 
     obj_drop_theme = 0;
     _drop_tailored = FALSE;

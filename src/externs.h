@@ -904,7 +904,6 @@ extern void prevent_turn_overflow(void);
 extern void process_world_aux_movement(void);  /* yuk!  refactor the recall code instead */
 extern void fame_on_failure(void);
 extern void recharged_notice(object_type *o_ptr);
-extern byte value_check_aux(object_type *o_ptr); /* item feeling */
 
 /* files.c */
 extern bool check_score(void);
@@ -1210,8 +1209,8 @@ extern bool art_has_lore(artifact_type *a_ptr);
 extern bool obj_has_lore(object_type *o_ptr);
 
 /* ego.c */
-extern void ego_create_ring(object_type *o_ptr, int level, int power, int mode);
-extern void ego_create_amulet(object_type *o_ptr, int level, int power, int mode);
+extern void obj_create_ring(object_type *o_ptr, int level, int power, int mode);
+extern void obj_create_amulet(object_type *o_ptr, int level, int power, int mode);
 extern bool obj_create_device(object_type *o_ptr, int level, int power, int mode);
 extern void obj_create_weapon(object_type *o_ptr, int level, int power, int mode);
 extern void obj_create_armor(object_type *o_ptr, int level, int power, int mode);
