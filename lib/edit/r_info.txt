@@ -22720,6 +22720,19 @@ D:A great purple rat with sharp teeth and sorcerous powers.
 #D:freckles, and besides a strong jaw she shares the delicate features of her
 #D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
 
+N:1261:City Watchman
+G:t:B
+I:110:10d8:10:35:25:225
+W:0:1:0:0:0:0
+B:HIT:HURT(2d6)
+F:MALE | DROP_SKELETON | DROP_CORPSE | HAS_LITE_1 | HUMAN |
+F:RAND_25 | DROP_90 | WILD_TOWN | WILD_ONLY
+F:OPEN_DOOR | BASH_DOOR | FRIENDLY
+P:Copy:Human:Warrior
+P:Stats:0:0:0:0:-1:-1
+P:Life:85
+D:He is here to keep the peace.
+
 
 # N: serial number : monster name
 # G: symbol : color

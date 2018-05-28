@@ -1385,9 +1385,10 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 			/* 'light brand' */
 			if (have_flag(flgs, OF_LITE) && (r_ptr->flags3 & RF3_HURT_LITE))
 			{
-				msg_format("It cringes.");
-				if (mult == 10) mult = 20;
-				else if (mult < 60) mult = MIN(60, mult + 10);
+				if (mult < 20) {
+					msg_format("It cringes.");
+					mult = 20;
+				}
 			}
 
             if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
