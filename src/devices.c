@@ -3470,24 +3470,29 @@ cptr do_effect(effect_t *effect, int mode, int boost)
         if (value) return format("%d", 2000);
         if (cast)
         {
-            switch (randint1(13))
-            {
-            case 1: case 2: case 3: case 4: case 5:
-                if (mut_present(MUT_ASTRAL_GUIDE))
-                    energy_use /= 3;
-                teleport_player(10, 0L);
-                break;
-            case 6: case 7: case 8: case 9: case 10:
-                if (mut_present(MUT_ASTRAL_GUIDE))
-                    energy_use /= 3;
-                teleport_player(222, 0L);
-                break;
-            case 11: case 12:
-                stair_creation(FALSE);
-                break;
-            default:
-                if (get_check("Teleport Level? "))
-                    teleport_level(0);
+			switch (randint1(9))
+			{
+			case 1: case 2: case 3: case 4: case 5:
+				if (mut_present(MUT_ASTRAL_GUIDE))
+					energy_use /= 3;
+				teleport_player(10, 0L);
+				break;
+			case 6: case 7: case 8:
+				if (mut_present(MUT_ASTRAL_GUIDE))
+					energy_use /= 3;
+				teleport_player(222, 0L);
+				break;
+			default:
+				if (get_check("Teleport Level? "))
+				{
+					teleport_level(0);
+				}
+				else
+				{
+					if (mut_present(MUT_ASTRAL_GUIDE))
+						energy_use /= 3;
+					teleport_player(222, 0L);
+				}
             }
             device_noticed = TRUE;
         }
