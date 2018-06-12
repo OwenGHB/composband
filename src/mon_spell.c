@@ -3378,8 +3378,6 @@ static void _ai_direct(mon_spell_cast_ptr cast)
 		_remove_spell(spells, _id(MST_ANNOY, ANNOY_PARALYZE));
 	if (p_ptr->confused)
 		_remove_spell(spells, _id(MST_ANNOY, ANNOY_CONFUSE));
-	if (never_forget)
-		_remove_spell(spells, _id(MST_ANNOY, ANNOY_AMNESIA));
 
 	/* require a direct shot to player for bolts */
 	if (!_clean_shot(cast->src, cast->dest, (is_pet(cast->mon) || is_friendly(cast->mon))))
