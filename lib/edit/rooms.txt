@@ -1,11 +1,11 @@
-#####################################################################%
+######################################################################
 # PosChengband Rooms
-%
+#
 # Type:    ROOM
 # Subtype: NORMAL
-%
+#
 # The idea of scripted rooms was borrowed from Vanilla Angband)
-%
+#
 
 # Accelerated for composband
 
