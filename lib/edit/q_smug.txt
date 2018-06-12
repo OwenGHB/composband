@@ -78,4 +78,4 @@ M:#......rr1.&....C..#
 M:#..........#.......#
 M:#4..<......#$.....6#
 M:####################
-R:OBJ(mushroom of restoring)
+R:OBJ(WAND_TELEPORT_AWAY)

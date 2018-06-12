@@ -18,13 +18,10 @@ L:D:PERMANENT
 L:E:PERMANENT
 L:F:PERMANENT
 
-# Default for Quest 71 = entrance is brake
-L:w:BRAKE
-
 # Default for Quest 70 = entrance is mountain
 L:x:MOUNTAIN
 
-# Default for Quest 69 = entrance is mountain
+# Default for Quest 22/60 = entrance is mountain
 L:z:MOUNTAIN
 
 # Default for Quest 61
@@ -35,15 +32,20 @@ L:q:FLOOR
 
 ##################### Sultan's Quests ##############
 
-############### Quest 71 - Shadow Fairies
-?:[EQU $QUEST71 Taken]
-L:w:QUEST_ENTER(71)
-?:[EQU $QUEST71 Untaken Taken Completed Failed]
-L:b:BUILDING_1(71)
-L:D:GRASS
-L:E:BRAKE
-L:F:FLOWER
-?:[EQU $QUEST71 Finished FailedDone]
+############### Quest 22 - Orc Camp
+?:[EQU $QUEST22 Taken]
+L:z:QUEST_ENTER(22)
+?:[EQU $QUEST22 Untaken Taken Completed Failed]
+L:b:BUILDING_1(22)
+?:[EQU $QUEST22 Finished FailedDone]
+L:b:BUILDING_1(60)
+?:1
+############### Quest 60 - Tunnels
+?:[EQU $QUEST60 Taken]
+L:z:QUEST_ENTER(60)
+?:[EQU $QUEST60 Taken Completed Failed]
+L:b:BUILDING_1(60)
+?:[EQU $QUEST60 Finished FailedDone]
 L:b:BUILDING_1(70)
 ?:1
 ############### Quest 70 - Djinni's Cavern
@@ -52,14 +54,6 @@ L:x:QUEST_ENTER(70)
 ?:[EQU $QUEST70 Taken Completed Failed]
 L:b:BUILDING_1(70)
 ?:[EQU $QUEST70 Finished FailedDone]
-L:b:BUILDING_1(69)
-?:1
-############### Quest 69 - The Old Watchtower
-?:[EQU $QUEST69 Taken]
-L:z:QUEST_ENTER(69)
-?:[EQU $QUEST69 Taken Completed Failed]
-L:b:BUILDING_1(69)
-?:[EQU $QUEST69 Finished FailedDone]
 L:b:BUILDING_1(33)
 ?:1
 ############### Quest 33 - The Cloning Pits ###############
@@ -228,69 +222,69 @@ B:14:C:*:None
 
 ############### Town Layout ###############
 
-M:VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
-M:---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV^^;:VVVVVVVVVVVVVVVVVV
-M:-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV::-^^^::--:VVVVVVVVVVVVVVV
-M::::-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTT:--^^^^---:TTVVVVVVVVVVVVV
-M::--::T---------VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--T-:-^^^^^T:-:::-:VVVVVVVVVV
-M:--::-TT-T::T-----pVVVVVVVVVVVVVVVVVVVVVVVV##VVVVVVVVVVVV#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV------VVVVVVVVVVVVVVVVVVVVVVVTT:T-??-x^^-T:--T-::---VVVVVVV
-M:::----TT::TTT-::T--VVVVVVVVVVVVVVVVVVVVVVVW##VVVVVVVVWW#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV:::::----???TTTT-VVVVVVVVVVVVVVVVVVVT-:::T?-:^?--:-:T---TT---VVVVV
-M:T-T:T-:----T-TT--:--VVVVVVVVVVVVVVVVVVVVVVVW######WWWWW#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV------TTT:::T--??-TTT:-T---::VVVVVVVVVVVVVV-:-::---T:;TT::::-TT----TT-VVVV
-M::--TT-::-TT-----::-::VVVVVVVVVVVVVVVVVVVVVVWW#############VVVVWWWWWWW#WVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--------TT----TTT----T-----:::--TTT---VVVV:VVV::---T---TTT--TTT:TTT--T--TTTT-VVV
-M::--::--?--T-:T-TT--??-VVVVVVVVVVVVVVVVVVVVVVWWWW###y##########VVVWV##WVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--------::--TT:-T:?---:-T--??T---:-T:-T:::::--T::TT---TTTT::-:--:---:-------------VVV
-M::T--??::--::TT:T----??-VVVVVVVVVVVVVVVVVVVVVVWWWWWVWWWWWWWWWWWWWWWWWWWVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----T:?:--?--::--:--:---:?-T-:------:-T-::?:::TT:?T--:-TT-::-::TT-T-:--TTT--:TT----VV
-M:-T-??-:TT---:::--?--:::VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV---??-:-T-:----T-?TT--.-T?-:T-::-T---T::---:-TTT:-:T:-:-:TT-:-TT----TTT-::--::TTTTT-VV
-M:::--:T::-T:-??T-:?TT::--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----??--TT----T--T:-?--T::---T--TT----TT--TTT-----:T:TT---:---::------TT:--:;;?:-::---VV
-M::::-T-?-TT:TTTT::---------VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-------T--:--:---T---:::----?--?--:---:--?--?---:----:---:-T---TT:TT--TT-::TT--T::-T:-T--V
-M:-?---:::---??---::-------T---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-----:::---?T--T----T-::?T-TTT-?--?-T--::---:TTTT---:::T::TT---:---T-??---TT:::-----TT:::--:-T-V
-M::--T---:T::TT:?:?:?T----TT--::--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-----::TTT-----:--:::-T-----T---T--:--?----T-??---:---TT-T?-TTTT-:-T-:--TTT--??TTT-:-TTT::T--^^^^^TTT-::-T-V
-M::TT-:-T-TT--T:?:TTTTT:::T::--:-.--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV::-----T-:TTTT-----T:TT:::?::--TT?------T-----?--??--?-TTT-::T---T-------:T---T------T::TTTTT--^^^^###^^-:-:---V
-M:-:--??-TT-T:::::?::?:TT--T::--:::-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----:T----T-:T:::T------T:T::?::--:TTT:.T-TT:-T--?-----T?--::--:-TTTT---???-T--:---:::T--:::--:.......^^###^;-:---:--
-M:-?-T------??-------T---------------:-----VVVVVVVVVVVVVVVVVVVVVVVVV----------:::::---:::-T---::T::TT------TTT--:-::::--T:T:T:-:-:-T--:??----TTTT-----TT:-???--TT-TT---:-T-:-T::...TTT--..^^z^TT---TTT-T
-M:::T::---------------------------------------------------------------------------------:::----TT------------T-TTT-::--TTTTTT----::::---TT-T-----T-TTT-:TT---?-----:-?::;:---TT..:::T-----T:::--::---T--
-M:T-?-----------------------------------------------------------------------------------------------------------T::-::--TT----?-TT--TT-:T-TTT-T-TT---:-::--------T-::::-TTT:--..::-T:-TTT::-TTT:-TT-T--V
-M:-T?-------------------------------------------------------------------------------------------------------------------------?-?T:T-T-:-T::TT--TTT-TTT-:-TTT--TTT--::---:-:...---:?--:T--TT::---::T---V
-M::----####################################################################################################################----?TT:TT?---TTTTTTTT--T:-TTT---:T------T-::::...TT--T::-TTT---:-:?:T:--T--V
-M::T---#;;;;;;;;;;;;;,,,,.................................................................................................#--??TT:-TTT-T:T:-T:TwTT-T?T:T-:--TT--??--T---...:::-:T-TT-::---:-TT::TT----VV
-M::::--#;;;;;;;;;,,,,,,...............................................-..----------.-...----..--..........................#--TT:T?TT::T-TT-:TTTT-TTTT:T:TT----??---:--...-::-:-T--??::-::TT-:----?-T--VV
-M:??---#;;;;;,,,,,,.................................r.........s......-T--TTTTTTTT-T-T---T-TT--TT-.....#####...#####.......#--T::T??T:TTT::TTTTT:TT-TTT-TT:T:TT:-T::-...--T-:--TT::-?-TT?--::TT--???---VV
-M::::--#;;;,,,,..........................#####.........#####........-T-TT--######TT---TTTWWWWWTTT-....#############.......#----TTT-T--::-TT:TTT:--TT-?--::T-T?:T--T..::---T--T-:-:--:T-?:--::-:T--T---VV
-M:-::--#;;,,,..........................#########.....#########........-T--..o####--T-T-WWWWWWWW,T-.....##-------##........#--T::::--?:--TT:TT:TTT:T------T--::-?--..-?-:TT::TT--TT::::--::T::-:-??---VVV
-M::-:--#;,,,.......###############....###########...###########......-T-T.T######,,,,,,WWWWWWWWTT-.....##--###--##........#--:::::::TT-:::--TTTT-TT--??----TT-?--..:-T-T:----:-?:::-:T::-TT-:----T---VVV
-M:?::--#;,,........###############....###########...###########.......-T.T-TTTT--TT-T-,TWWWWWWTT-.....######j######.......#--:?:?:::-:T:T-----TTT::-------T-----..T:T::---T-:TT??:--T--:TTT:-;------VVVV
-M::TT--#,,...........#####a#####.......#########.....#########.......-T.T-T-T-TTTT---TTT-T-TT--.......#####...#####.......#--::::?:::-T:---?-----::T--T-?------..----:--T:TT::T??T--:T::-^^;;------VVVVV
-M:--T--#...#######.......................##i##.........##n##.........-T.T--T..............................................#--::---::T-T----?-??---TT:TTT?-?---..------TT-:T---T-?--::TT-^^^^-----VVVVVVV
-M:-T:--#...######g...................................................-T...................................................#--------:TT--TT-----?---?::T:--?--..--?-----T:T:TT--TT----::-.^^-----VVVVVVVV
-M::TT--#...#######........................................................................................................#---TT--::-T-T::::-------TTTT-----..-----------?::--?::--TT-:..------VVVVVVVVV
-M::TT--#...###############..................................................#####....##...##..###...###.....#####.........#------------:-:--TT----T---TT---..-----?-?--:::-::T?---TTTTT.::....VVVVVVVVVV
-M:-T:--#......############.............................###########........#########.#########.#########....#######........#--------?---:?------T------TTT-..--?-::----::?::---T--..........---VVVVVVVVVV
-M:T:---#......############........T-####-T...........###############......#########.#########.#########...#########.......#---?:---?-?-----:---??--T------.------------...........TT--TT----TVVVVVVVVVVV
-M:TT---#......############.......-##VVVV##-.........####..........###.....####2####.####3####.####5####...####8####.......#---?--?-------??--T--T?::-??--...............::::-::--TT-??---T-TTVVVVVVVVVVV
-M:TT---#......#########b.........#VVVVVVVV#.........c##............##......................................................--???-----?----??-.............--TTTT-------::::-:::-T.TT--T-T:TTVVVVVVVVVVVV
-M:T?---#......#########b!........#VVVVVVVV#..........##............##.........................................................................--??---????--TT-T-------::?-:?::??-::-TT---:T-VVVVVVVVVVVV
-M::T---#......#########b.........#VVVVVVVV#.........q##............##......................................................--.--??----?--??---????-?--:?:---:--T-------::?:::?-?::??T??T-TT-VVVVVVVVVVVV
-M:TT---#......#########b.........#VVVVVVVV#.........c##............##...............................######.......####.....#--.-??--????-??-??---?--TT:?--T--TT---T--?---:::::TT--TTT-TT-T---VVVVVVVVVVVV
-M:T:---#......############.......-##VVVV##-.........####..........###.....####1####..###4###..####6##----#.......#######..#--.?-----?---?-?---??---??--:---::-T-:T-----:::::T-T-::T-TT:TTT-T-VVVVVVVVVVV
-M:--T--#......############........T-####-T...........###############......#########.#########.############........9#####..#--.?-?-??-----???---?::--::TT??TT?--T---TTTT--T-TT::TT::-::T:T:TT--VVVVVVVVVV
-M::T---#......############.............................###########........#########..###.###..#########..........#######..#--.---?-----VVVVVVVVVVVVVVVVVVVVVVVV??-TTTTTT-TT?T?--TT--:TTT:T?TT--VVVVVVVVV
-M:TT:--#...###############.......................................................................................####.....#--.??-?-?-VVWWWWWWWWWWWWWWWWWWWWWWWWVVVVVVVVTTT?---TT::--T--::T::-T??VVVVVVVV
-M:T-?--#...#######........................................................................................................#--.?---??VWWWWWWWWWWWWWWWWWWWVVVVWWWWWWWWWWWVVVTTT--T:TT-TT-::TTT--T?VVVVVVVV
-M:-T---#...######f........................................................................................................#--.-T--?-VWWWWWWWWWWWWWWWWWVV-T-TVWWWWWWWWW>WWWVVTT::T:T-::-TT:---TT?VVVVVVVV
-M:-TT--#...#######.......................................................####...####.##############.###.....###.###.......#--.TT-TT?VVVWWWWWWWWWWVVVVV-:--TTVWWWWWWWWWWWWWWVT::TTT--T--T-:--T-TT?VVVVVVV
-M:::T--#...........#######e#######..........#######...#######.###.###....###d...d###.##############.###...#####.#####.....#--.?:::-----VVVVVVVVVV-???---TT:-VVWWWWWWWWWWWWVV-TT----:TT-:?:TTT-----VVVVVV
-M:::T--#......#######################.......#####m.....h#####.###0###....#####d#####.###M...........###...#####7#####.....#--.?:T:T-??---::::--???-::--T--::--VVVVVVVVVVVV:TT-T-TT?----TT::---T---VVVVVV
-M:-----#......#######################.......#######...#######.#######....###########.##################...###########.....#--.TT--TT-?:-T-T-??T-T-:T-::TTTT--T---???----:::T-?:?----TT-?-:TT-TT---VVVVVV
-M:-T---#......####...###########............#######...#######.#######....###########.##################.....#######.......#--.---:--T:-T-T-TTT-TT-TT-T-T:--T-T-T--?TT-TT-TT------TT--???T----T----VVVVVV
-M::T---#..................................................................................................................#--.:-TT--T-T-TT--T-TTTTTT:-::::T-T--TTT??TT---:--:-TT--:---TT---::--:?VVVVVVV
-M::-T--######################################################+#############################################################--.T---?:---T:TTTTTTTTT-:::T?T--T::::-TT--::T-:-:-T:--::TT---T-?--T-:VVVVVVVV
-M:------------------------------------------------------:----.---------------------------------------------------------------.-??-----TT-T-T?T-::TTTTT---T-:-T---T-:-TTT-----T:TT--:-TT--T---T::VVVVVVVV
-M:---T-------------------------------------------------------.-------------------------------------------------------------..?----T--::--TTTTTTT-TT:T-T:T---T-T--T-?--??--T:-?-?---:----T-----:-VVVVVVVV
-M:--::-T-T-:::-TTT-TTTTT--??---------------------------------..-----------------------------:?----------------------------.--?-:------TTTT-T:T-TT-:T-T:::::T-TDD:---:??-------?--TT--------TT:---VVVVVVV
-M:--T-T:----TTT-::--T---TTT-:?:TT----??-TT:::??--:-TT--::::--T..::--?--T::-?:T??TT:?TTT--:::-TTT-:-::-TT-T-?:---TTT--T::-.-::-T-T-:-T-T-T-:T-:-T-T-T--T::TT-TDDDD:??:-??--?--T-::-T--?:T----T:TT-VVVVVVV
-M::---T::TTT--:T-:T-??T--?-TT-----???:T-------::-:-T--:.T-?--T-..TTTT:::TT-??::?-::TTTT:-:--T:::-T::-TT--T--::...........T---T--T---::TTT-T---T--TT---TT--T--EEDD-----T-::?-----T:--:TT:::-----T--VVVVVV
-M::TT-T-??-::T::-T--T--T:-::--TTTT-TT::T--?TT?-?--:-?:---::TT---.....-TTT?:-:-:---TTT:TTT----TT::---?:-TTT-....TTTT-:??T?-----TT-T-T-T-T--T-::-TTT-T--T-T--??-EF-?--??---?----?TT:::TT??????T------VVVVV
-M::T-TTTT--TT-TTT??-T-T??:T--T----??-TT---?TT?--T--?-:-:-T::---TTT--........---??T?TTTT:TT--TTT:-TT:---T-...---TT::---::-T-:::TT--T-::T-----T-T----T--T--:-????-?---?------?--?---:-T???T????T------VVVV
-M:-TT:-T-----T---T-?-::--T---T-:?::--T----:--:-T--:---T---T-----::TT::TT---.....::::TTTTT-........T::T-...--T----?-T-TT----??------T-T-------TTTT--TTT--T::----::T-:?-???--?-::----TT?????T??T-------VVV
-M:--------T--:::---??-T-:::-T--?---::-:::-T?:?-::--::-?:-::---??-:TTT::-?-T--::............:::T::.......::TT-?T?::-TT-::T---T?--T------T-T-T-T---T-T---?-T---?--:---?-------:--??--TT???T????T-------VVV
-M:-:::?:::--::-:-T--::-:-?:--::-??-??---:-TT??-:-?------T--------?-?:---?:TT--??-::-TTT:::::??:?:::T-TT--T--?----T--------:------T-TTTT-------::---T-TT?--T-?----?------::--?-------TT??????T--------:VV
-M:::-??----::----T-:::--::::----?----::::--::------???::---T--:::TT-:::?::--::TT--TTTTTTT--:::-:::-TT----:::-::------T-??T-------::::-------:::-:::::-----::-T-:::::-??---::::??-----::::-------::--:::V
+M:VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV---------
+M:---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV^^;:--------
+M:-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV::-^^^::--:-----
+M::::-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVTT:--^^^^---:TT---
+M::--::T---------VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--T-:-^^^^^T:-:::-:
+M:--::-TT-T::T-----pVVVVVVVVVVVVVVVVVVVVVVVV##VVVVVVVVVVVV#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV------VVVVVVVVVVVVVVVVVVVVVVVTT:T-??-x^^-T:--T-::
+M:::----TT::TTT-::T--VVVVVVVVVVVVVVVVVVVVVVVW##VVVVVVVVWW#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV:::::----???TTTT-VVVVVVVVVVVVVVVVVVVT-:::T?-:^?--:-:T---
+M:T-T:T-:----T-TT--:--VVVVVVVVVVVVVVVVVVVVVVVW######WWWWW#VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV------TTT:::T--??-TTT:-T---::VVVVVVVVVVVVVV-:-::---T:;TT::::-TT-
+M::--TT-::-TT-----::-::VVVVVVVVVVVVVVVVVVVVVVWW#############VVVVWWWWWWW#WVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--------TT----TTT----T-----:::--TTT---VVVV:VVV::---T---TTT--TTT:TTT--T
+M::--::--?--T-:T-TT--??-VVVVVVVVVVVVVVVVVVVVVVWWWW###y##########VVVWV##WVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV--------::--TT:-T:?---:-T--??T---:-T:-T:::::--T::TT---TTTT::-:--:---:------
+M::T--??::--::TT:T----??-VVVVVVVVVVVVVVVVVVVVVVWWWWWVWWWWWWWWWWWWWWWWWWWVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----T:?:--?--::--:--:---:?-T-:------:-T-::?:::TT:?T--:-TT-::-::TT-T-:--TTT-
+M:-T-??-:TT---:::--?--:::VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV---??-:-T-:----T-?TT--.-T?-:T-::-T---T::---:-TTT:-:T:-:-:TT-:-TT----TTT-::--
+M:::--:T::-T:-??T-:?TT::--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----??--TT----T--T:-?--T::---T--TT----TT--TTT-----:T:TT---:---::------TT:--:;;
+M::::-T-?-TT:TTTT::---------VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-------T--:--:---T---:::----?--?--:---:--?--?---:----:---:-T---TT:TT--TT-::TT--T
+M:-?---:::---??---::-------T---VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-----:::---?T--T----T-::?T-TTT-?--?-T--::---:TTTT---:::T::TT---:---T-??---TT:::-----TT
+M::--T---:T::TT:?:?:?T----TT--::--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV-----::TTT-----:--:::-T-----T---T--:--?----T-??---:---TT-T?-TTTT-:-T-:--TTT--??TTT-:-TTT::T^^^^^--
+M::TT-:-T-TT--T:?:TTTTT:::T::--:-.--VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV::-----T-:TTTT-----T:TT:::?::--TT?------T-----?--??--?-TTT-::T---T-------:T---T------T::TTTTT^^^^###^^
+M:-:--??-TT-T:::::?::?:TT--T::--:::-----VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV----:T----T-:T:::T------T:T::?::--:TTT:.T-TT:-T--?-----T?--::--:-TTTT---???-T--:---:::T--:::--:.....^^###^-
+M:-?-T------??-------T---------------:-----VVVVVVVVVVVVVVVVVVVVVVVVV----------:::::---:::-T---::T::TT------TTT--:-::::--T:T:T:-:-:-T--:??----TTTT-----TT:-???--TT-TT---:-T-:-T::...TTT..^^z^--
+M:::T::---------------------------------------------------------------------------------:::----TT------------T-TTT-::--TTTTTT----::::---TT-T-----T-TTT-:TT---?-----:-?::;:---TT..:::T-----T:::
+M:T-?-----------------------------------------------------------------------------------------------------------T::-::--TT----?-TT--TT-:T-TTT-T-TT---:-::--------T-::::-TTT:--..::-T:-TTT::-TT
+M:-T?-------------------------------------------------------------------------------------------------------------------------?-?T:T-T-:-T::TT--TTT-TTT-:-TTT--TTT--::---:-:...---:?--:T--TT::
+M::----####################################################################################################################----?TT:TT?---TTTTTTTT--T:-TTT---:T------T-::::...TT--T::-TTT---:-:
+M::T---#;;;;;;;;;;;;;,,,,.................................................................................................#--??TT:-TTT-T:T:-T:TwTT-T?T:T-:--TT--??--T---...:::-:T-TT-::---:-TT
+M::::--#;;;;;;;;;,,,,,,...............................................-..----------.-...----..--..........................#--TT:T?TT::T-TT-:TTTT-TTTT:T:TT----??---:--...-::-:-T--??::-::TT-:-
+M:??---#;;;;;,,,,,,.................................r.........s......-T--TTTTTTTT-T-T---T-TT--TT-.....#####...#####.......#--T::T??T:TTT::TTTTT:TT-TTT-TT:T:TT:-T::-...--T-:--TT::-?-TT?--::TT
+M::::--#;;;,,,,..........................#####.........#####........-T-TT--######TT---TTTWWWWWTTT-....#############.......#----TTT-T--::-TT:TTT:--TT-?--::T-T?:T--T..::---T--T-:-:--:T-?:--::-
+M:-::--#;;,,,..........................#########.....#########........-T--..o####--T-T-WWWWWWWW,T-.....##-------##........#--T::::--?:--TT:TT:TTT:T------T--::-?--..-?-:TT::TT--TT::::--::T::-
+M::-:--#;,,,.......###############....###########...###########......-T-T.T######,,,,,,WWWWWWWWTT-.....##--###--##........#--:::::::TT-:::--TTTT-TT--??----TT-?--..:-T-T:----:-?:::-:T::-TT-:-
+M:?::--#;,,........###############....###########...###########.......-T.T-TTTT--TT-T-,TWWWWWWTT-.....######j######.......#--:?:?:::-:T:T-----TTT::-------T-----..T:T::---T-:TT??:--T--:TTT:-;
+M::TT--#,,...........#####a#####.......#########.....#########.......-T.T-T-T-TTTT---TTT-T-TT--.......#####...#####.......#--::::?:::-T:---?-----::T--T-?------..----:--T:TT::T??T--:T::-^^;;-
+M:--T--#...#######.......................##i##.........##n##.........-T.T--T..............................................#--::---::T-T----?-??---TT:TTT?-?---..------TT-:T---T-?--::TT-^^^^--
+M:-T:--#...######g...................................................-T...................................................#--------:TT--TT-----?---?::T:--?--..--?-----T:T:TT--TT----::-.^^---
+M::TT--#...#######........................................................................................................#---TT--::-T-T::::-------TTTT-----..-----------?::--?::--TT-:..-----
+M::TT--#...###############..................................................#####....##...##..###...###.....#####.........#------------:-:--TT----T---TT---..-----?-?--:::-::T?---TTTTT.::....
+M:-T:--#......############.............................###########........#########.#########.#########....#######........#--------?---:?------T------TTT-..--?-::----::?::---T--..........---
+M:T:---#......############........T-####-T...........###############......#########.#########.#########...#########.......#---?:---?-?-----:---??--T------.------------...........TT--TT----TV
+M:TT---#......############.......-##VVVV##-.........####..........###.....####2####.####3####.####5####...####8####.......#---?--?-------??--T--T?::-??--...............::::-::--TT-??---T-TTV
+M:TT---#......#########b.........#VVVVVVVV#.........c##............##......................................................--???-----?----??-.............--TTTT-------::::-:::-T.TT--T-T:TTVV
+M:T?---#......#########b!........#VVVVVVVV#..........##............##.........................................................................--??---????--TT-T-------::?-:?::??-::-TT---:T-VV
+M::T---#......#########b.........#VVVVVVVV#.........q##............##......................................................--.--??----?--??---????-?--:?:---:--T-------::?:::?-?::??T??T-TT-VV
+M:TT---#......#########b.........#VVVVVVVV#.........c##............##...............................######.......####.....#--.-??--????-??-??---?--TT:?--T--TT---T--?---:::::TT--TTT-TT-T---VV
+M:T:---#......############.......-##VVVV##-.........####..........###.....####1####..###4###..####6##----#.......#######..#--.?-----?---?-?---??---??--:---::-T-:T-----:::::T-T-::T-TT:TTT-T-V
+M:--T--#......############........T-####-T...........###############......#########.#########.############........9#####..#--.?-?-??-----???---?::--::TT??TT?--T---TTTT--T-TT::TT::-::T:T:TT--
+M::T---#......############.............................###########........#########..###.###..#########..........#######..#--.---?-----VVVVVVVVVVVVVVVVVVVVVVVV??-TTTTTT-TT?T?--TT--:TTT:T?TT-
+M:TT:--#...###############.......................................................................................####.....#--.??-?-?-VVWWWWWWWWWWWWWWWWWWWWWWWWVVVVVVVVTTT?---TT::--T--::T::-T
+M:T-?--#...#######........................................................................................................#--.?---??VWWWWWWWWWWWWWWWWWWWVVVVWWWWWWWWWWWVVVTTT--T:TT-TT-::TTT--
+M:-T---#...######f........................................................................................................#--.-T--?-VWWWWWWWWWWWWWWWWWVV-T-TVWWWWWWWWW>WWWVVTT::T:T-::-TT:---T
+M:-TT--#...#######.......................................................####...####.##############.###.....###.###.......#--.TT-TT?VVVWWWWWWWWWWVVVVV-:--TTVWWWWWWWWWWWWWWVT::TTT--T--T-:--T-
+M:::T--#...........#######e#######..........#######...#######.###.###....###d...d###.##############.###...#####.#####.....#--.?:::-----VVVVVVVVVV-???---TT:-VVWWWWWWWWWWWWVV-TT----:TT-:?:TTT-
+M:::T--#......#######################.......#####m.....h#####.###0###....#####d#####.###M...........###...#####7#####.....#--.?:T:T-??---::::--???-::--T--::--VVVVVVVVVVVV:TT-T-TT?----TT::---
+M:-----#......#######################.......#######...#######.#######....###########.##################...###########.....#--.TT--TT-?:-T-T-??T-T-:T-::TTTT--T---???----:::T-?:?----TT-?-:TT-T
+M:-T---#......####...###########............#######...#######.#######....###########.##################.....#######.......#--.---:--T:-T-T-TTT-TT-TT-T-T:--T-T-T--?TT-TT-TT------TT--???T----T
+M::T---#..................................................................................................................#--.:-TT--T-T-TT--T-TTTTTT:-::::T-T--TTT??TT---:--:-TT--:---TT---::-
+M::-T--####################################################################################################################--.T---?:---T:TTTTTTTTT-:::T?T--T::::-TT--::T-:-:-T:--::TT---T-?--T
+M:------------------------------------------------------:--------------------------------------------------------------------.-??-----TT-T-T?T-::TTTTT---T-:-T---T-:-TTT-----T:TT--:-TT--T---T
+M:---T---------------------------------------------------------------------------------------------------------------------..?----T--::--TTTTTTT-TT:T-T:T---T-T--T-?--??--T:-?-?---:----T-----
+M:--::-T-T-:::-TTT-TTTTT--??----------------------------------------------------------------:?----------------------------.--?-:------TTTT-T:T-TT-:T-T:::::T-TDD:---:??-------?--TT--------TT:
+M:--T-T:----TTT-::--T---TTT-:?:TT----??-TT:::??--:-TT--::::--T--::--?--T::-?:T??TT:?TTT--:::-TTT-:-::-TT-T-?:---TTT--T::-.-::-T-T-:-T-T-T-:T-:-T-T-T--T::TT-TDDDD:??:-??--?--T-::-T--?:T----T:
+M::---T::TTT--:T-:T-??T--?-TT-----???:T-------::-:-T--:.T-?--T---TTTT:::TT-??::?-::TTTT:-:--T:::-T::-TT--T--::...........T---T--T---::TTT-T---T--TT---TT--T--EEDD-----T-::?-----T:--:TT:::----
+M::TT-T-??-::T::-T--T--T:-::--TTTT-TT::T--?TT?-?--:-?:---::TT---------TTT?:-:-:---TTT:TTT----TT::---?:-TTT-....TTTT-:??T?-----TT-T-T-T-T--T-::-TTT-T--T-T--??-EF-?--??---?----?TT:::TT??????T-
+M::T-TTTT--TT-TTT??-T-T??:T--T----??-TT---?TT?--T--?-:-:-T::---TTT-------------??T?TTTT:TT--TTT:-TT:---T-...---TT::---::-T-:::TT--T-::T-----T-T----T--T--:-????-?---?------?--?---:-T???T????T
+M:-TT:-T-----T---T-?-::--T---T-:?::--T----:--:-T--:---T---T-----::TT::TT--------::::TTTTT-........T::T-...--T----?-T-TT----??------T-T-------TTTT--TTT--T::----::T-:?-???--?-::----TT?????T??T
+M:--------T--:::---??-T-:::-T--?---::-:::-T?:?-::--::-?:-::---??-:TTT::-?-T--::............:::T::.......::TT-?T?::-TT-::T---T?--T------T-T-T-T---T-T---?-T---?--:---?-------:--??--TT???T????T
+M:-:::?:::--::-:-T--::-:-?:--::-??-??---:-TT??-:-?------T--------?-?:---?:TT-...-::-TTT:::::??:?:::T-TT--T--?----T--------:------T-TTTT-------::---T-TT?--T-?----?------::--?-------TT??????T-
+M:::-??----::----T-:::--::::----?----::::--::------???::---T--:::TT-:::?::--..TT--TTTTTTT--:::-:::-TT----:::-::------T-??T-------::::-------:::-:::::-----::-T-:::::-??---::::??-----::::-----

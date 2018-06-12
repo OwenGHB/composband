@@ -8,10 +8,10 @@ T:TOWN:NORMAL:NO_ROTATE
 
 L:+:CLOSED_DOOR
 
-# Default for Quest 22 = entrance is dirt
-L:v:DIRT
+# Default for Quest 71 = entrance is tree
+L:v:TREE
 
-# Default for Quest 60 = entrance is mountain
+# Default for Quest 69 = entrance is mountain
 L:u:MOUNTAIN
 
 # Default for Quest 75 = entrance is shallow water
@@ -63,21 +63,21 @@ L:n:BUILDING_13(0)
 
 ################## Mayor's Quests ##############
 
-############### Quest 22 - Orc Camp
-?:[EQU $QUEST22 Taken]
-L:v:QUEST_ENTER(22)
-?:[EQU $QUEST22 Untaken Taken Completed Failed]
-L:b:BUILDING_1(22)
-?:[EQU $QUEST22 Finished FailedDone]
-L:b:BUILDING_1(60)
+############### Quest 71 - Shadow Fairies
+?:[EQU $QUEST71 Taken]
+L:v:QUEST_ENTER(71)
+?:[EQU $QUEST71 Untaken Taken Completed Failed]
+L:b:BUILDING_1(71)
+?:[EQU $QUEST71 Finished FailedDone]
+L:b:BUILDING_1(70)
 ?:1
-############### Quest 60 - Tunnels
-?:[EQU $QUEST60 Taken]
-L:u:QUEST_ENTER(60)
-?:[EQU $QUEST60 Taken Completed Failed]
-L:b:BUILDING_1(60)
-?:[EQU $QUEST60 Finished FailedDone]
-L:b:BUILDING_1(68)
+############### Quest 69 - The Old Watchtower
+?:[EQU $QUEST69 Taken]
+L:u:QUEST_ENTER(69)
+?:[EQU $QUEST69 Taken Completed Failed]
+L:b:BUILDING_1(69)
+?:[EQU $QUEST69 Finished FailedDone]
+L:b:BUILDING_1(33)
 ?:1
 ############### Quest 68 - Dinosaur Quest
 ?:[EQU $QUEST68 Taken]
@@ -249,9 +249,9 @@ M:    #......######.#T.....#######.......TT#####T---T.....#########.......?T####
 M:    #......######7#T.....#######.......T-##l##-----.....#########.......??####??...........#----#.....T##8--TT......####....####....#                                                 T    ^^        -
 M:    #......########T.....#######.......-T-T.-------.....#########.......?T####??.......#####----#.....T###T-TT......############....#                                                     ^^^^       -
 M:    #......TTTTTTTTT.....-------........................---------.......????????.......##########.....TTTTT-TT......############....#                                               TT    ^^^^^      -
-M:    .................................................................................................................................                                               T      ^^^^^     -
+M:    .................................................................................................................................                                               Tv     ^^^^^     -
 M:    #...............................................................................................................................#                                                 ,T TT^^^^^^    -
-M:   ###.###########################...##############################...############################...#############################.###                                              T::v,,T:^u^^^    -
+M:   ###.###########################...##############################...############################...#############################.###                                              T::,,,T:^u^^^    -
 M:    #                              .                                .                              .                              . #                                                 ,,,,:T:^^^     :
 M:                                   ................................................................................................                                                       -:::^^     :
 M:                                                                                                   .                                                                                      ----^      -
