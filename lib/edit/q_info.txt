@@ -94,7 +94,7 @@ N:21:55:Doom Quest II (Angwil)
 T:TOWN | GENERATE
 F:q_doom2.txt
 
-N:22:15:The Orc Camp (Anambar)
+N:22:15:The Orc Camp (Thalos)
 T:TOWN | GENERATE
 F:q_orcs.txt
 
@@ -240,7 +240,7 @@ N:55:50:The Underground City (Morivant)
 T:TOWN | GENERATE
 F:q_underground.txt
 
-N:60:25:Clear the Tunnels (Anambar)
+N:60:25:Clear the Tunnels (Thalos)
 T:TOWN | GENERATE
 F:q_tunnels.txt
 
@@ -317,7 +317,7 @@ N:68:33:Dinosaur Quest (Anambar)
 T:TOWN | GENERATE
 F:q_dino.txt
 
-N:69:32:The Old Watchtower (Thalos)
+N:69:32:The Old Watchtower (Anambar)
 T:TOWN | GENERATE
 F:q_wtower.txt
 
@@ -325,7 +325,7 @@ N:70:27:Djinni's Cavern (Thalos)
 T:TOWN | GENERATE
 F:q_djinni.txt
 
-N:71:20:Shadow Fairies (Thalos)
+N:71:20:Shadow Fairies (Anambar)
 T:TOWN | GENERATE
 F:q_fairy.txt
 

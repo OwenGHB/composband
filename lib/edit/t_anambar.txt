@@ -69,7 +69,7 @@ L:v:QUEST_ENTER(71)
 ?:[EQU $QUEST71 Untaken Taken Completed Failed]
 L:b:BUILDING_1(71)
 ?:[EQU $QUEST71 Finished FailedDone]
-L:b:BUILDING_1(70)
+L:b:BUILDING_1(69)
 ?:1
 ############### Quest 69 - The Old Watchtower
 ?:[EQU $QUEST69 Taken]
