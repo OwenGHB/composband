@@ -77,7 +77,7 @@ L:u:QUEST_ENTER(69)
 ?:[EQU $QUEST69 Taken Completed Failed]
 L:b:BUILDING_1(69)
 ?:[EQU $QUEST69 Finished FailedDone]
-L:b:BUILDING_1(33)
+L:b:BUILDING_1(68)
 ?:1
 ############### Quest 68 - Dinosaur Quest
 ?:[EQU $QUEST68 Taken]
