@@ -537,7 +537,7 @@ void chaos_warrior_reward(void)
 	effect = chaos_rewards[p_ptr->chaos_patron][type];
 	chaos_warrior_event(effect);
 }
-void chaos_warrior_event(effect)
+void chaos_warrior_event(int effect)
 {
 		char        wrath_reason[32] = "";
 		int         dummy = 0, dummy2 = 0;
@@ -957,7 +957,6 @@ static void _gain_level(int new_level)
 	/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
 	/* Expectation for number of muts by CL50 should be unchanged, but expectation of 'good' rewards has been lowered */
 	/* Punishments are rare but still present */
-	int effect = 0;
 	if (new_level > 1)
 	{
 		if (one_in_(6))
