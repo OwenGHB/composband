@@ -6030,6 +6030,10 @@ int take_hit(int damage_type, int damage, cptr hit_from)
     {
         virtue_add(VIRTUE_SACRIFICE, 1);
         virtue_add(VIRTUE_CHANCE, 2);
+		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+		{
+			chaos_choose_effect(PATRON_CHANCE);
+		}
     }
 
     /* Dead player */

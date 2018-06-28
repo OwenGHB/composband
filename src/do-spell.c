@@ -319,6 +319,11 @@ void cast_wonder(int dir)
         sleep_monsters(p_ptr->lev);
         hp_player(300);
     }
+
+	if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+	{
+		chaos_choose_effect(PATRON_CHANCE);
+	}
 }
 
 

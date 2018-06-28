@@ -5727,6 +5727,18 @@ enum effect_e
 #define LAWYER_HACK_MANA 2
 #define LAWYER_HACK_FAILRATE 3
 
+/* patron interaction triggers */
+#define PATRON_HIT 1
+#define PATRON_KILL_WEAK 2
+#define PATRON_KILL 3
+#define PATRON_KILL_UNIQUE 4
+#define PATRON_KILL_FAMOUS 5
+#define PATRON_KILL_GOOD 6
+#define PATRON_KILL_DEMON 7
+#define PATRON_CAST 8
+#define PATRON_VILLIANY 9
+#define PATRON_CHANCE 10
+
 enum dragon_realm_e
 {
     DRAGON_REALM_NONE, /* Steel dragons and upgrading old savefiles */

@@ -1180,6 +1180,12 @@ void do_cmd_cast(void)
 
     /* Window stuff */
     p_ptr->window |= (PW_SPELL);
+
+	/* patron hook */
+	if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT)) 
+	{
+		chaos_choose_effect(PATRON_CAST);
+	}
 }
 
 /*

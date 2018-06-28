@@ -76,7 +76,11 @@ bool teleport_away(int m_idx, int dis, u32b mode)
         (((p_ptr->chp * 10) / p_ptr->mhp) > 5) &&
         (4+randint1(5) < ((p_ptr->chp * 10) / p_ptr->mhp)))
     {
-        virtue_add(VIRTUE_VALOUR, -1);
+		virtue_add(VIRTUE_VALOUR, -1);
+		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+		{
+			chaos_choose_effect(PATRON_VILLIANY);
+		}
     }
 
     /* Look until done */

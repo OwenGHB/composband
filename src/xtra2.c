@@ -2766,6 +2766,35 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         /* Generate treasure */
         monster_death(m_idx, TRUE);
 
+		/* Chaos patrons take interest */
+		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+		{
+			if (r_ptr->flags1 & RF1_UNIQUE && (r_ptr->level + randint1(r_ptr->level) > p_ptr->lev * 2))
+			{
+				chaos_choose_effect(PATRON_KILL_FAMOUS);
+			}
+			else if (r_ptr->flags1 & RF1_UNIQUE)
+			{
+				chaos_choose_effect(PATRON_KILL_UNIQUE);
+			}
+			else if (r_ptr->flags3 & RF3_DEMON)
+			{
+				chaos_choose_effect(PATRON_KILL_DEMON);
+			}
+			else if (r_ptr->flags3 & RF3_GOOD)
+			{
+				chaos_choose_effect(PATRON_KILL_GOOD);
+			}
+			else if (r_ptr->level < (p_ptr->lev - 15))
+			{
+				chaos_choose_effect(PATRON_KILL_WEAK);
+			}
+			else
+			{
+				chaos_choose_effect(PATRON_KILL);
+			}
+		}
+
         /* Mega hack : replace IKETA to BIKETAL */
         if ((m_ptr->r_idx == MON_IKETA) &&
             !(p_ptr->inside_arena || p_ptr->inside_battle))

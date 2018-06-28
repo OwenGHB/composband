@@ -3088,7 +3088,9 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 
             if ((have_flag(flgs, OF_BRAND_CHAOS)) && one_in_(7))
             {
-                if (one_in_(10)) virtue_add(VIRTUE_CHANCE, 1);
+				if (one_in_(10)) {
+					virtue_add(VIRTUE_CHANCE, 1);
+				}
                 if (randint1(5) < 4) chaos_effect = 1;
                 else if (one_in_(5)) chaos_effect = 3;
             }
@@ -4165,6 +4167,19 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             {
                 death_scythe_miss(o_ptr, hand, mode);
             }
+
+			/* Will our chaos patron notice we're fighting? */
+			if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+			{
+				if (chaos_effect) 
+				{ 
+					chaos_choose_effect(PATRON_CHANCE); 
+				}
+				else
+				{
+					chaos_choose_effect(PATRON_HIT);
+				}
+			}
         }
         /* Player misses */
         else
@@ -4424,6 +4439,10 @@ bool py_attack(int y, int x, int mode)
                 virtue_add(VIRTUE_HONOUR, -1);
                 virtue_add(VIRTUE_JUSTICE, -1);
                 virtue_add(VIRTUE_COMPASSION, -1);
+				if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+				{
+					chaos_choose_effect(PATRON_VILLIANY);
+				}
             }
             else
             {
