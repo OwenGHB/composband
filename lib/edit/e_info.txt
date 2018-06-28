@@ -450,13 +450,13 @@ F:CHR | RES_FEAR
 
 N:91:(Crusade)
 T:DRAGON_ARMOR
-W:0:*:2
+W:0:*:1
 C:5:5:0:1
 F:STR | CHR | HOLD_LIFE
 
 N:92:(Death)
 T:DRAGON_ARMOR
-W:0:*:3
+W:0:*:1
 C:0:0:0:3
 F:STR | RES_NETHER
 
