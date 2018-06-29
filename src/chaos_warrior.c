@@ -334,7 +334,7 @@ void chaos_choose_effect(int reason)
 	if (reason) switch (reason)
 	{
 	case PATRON_HIT:
-		if (one_in_(343))
+		if (one_in_(243))
 		{
 			if (one_in_(169))
 			{
@@ -368,7 +368,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL:
-		if (one_in_(91))
+		if (one_in_(39))
 		{
 			if (one_in_(169))
 			{
@@ -385,7 +385,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_UNIQUE:
-		if (one_in_(7))
+		if (one_in_(3))
 		{
 			if (one_in_(169))
 			{
@@ -419,7 +419,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_GOOD:
-		if (one_in_(21))
+		if (one_in_(11))
 		{
 			if (one_in_(666))
 			{
@@ -436,7 +436,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_DEMON:
-		if (one_in_(39))
+		if (one_in_(27))
 		{
 			if (one_in_(13))
 			{
@@ -453,7 +453,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_CAST:
-		if (one_in_(169))
+		if (one_in_(131))
 		{
 			if (one_in_(169))
 			{
@@ -487,7 +487,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_CHANCE:
-		if (one_in_(39))
+		if (one_in_(33))
 		{
 			if (one_in_(63))
 			{
@@ -520,7 +520,7 @@ void chaos_warrior_punish(void)
 void chaos_warrior_random(void)
 {
 	int         type, effect;
-	type = randint1(5);
+	type = randint1(10);
 	if (type < 1) type = 1;
 	if (type > 10) type = 10;
 	type--;
@@ -530,11 +530,11 @@ void chaos_warrior_random(void)
 void chaos_warrior_reward(void)
 {
 	int         type, effect;
-	type = randint1(6);
+	type = randint1(8);
 	if (type < 1) type = 1;
-	if (type > 6) type = 6;
+	if (type > 8) type = 8;
 	type--;
-	if (type==5)
+	if (type>4)
 	{
 		int count;
 		count = mut_count(mut_unlocked_pred);
@@ -1003,13 +1003,17 @@ static void _gain_level(int new_level)
 	/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
 	if (new_level > 1)
 	{
-		if (one_in_(3))
+		if (one_in_(2))
 		{
 			chaos_warrior_reward();
 		}
 		else if (one_in_(13))
 		{
 			chaos_warrior_punish();
+		}
+		else
+		{
+			chaos_warrior_random();
 		}
 	}
 }
