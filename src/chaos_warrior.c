@@ -593,7 +593,7 @@ void chaos_warrior_event(int effect)
 				else
 				{
 					/* This is a temporary polymorph */
-					do_spell_chaos(28,SPELL_CAST);
+					do_spell(REALM_CHAOS,28,SPELL_CAST);
 				}
 				
 				break;
