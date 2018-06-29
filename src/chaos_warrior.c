@@ -334,7 +334,7 @@ void chaos_choose_effect(int reason)
 	if (reason) switch (reason)
 	{
 	case PATRON_HIT:
-		if (one_in_(666))
+		if (one_in_(343))
 		{
 			if (one_in_(169))
 			{
@@ -351,7 +351,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_WEAK:
-		if (one_in_(507))
+		if (one_in_(169))
 		{
 			if (one_in_(13))
 			{
@@ -368,7 +368,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL:
-		if (one_in_(343))
+		if (one_in_(91))
 		{
 			if (one_in_(169))
 			{
@@ -385,7 +385,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_UNIQUE:
-		if (one_in_(21))
+		if (one_in_(7))
 		{
 			if (one_in_(169))
 			{
@@ -402,7 +402,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_FAMOUS:
-		if (one_in_(3))
+		if (one_in_(2))
 		{
 			if (one_in_(169))
 			{
@@ -419,7 +419,7 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_GOOD:
-		if (one_in_(77))
+		if (one_in_(21))
 		{
 			if (one_in_(666))
 			{
@@ -436,40 +436,6 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_KILL_DEMON:
-		if (one_in_(91))
-		{
-			if (one_in_(13))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
-		}
-		break;
-	case PATRON_CAST:
-		if (one_in_(343))
-		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(147))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
-		}
-		break;
-	case PATRON_VILLIANY:
 		if (one_in_(39))
 		{
 			if (one_in_(13))
@@ -486,14 +452,48 @@ void chaos_choose_effect(int reason)
 			}
 		}
 		break;
+	case PATRON_CAST:
+		if (one_in_(169))
+		{
+			if (one_in_(169))
+			{
+				chaos_warrior_punish();
+			}
+			else if (one_in_(147))
+			{
+				chaos_warrior_reward();
+			}
+			else
+			{
+				chaos_warrior_random();
+			}
+		}
+		break;
+	case PATRON_VILLIANY:
+		if (one_in_(21))
+		{
+			if (one_in_(13))
+			{
+				chaos_warrior_punish();
+			}
+			else if (one_in_(7))
+			{
+				chaos_warrior_reward();
+			}
+			else
+			{
+				chaos_warrior_random();
+			}
+		}
+		break;
 	case PATRON_CHANCE:
-		if (one_in_(49))
+		if (one_in_(39))
 		{
 			if (one_in_(63))
 			{
 				chaos_warrior_punish();
 			}
-			else if (one_in_(9))
+			else if (one_in_(7))
 			{
 				chaos_warrior_reward();
 			}
