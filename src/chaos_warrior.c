@@ -331,180 +331,86 @@ int chaos_rewards[MAX_PATRON][5] =
 /* we call this whenever a chaos warrior does something so all the numbers can go in the same piece of code for ease of adjustment*/
 void chaos_choose_effect(int reason)
 {
+	bool do_affect = FALSE;
 	if (reason) switch (reason)
 	{
 	case PATRON_HIT:
 		if (one_in_(243))
 		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(147))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL_WEAK:
 		if (one_in_(169))
 		{
-			if (one_in_(13))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(49))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL:
-		if (one_in_(39))
+		if (one_in_(49))
 		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(39))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL_UNIQUE:
 		if (one_in_(3))
 		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL_FAMOUS:
 		if (one_in_(2))
 		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(3))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL_GOOD:
 		if (one_in_(11))
 		{
-			if (one_in_(666))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_KILL_DEMON:
 		if (one_in_(27))
 		{
-			if (one_in_(13))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_CAST:
 		if (one_in_(131))
 		{
-			if (one_in_(169))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(147))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_VILLIANY:
 		if (one_in_(21))
 		{
-			if (one_in_(13))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	case PATRON_CHANCE:
 		if (one_in_(33))
 		{
-			if (one_in_(63))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			do_affect = TRUE;
 		}
 		break;
 	default:
 		break;
+	}
+	if (do_affect) 
+	{
+		if (one_in_(13))
+		{
+			chaos_warrior_punish();
+		}
+		else if (one_in_(7))
+		{
+			chaos_warrior_reward();
+		}
+		else
+		{
+			chaos_warrior_random();
+		}
 	}
 }
 void chaos_warrior_punish(void)
