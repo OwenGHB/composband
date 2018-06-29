@@ -530,12 +530,50 @@ void chaos_warrior_random(void)
 void chaos_warrior_reward(void)
 {
 	int         type, effect;
-	type = randint1(5);
+	type = randint1(6);
 	if (type < 1) type = 1;
-	if (type > 5) type = 5;
+	if (type > 6) type = 6;
 	type--;
-	effect = chaos_rewards[p_ptr->chaos_patron][type];
-	chaos_warrior_event(effect);
+	if (type==5)
+	{
+		int count;
+		count = mut_count(mut_unlocked_pred);
+		if (count>randint1(5))
+		{
+			if (one_in_(3))
+			{
+				int newmuts = 1;
+				msg_format("%^s rewards you with new mutations!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+				while (one_in_(newmuts)) 
+				{
+					mut_lose_random(NULL);
+					mut_gain_random(NULL);
+					newmuts++;
+				}
+			}
+			else
+			{
+				msg_format("%^s rewards you with a new mutation!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+			}
+		}
+		else
+		{
+			{
+				msg_format("%^s rewards you with a mutation!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+			}
+		}
+	}
+	else 
+	{
+		effect = chaos_rewards[p_ptr->chaos_patron][type];
+		chaos_warrior_event(effect);
+	}
 }
 void chaos_warrior_event(int effect)
 {
@@ -548,8 +586,16 @@ void chaos_warrior_event(int effect)
 				msg_format("The voice of %s booms out:",
 					chaos_patrons[p_ptr->chaos_patron]);
 				msg_print("'Thou needst a new form, mortal!'");
-
-				do_poly_self();
+				if (one_in_(5))
+				{
+					do_poly_self();
+				}
+				else
+				{
+					/* This is a temporary polymorph */
+					do_spell_chaos(28,SPELL_CAST);
+				}
+				
 				break;
 			case REW_GAIN_EXP:
 				msg_format("The voice of %s booms out:",
@@ -955,18 +1001,9 @@ static void _gain_level(int new_level)
 {
 	/* Chaos warriors can expect a certain number of rewards and mutations levelling up */
 	/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
-	/* Expectation for number of muts by CL50 should be unchanged, but expectation of 'good' rewards has been lowered */
-	/* Punishments are rare but still present */
 	if (new_level > 1)
 	{
-		if (one_in_(6))
-		{
-			msg_format("%^s rewards you with a mutation!",
-				chaos_patrons[p_ptr->chaos_patron]);
-
-			mut_gain_random(NULL);
-		}
-		else if (one_in_(4))
+		if (one_in_(3))
 		{
 			chaos_warrior_reward();
 		}
