@@ -1376,6 +1376,7 @@ static bool is_autopick_aux(object_type *o_ptr, autopick_type *entry, cptr o_nam
             {
             case FEEL_AWFUL:
             case FEEL_EXCELLENT:
+			case FEEL_EGO:
                 break;
             default:
                 return FALSE;

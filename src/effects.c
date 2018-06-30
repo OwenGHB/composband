@@ -6148,6 +6148,14 @@ int take_hit(int damage_type, int damage, cptr hit_from)
     {
         change_wild_mode();
     }
+	else
+	{
+		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+		{
+			if (p_ptr->mhp/(old_chp-p_ptr->chp)<=10)
+				chaos_choose_effect(PATRON_TAKE_HIT);
+		}
+	}
     return damage;
 }
 

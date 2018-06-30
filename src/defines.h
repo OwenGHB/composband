@@ -5738,6 +5738,7 @@ enum effect_e
 #define PATRON_CAST 8
 #define PATRON_VILLIANY 9
 #define PATRON_CHANCE 10
+#define PATRON_TAKE_HIT 11
 
 enum dragon_realm_e
 {
