@@ -3392,7 +3392,6 @@ bool create_replacement_art(int a_idx, object_type *o_ptr)
     o_ptr->name3 = a_idx;
     o_ptr->weight = forge1.weight;
     o_ptr->level = a_ptr->level;
-	o_ptr->feeling = FEEL_ARTIFACT;
 
     return TRUE;
 }

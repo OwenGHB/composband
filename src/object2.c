@@ -4249,6 +4249,7 @@ s16b drop_near(object_type *j_ptr, int chance, int y, int x)
         j_ptr->next_o_idx = c_ptr->o_idx;
 
 		/* Be sure we have a pseudo-id marker */
+		obj_sense(j_ptr);
 
         /* Place the object */
         c_ptr->o_idx = o_idx;
