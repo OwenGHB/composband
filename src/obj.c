@@ -53,7 +53,7 @@ void obj_free(obj_ptr obj)
 void obj_sense(obj_ptr obj)
 {
 	object_kind *k_ptr = &k_info[obj->k_idx];
-
+	if (obj_is_known) return;
 	if (obj_can_sense(obj)) {
 		if ((obj->to_a - k_ptr->to_a) > 0 || (obj->to_d - k_ptr->to_d) + (obj->to_h - k_ptr->to_h) > 0)
 		{
