@@ -416,9 +416,9 @@ void chaos_choose_effect(int reason)
 		}
 		break;
 	case PATRON_TAKE_HIT:
-		if (one_in_(11))
+		if (one_in_(13))
 		{
-			do_affect = 2;
+			do_affect = 1;
 		}
 		break;
 	default:
@@ -537,7 +537,7 @@ void chaos_warrior_event(int effect)
 				msg_format("The voice of %s booms out:",
 					chaos_patrons[p_ptr->chaos_patron]);
 				msg_print("'Thou needst a new form, mortal!'");
-				if (one_in_(5))
+				if (one_in_(6))
 				{
 					do_poly_self();
 				}
