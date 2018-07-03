@@ -1402,7 +1402,46 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 					mult = 20;
 				}
 			}
+            if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
+            {
+                if (mult < 15) mult = 25;
+                else if (mult < 50) mult = MIN(50, mult+20);
+            }
+            if (mode == HISSATSU_UNDEAD)
+            {
+                if (r_ptr->flags3 & RF3_UNDEAD)
+                {
+                    mon_lore_3(m_ptr, RF3_UNDEAD);
+                    if (mult == 10) mult = 70;
+                    else if (mult < 140) mult = MIN(140, mult+60);
+                }
+                if (mult == 10) mult = 40;
+                else if (mult < 60) mult = MIN(60, mult+30);
+            }
+            if ((mode == HISSATSU_SEKIRYUKA) && p_ptr->cut && monster_living(r_ptr))
+            {
+                int tmp = MIN(100, MAX(10, p_ptr->cut / 10));
+                if (mult < tmp) mult = tmp;
+            }
+            if ((mode == HISSATSU_HAGAN) && (r_ptr->flags3 & RF3_HURT_ROCK))
+            {
+                mon_lore_3(m_ptr, RF3_HURT_ROCK);
+                if (mult == 10) mult = 40;
+                else if (mult < 60) mult = 60;
+            }
+            if (p_ptr->tim_slay_sentient && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
+            {
+                if (r_ptr->flags3 & RF3_NO_STUN)
+                {
+                    mon_lore_3(m_ptr, RF3_NO_STUN);
+                }
+                else
+                {
+                    if (mult < 20) mult = 20;
+                }
+            }
 
+			/*damage bonus feedback on attacks (except force)*/
 			if (mult > 10)
 			{
 				if (mult > 30)
@@ -1470,7 +1509,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 					msg_format("It is <color:y>dazzled</color>.");
 					break;
 				default:
-					switch (randint1(6)) 
+					switch (randint1(6))
 					{
 					case 1:
 						msg_format("It cringes.");
@@ -1495,44 +1534,6 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 				}
 			}
 
-            if ((mode == HISSATSU_ZANMA) && !monster_living(r_ptr) && (r_ptr->flags3 & RF3_EVIL))
-            {
-                if (mult < 15) mult = 25;
-                else if (mult < 50) mult = MIN(50, mult+20);
-            }
-            if (mode == HISSATSU_UNDEAD)
-            {
-                if (r_ptr->flags3 & RF3_UNDEAD)
-                {
-                    mon_lore_3(m_ptr, RF3_UNDEAD);
-                    if (mult == 10) mult = 70;
-                    else if (mult < 140) mult = MIN(140, mult+60);
-                }
-                if (mult == 10) mult = 40;
-                else if (mult < 60) mult = MIN(60, mult+30);
-            }
-            if ((mode == HISSATSU_SEKIRYUKA) && p_ptr->cut && monster_living(r_ptr))
-            {
-                int tmp = MIN(100, MAX(10, p_ptr->cut / 10));
-                if (mult < tmp) mult = tmp;
-            }
-            if ((mode == HISSATSU_HAGAN) && (r_ptr->flags3 & RF3_HURT_ROCK))
-            {
-                mon_lore_3(m_ptr, RF3_HURT_ROCK);
-                if (mult == 10) mult = 40;
-                else if (mult < 60) mult = 60;
-            }
-            if (p_ptr->tim_slay_sentient && p_ptr->weapon_info[hand].wield_how == WIELD_TWO_HANDS)
-            {
-                if (r_ptr->flags3 & RF3_NO_STUN)
-                {
-                    mon_lore_3(m_ptr, RF3_NO_STUN);
-                }
-                else
-                {
-                    if (mult < 20) mult = 20;
-                }
-            }
             if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
             {
                 int          cost = 0;
