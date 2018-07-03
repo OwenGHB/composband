@@ -944,8 +944,8 @@ race_t *wood_elf_get_race(void)
                     "power of Nature Awareness.";
 
         me.stats[A_STR] = -1;
-        me.stats[A_INT] =  1;
-        me.stats[A_WIS] =  2;
+        me.stats[A_INT] =  2;
+        me.stats[A_WIS] =  1;
         me.stats[A_DEX] =  1;
         me.stats[A_CON] = -1;
         me.stats[A_CHR] =  1;
