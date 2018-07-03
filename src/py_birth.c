@@ -257,7 +257,7 @@ static int _welcome_ui(void)
             p_ptr->realm1 = previous_char.realm1;
             p_ptr->realm2 = previous_char.realm2;
             p_ptr->dragon_realm = previous_char.dragon_realm;
-			p_ptr->chaos_patron = p_ptr->chaos_patron = randint0(MAX_PATRON); /*until we break savefiles let's randomise the quickstart*/
+			p_ptr->chaos_patron = randint0(MAX_PATRON); /*until we break savefiles let's randomise the quickstart*/
             p_ptr->au = previous_char.au;
             for (i = 0; i < MAX_STATS; i++)
             {
