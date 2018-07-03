@@ -51,7 +51,7 @@ static caster_info * _caster_info(void)
         me.encumbrance.weapon_pct = 33;
         me.encumbrance.enc_wgt = 1000;
         me.min_fail = 5;
-        me.options = CASTER_GLOVE_ENCUMBRANCE;
+        me.options = CASTER_ALLOW_DEC_MANA | CASTER_GLOVE_ENCUMBRANCE;
         init = TRUE;
     }
     return &me;

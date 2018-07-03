@@ -46,6 +46,7 @@ static caster_info * _caster_info(void)
         me.encumbrance.max_wgt = 450;
         me.encumbrance.weapon_pct = 20;
         me.encumbrance.enc_wgt = 1200;
+		me.options = CASTER_ALLOW_DEC_MANA;
         me.min_fail = 5;
         init = TRUE;
     }
