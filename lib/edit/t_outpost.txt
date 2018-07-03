@@ -8,7 +8,6 @@ L:&:FLOOR
 #L:&:OBJ(lantern)
 
 L:>:ENTRANCE(GLOW | MARK, 30)
-L:<:ENTRANCE(GLOW | MARK, 31)
 
 # Default for Quest 1 = entrance is stone
 L:z:PERMANENT
@@ -203,8 +202,8 @@ M:          WWWW                                        ------------------------
 M:         WWWWWW                                         -------------------------------------------------------------------------------------                                              .          
 M:        VWWWWWWWW                                        ------                                                                     -------                                                .          
 M:       VWWWWWWWWWWV                                        --                                                                          --                                                   ^^^^      
-M:       WWWWWWWWWWWW                                                                                                                                                                     ^^^^<^^^^^    
-M:     WWWWWWWWWWWWWWWW                                                                                                                                                                y^^^^^^^^^^^^^   
+M:       WWWWWWWWWWWW                                                                                                                                                                     ^^^^y^^^^^    
+M:     WWWWWWWWWWWWWWWW                                                                                                                                                                ^^^^^^^^^^^^^^   
 M:       WWWWWWWWWWWWW                                                                                                                                                               ^^^^^^^^^^^^^^^    
 M:       VWWWWWWWWWWV                                                                                                                                                               ^^^^^^^^^^^^^^^     
 M:         VWWWWWWWV                                                                                                                                                                 ^^^^^^^^^^^^^      

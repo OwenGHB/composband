@@ -6,6 +6,8 @@
 T:TOWN:NORMAL:NO_ROTATE
 %:t_pref.txt
 
+L:>:ENTRANCE(GLOW | MARK, 31)
+
 L:+:CLOSED_DOOR
 
 # Default for Quest 71 = entrance is tree
@@ -198,7 +200,7 @@ M:                             VVVVVV.VVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVV
 M:                              VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                            ^^^^^                                     -
 M:                               VVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVV-.VVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVV                                              ^^^^^                                     -
 M:                                VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV..VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                               ^^^^                                      :
-M:                                  VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                  ^^                                       :
+M:                                  VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV.VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                  >^                                       :
 M:                                     VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV                                                                                                    -
 M:                                        VVVVVVVVVVVVVVVVVVVVVVVVV          VVVVVVVVVVVVV                                                                                                             -
 M:                                             VVVVVVVVVVVVVVV                     --..--                                                                                                              ?
