@@ -2416,6 +2416,7 @@ extern void     chaos_warrior_punish(void);
 extern void     chaos_warrior_random(void);
 extern void     chaos_warrior_reward(void);
 extern void     chaos_warrior_event(int);
+extern cptr     chaos_patron_name(int);
 extern class_t *devicemaster_get_class(int psubclass);
 extern bool     devicemaster_desperation;
 extern cptr     devicemaster_speciality_name(int psubclass);

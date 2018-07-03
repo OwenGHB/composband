@@ -33,6 +33,7 @@ extern int py_birth(void);
                     static int _weaponmaster_ui(void);
                     static int _devicemaster_ui(void);
                     static int _gray_mage_ui(void);
+					static int _chaos_patron_ui(void);
         static int _realm1_ui(void);
             static int _realm2_ui(void);
         /* Monster Mode */
@@ -310,14 +311,15 @@ static void _set_mode(int mode)
     {
         if (first || game_mode != mode)
         {
-            p_ptr->prace = RACE_HOBBIT;
+            p_ptr->prace = RACE_HUMAN;
             p_ptr->psubrace = 0;
-            p_ptr->pclass = CLASS_ROGUE;
+            p_ptr->pclass = CLASS_WARRIOR;
             p_ptr->psubclass = 0;
-            p_ptr->realm1 = REALM_BURGLARY;
+            p_ptr->realm1 = REALM_NONE;
             p_ptr->realm2 = REALM_NONE;
             p_ptr->dragon_realm = DRAGON_REALM_NONE;
             p_ptr->personality = PERS_ORDINARY;
+			p_ptr->chaos_patron = PATRON_KHAINE;
             _stats_init();
         }
     }
@@ -325,28 +327,28 @@ static void _set_mode(int mode)
     {
         if (first || game_mode == GAME_MODE_MONSTER)
         {
-            p_ptr->prace = RACE_HOBBIT;
-            p_ptr->psubrace = 0;
-            p_ptr->pclass = CLASS_ROGUE;
-            p_ptr->psubclass = 0;
-            p_ptr->realm1 = REALM_BURGLARY;
-            p_ptr->realm2 = REALM_NONE;
-            p_ptr->dragon_realm = DRAGON_REALM_NONE;
-            p_ptr->personality = PERS_ORDINARY;
-            _stats_init();
+			p_ptr->prace = RACE_HUMAN;
+			p_ptr->psubrace = 0;
+			p_ptr->pclass = CLASS_WARRIOR;
+			p_ptr->psubclass = 0;
+			p_ptr->realm1 = REALM_NONE;
+			p_ptr->realm2 = REALM_NONE;
+			p_ptr->dragon_realm = DRAGON_REALM_NONE;
+			p_ptr->personality = PERS_ORDINARY;
+			_stats_init();
         }
     }
     else if (mode == GAME_MODE_MONSTER)
     {
         if (first || game_mode != mode)
         {
-            p_ptr->prace = RACE_MON_TROLL;
-            p_ptr->psubrace = TROLL_ETTIN;
+            p_ptr->prace = RACE_MON_DRAGON;
+            p_ptr->psubrace = DRAGON_RED;
             p_ptr->pclass = CLASS_MONSTER;
             p_ptr->psubclass = 0;
             p_ptr->realm1 = REALM_NONE;
             p_ptr->realm2 = REALM_NONE;
-            p_ptr->dragon_realm = DRAGON_REALM_NONE;
+            p_ptr->dragon_realm = DRAGON_REALM_LORE;
             _stats_init();
         }
     }
@@ -360,6 +362,7 @@ static void _set_mode(int mode)
         p_ptr->realm1 = previous_char.realm1;
         p_ptr->realm2 = previous_char.realm2;
         p_ptr->dragon_realm = previous_char.dragon_realm;
+		p_ptr->chaos_patron = previous_char.chaos_patron;
         _stats_init();
     }
     game_mode = mode;
@@ -1140,6 +1143,8 @@ static int _subclass_ui(void)
             rc = _devicemaster_ui();
         else if (p_ptr->pclass == CLASS_GRAY_MAGE)
             rc = _gray_mage_ui();
+		else if (p_ptr->pclass == CLASS_CHAOS_WARRIOR)
+			rc = _chaos_patron_ui(); /* not really a subclass */
         else
         {
             p_ptr->psubclass = 0;
@@ -1339,6 +1344,46 @@ static int _gray_mage_ui(void)
             }
         }
     }
+}
+
+static int _chaos_patron_ui(void)
+{
+	assert(p_ptr->pclass == CLASS_CHAOS_WARRIOR);
+	for (;;)
+	{
+		int cmd, i;
+
+		doc_clear(_doc);
+		_race_class_top(_doc);
+
+		doc_insert(_doc, "<color:G>Choose Patron</color>\n");
+		for (i = 0; i < MAX_PATRON; i++)
+		{
+			cptr patron_name = chaos_patron_name(i);
+			doc_printf(_doc, "  <color:y>%c</color>) <color:%c>%s</color>\n",
+				I2A(i),
+				p_ptr->chaos_patron == i ? 'B' : 'w',
+				patron_name
+			);
+		}
+		doc_insert(_doc, "  <color:y>*</color>) Random\n");
+
+		_sync_term(_doc);
+		cmd = _inkey();
+		if (cmd == ESCAPE) return UI_CANCEL;
+		else if (cmd == '\t') _inc_rcp_state();
+		else if (cmd == '=') _birth_options();
+		else
+		{
+			if (cmd == '*') i = randint0(MAX_PATRON);
+			else i = A2I(cmd);
+			if (0 <= i && i < MAX_PATRON)
+			{
+				p_ptr->chaos_patron = i;
+				return UI_OK;
+			}
+		}
+	}
 }
 
 /************************************************************************
@@ -2760,6 +2805,7 @@ static void _birth_finalize(void)
     previous_char.realm2 = p_ptr->realm2;
     previous_char.dragon_realm = p_ptr->dragon_realm;
     previous_char.au = p_ptr->au;
+	previous_char.chaos_patron = p_ptr->chaos_patron;
 
     for (i = 0; i < MAX_STATS; i++)
         previous_char.stat_max[i] = p_ptr->stat_max[i];
@@ -2794,7 +2840,7 @@ static void _birth_finalize(void)
 
     /* Everybody gets a chaos patron. The chaos warrior is obvious,
      * but anybody else can acquire MUT_CHAOS_GIFT during the game */
-    p_ptr->chaos_patron = randint0(MAX_PATRON);
+	if (p_ptr->pclass!=CLASS_CHAOS_WARRIOR) p_ptr->chaos_patron = randint0(MAX_PATRON);
 
     get_max_stats();
     do_cmd_rerate_aux();

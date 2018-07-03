@@ -327,6 +327,33 @@ int chaos_rewards[MAX_PATRON][5] =
         REW_SER_MONS, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GOOD_OBS
     }
 };
+
+cptr chaos_patron_name(int which)
+{
+	cptr name;
+	switch (which) 
+	{
+	case 0: name = "Slortar the Old"; break;
+	case 1: name = "Mabelode the Faceless"; break;
+	case 2: name = "Chardros the Reaper"; break;
+	case 3: name = "Hionhurn the Executioner"; break;
+	case 4: name = "Xiombarg the Sword-Queen"; break;
+	case 5: name = "Pyaray the Tentacled Whisperer of Impossible Secrets"; break;
+	case 6: name = "Balaan the Grim"; break;
+	case 7: name = "Arioch, Duke of Hell"; break;
+	case 8: name = "Eequor, Blue Lady of Dismay"; break;
+	case 9: name = "Narjhan, Lord of Beggars"; break;
+	case 10: name = "Balo the Jester"; break;
+	case 11: name = "Khorne the Blood God"; break;
+	case 12: name = "Slaanesh the Prince of Pleasure"; break;
+	case 13: name = "Nurgle the Plague Lord"; break;
+	case 14: name = "Tzeentch the Changer of Ways"; break;
+	case 15: name = "Khaela Mensha Khaine"; break;
+	default: name = "Gwarl the Destroyer"; break;
+	}
+	return name;
+}
+
 /* do we want a punishment, a questionable reward, or a good reward? */
 /* we call this whenever a chaos warrior does something so all the numbers can go in the same piece of code for ease of adjustment*/
 void chaos_choose_effect(int reason)

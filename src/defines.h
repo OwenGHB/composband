@@ -5740,6 +5740,24 @@ enum effect_e
 #define PATRON_CHANCE 10
 #define PATRON_TAKE_HIT 11
 
+/* patrons by name */
+#define PATRON_SLORTAR 0
+#define PATRON_MABELODE 1
+#define PATRON_CHARDROS 2
+#define PATRON_HIONHURN 3
+#define PATRON_XIOMBARG 4
+#define PATRON_PYARAY 5
+#define PATRON_BALAAN 6
+#define PATRON_ARIOCH 7
+#define PATRON_EEQUOR 8
+#define PATRON_NARJHAN 9
+#define PATRON_BALO 10
+#define PATRON_KHORNE 11
+#define PATRON_SLAANESH 12
+#define PATRON_NURGLE 13
+#define PATRON_TZEENTCH 14
+#define PATRON_KHAINE 15
+
 enum dragon_realm_e
 {
     DRAGON_REALM_NONE, /* Steel dragons and upgrading old savefiles */
