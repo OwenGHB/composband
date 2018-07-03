@@ -362,7 +362,7 @@ static void _set_mode(int mode)
         p_ptr->realm1 = previous_char.realm1;
         p_ptr->realm2 = previous_char.realm2;
         p_ptr->dragon_realm = previous_char.dragon_realm;
-		p_ptr->chaos_patron = previous_char.chaos_patron;
+		p_ptr->chaos_patron = p_ptr->chaos_patron = randint0(MAX_PATRON); /*until we break savefiles let's randomise the quickstart*/
         _stats_init();
     }
     game_mode = mode;
