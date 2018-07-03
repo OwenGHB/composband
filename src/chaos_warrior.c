@@ -331,130 +331,103 @@ int chaos_rewards[MAX_PATRON][5] =
 /* we call this whenever a chaos warrior does something so all the numbers can go in the same piece of code for ease of adjustment*/
 void chaos_choose_effect(int reason)
 {
-	int do_affect = 0;
+	int punish_chance = 0;
+	int reward_chance = 0;
 	if (reason) switch (reason)
 	{
 	case PATRON_HIT:
 		if (one_in_(343))
 		{
-			do_affect = 1;
+			punish_chance = 39;
+			reward_chance = 21;
 		}
 		break;
 	case PATRON_KILL_WEAK:
 		if (one_in_(216))
 		{
-			if (one_in_(7))
-			{
-				chaos_warrior_punish();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			punish_chance = 13;
+			reward_chance = 169;
 		}
 		break;
 	case PATRON_KILL:
 		if (one_in_(81))
 		{
-			do_affect = 1;
+			punish_chance = 39;
+			reward_chance = 21;
 		}
 		break;
 	case PATRON_KILL_UNIQUE:
-		if (one_in_(3))
+		if (one_in_(7))
 		{
-			do_affect = 2;
+			punish_chance = 39;
+			reward_chance = 7;
 		}
 		break;
 	case PATRON_KILL_FAMOUS:
 		if (one_in_(2))
 		{
-			if (one_in_(3))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			punish_chance = 666;
+			reward_chance = 3;
 		}
 		break;
 	case PATRON_KILL_GOOD:
-		if (one_in_(11))
+		if (one_in_(7))
 		{
-			if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			punish_chance = 666;
+			reward_chance = 3;
 		}
 		break;
 	case PATRON_KILL_DEMON:
 		if (one_in_(27))
 		{
-			do_affect = 2;
+			punish_chance = 13;
+			reward_chance = 7;
 		}
 		break;
 	case PATRON_CAST:
 		if (one_in_(131))
 		{
-			do_affect = 1;
+			punish_chance = 39;
+			reward_chance = 21;
 		}
 		break;
 	case PATRON_VILLIANY:
 		if (one_in_(21))
 		{
-			do_affect = 2;
+			punish_chance = 39;
+			reward_chance = 7;
 		}
 		break;
 	case PATRON_CHANCE:
-		if (one_in_(7))
+		if (one_in_(14))
 		{
-			do_affect = 2;
+			punish_chance = 39;
+			reward_chance = 7;
 		}
 		break;
 	case PATRON_TAKE_HIT:
-		if (one_in_(13))
+		if (one_in_(7))
 		{
-			do_affect = 1;
+			punish_chance = 39;
+			reward_chance = 21;
 		}
 		break;
 	default:
 		break;
 	}
-	if (do_affect) 
+	if (punish_chance && reward_chance) 
 	{
-		if (do_affect == 1)
+		if (one_in_(punish_chance))
 		{
-			if (one_in_(91))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(49))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
-		} 
-		else if (do_affect == 2)
+			chaos_warrior_punish();
+		}
+		else if (one_in_(reward_chance))
 		{
-			if (one_in_(13))
-			{
-				chaos_warrior_punish();
-			}
-			else if (one_in_(7))
-			{
-				chaos_warrior_reward();
-			}
-			else
-			{
-				chaos_warrior_random();
-			}
+			chaos_warrior_reward();
+		}
+		else
+		{
+			chaos_warrior_random();
 		}
 	}
 }
@@ -536,13 +509,15 @@ void chaos_warrior_event(int effect)
 			case REW_POLY_SLF:
 				msg_format("The voice of %s booms out:",
 					chaos_patrons[p_ptr->chaos_patron]);
-				msg_print("'Thou needst a new form, mortal!'");
-				if (one_in_(6))
+				if (one_in_(3))
 				{
+					msg_print("'Thou needst a new form, mortal!'");
 					do_poly_self();
 				}
 				else
 				{
+					msg_print("'Thou needst a different form, mortal!'");
+					
 					/* This is a temporary polymorph */
 					do_spell(REALM_CHAOS,28,SPELL_CAST);
 				}
@@ -565,13 +540,16 @@ void chaos_warrior_event(int effect)
 			case REW_LOSE_EXP:
 				msg_format("The voice of %s booms out:",
 					chaos_patrons[p_ptr->chaos_patron]);
-				msg_print("'Perform that again, slave.'");
+				msg_print("'Continue your performance, slave.'");
 
 				if (p_ptr->prace == RACE_ANDROID)
 					msg_print("But, nothing happen.");
 				else
 				{
-					lose_exp(p_ptr->exp / 6);
+					/* Lose some experience (permanently) */
+					p_ptr->exp -= (p_ptr->exp / 6);
+					p_ptr->max_exp -= (p_ptr->exp / 6);
+					check_experience();
 				}
 				break;
 			case REW_GOOD_OBJ:
@@ -982,7 +960,7 @@ static caster_info * _caster_info(void)
         me.encumbrance.enc_wgt = 1200;
         me.min_fail = 5;
         me.min_level = 2;
-        me.options = CASTER_GLOVE_ENCUMBRANCE;
+        me.options = CASTER_ALLOW_DEC_MANA | CASTER_GLOVE_ENCUMBRANCE;
         init = TRUE;
     }
     return &me;
