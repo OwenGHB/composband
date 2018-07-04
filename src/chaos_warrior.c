@@ -574,8 +574,10 @@ void chaos_warrior_event(int effect)
 				else
 				{
 					/* Lose some experience (permanently) */
-					p_ptr->exp -= (p_ptr->exp / 6);
-					p_ptr->max_exp -= (p_ptr->exp / 6);
+					s32b ee = (p_ptr->exp / 6);
+					if (ee > 100000L) ee = 100000L;
+					p_ptr->exp -= ee;
+					p_ptr->max_exp -= ee;
 					check_experience();
 				}
 				break;
