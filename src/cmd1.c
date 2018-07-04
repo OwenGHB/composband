@@ -1259,7 +1259,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                         else tmp = MAX(tmp, 35);
                     }
                     else if (mode == HISSATSU_ELEC) tmp = MAX(tmp, 60);
-                    else tmp = MAX(tmp, 35);
+                    else tmp = MAX(tmp, 25);
                 }
                 else if (have_flag(flgs, OF_BRAND_ELEC))
                 {
@@ -1488,7 +1488,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 						break;
 					}
 				}
-				switch (damage_type)
+				else switch (damage_type)
 				{
 				case OF_BRAND_ELEC:
 					msg_format("It is <color:b>shocked</color>.");
