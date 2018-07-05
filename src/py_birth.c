@@ -2186,7 +2186,6 @@ static void _stats_init(void)
             break;
         }
         case CLASS_PRIEST:
-        case CLASS_RANGER:
         case CLASS_PALADIN:
         case CLASS_MINDCRAFTER:
         case CLASS_FORCETRAINER:
@@ -2199,6 +2198,7 @@ static void _stats_init(void)
             break;
         }
         case CLASS_ROGUE:
+		case CLASS_RANGER:
         case CLASS_WARRIOR_MAGE:
         case CLASS_CHAOS_WARRIOR:
         case CLASS_TOURIST:
