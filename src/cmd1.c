@@ -1311,7 +1311,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                 }
 				if (mult < tmp) 
 				{
-					damage_type = OF_BRAND_ELEC;
+					damage_type = OF_BRAND_FIRE;
 					mult = tmp;
 				}
             }
