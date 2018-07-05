@@ -1027,7 +1027,7 @@ R:11:0
 
 ### Ranger ###
 N:4
-I:LIFE:WIS:0x06:0:3:450
+I:SORCERY:INT:0x06:0:3:450
 
 # Life (Ranger)
 R:0:0
