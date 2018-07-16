@@ -1141,7 +1141,11 @@ static void _create_ring_aux(object_type *o_ptr, int level, int power, int mode)
         if (one_in_(ACTIVATION_CHANCE))
             effect_add_random(o_ptr, BIAS_MAGE);
         break;
+	case EGO_JEWELRY_VITALITY:
+		_ego_create_jewelry_vitality(o_ptr, level, power);
+		break;
     }
+	
 
     _finalize_jewelry(o_ptr);
 
