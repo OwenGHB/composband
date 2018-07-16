@@ -38,14 +38,6 @@ L:z:QUEST_ENTER(22)
 ?:[EQU $QUEST22 Untaken Taken Completed Failed]
 L:b:BUILDING_1(22)
 ?:[EQU $QUEST22 Finished FailedDone]
-L:b:BUILDING_1(60)
-?:1
-############### Quest 60 - Tunnels
-?:[EQU $QUEST60 Taken]
-L:z:QUEST_ENTER(60)
-?:[EQU $QUEST60 Taken Completed Failed]
-L:b:BUILDING_1(60)
-?:[EQU $QUEST60 Finished FailedDone]
 L:b:BUILDING_1(70)
 ?:1
 ############### Quest 70 - Djinni's Cavern
@@ -54,6 +46,14 @@ L:x:QUEST_ENTER(70)
 ?:[EQU $QUEST70 Taken Completed Failed]
 L:b:BUILDING_1(70)
 ?:[EQU $QUEST70 Finished FailedDone]
+L:b:BUILDING_1(60)
+?:1
+############### Quest 60 - Tunnels
+?:[EQU $QUEST60 Taken]
+L:z:QUEST_ENTER(60)
+?:[EQU $QUEST60 Taken Completed Failed]
+L:b:BUILDING_1(60)
+?:[EQU $QUEST60 Finished FailedDone]
 L:b:BUILDING_1(33)
 ?:1
 ############### Quest 33 - The Cloning Pits ###############
