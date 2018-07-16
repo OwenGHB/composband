@@ -1581,7 +1581,7 @@ void equip_calc_bonuses(void)
                && obj->name2 != EGO_RING_COMBAT
                && obj->name2 != EGO_HELMET_TROLL
                && obj->name2 != EGO_HELMET_RAGE
-               && obj->name2 != EGO_SHIELD_DWARVEN
+               && obj->name2 != EGO_ARMOR_DWARVEN
                && obj->name2 != EGO_SHIELD_ORCISH
                && obj->name2 != EGO_CROWN_MIGHT
                && obj->name2 != EGO_CLOAK_BAT
