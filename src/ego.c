@@ -591,6 +591,7 @@ static void _ego_create_jewelry_vitality(object_type *o_ptr, int level, int powe
 		case 2:
 			if (!have_flag(o_ptr->flags, OF_CON))
 			{
+				if (!o_ptr->pval) o_ptr->pval = _jewelry_pval(5, level);
 				add_flag(o_ptr->flags, OF_CON);
 				break;
 			}
@@ -603,6 +604,7 @@ static void _ego_create_jewelry_vitality(object_type *o_ptr, int level, int powe
 		case 4:
 			if (!have_flag(o_ptr->flags, OF_LIFE))
 			{
+				if (!o_ptr->pval) o_ptr->pval = _jewelry_pval(5, level);
 				add_flag(o_ptr->flags, OF_LIFE);
 				break;
 			}
