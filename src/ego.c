@@ -195,7 +195,7 @@ static bool _ego_p_body_armor(int e_idx)
     switch (obj_drop_theme)
     {
     case R_DROP_DWARF:
-        if (e_idx == EGO_BODY_DWARVEN) return TRUE;
+        if (e_idx == EGO_ARMOR_DWARVEN) return TRUE;
         return FALSE;
     }
     return TRUE;
@@ -206,7 +206,7 @@ static bool _ego_p_shield(int e_idx)
     switch (obj_drop_theme)
     {
     case R_DROP_DWARF:
-        if (e_idx == EGO_SHIELD_DWARVEN) return TRUE;
+        if (e_idx == EGO_ARMOR_DWARVEN) return TRUE;
         return FALSE;
     }
     return TRUE;
@@ -217,7 +217,7 @@ static bool _ego_p_helmet(int e_idx)
     switch (obj_drop_theme)
     {
     case R_DROP_DWARF:
-        if (e_idx == EGO_HELMET_DWARVEN) return TRUE;
+        if (e_idx == EGO_ARMOR_DWARVEN) return TRUE;
         return FALSE;
     }
     return TRUE;
@@ -257,7 +257,7 @@ static bool _ego_p_boots(int e_idx)
     switch (obj_drop_theme)
     {
     case R_DROP_DWARF:
-        if (e_idx == EGO_BOOTS_DWARVEN) return TRUE;
+        if (e_idx == EGO_ARMOR_DWARVEN) return TRUE;
         return FALSE;
     }
     return TRUE;
@@ -440,7 +440,7 @@ void obj_create_amulet(object_type *o_ptr, int level, int power, int mode)
 /*************************************************************************
  * Activations
  *************************************************************************/
-#define ACTIVATION_CHANCE (p_ptr->prace == RACE_MON_RING ? 2 : 5)
+#define ACTIVATION_CHANCE 2
 
 static int *_effect_list = NULL;
 static bool _effect_list_p(int effect)
@@ -573,6 +573,59 @@ static void _ego_create_jewelry_defender(object_type *o_ptr, int level, int powe
     }
     if (one_in_(ACTIVATION_CHANCE))
         effect_add_random(o_ptr, BIAS_PROTECTION);
+}
+
+static void _ego_create_jewelry_vitality(object_type *o_ptr, int level, int power)
+{
+	int powers = 0;
+	for (powers = _jewelry_powers(level, power); powers > 0; --powers)
+	{
+		switch (randint1(7))
+		{
+		case 1:
+			if (!have_flag(o_ptr->flags, OF_REGEN))
+			{
+				add_flag(o_ptr->flags, OF_REGEN);
+				break;
+			}
+		case 2:
+			if (!have_flag(o_ptr->flags, OF_CON))
+			{
+				add_flag(o_ptr->flags, OF_CON);
+				break;
+			}
+		case 3:
+			if (!have_flag(o_ptr->flags, OF_SUST_CON))
+			{
+				add_flag(o_ptr->flags, OF_SUST_CON);
+				break;
+			}
+		case 4:
+			if (!have_flag(o_ptr->flags, OF_LIFE))
+			{
+				add_flag(o_ptr->flags, OF_LIFE);
+				break;
+			}
+		case 5:
+			if (!have_flag(o_ptr->flags, OF_HOLD_LIFE))
+			{
+				add_flag(o_ptr->flags, OF_HOLD_LIFE);
+				break;
+			}
+		case 6:
+			if (!have_flag(o_ptr->flags, OF_RES_POIS))
+			{
+				add_flag(o_ptr->flags, OF_RES_POIS);
+				break;
+			}
+		default:
+			o_ptr->to_a += randint1(8);
+			break;
+		}
+	}
+	if (o_ptr->to_a > 20) o_ptr->to_a = 20;
+	if (one_in_(ACTIVATION_CHANCE))
+		effect_add_random(o_ptr, BIAS_PROTECTION);
 }
 static void _ego_create_jewelry_elemental(object_type *o_ptr, int level, int power)
 {
@@ -1549,6 +1602,9 @@ static void _create_amulet_aux(object_type *o_ptr, int level, int power, int mod
     case EGO_JEWELRY_DEFENDER:
         _ego_create_jewelry_defender(o_ptr, level, power);
         break;
+	case EGO_JEWELRY_VITALITY:
+		_ego_create_jewelry_vitality(o_ptr, level, power);
+		break;
     }
 
     _finalize_jewelry(o_ptr);
@@ -2497,7 +2553,7 @@ static void _ego_create_gloves(object_type *o_ptr, int level)
     switch (o_ptr->name2)
     {
 	case EGO_GLOVES_SLAYING:
-		if (one_in_(4))
+		if (one_in_(6))
 		{
 			int rolls = 1 + m_bonus(4, level);
 			int i;
@@ -2515,7 +2571,7 @@ static void _ego_create_gloves(object_type *o_ptr, int level)
 		}
 		break;
     case EGO_GLOVES_GIANT:
-        if (one_in_(4))
+        if (one_in_(3))
         {
             switch (randint1(3))
             {
@@ -2545,7 +2601,7 @@ static void _ego_create_gloves(object_type *o_ptr, int level)
             add_flag(o_ptr->flags, OF_DEC_STR);
         if (one_in_(3))
             add_flag(o_ptr->flags, OF_DEC_CON);
-        if (one_in_(30))
+        if (one_in_(20))
             add_flag(o_ptr->flags, OF_DEVICE_POWER);
         break;
     case EGO_GLOVES_YEEK:
@@ -2652,6 +2708,114 @@ static void _ego_create_armor_elvenkind(object_type *o_ptr, int level)
     if (object_is_body_armour(o_ptr) && level > 60 && one_in_(7))
         add_flag(o_ptr->flags, OF_SPEED);
 }
+static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
+{
+	int powers;
+	assert(o_ptr->name2 == EGO_ARMOR_DWARVEN);
+	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
+	o_ptr->ac += m_bonus(k_info[o_ptr->k_idx].ac / 4, level);
+	powers = m_bonus(6, level);
+	if (one_in_(2))
+	{
+		for (powers; powers > 0; --powers)
+		{
+			switch (randint1(9))
+			{
+			case 1:
+			case 2:
+				if (!have_flag(o_ptr->flags, OF_REGEN))
+				{
+					add_flag(o_ptr->flags, OF_REGEN);
+					break;
+				}
+			case 3:
+				if (!have_flag(o_ptr->flags, OF_STR))
+				{
+					add_flag(o_ptr->flags, OF_STR);
+					if (one_in_(3)) 
+					{
+						add_flag(o_ptr->flags, OF_DEC_STEALTH);
+					}
+					else if (one_in_(3))
+					{
+						add_flag(o_ptr->flags, OF_DEC_DEX);
+					}
+					break;
+				}
+			case 4:
+				if (!have_flag(o_ptr->flags, OF_CON))
+				{
+					add_flag(o_ptr->flags, OF_CON);
+					if (one_in_(3))
+					{
+						add_flag(o_ptr->flags, OF_DEC_DEX);
+					}
+					else if (one_in_(3))
+					{
+						add_flag(o_ptr->flags, OF_DEC_STEALTH);
+					}
+					break;
+				}
+			case 5:
+				if (!have_flag(o_ptr->flags, OF_FREE_ACT))
+				{
+					add_flag(o_ptr->flags, OF_FREE_ACT);
+					break;
+				}
+			case 6:
+				if (!have_flag(o_ptr->flags, OF_RES_DISEN) && level > 40 && one_in_(2))
+				{
+					add_flag(o_ptr->flags, OF_RES_DISEN);
+					break;
+				}
+				else
+				{
+					if (!have_flag(o_ptr->flags, OF_RES_DARK))
+					{
+						add_flag(o_ptr->flags, OF_RES_DARK);
+						break;
+					}
+				}
+			case 7:
+				if (!have_flag(o_ptr->flags, OF_RES_BLIND) && one_in_(2))
+				{
+					add_flag(o_ptr->flags, OF_RES_BLIND);
+					break;
+				}
+				else
+				{
+					if (!have_flag(o_ptr->flags, OF_SEARCH))
+					{
+						add_flag(o_ptr->flags, OF_SEARCH);
+						break;
+					}
+				}
+			case 8:
+				if (!have_flag(o_ptr->flags, OF_TUNNEL) && one_in_(2))
+				{
+					add_flag(o_ptr->flags, OF_TUNNEL);
+					break;
+				}
+			case 9:
+				if (!have_flag(o_ptr->flags, OF_SUST_CON) && one_in_(2))
+				{
+					add_flag(o_ptr->flags, OF_SUST_CON);
+					break;
+				}
+				else
+				{
+					if (!have_flag(o_ptr->flags, OF_SUST_STR))
+					{
+						add_flag(o_ptr->flags, OF_SUST_STR);
+						break;
+					}
+				}
+			default:
+				break;
+			}
+		}
+	}
+}
 static void _ego_create_body_armor(object_type *o_ptr, int level)
 {
     bool done = FALSE;
@@ -2674,21 +2838,12 @@ static void _ego_create_body_armor(object_type *o_ptr, int level)
         case EGO_ARMOR_ELVENKIND:
             _ego_create_armor_elvenkind(o_ptr, level);
             break;
-        case EGO_BODY_DWARVEN:
+        case EGO_ARMOR_DWARVEN:
             if (o_ptr->tval != TV_HARD_ARMOR || o_ptr->sval == SV_RUSTY_CHAIN_MAIL)
                 done = FALSE;
             else
             {
-                o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-                o_ptr->ac = k_info[o_ptr->k_idx].ac + 5;
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_CON);
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_DEC_DEX);
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_DEC_STEALTH);
-                if (one_in_(2))
-                    add_flag(o_ptr->flags, OF_REGEN);
+				_ego_create_armor_dwarven(o_ptr, level);
             }
             break;
         case EGO_BODY_URUK_HAI:
@@ -2759,7 +2914,7 @@ static void _ego_create_shield(object_type *o_ptr, int level)
                 done = FALSE;
             }
             break;
-        case EGO_SHIELD_DWARVEN:
+        case EGO_ARMOR_DWARVEN:
             if ( o_ptr->sval == SV_SMALL_LEATHER_SHIELD
               || o_ptr->sval == SV_LARGE_LEATHER_SHIELD
               || o_ptr->sval == SV_DRAGON_SHIELD
@@ -2769,10 +2924,7 @@ static void _ego_create_shield(object_type *o_ptr, int level)
             }
             else
             {
-                o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-                o_ptr->ac = k_info[o_ptr->k_idx].ac + 4;
-                if (one_in_(4))
-                    add_flag(o_ptr->flags, OF_SUST_CON);
+				_ego_create_armor_dwarven(o_ptr, level);
             }
             break;
         case EGO_SHIELD_ENDURANCE:
@@ -2887,20 +3039,17 @@ static void _ego_create_helmet(object_type *o_ptr, int level)
                 else add_esp_weak(o_ptr, FALSE);
             }
             break;
-        case EGO_HELMET_DWARVEN:
+        case EGO_ARMOR_DWARVEN:
             if (o_ptr->sval == SV_HARD_LEATHER_CAP || o_ptr->sval == SV_DRAGON_HELM)
             {
                 done = FALSE;
                 break;
             }
-            o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-            o_ptr->ac = k_info[o_ptr->k_idx].ac + 3;
-            if (one_in_(4))
-                add_flag(o_ptr->flags, OF_TUNNEL);
+			_ego_create_armor_dwarven(o_ptr, level);
             break;
 
         case EGO_HELMET_SUNLIGHT:
-            if (one_in_(3))
+            if (one_in_(7))
                 add_flag(o_ptr->flags, OF_VULN_DARK);
             if (one_in_(ACTIVATION_CHANCE))
             {
@@ -3047,16 +3196,13 @@ static void _ego_create_boots(object_type *o_ptr, int level)
         case EGO_BOOTS_FEANOR:
             o_ptr->pval = 6 + m_bonus(9, level);
             break;
-        case EGO_BOOTS_DWARVEN:
-            if (o_ptr->sval != SV_PAIR_OF_METAL_SHOD_BOOTS)
+        case EGO_ARMOR_DWARVEN:
+            if (o_ptr->sval == SV_PAIR_OF_SOFT_LEATHER_BOOTS || o_ptr->sval == SV_PAIR_OF_HARD_LEATHER_BOOTS)
             {
                 done = FALSE;
                 break;
             }
-            o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-            o_ptr->ac = k_info[o_ptr->k_idx].ac + 4;
-            if (one_in_(4))
-                add_flag(o_ptr->flags, OF_SUST_CON);
+			_ego_create_armor_dwarven(o_ptr, level);
             break;
         case EGO_BOOTS_ELVENKIND:
             if (one_in_(2))
