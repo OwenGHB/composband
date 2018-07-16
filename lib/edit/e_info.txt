@@ -346,7 +346,7 @@ N:70:of Augmentation
 T:BODY_ARMOR
 W:50:*:4
 C:0:0:15:3
-F:STR | INT | WIS | DEX | CON | CHA |
+F:STR | INT | WIS | DEX | CON | CHR |
 F:IGNORE_ACID | IGNORE_ELEC | IGNORE_FIRE | IGNORE_COLD
 
 N:71:of the Uruk-hai
