@@ -4771,7 +4771,7 @@ extern int PlayerUID;
 #define DF1_CAVE                0x00000400
 #define DF1_CAVERN              0x00000800
 #define DF1_RANDOM              0x00001000
-#define DF1_XXX13               0x00002000
+#define DF1_SMALL               0x00002000
 #define DF1_XXX14               0x00004000
 #define DF1_XXX15               0x00008000
 #define DF1_FORGET              0x00010000

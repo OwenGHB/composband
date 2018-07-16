@@ -1342,9 +1342,7 @@ static bool level_gen(cptr *why)
      * with dungeon size (including monster density). */
     if (d_info[dungeon_type].flags1 & DF1_BIG)
         small = FALSE;
-    else if (d_info[dungeon_type].flags1 & DF1_SMALLEST)
-        small = TRUE;
-    else if (one_in_(SMALL_LEVEL))
+    else if (d_info[dungeon_type].flags1 & DF1_SMALLEST || d_info[dungeon_type].flags1 & DF1_SMALL || one_in_(SMALL_LEVEL))
         small = TRUE;
 
     if (small)
@@ -1358,15 +1356,15 @@ static bool level_gen(cptr *why)
         }
         else
         {
-            int max_hgt = MAX_HGT/SCREEN_HGT;
-            int max_wid = MAX_WID/SCREEN_WID;
+			int max_hgt = 3;
+            int max_wid = 3;
 
             for (;;)
             {
                 hgt = randint1(max_hgt);
                 wid = randint1(max_wid);
                 if (hgt == max_hgt && wid == max_wid) continue;
-                /* exclude 1x1, 1x2 and 2x1 */
+                /* exclude 1x1, 1x2, 2x1 */
                 if (hgt * wid <= 2) continue;
                 break;
             }

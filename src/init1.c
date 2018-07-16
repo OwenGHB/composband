@@ -822,7 +822,7 @@ static cptr d_info_flags1[] =
     "CAVE",
     "CAVERN",
     "RANDOM",
-    "XXX",
+    "SMALL",
     "XXX",
     "XXX",
     "FORGET",
