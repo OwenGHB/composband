@@ -1354,6 +1354,20 @@ static bool level_gen(cptr *why)
             hgt = 1;
             wid = 1;
         }
+		else if (d_info[dungeon_type].flags1 & DF1_SMALL)
+		{
+			int max_hgt = 3;
+			int max_wid = 3;
+
+			for (;;)
+			{
+				hgt = randint1(max_hgt);
+				wid = randint1(max_wid);
+				/* exclude 3x3, 3x2, 2x3 */
+				if (hgt * wid >= 6) continue;
+				break;
+			}
+		}
         else
         {
 			int max_hgt = 3;
@@ -1364,8 +1378,8 @@ static bool level_gen(cptr *why)
                 hgt = randint1(max_hgt);
                 wid = randint1(max_wid);
                 if (hgt == max_hgt && wid == max_wid) continue;
-                /* exclude 1x1, 1x2, 2x1 */
-                if (hgt * wid <= 2) continue;
+                /* exclude 1x1 */
+                if (hgt * wid <= 1) continue;
                 break;
             }
         }
