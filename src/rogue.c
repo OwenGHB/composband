@@ -829,7 +829,7 @@ class_t *rogue_get_class(void)
         me.stats[A_CHR] =  1;
         me.base_skills = bs;
         me.extra_skills = xs;
-        me.life = 110;
+        me.life = 108;
         me.base_hp = 12;
         me.exp = 125;
         me.pets = 40;
