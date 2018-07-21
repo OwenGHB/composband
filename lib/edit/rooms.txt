@@ -717,8 +717,8 @@ N:A Cruel Lesson
 T:ROOM:NORMAL
 W:20:60:32
 L:~:DARK_PIT(ROOM)
-L:,:SHALLOW_ACID(ROOM | GLOW)
-L:M:SHALLOW_ACID(ROOM | GLOW):MON(arch-vile)
+L:,:DIRT(ROOM)
+L:M:DEEP_WASTE(ROOM | GLOW):MON(arch-vile)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%.........%%    
