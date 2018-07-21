@@ -375,7 +375,7 @@ M:%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Gold)
 T:ROOM:NORMAL:FORMATION
-W:8:*:12
+W:8:*:10
 L:$:OBJ(GOLD)
 L:0:MON(*, DEPTH+5)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -392,7 +392,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Arrows)
 T:ROOM:NORMAL:FORMATION
-W:8:*:12
+W:8:*:10
 L:$:OBJ(ARROW, DEPTH+5)
 L:0:MON(*, DEPTH+5)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -409,7 +409,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Bolts)
 T:ROOM:NORMAL:FORMATION
-W:8:*:12
+W:8:*:10
 L:$:OBJ(BOLT, DEPTH+5)
 L:0:MON(*, DEPTH+5)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -426,7 +426,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Shots)
 T:ROOM:NORMAL:FORMATION
-W:8:*:12
+W:8:*:10
 L:$:OBJ(SHOT, DEPTH+5)
 L:0:MON(*, DEPTH+5)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -443,7 +443,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Wand)
 T:ROOM:NORMAL:FORMATION
-W:8:*:16
+W:8:*:12
 L:$:OBJ(WAND, DEPTH+5)
 L:0:MON(*, DEPTH+15)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -460,7 +460,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Jewels)
 T:ROOM:NORMAL:FORMATION
-W:16:*:32
+W:16:*:16
 L:$:OBJ(JEWELRY, DEPTH+5)
 L:0:MON(*, DEPTH+30)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -477,7 +477,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Potions)
 T:ROOM:NORMAL:FORMATION
-W:12:*:8
+W:12:*:12
 L:$:OBJ(POTION, DEPTH+5)
 L:0:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -494,7 +494,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault (Scrolls)
 T:ROOM:NORMAL:FORMATION
-W:12:*:8
+W:12:*:12
 L:$:OBJ(SCROLL, DEPTH+5)
 L:0:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -511,7 +511,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Library
 T:ROOM:NORMAL:FORMATION
-W:15:*:32
+W:15:*:16
 L:$:OBJ(BOOK, DEPTH+5)
 L:0:MON(*, DEPTH+20)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -605,7 +605,7 @@ M:%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault +Potions?)
 T:ROOM:NORMAL
-W:16:50:32
+W:16:60:32
 L:$:MON(potion mimic):OBJ(POTION, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -622,7 +622,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault +Swords?)
 T:ROOM:NORMAL
-W:16:30:32
+W:16:40:32
 L:$:MON(death sword):OBJ(SWORD, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -639,7 +639,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Object Vault +Scrolls?)
 T:ROOM:NORMAL
-W:16:50:32
+W:16:60:32
 L:$:MON(scroll mimic):OBJ(SCROLL, DEPTH+5)
 L:M:MON(*, DEPTH+10)
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -717,8 +717,8 @@ N:A Cruel Lesson
 T:ROOM:NORMAL
 W:20:60:32
 L:~:DARK_PIT(ROOM)
-L:,:SHALLOW_LAVA(ROOM | GLOW)
-L:M:SHALLOW_LAVA(ROOM | GLOW):MON(arch-vile)
+L:,:SHALLOW_ACID(ROOM | GLOW)
+L:M:SHALLOW_ACID(ROOM | GLOW):MON(arch-vile)
 M:       %%%%%%%       
 M:     %%%.....%%%     
 M:    %%.........%%    
@@ -1069,7 +1069,7 @@ M:%%%%%%%%%%%%%%%%%%%%%%%%
 
 N:Dragon's Treasure
 T:ROOM:NORMAL
-W:35:*:128
+W:35:*:32
 L:M:MON(HI_DRAGON, DEPTH+20)
 L:$:OBJ(GOLD)
 M:       %%%       
@@ -1090,7 +1090,7 @@ M:       %%%
 
 N:Satanic Ritual
 T:ROOM:NORMAL:EVIL
-W:40:*:128
+W:40:*:64
 L:M:SHALLOW_LAVA(ROOM | GLOW):MON(HI_DEMON, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
 L:p:MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:DEEP_LAVA(ROOM | GLOW)
@@ -1112,7 +1112,7 @@ M:       %%%
 
 N:Sacred Ritual
 T:ROOM:NORMAL:GOOD
-W:40:*:128
+W:40:*:64
 L:M:MON(ANGEL, NO_GROUP | NO_SLEEP | DEPTH+50):OBJ(*, DEPTH+20):EGO(*)
 L:p:MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:FLOOR
@@ -1134,7 +1134,7 @@ M:       %%%
 
 N:Natural Ritual
 T:ROOM:NORMAL:GOOD
-W:40:*:128
+W:40:*:64
 L:):TREE(ROOM)
 L:M:GRASS(ROOM):MON(ENT, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
 L:p:GRASS(ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
@@ -1157,7 +1157,7 @@ M:       %%%
 
 N:Poseidon's Ritual
 T:ROOM:NORMAL:EVIL
-W:50:*:128
+W:50:*:64
 L:M:SHALLOW_WATER(ROOM):MON(KRAKEN, NO_SLEEP):OBJ(*, DEPTH+20):EGO(*)
 L:p:SHALLOW_WATER(ROOM):MON(HUMAN, NO_GROUP | NO_SLEEP | DEPTH+10)
 L:~:DEEP_WATER(ROOM)
@@ -2507,7 +2507,7 @@ M:%.....................................%
 M:%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-N:E#cluded Middle
+N:Excluded Middle
 T:ROOM:NORMAL
 W:1:*:2
 L:M:MON(*)
@@ -2523,7 +2523,7 @@ M:%.#####################.%
 M:%.......................%
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N:E#cluded Middle II
+N:Excluded Middle II
 T:ROOM:NORMAL
 W:10:*:16
 L:M:MON(*, DEPTH+5)
@@ -2540,7 +2540,7 @@ M:%.#####################.%
 M:%.......................%
 M:%%%%%%%%%%%%%%%%%%%%%%%%%
 
-N:E#cluded Middle III
+N:Excluded Middle III
 T:ROOM:NORMAL:FORMATION
 W:25:*:64
 L:M:MON(*, DEPTH+5)
