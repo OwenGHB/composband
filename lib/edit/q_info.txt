@@ -69,7 +69,7 @@ F:q_nature.txt
 N:14:5:Pest Control (Outpost)
 T:TOWN
 W:warren
-G:KILL(^warg$, 8)
+G:KILL(^warg$, 10)
 F:q_wargs.txt
 
 N:15:70:Eric's Stronghold (Telmora)
