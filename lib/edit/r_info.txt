@@ -8621,7 +8621,7 @@ F:SMART | BASH_DOOR |
 F:EVIL | TROLL | RES_POIS
 F:DROP_SKELETON | DROP_CORPSE | POS_GAIN_AC
 P:Copy:Half-Troll:Warrior
-S:1_IN_15 | BERSERK | THROW(9d9) | 
+S:1_IN_15 | BERSERK | THROW(12d12) | 
 O:DROP_WARRIOR
 D:It is a massive intelligent troll with needle sharp fangs.
 
