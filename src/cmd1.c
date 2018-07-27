@@ -1561,6 +1561,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 
                         mult = mult * 3 / 2 + 15;
                         obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
+						msg_format("You apply fiscal <color:B>force</color>.");
                     }
                 }
                 else if (p_ptr->csp >= cost)
@@ -1569,6 +1570,7 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
                     p_ptr->redraw |= (PR_MANA);
                     mult = mult * 3 / 2 + 15;
                     obj_learn_slay(o_ptr, OF_BRAND_MANA, "is <color:B>Mana Branded</color>");
+					msg_format("You apply magical <color:B>force</color>.");
                 }
             }
             if (p_ptr->tim_blood_feast)
