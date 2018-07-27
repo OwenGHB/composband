@@ -676,25 +676,25 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 	}
 	add_flag(o_ptr->flags, resistance);
 	if (aura) {
-		if (one_in(77)) {
+		if (one_in_(77)) {
 			add_flag(o_ptr->flags, immunity);
-			if (one_in(7))
+			if (one_in_(7))
 			{
 				add_flag(o_ptr->flags, brand);
-				if (one_in(3))
+				if (one_in_(3))
 				{
 					add_flag(o_ptr->flags, aura);
 				}
 			}
-			else if (one_in(3))
+			else if (one_in_(3))
 			{
 				add_flag(o_ptr->flags, aura);
 			}
 		}
-		else if (one_in(7)) 
+		else if (one_in_(7)) 
 		{
 			add_flag(o_ptr->flags, brand);
-			if (one_in(3))
+			if (one_in_(3))
 			{
 				add_flag(o_ptr->flags, aura);
 			}
@@ -708,16 +708,16 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 	}
 	else
 	{
-		if (one_in(77)) {
+		if (one_in_(77)) {
 			add_flag(o_ptr->flags, immunity);
-			if (one_in(7))
+			if (one_in_(7))
 			{
 				add_flag(o_ptr->flags, brand);
 			}
 			if (one_in_(ACTIVATION_CHANCE))
 				effect_add_random(o_ptr, activation_bias);
 		}
-		else if (one_in(7))
+		else if (one_in_(7))
 		{
 			add_flag(o_ptr->flags, brand);
 			if (one_in_(ACTIVATION_CHANCE))
