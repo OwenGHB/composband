@@ -627,7 +627,107 @@ static void _ego_create_jewelry_vitality(object_type *o_ptr, int level, int powe
 	}
 	if (o_ptr->to_a > 20) o_ptr->to_a = 20;
 	if (one_in_(ACTIVATION_CHANCE))
-		effect_add_random(o_ptr, BIAS_PROTECTION);
+		effect_add_random(o_ptr, BIAS_PRIESTLY);
+}
+static void _ego_create_ring_elemental_focus(object_type *o_ptr)
+{
+	int resistance;
+	int aura;
+	int brand;
+	int immunity;
+	int activation_bias;
+	switch (randint1(5)) 
+	{
+	case 1:
+		resistance = OF_RES_FIRE;
+		aura = OF_AURA_FIRE;
+		brand = OF_BRAND_FIRE;
+		immunity = OF_IM_FIRE;
+		activation_bias = BIAS_FIRE;
+		break;
+	case 2:
+		resistance = OF_RES_COLD;
+		aura = OF_AURA_COLD;
+		brand = OF_BRAND_COLD;
+		immunity = OF_IM_COLD;
+		activation_bias = BIAS_COLD;
+		break;
+	case 3:
+		resistance = OF_RES_ELEC;
+		aura = OF_AURA_ELEC;
+		brand = OF_BRAND_ELEC;
+		immunity = OF_IM_ELEC;
+		activation_bias = BIAS_ELEC;
+		break;
+	case 4:
+		resistance = OF_RES_POIS;
+		aura = 0;
+		brand = OF_BRAND_POIS;
+		immunity = OF_IM_POIS;
+		activation_bias = BIAS_POIS;
+		break;
+	case 5:
+		resistance = OF_RES_ACID;
+		aura = 0;
+		brand = OF_BRAND_ACID;
+		immunity = OF_IM_ACID;
+		activation_bias = BIAS_ACID;
+		break;
+	}
+	add_flag(o_ptr->flags, resistance);
+	if (aura) {
+		if (one_in(77)) {
+			add_flag(o_ptr->flags, immunity);
+			if (one_in(7))
+			{
+				add_flag(o_ptr->flags, brand);
+				if (one_in(3))
+				{
+					add_flag(o_ptr->flags, aura);
+				}
+			}
+			else if (one_in(3))
+			{
+				add_flag(o_ptr->flags, aura);
+			}
+		}
+		else if (one_in(7)) 
+		{
+			add_flag(o_ptr->flags, brand);
+			if (one_in(3))
+			{
+				add_flag(o_ptr->flags, aura);
+			}
+		}
+		else 
+		{
+			add_flag(o_ptr->flags, aura);
+		}
+		if (one_in_(ACTIVATION_CHANCE))
+			effect_add_random(o_ptr, activation_bias);
+	}
+	else
+	{
+		if (one_in(77)) {
+			add_flag(o_ptr->flags, immunity);
+			if (one_in(7))
+			{
+				add_flag(o_ptr->flags, brand);
+			}
+			if (one_in_(ACTIVATION_CHANCE))
+				effect_add_random(o_ptr, activation_bias);
+		}
+		else if (one_in(7))
+		{
+			add_flag(o_ptr->flags, brand);
+			if (one_in_(ACTIVATION_CHANCE))
+				effect_add_random(o_ptr, activation_bias);
+		}
+		else
+		{
+			effect_add_random(o_ptr, activation_bias);
+		}
+	}
 }
 static void _ego_create_jewelry_elemental(object_type *o_ptr, int level, int power)
 {
@@ -636,88 +736,92 @@ static void _ego_create_jewelry_elemental(object_type *o_ptr, int level, int pow
         add_flag(o_ptr->flags, OF_RES_COLD);
         add_flag(o_ptr->flags, OF_RES_FIRE);
         add_flag(o_ptr->flags, OF_RES_ELEC);
-        if (one_in_(3))
+        if (!one_in_(3))
             add_flag(o_ptr->flags, OF_RES_ACID);
-        if (one_in_(5))
+        if (one_in_(2))
             add_flag(o_ptr->flags, OF_RES_POIS);
-        else if (one_in_(5))
+        else if (one_in_(3))
             add_flag(o_ptr->flags, OF_RES_SHARDS);
+		if (one_in_(ACTIVATION_CHANCE))
+			effect_add_random(o_ptr, BIAS_ELEMENTAL);
     }
     else if (o_ptr->tval == TV_RING && abs(power) >= 2)
     {
-        switch (randint1(6))
-        {
-        case 1:
-            add_flag(o_ptr->flags, OF_RES_COLD);
-            add_flag(o_ptr->flags, OF_RES_FIRE);
-            add_flag(o_ptr->flags, OF_RES_ELEC);
-            if (one_in_(3))
-                add_flag(o_ptr->flags, OF_RES_ACID);
-            if (one_in_(5))
-                add_flag(o_ptr->flags, OF_RES_POIS);
-            break;
-        case 2:
-            o_ptr->to_a = 5 + randint1(5) + m_bonus(10, level);
-            add_flag(o_ptr->flags, OF_RES_FIRE);
-            if (one_in_(3))
-                add_flag(o_ptr->flags, OF_AURA_FIRE);
-            if (one_in_(7))
-                add_flag(o_ptr->flags, OF_BRAND_FIRE);
-            else if (randint1(level) >= 70)
-                add_flag(o_ptr->flags, OF_IM_FIRE);
-            if (one_in_(ACTIVATION_CHANCE))
-                effect_add_random(o_ptr, BIAS_FIRE);
-            break;
-        case 3:
-            o_ptr->to_a = 5 + randint1(5) + m_bonus(10, level);
-            add_flag(o_ptr->flags, OF_RES_COLD);
-            if (one_in_(3))
-                add_flag(o_ptr->flags, OF_AURA_COLD);
-            if (one_in_(7))
-                add_flag(o_ptr->flags, OF_BRAND_COLD);
-            else if (randint1(level) >= 70)
-                add_flag(o_ptr->flags, OF_IM_COLD);
-            if (one_in_(ACTIVATION_CHANCE))
-                effect_add_random(o_ptr, BIAS_COLD);
-            break;
-        case 4:
-            o_ptr->to_a = 5 + randint1(5) + m_bonus(10, level);
-            add_flag(o_ptr->flags, OF_RES_ELEC);
-            if (one_in_(3))
-                add_flag(o_ptr->flags, OF_AURA_ELEC);
-            if (one_in_(7))
-                add_flag(o_ptr->flags, OF_BRAND_ELEC);
-            else if (randint1(level) >= 75)
-                add_flag(o_ptr->flags, OF_IM_ELEC);
-            if (one_in_(ACTIVATION_CHANCE))
-                effect_add_random(o_ptr, BIAS_ELEC);
-            break;
-        case 5:
-            o_ptr->to_a = 5 + randint1(5) + m_bonus(10, level);
-            add_flag(o_ptr->flags, OF_RES_ACID);
-            if (one_in_(7))
-                add_flag(o_ptr->flags, OF_BRAND_ACID);
-            else if (randint1(level) >= 65)
-                add_flag(o_ptr->flags, OF_IM_ACID);
-            if (one_in_(ACTIVATION_CHANCE))
-                effect_add_random(o_ptr, BIAS_ACID);
-            break;
-        case 6:
-            o_ptr->to_a = 5 + randint1(5) + m_bonus(10, level);
-            add_flag(o_ptr->flags, OF_RES_SHARDS);
-            if (one_in_(3))
-                add_flag(o_ptr->flags, OF_AURA_SHARDS);
-            break;
-        }
+		switch (randint1(3))
+		{
+		case 1: //resistances
+			add_flag(o_ptr->flags, OF_RES_COLD);
+			add_flag(o_ptr->flags, OF_RES_FIRE);
+			add_flag(o_ptr->flags, OF_RES_ELEC);
+			if (!one_in_(3))
+				add_flag(o_ptr->flags, OF_RES_ACID);
+			if (one_in_(2))
+				add_flag(o_ptr->flags, OF_RES_POIS);
+			if (one_in_(ACTIVATION_CHANCE))
+				effect_add_random(o_ptr, BIAS_ELEMENTAL);
+			break;
+		case 2: //auras
+			switch (randint1(11)) 
+			{
+			case 1: case 2:
+				add_flag(o_ptr->flags, OF_RES_FIRE);
+				add_flag(o_ptr->flags, OF_AURA_FIRE);
+				break;
+			case 3: case 4:
+				add_flag(o_ptr->flags, OF_RES_COLD);
+				add_flag(o_ptr->flags, OF_AURA_COLD);
+				break;
+			case 5: case 6:
+				add_flag(o_ptr->flags, OF_RES_ELEC);
+				add_flag(o_ptr->flags, OF_AURA_ELEC);
+				break;
+			case 7:
+				add_flag(o_ptr->flags, OF_RES_ELEC);
+				add_flag(o_ptr->flags, OF_AURA_ELEC);
+				add_flag(o_ptr->flags, OF_RES_FIRE);
+				add_flag(o_ptr->flags, OF_AURA_FIRE);
+				break;
+			case 8:
+				add_flag(o_ptr->flags, OF_RES_COLD);
+				add_flag(o_ptr->flags, OF_AURA_COLD);
+				add_flag(o_ptr->flags, OF_RES_ELEC);
+				add_flag(o_ptr->flags, OF_AURA_ELEC);
+				break;
+			case 9:
+				add_flag(o_ptr->flags, OF_RES_FIRE);
+				add_flag(o_ptr->flags, OF_AURA_FIRE);
+				add_flag(o_ptr->flags, OF_RES_COLD);
+				add_flag(o_ptr->flags, OF_AURA_COLD);
+				break;
+			case 10:
+				add_flag(o_ptr->flags, OF_RES_FIRE);
+				add_flag(o_ptr->flags, OF_AURA_FIRE);
+				add_flag(o_ptr->flags, OF_RES_COLD);
+				add_flag(o_ptr->flags, OF_AURA_COLD);
+				add_flag(o_ptr->flags, OF_RES_ELEC);
+				add_flag(o_ptr->flags, OF_AURA_ELEC);
+				break;
+			case 11:
+				add_flag(o_ptr->flags, OF_RES_SHARDS);
+				add_flag(o_ptr->flags, OF_AURA_SHARDS);
+				break;
+			}
+			if (one_in_(ACTIVATION_CHANCE))
+				effect_add_random(o_ptr, BIAS_ELEMENTAL);
+			break;
+		case 3: //elemental focus
+			_ego_create_ring_elemental_focus(o_ptr);
+			break;
+		}
     }
     else
     {
         one_ele_resistance(o_ptr);
         if (one_in_(3))
             one_ele_resistance(o_ptr);
+		if (one_in_(ACTIVATION_CHANCE))
+			effect_add_random(o_ptr, BIAS_ELEMENTAL);
     }
-    if (one_in_(ACTIVATION_CHANCE))
-        effect_add_random(o_ptr, BIAS_ELEMENTAL);
 }
 static void _create_ring_aux(object_type *o_ptr, int level, int power, int mode)
 {
