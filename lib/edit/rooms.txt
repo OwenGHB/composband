@@ -1,13 +1,13 @@
 ######################################################################
-% PosChengband Rooms
+# PosChengband Rooms
 #
-% Type:    ROOM
-% Subtype: NORMAL
+# Type:    ROOM
+# Subtype: NORMAL
 #
-% The idea of scripted rooms was borrowed from Vanilla Angband)
+# The idea of scripted rooms was borrowed from Vanilla Angband)
 #
 
-% Accelerated for composband
+# Accelerated for composband
 
 N:Kennel
 T:ROOM:NORMAL
@@ -11008,4 +11008,4 @@ M:  %#.........#%   %#........#%
 M:   %#%%%%%%%#%     %########%   
 
 
-% vim: filetype=q :
+# vim: filetype=q :
