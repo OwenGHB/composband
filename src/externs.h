@@ -980,7 +980,7 @@ extern int enter_quest;
 extern bool place_quest_monsters(void);
 extern void wipe_generate_cave_flags(void);
 extern void clear_cave(void);
-extern void generate_cave(void);
+extern void generate_cave(int level);
 
 /* init1.c */
 extern byte color_char_to_attr(char c);

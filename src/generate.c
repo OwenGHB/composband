@@ -1329,7 +1329,7 @@ static void battle_gen(void)
 }
 
 /* Make a real level */
-static bool level_gen(cptr *why)
+static bool level_gen(cptr *why, int level)
 {
     bool small = FALSE;
 
@@ -1345,16 +1345,16 @@ static bool level_gen(cptr *why)
     else if (d_info[dungeon_type].flags1 & DF1_SMALLEST || d_info[dungeon_type].flags1 & DF1_SMALL || one_in_(SMALL_LEVEL))
         small = TRUE;
 
-    if (small)
+    if (small || level < 30)
     {
         int hgt, wid;
 
-        if (d_info[dungeon_type].flags1 & DF1_SMALLEST) /* Labyrinth and Mine */
+        if (d_info[dungeon_type].flags1 & DF1_SMALLEST || level < 10) /* Labyrinth and Mine */
         {
             hgt = 1;
             wid = 1;
         }
-		else if (d_info[dungeon_type].flags1 & DF1_SMALL)
+		else if (d_info[dungeon_type].flags1 & DF1_SMALL || level < 20)
 		{
 			hgt = randint1(2);
 			wid = randint1(2);
@@ -1501,7 +1501,7 @@ void clear_cave(void)
  *
  * Hack -- regenerate any "overflow" levels
  */
-void generate_cave(void)
+void generate_cave(int dun_level)
 {
     int num;
 
@@ -1551,7 +1551,7 @@ void generate_cave(void)
                 quest_generate(q);
             else
             {
-                okay = level_gen(&why);
+                okay = level_gen(&why, dun_level);
                 if (okay && q)
                     okay = quest_post_generate(q);
             }

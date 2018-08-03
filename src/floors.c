@@ -1078,7 +1078,7 @@ void change_floor(void)
     {
         /* Create cave */
         hack_mind = FALSE;
-        generate_cave();
+        generate_cave(dun_level);
         hack_mind = TRUE;
 
         /* Paranoia -- No new saved floor */
@@ -1280,7 +1280,7 @@ void change_floor(void)
             {
                 /* Newly create cave */
                 hack_mind = FALSE;
-                generate_cave();
+                generate_cave(dun_level);
                 hack_mind = TRUE;
             }
 
