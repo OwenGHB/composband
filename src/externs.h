@@ -188,6 +188,8 @@ extern s32b friend_align;
 extern bool reinit_wilderness;
 extern char summon_kin_type;
 extern bool hack_mind;
+extern bool very_nice_summon_hack;
+extern bool predictable_energy_hack;
 
 /*
  * Software options (set via the '=' command).  See "tables.c"

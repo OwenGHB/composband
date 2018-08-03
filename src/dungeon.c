@@ -4274,6 +4274,8 @@ static void process_player(void)
         else
             player_turn--;
 
+		predictable_energy_hack = FALSE;
+
         if (!p_ptr->playing || p_ptr->is_dead)
         {
             world_player = FALSE;

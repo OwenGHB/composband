@@ -3462,6 +3462,12 @@ int place_monster_one(int who, int y, int x, int r_idx, int pack_idx, u32b mode)
     if (!ironman_nightmare)
     {
         m_ptr->energy_need = ENERGY_NEED() - (s16b)randint0(100);
+		if (very_nice_summon_hack)
+		{
+			m_ptr->energy_need = MIN(184, MAX(88, p_ptr->energy_need + (m_ptr->mspeed * 8 / 7) + 123 - p_ptr->pspeed)); /* yes, really */
+			m_ptr->energy_need = MIN(184, MAX(88, p_ptr->energy_need + (m_ptr->mspeed * 8 / 7) + 123 - (MIN(144, p_ptr->pspeed)))); /* yes, really */
+			predictable_energy_hack = TRUE;
+		}
     }
     else
     {

@@ -170,6 +170,8 @@ int total_friends = 0;
 s32b friend_align = 0;
 
 bool reinit_wilderness = FALSE;
+bool very_nice_summon_hack = FALSE;
+bool predictable_energy_hack = FALSE;
 
 int current_flow_depth = 0;
 
