@@ -4233,7 +4233,7 @@ static bool summon_specific_okay(int r_idx)
  * desired monster. Note that this is an upper bound, and also
  * tends to "prefer" monsters of that level. Currently, we use
  * the average of the dungeon and monster levels, and then add
- * five to allow slight increases in monster power.
+ * two to allow slight increases in monster power.
  *
  * Note that we use the new "monster allocation table" creation code
  * to restrict the "get_mon_num()" function to the set of "legal"
@@ -4293,7 +4293,7 @@ bool summon_specific(int who, int y1, int x1, int lev, int type, u32b mode)
         _ignore_depth_hack = TRUE;
 
     /* Pick a monster, using the level calculation */
-    r_idx = get_mon_num((dun_level + lev) / 2 + 5);
+    r_idx = get_mon_num((dun_level + lev) / 2 + 2);
 
     /* No pass/kill wall monsters allowed? Well, just pick a normal one then ... */
     if (!r_idx && summon_wall_scummer)
