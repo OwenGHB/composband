@@ -1545,7 +1545,7 @@ D:unvanquished Himring, defiant fortress surrounded by the legions of Morgoth.
 N:128:'Kusanagi-no-tsurugi'
 I:23:20:3
 W:50:20:120:123456
-P:0:4d4:15:15:0
+P:0:4d5:15:15:0
 F:STEALTH | DEX | RES_NETHER | RES_DISEN |
 F:RES_ACID | RES_ELEC | RES_FIRE | RES_COLD |
 F:SLAY_EVIL | SLAY_ANIMAL | SLAY_DEMON | SLAY_DRAGON |
