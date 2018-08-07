@@ -61,7 +61,14 @@ void obj_sense(obj_ptr obj)
 		}
 		else
 		{
-			obj->feeling = FEEL_AVERAGE;
+			if (obj_is_device)
+			{
+				obj->feeling = FEEL_AVERAGE;
+			}
+			else
+			{
+				obj_identify(obj);
+			}
 		}
 	}
 	if (object_is_artifact(obj))

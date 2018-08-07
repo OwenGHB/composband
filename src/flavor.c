@@ -2036,19 +2036,19 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
         t = object_desc_str(t, format(" [%d%%]", pct));
     }
 
+	/* Hack -- Process Lanterns/Torches */
+	if ((o_ptr->tval == TV_LITE) && (!(o_ptr->name1 || o_ptr->art_name || (o_ptr->sval == SV_LITE_FEANOR))))
+	{
+		/* Hack -- Turns of light for normal lites */
+		t = object_desc_str(t, " (with ");
+
+		if (o_ptr->name2 == EGO_LITE_DURATION) t = object_desc_num(t, o_ptr->xtra4 * 2);
+		else t = object_desc_num(t, o_ptr->xtra4);
+		t = object_desc_str(t, " turns of light)");
+	}
+
     if (known)
     {
-        /* Hack -- Process Lanterns/Torches */
-        if ((o_ptr->tval == TV_LITE) && (!(o_ptr->name1 || o_ptr->art_name || (o_ptr->sval == SV_LITE_FEANOR))))
-        {
-            /* Hack -- Turns of light for normal lites */
-            t = object_desc_str(t, " (with ");
-
-            if (o_ptr->name2 == EGO_LITE_DURATION) t = object_desc_num(t, o_ptr->xtra4 * 2);
-            else t = object_desc_num(t, o_ptr->xtra4);
-            t = object_desc_str(t, " turns of light)");
-        }
-
         /* Indicate charging objects, but not rods. */
         if (o_ptr->timeout && (o_ptr->tval != TV_ROD))
         {

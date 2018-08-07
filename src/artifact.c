@@ -3421,6 +3421,8 @@ bool create_named_art_aux_aux(int a_idx, object_type *o_ptr)
     o_ptr->to_d = a_ptr->to_d;
     o_ptr->weight = a_ptr->weight;
 
+	obj_sense(o_ptr);
+
     return TRUE;
 }
 bool create_named_art_aux(int a_idx, object_type *o_ptr)
