@@ -61,7 +61,7 @@ void obj_sense(obj_ptr obj)
 		}
 		else
 		{
-			if (obj_is_device)
+			if (obj_is_device(obj))
 			{
 				obj->feeling = FEEL_AVERAGE;
 			}
