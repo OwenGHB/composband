@@ -743,7 +743,7 @@ static cptr _do_potion(int sval, int mode)
         if (cast)
         {
             int amt = _potion_power(damroll(3, 6) + 3);
-			int dur = _potion_power(100 + randint1(100));
+			int dur = _potion_power(3 + randint1(5));
             if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
@@ -764,7 +764,7 @@ static cptr _do_potion(int sval, int mode)
         if (cast)
         {
             int amt = _potion_power(damroll(10, 10) + 15);
-			int dur = _potion_power(300 + randint1(300));
+			int dur = _potion_power(60 + randint1(60));
             if (p_ptr->pclass == CLASS_RUNE_KNIGHT)
                 msg_print("You are unaffected.");
             else if (sp_player(amt))
