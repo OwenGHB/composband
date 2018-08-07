@@ -25,7 +25,7 @@ T:QUEST:NORMAL
 L:#:PERMANENT
 L:.:FLOOR
 L:<:UP_STAIR
-L:e:MON(radiation eye)
+L:e:MON(disenchanter eye)
 L:g:MON(gas spore)
 L:E:MON(air elemental)
 L:v:MON(shimmering vortex)
