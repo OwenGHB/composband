@@ -65,7 +65,7 @@ void obj_sense(obj_ptr obj)
 			{
 				obj->feeling = FEEL_AVERAGE;
 			}
-			else if (!object_is_ego(obj))
+			else if (!object_is_ego(obj) && !object_is_artifact(obj))
 			{
 				obj_identify(obj);
 			}
