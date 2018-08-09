@@ -1732,6 +1732,10 @@ static errr _parse_room_grid_artifact(char **args, int arg_ct, room_grid_ptr gri
         {
             grid->flags |= ROOM_GRID_ART_RANDOM;
         }
+		else if (streq(args[0], "-"))
+		{
+			grid->flags |= ROOM_GRID_ART_CURSED;
+		}
         else
         {
             if (_is_numeric(args[0]))
