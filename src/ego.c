@@ -2823,8 +2823,8 @@ static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 	int powers;
 	assert(o_ptr->name2 == EGO_ARMOR_DWARVEN);
 	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
-	o_ptr->ac += m_bonus(k_info[o_ptr->k_idx].ac / 4, level);
-	powers = m_bonus(6, level);
+	o_ptr->ac += k_info[o_ptr->k_idx].ac / 4;
+	powers = randint1(3) + m_bonus(3, level);
 	if (one_in_(2))
 	{
 		for (powers; powers > 0; --powers)
