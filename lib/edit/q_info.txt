@@ -313,7 +313,7 @@ F:q_crystal.txt
 N:77:30:The Logrus Master (Anambar)
 T:TOWN
 G:KILL(logrus master)
-F:q_logrus.txt
+F:q_logrus_master.txt
 
 #####################################################################
 # FrogComposband quests
