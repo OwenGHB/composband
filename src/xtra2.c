@@ -826,11 +826,11 @@ void monster_death(int m_idx, bool drop_item)
           && p_ptr->pclass != CLASS_SAMURAI
           && p_ptr->pclass != CLASS_MYSTIC )
         {
-            hp_player_aux(10);
-            sp_player(5);
+            hp_player_aux(randint0(r_ptr->level / 3) + r_ptr->level / 3);
+            sp_player(randint0(r_ptr->level / 6) + r_ptr->level / 6);
         }
         else
-            hp_player_aux(15);
+			hp_player_aux(randint0(r_ptr->level / 2) + r_ptr->level / 2);
     }
 
     if (r_ptr->flags2 & RF2_MULTIPLY)
