@@ -18,15 +18,16 @@ D:You have failed me, beware you do not do so again!
 
 T:QUEST:NORMAL
 L:#:PERMANENT
+L:W:PERMANENT_GLASS_WALL
 L:+:CLOSED_DOOR
 L:.:FLOOR
 L:<:UP_STAIR
 L:^:TRAP(*, 25%)
-L:a:MON(mithril golem):OBJ(mithril shod boots)
-L:b:MON(mithril golem):OBJ(mithril shield)
-L:c:MON(mithril golem):OBJ(mithril plate)
-L:d:MON(mithril golem):OBJ(mithril helm)
-L:e:MON(mithril golem):OBJ(mithril gauntlets)
+L:a:OBJ(mithril shod boots):EGO(dwarven)
+L:b:OBJ(mithril shield):EGO(dwarven)
+L:c:OBJ(mithril plate):EGO(dwarven)
+L:d:OBJ(mithril helm):EGO(dwarven)
+L:e:OBJ(mithril gauntlets):EGO(dwarven)
 L:f:MON(colossus)
 L:g:OBJ(*, DEPTH+7):MON(silent watcher)
 L:h:MON(eog golem)
@@ -35,12 +36,13 @@ L:k:OBJ(potion of charisma)
 L:l:OBJ(WAND_CHARM_MONSTER)
 L:m:OBJ(SCROLL, DEPTH+10)
 L:n:OBJ(small iron chest)
+L:o:MON(mithril golem)
 
 M:######################################################################
 M:#..............################################################.h.####
 M:#..............#################################################+#####
 M:#......f.......+..................................................+h.#
-M:#..............#..###################+################################
+M:#..............#..####WWWW+WWWWWWW+WWWWWW+WWWWWW######################
 M:#..............#..#.................................##################
 M:################..#.......g.......g......g..........##############kml#
 M:#..............#..#.................................##############..n#
@@ -48,6 +50,6 @@ M:#.<............+..#...###########################...##########......k#
 M:#..............#..#...###########################...##########.i.##nm#
 M:################..#.................................+...^..^.+...#####
 M:########......##..#^^^^^##^^^^^##^^^^^##^^^^^##^^^^^##################
-M:########..f....+..#..a..##..b..##..c..##..d..##..e..##################
+M:########..f....+..#.oao.##.obo.##.oco.##.odo.##.oeo.##################
 M:########......##..####################################################
 M:######################################################################
