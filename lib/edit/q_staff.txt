@@ -1,20 +1,18 @@
 # New quest for FrogComposband 7.0.strawberry
+# Altered for Composband
 
 ?:[EQU $QUEST76 Taken InProgress]
-D:Back again? All right, another student of mine tried to
-D:play with the undead some time ago and came up second-best.
-D:See if you can bring back any of the valuables he had,
-D:or at least recover his wizard's staff.
+D:Another adventurer tried to go up against the undead some 
+D:time ago and came up second-best. See if you can bring
+D:his soul peace by vanquishing them.
 ?:1
 
 ?:[EQU $QUEST76 Completed]
-D:Hey, you made it! Tell you what, I'll let you keep that
-D:staff, you may not be a full wizard yet but at least you're
-D:doing better than him.
+D:You may keep his belongings as he has no more need of them.
 ?:1
 
 ?:[EQU $QUEST76 Failed]
-D:Let's see... you failed, no credit.
+D:Let's see... you failed, that is a shame.
 ?:1
 
 T:QUEST:NORMAL
@@ -38,7 +36,17 @@ L:H:MON(black wraith)
 L:^:TRAP(*, 25%)
 L:!:OBJ(pint of fine wine)
 L:':OBJ(piece of elvish waybread)
-L:0:FLOOR(ICKY):ART(mokomagi)
+?:[EQU [MOD $RANDOM76 5] 0]
+L:0:FLOOR(ICKY):ART(totila)
+?:[EQU [MOD $RANDOM76 5] 1]
+L:0:FLOOR(ICKY):ART(firestar)
+?:[EQU [MOD $RANDOM76 5] 2]
+L:0:FLOOR(ICKY):ART(taratol)
+?:[EQU [MOD $RANDOM76 5] 3]
+L:0:FLOOR(ICKY):ART(bloodspike)
+?:[EQU [MOD $RANDOM76 5] 4]
+L:0:FLOOR(ICKY):ART(turmil)
+
 L:1:FLOOR(ICKY):OBJ(RING, DEPTH+10)
 L:2:FLOOR(ICKY):OBJ(AMULET, DEPTH+10)
 L:3:FLOOR(ICKY):OBJ(potion of healing)

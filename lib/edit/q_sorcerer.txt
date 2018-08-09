@@ -1,15 +1,15 @@
-# This is an old quest that was slightly modified for FrogComposband
-# 7.0.strawberry. The descriptions are partly old, partly new and
-# partly based on Gwarl's quest descriptions from ComPosband
+# Adapted from Kangband 133
 
 ?:[EQU $QUEST64 Taken InProgress]
-D:An old sorcerer has betrayed the order of wizards and gone over
-D:to serve the forces of darkness. He has built a tower nearby and 
-D:the Sultan is growing concerned. Go kill him, I'll give you credit.
+D:One of our former students has betrayed the precepts of our order
+D:and brought shame on us. He has begun teaching the dark arts in
+D:an academy not far from here, and what is worse at below market
+D:prices. Put a stop to his treachery and reclaim our honour.
 ?:1
 
 ?:[EQU $QUEST64 Completed]
-D:Well done on the special examination. Here is your Magister's crown.
+D:Congratulations on your victory. You can take the sorcerors old
+D:robes of office that he left behind.
 ?:1
 
 ?:[EQU $QUEST64 Failed]
@@ -19,36 +19,60 @@ D:The order of wizards will have to take care of its own problem.
 
 T:QUEST:NORMAL
 L:#:PERMANENT
+L:W:GLASS_WALL
+L:~:DEEP_WATER
 L:.:FLOOR
-L:,:FLOOR(ICKY)
 L:<:UP_STAIR
 L:+:CLOSED_DOOR
 L:^:TRAP(*, 75%)
-L:a:PATTERN_1
-L:b:PATTERN_2
-L:c:PATTERN_3
-L:d:PATTERN_4
-L:A:PATTERN_START
-L:L:PATTERN_EXIT
-L:p:FLOOR(ICKY):MON(old sorcerer)
+L:a:MON(apprentice)
+L:b:MON(ogre mage)
+L:c:MON(enchantress)
+L:d:MON(demonologist)
+L:e:MON(spectator)
+L:f:MON(displacer beast)
+L:g:MON(silent watcher)
+L:s:MON(^sorcerer$)
+L:h:MON(dark elven warlock)
+L:p:MON(master lich)
 L:$:OBJ(DEVICE)
 L:?:OBJ(HI_BOOK)
-M:#########################
-M:#?$+.................+$$#
-M:####.................####
-M:#.....dcbadcbadcbad.....#
-M:#...bad,,,,,,,,,,,dcc...#
-M:#...b,,,,,,,,,,,,,,,b...#
-M:#...c,,,,,,,,,,,,,,,a...#
-M:#...d,,,,,,,p,,,,,,,d...#
-M:#...a,,,,,,,,,,,,,,,c...#
-M:#..^bbcdaL,,,,,,,,,,b...#
-M:#..^^^^,,,,,,,,,,,,,a...#
-M:#..^Abc,,,,,,,,,,,cda...#
-M:#.....cdabcdabcdabc.....#
-M:####.................####
-M:#<...................+$$#
-M:#########################
-R:OBJ(jewel encrusted crown, DEPTH+25):EGO(magi)
+L:!:OBJ(POTION)
+L:S:OBJ(SCROLL)
+L:\:OBJ(wizardstaff):EGO(6)
+L:[:OBJ(crown):EGO(magi)
+L:(:OBJ(cloak):EGO(aman)
+L:":OBJ(amulet):EGO(magi)
+L:=:OBJ(ring):EGO(wizardry)
+!:SCRAMBLE(s,p,d,c)
+M:##########################################################################
+M:##########################################################################
+M:#############################......<......################################
+M:########################.......................###########################
+M:######################...........................#########################
+M:#####################.............................########################
+M:####..............##...........WWW+++WWW...........#####.....c......######
+M:####..?########?..##....h.....WW.......WW....b.....#####...!....!...######
+M:####..............#..........WW.........WW..........####...######...######
+M:####..............#..........+....~~~....+..........####...!....!...######
+M:####.d?########?..+..........+....~g~....+..........+..+.....f......######
+M:####..............#..........+....~~~....+..........#########++###########
+M:####..............#..........WW.........WW..........#########..###########
+M:####..?########?..##..........WW.......WW..........##########..###########
+M:####..............##....b......WWW+++WWW.....h.....##########..###########
+M:#############+#######.............................###########..###########
+M:#############.########...........................############..#.e^=######
+M:#############.##########.......................##############..+.e^"######
+M:#############.###############.............###################..#.e^=######
+M:#############+####################+++########################..###########
+M:####...........###################...###################$$$##..###########
+M:####...........###################...###################^^^##..###########
+M:####...........###################...####################+###++###########
+M:####...........#.....^(###########...##################............#######
+M:####...#####...+.....^\###########....................+.......s....#######
+M:####.....p.....#.....^[###########....................+..a.........#######
+M:#######################################################............#######
+M:##########################################################################
+R:OBJ(robe, DEPTH+25):EGO(sorcerer)
 
 # vim: filetype=q :

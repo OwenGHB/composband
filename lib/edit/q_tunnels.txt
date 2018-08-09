@@ -22,8 +22,8 @@ L:.:FLOOR
 L:+:CLOSED_DOOR
 L:<:UP_STAIR
 L:k:OBJ(POTION)
-L:l:OBJ(HAFTED):EGO(morgul)
-L:a:MON(orc berserker)
+L:l:OBJ(SWORD):EGO(morgul)
+L:a:MON(orc berserker, NO_SLEEP)
 L:b:MON(orc warlord)
 L:c:MON(orc warlock)
 L:s:OBJ(skeleton)
@@ -54,4 +54,4 @@ M:####.a.a.######.....##########...#####*...*#################....########
 M:###...c...#######...............##############################......####
 M:####..l..###########..........####################################....+#
 M:########################################################################
-R:OBJ(amulet):EGO(sacred)
+R:OBJ(amulet):EGO(defender)

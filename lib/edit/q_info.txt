@@ -136,6 +136,7 @@ F:q_mimics_treasure.txt
 N:31:22:Old Man Willow Quest (Outpost)
 T:TOWN | GENERATE
 F:q_old_man_willow.txt
+G:KILL(old man willow)
 
 N:32:25:The Dark Elven Lords (Morivant)
 T:TOWN | GENERATE
@@ -240,13 +241,18 @@ N:55:50:The Underground City (Morivant)
 T:TOWN | GENERATE
 F:q_underground.txt
 
-N:60:27:Clear the Tunnels (Thalos)
+N:60:28:Clear the Tunnels (Thalos)
 T:TOWN | GENERATE
 F:q_tunnels.txt
 
 N:62:15:Crow's Nest (Outpost)
 T:TOWN | GENERATE
 F:q_birds.txt
+
+N:64:45:The Renegade Sorcerer (Thalos)
+T:TOWN | GENERATE
+G:KILL(sorcerer)
+F:q_sorcerer.txt
 
 #####################################################################
 # Fighters guild quests
@@ -280,7 +286,7 @@ F:q_demonslayer.txt
 # Composband quests
 #####################################################################
 
-N:61:50:Clear the Wreckage (Thalos)
+N:61:35:Clear the Wreckage (Thalos)
 T:TOWN | GENERATE
 F:q_shipwreck.txt
 
@@ -304,20 +310,20 @@ W:crystal
 G:KILL(great crystal drake, 5)
 F:q_crystal.txt
 
+N:77:30:The Logrus Master (Anambar)
+T:TOWN
+G:KILL(logrus master)
+F:q_logrus.txt
+
 #####################################################################
 # FrogComposband quests
 #####################################################################
-
-N:64:50:The Renegade Sorcerer (Thalos)
-T:TOWN | GENERATE
-G:KILL(old sorcerer)
-F:q_sorcerer.txt
 
 N:68:33:Dinosaur Quest (Anambar)
 T:TOWN | GENERATE
 F:q_dino.txt
 
-N:69:32:The Old Watchtower (Anambar)
+N:69:32:The Old Watchtower (Telmora)
 T:TOWN | GENERATE
 F:q_wtower.txt
 
@@ -345,9 +351,9 @@ N:75:55:The Mystery of Apina Island (Anambar)
 T:TOWN | GENERATE
 F:q_apina.txt
 
-N:76:40:Staff Recovery (Thalos)
+# Altered for composband
+N:76:40:Holy Vengeance (Telmora)
 T:TOWN | GENERATE
-G:FIND(mokomagi)
 F:q_staff.txt
 
 

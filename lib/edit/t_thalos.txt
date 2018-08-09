@@ -54,14 +54,6 @@ L:z:QUEST_ENTER(60)
 ?:[EQU $QUEST60 Taken Completed Failed]
 L:b:BUILDING_1(60)
 ?:[EQU $QUEST60 Finished FailedDone]
-L:b:BUILDING_1(33)
-?:1
-############### Quest 33 - The Cloning Pits ###############
-?:[EQU $QUEST33 Taken]
-L:q:QUEST_ENTER(33)
-?:[EQU $QUEST33 Taken Completed Failed]
-L:b:BUILDING_1(33)
-?:[EQU $QUEST33 Finished FailedDone]
 L:b:BUILDING_1(61)
 ?:1
 ############### Quest 61 - Shipwreck
@@ -70,8 +62,17 @@ L:y:QUEST_ENTER(61)
 ?:[EQU $QUEST61 Taken Completed Failed]
 L:b:BUILDING_1(61)
 ?:[EQU $QUEST61 Finished FailedDone]
+L:b:BUILDING_1(33)
+?:1
+############### Quest 33 - The Cloning Pits ###############
+?:[EQU $QUEST33 Taken]
+L:q:QUEST_ENTER(33)
+?:[EQU $QUEST33 Taken Completed Failed]
+L:b:BUILDING_1(33)
+?:[EQU $QUEST33 Finished FailedDone]
 L:b:BUILDING_1(0)
 ?:1
+
 
 ##################### Mage Quests ##################
 
@@ -95,14 +96,6 @@ L:p:QUEST_ENTER(66)
 ?:[EQU $QUEST66 Taken Completed Failed]
 L:n:BUILDING_13(66)
 ?:[EQU $QUEST66 Finished FailedDone]
-L:n:BUILDING_13(76)
-?:1
-############### Quest 76 - Staff Recovery ###############
-?:[EQU $QUEST76 Taken]
-L:s:QUEST_ENTER(76)
-?:[EQU $QUEST76 Taken Completed Failed]
-L:n:BUILDING_13(76)
-?:[EQU $QUEST76 Finished FailedDone]
 L:n:BUILDING_13(64)
 ?:1
 ############### Quest 64 - Renegade Sorcerer ############
