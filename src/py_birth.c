@@ -101,7 +101,7 @@ void py_birth_obj_aux(int tval, int sval, int qty)
     {
         int k_idx = lookup_kind(tval, SV_ANY);
         object_prep(&forge, k_idx);
-        if (!device_init_fixed(&forge, sval))
+        if (!device_init_fixed(&forge, sval, 5))
             return;
         qty = 1;
         break;

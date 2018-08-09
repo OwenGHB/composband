@@ -888,7 +888,7 @@ void monster_death(int m_idx, bool drop_item)
             {
             case TV_WAND: case TV_ROD: case TV_STAFF:
                 object_prep(q_ptr, lookup_kind(tval, SV_ANY));
-                device_init_fixed(q_ptr, sval);
+                device_init_fixed(q_ptr, sval, r_ptr->level);
                 break;
             default:
                 object_prep(q_ptr, lookup_kind(tval, sval));
@@ -1946,7 +1946,7 @@ void monster_death(int m_idx, bool drop_item)
                         /* Hack: There is only a single k_idx for each class of devices, so
                          * we use the ego index to pick an effect. This means there is no way
                          * to actually grant an ego device ...*/
-                        if (!device_init_fixed(q_ptr, ego_index))
+                        if (!device_init_fixed(q_ptr, ego_index, object_level))
                         {
                             if (ego_index)
                             {

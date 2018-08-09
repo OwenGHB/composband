@@ -1979,7 +1979,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
                 /* Hack: There is only a single k_idx for each class of devices, so
                  * we use the ego index to pick an effect. This means there is no way
                  * to actually grant an ego device ...*/
-                if (!device_init_fixed(&forge, grid->extra))
+                if (!device_init_fixed(&forge, grid->extra, level))
                 {
                     if (grid->extra)
                     {
