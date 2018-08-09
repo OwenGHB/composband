@@ -302,7 +302,8 @@ static void _create_ring_aux(object_type *o_ptr, int level, int power, int mode)
 static bool _check_rand_art(int base, int level, int power, int mode)
 {
     if (mode & AM_CRAFTING) return FALSE;
-    if (power > 2) return TRUE;
+    if (ABS(power) > 2) return TRUE;
+	if (ABS(power) < 2) return FALSE;
     /*if (statistics_hack && one_in_(3)) return TRUE;  XXX Temp */
     base -= base * level / 200;
     if (one_in_(base)) return TRUE;
@@ -827,7 +828,7 @@ static void _create_ring_aux(object_type *o_ptr, int level, int power, int mode)
 {
     int powers = 0;
 
-    if (mode & AM_SPECIAL || _check_rand_art(100,level,power,mode))
+    if (mode & AM_SPECIAL || _check_rand_art(50,level,power,mode))
     {
         _art_create_random(o_ptr, level, power);
         return;
@@ -1264,7 +1265,7 @@ static void _create_amulet_aux(object_type *o_ptr, int level, int power, int mod
 {
     int powers = 0;
 
-    if (mode & AM_SPECIAL || _check_rand_art(100, level, power, mode))
+    if (mode & AM_SPECIAL || _check_rand_art(50, level, power, mode))
     {
         _art_create_random(o_ptr, level, power);
         return;
