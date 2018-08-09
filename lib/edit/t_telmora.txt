@@ -109,7 +109,7 @@ L:j:BUILDING_9(69)
 ?:1
 ############### Quest 69 - The Old Watchtower
 ?:[EQU $QUEST69 Taken]
-L::QUEST_ENTER(69)
+L:Z:QUEST_ENTER(69)
 ?:[EQU $QUEST69 Taken Completed Failed]
 L:j:BUILDING_9(69)
 ?:[EQU $QUEST69 Finished FailedDone]
@@ -117,7 +117,7 @@ L:j:BUILDING_9(76)
 ?:1
 ############### Quest 76 - Mace Recovery ###############
 ?:[EQU $QUEST76 Taken]
-L::QUEST_ENTER(76)
+L:Y:QUEST_ENTER(76)
 ?:[EQU $QUEST76 Taken Completed Failed]
 L:j:BUILDING_9(76)
 ?:[EQU $QUEST76 Finished FailedDone]

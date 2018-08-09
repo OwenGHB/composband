@@ -74,14 +74,14 @@ L:v:QUEST_ENTER(71)
 ?:[EQU $QUEST71 Untaken Taken Completed Failed]
 L:b:BUILDING_1(71)
 ?:[EQU $QUEST71 Finished FailedDone]
-L:b:BUILDING_1(68)
+L:b:BUILDING_1(77)
 ?:1
 ############### Quest 77 - Logrus Master
 ?:[EQU $QUEST77 Taken]
 L:s:QUEST_ENTER(77)
-?:[EQU $QUEST77 Untaken Taken Completed Failed]
+?:[EQU $QUEST77 Taken Completed Failed]
 L:b:BUILDING_1(77)
-?:[EQU $QUEST71 Finished FailedDone]
+?:[EQU $QUEST77 Finished FailedDone]
 L:b:BUILDING_1(68)
 ?:1
 ############### Quest 68 - Dinosaur Quest
