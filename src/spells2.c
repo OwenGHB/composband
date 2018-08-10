@@ -2027,7 +2027,7 @@ void aggravate_monsters(int who)
         /* Speed up monsters in line of sight */
         if (player_has_los_bold(m_ptr->fy, m_ptr->fx))
         {
-            if (!is_pet(m_ptr))
+            if ((!is_pet(m_ptr)) && ((!very_nice_summon_hack) || (!(m_ptr->mflag & MFLAG_NICE))))
             {
                 (void)set_monster_fast(i, MON_FAST(m_ptr) + 100);
                 speed = TRUE;
