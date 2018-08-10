@@ -1,6 +1,6 @@
 # Amalgam of logrus master and old sorceror quests (kangband and poschengband)
 
-?:[EQU $QUEST3 Taken InProgress]
+?:[EQU $QUEST77 Taken InProgress]
 D:One of the houses in town was recently sold to a foreign
 D:mystic. Now more and more alarming things happen like the
 D:sudden plague of evil in the sewers, animals dying, people
@@ -11,11 +11,11 @@ D:living in the house in the north-west corner of town.
 D:I need you to take this logrus adept out.
 ?:1
 
-?:[EQU $QUEST3 Completed]
+?:[EQU $QUEST77 Completed]
 D:You saved us from deep trouble again. Please accept this modest gift.
 ?:1
 
-?:[EQU $QUEST3 Failed]
+?:[EQU $QUEST77 Failed]
 D:It seems like I've overestimated your power. But at least
 D:my friend Toniqua, the Librarian says that the Logrus Master
 D:has left the town. Lets hope that he never comes back.
