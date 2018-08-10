@@ -311,7 +311,7 @@ G:KILL(great crystal drake, 5)
 F:q_crystal.txt
 
 N:77:30:The Logrus Master (Anambar)
-T:TOWN
+T:TOWN | GENERATE
 G:KILL(logrus master)
 F:q_logrus_master.txt
 
