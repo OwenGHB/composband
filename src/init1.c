@@ -4625,7 +4625,40 @@ errr parse_room_line(room_ptr room, char *line, int options)
         memset(letter, 0, sizeof(room_grid_t));
         letter->letter = line[2];
         rc = parse_room_grid(line + 4, letter, options);
-        if (!rc) int_map_add(room->letters, letter->letter, letter);
+		if (!rc)
+		{
+			/* Check for the following case: a quest line is edited during the game,
+			* and the player has already requested or completed a quest that happens
+			* later in the new line without having requested, completed or received a
+			* reward for an earlier quest. This can make either a quest reward or an
+			* entire quest inaccessible. To avoid this, we use a very ugly hack:
+			* buildings set to an Untaken quest or a Completed quest (meaning an
+			* unrewarded one) can only be overwritten by setting them to another
+			* Completed quest. (We allow that so that a player who completes the
+			* later quest first can receive the reward immediately, without having to
+			* take the earlier quest.) */
+			if ((letter->cave_feat >= 128) && (letter->cave_feat < 160))
+			{
+				room_grid_ptr old_grid = int_map_find(room->letters, letter->letter);
+				while ((old_grid) && (old_grid->extra > 0) && (old_grid->cave_feat == letter->cave_feat)
+					&& (old_grid->extra != letter->extra))
+				{
+					quest_ptr q = quests_get(old_grid->extra);
+					if (!q || !q->id) break;
+					if ((q->status == QS_UNTAKEN) || (q->status == QS_COMPLETED))
+					{
+						if (letter->extra < 1) letter->extra = old_grid->extra;
+						else {
+							quest_ptr q2 = quests_get(letter->extra);
+							if (!q2 || !q2->id) letter->extra = old_grid->extra;
+							else if (q2->status != QS_COMPLETED) letter->extra = old_grid->extra;
+						}
+					}
+					break;
+				}
+			}
+			int_map_add(room->letters, letter->letter, letter);
+		}
         else free(letter);
         if (rc) return rc;
     }
