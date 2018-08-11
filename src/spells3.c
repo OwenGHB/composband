@@ -325,8 +325,6 @@ bool cave_player_teleportable_bold(int y, int x, u32b mode)
 
 bool teleport_player_aux(int dis, u32b mode)
 {
-	dis = MAX(1,(2*dis/3)+randint0(dis/3));
-	
 	int candidates_at[MAX_TELEPORT_DISTANCE + 1];
     int total_candidates, cur_candidates;
     int y = 0, x = 0, min, pick, i;
@@ -335,6 +333,8 @@ bool teleport_player_aux(int dis, u32b mode)
     int right = MIN(cur_wid - 2, px + dis);
     int top = MAX(1, py - dis);
     int bottom = MIN(cur_hgt - 2, py + dis);
+
+	dis = MAX(1, (2 * dis / 3) + randint0(dis / 3));
 
     if (p_ptr->wild_mode) return FALSE;
 
