@@ -316,11 +316,18 @@ bool cave_player_teleportable_bold(int y, int x, u32b mode)
  * of candidates has equal possibility to be choosen as a destination.
  */
 
+/*
+ * Teleport pong deaths still happen so we're just going to do the
+ * easier more obvious thing of randomising the distance a little.
+ */
+
 #define MAX_TELEPORT_DISTANCE 200
 
 bool teleport_player_aux(int dis, u32b mode)
 {
-    int candidates_at[MAX_TELEPORT_DISTANCE + 1];
+	dis = MAX(1,(2*dis/3)+randint0(dis/3));
+	
+	int candidates_at[MAX_TELEPORT_DISTANCE + 1];
     int total_candidates, cur_candidates;
     int y = 0, x = 0, min, pick, i;
 
