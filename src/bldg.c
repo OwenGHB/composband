@@ -3043,7 +3043,7 @@ bool tele_town(void)
         char buf[80];
 
         if (i == p_ptr->town_num) continue;
-		if ((num) && (easy_thalos)) town_on_visit(i); /* Make people not hate me */
+		if (easy_thalos) town_on_visit(i); /* rename to easy_towns */
         if (!town_visited(i) && !p_ptr->wizard) continue;
 
         sprintf(buf,"%c) %-20s", I2A(i-1), town_name(i));
@@ -3495,6 +3495,8 @@ static void bldg_process_command(building_type *bldg, int i)
         if (do_res_stat(A_DEX)) paid = TRUE;
         if (do_res_stat(A_CON)) paid = TRUE;
         if (do_res_stat(A_CHR)) paid = TRUE;
+		if (restore_level()) paid = TRUE;
+		if (lp_player(1000)) paid = TRUE;
         break;
     case BACT_ENCHANT_ARROWS:
         enchant_item(item_tester_hook_ammo, bcost, 1, 1, 0, is_guild);
