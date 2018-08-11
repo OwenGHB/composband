@@ -2826,105 +2826,105 @@ static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 	assert(o_ptr->name2 == EGO_ARMOR_DWARVEN);
 	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
 	o_ptr->ac += k_info[o_ptr->k_idx].ac / 4;
-	powers = randint1(3) + m_bonus(3, level);
-	if (one_in_(2))
+	for (int powers = m_bonus(8, level) + randint0(1); powers > 0; --powers)
 	{
-		for (powers; powers > 0; --powers)
+		switch (randint1(10))
 		{
-			switch (randint1(9))
+		case 1:
+		case 2:
+			if (!have_flag(o_ptr->flags, OF_REGEN))
 			{
-			case 1:
-			case 2:
-				if (!have_flag(o_ptr->flags, OF_REGEN))
-				{
-					add_flag(o_ptr->flags, OF_REGEN);
-					break;
-				}
-			case 3:
-				if (!have_flag(o_ptr->flags, OF_STR))
-				{
-					add_flag(o_ptr->flags, OF_STR);
-					if (one_in_(3)) 
-					{
-						add_flag(o_ptr->flags, OF_DEC_STEALTH);
-					}
-					else if (one_in_(3))
-					{
-						add_flag(o_ptr->flags, OF_DEC_DEX);
-					}
-					break;
-				}
-			case 4:
-				if (!have_flag(o_ptr->flags, OF_CON))
-				{
-					add_flag(o_ptr->flags, OF_CON);
-					if (one_in_(3))
-					{
-						add_flag(o_ptr->flags, OF_DEC_DEX);
-					}
-					else if (one_in_(3))
-					{
-						add_flag(o_ptr->flags, OF_DEC_STEALTH);
-					}
-					break;
-				}
-			case 5:
-				if (!have_flag(o_ptr->flags, OF_FREE_ACT))
-				{
-					add_flag(o_ptr->flags, OF_FREE_ACT);
-					break;
-				}
-			case 6:
-				if (!have_flag(o_ptr->flags, OF_RES_DISEN) && level > 40 && one_in_(2))
-				{
-					add_flag(o_ptr->flags, OF_RES_DISEN);
-					break;
-				}
-				else
-				{
-					if (!have_flag(o_ptr->flags, OF_RES_DARK))
-					{
-						add_flag(o_ptr->flags, OF_RES_DARK);
-						break;
-					}
-				}
-			case 7:
-				if (!have_flag(o_ptr->flags, OF_RES_BLIND) && one_in_(2))
-				{
-					add_flag(o_ptr->flags, OF_RES_BLIND);
-					break;
-				}
-				else
-				{
-					if (!have_flag(o_ptr->flags, OF_SEARCH))
-					{
-						add_flag(o_ptr->flags, OF_SEARCH);
-						break;
-					}
-				}
-			case 8:
-				if (!have_flag(o_ptr->flags, OF_TUNNEL) && one_in_(2))
-				{
-					add_flag(o_ptr->flags, OF_TUNNEL);
-					break;
-				}
-			case 9:
-				if (!have_flag(o_ptr->flags, OF_SUST_CON) && one_in_(2))
-				{
-					add_flag(o_ptr->flags, OF_SUST_CON);
-					break;
-				}
-				else
-				{
-					if (!have_flag(o_ptr->flags, OF_SUST_STR))
-					{
-						add_flag(o_ptr->flags, OF_SUST_STR);
-						break;
-					}
-				}
-			default:
+				add_flag(o_ptr->flags, OF_REGEN);
 				break;
 			}
+		case 3:
+			if (!have_flag(o_ptr->flags, OF_STR))
+			{
+				add_flag(o_ptr->flags, OF_STR);
+				if (one_in_(3)) 
+				{
+					add_flag(o_ptr->flags, OF_DEC_STEALTH);
+				}
+				else if (one_in_(3))
+				{
+					add_flag(o_ptr->flags, OF_DEC_DEX);
+				}
+				break;
+			}
+		case 4:
+			if (!have_flag(o_ptr->flags, OF_CON))
+			{
+				add_flag(o_ptr->flags, OF_CON);
+				if (one_in_(3))
+				{
+					add_flag(o_ptr->flags, OF_DEC_DEX);
+				}
+				else if (one_in_(3))
+				{
+					add_flag(o_ptr->flags, OF_DEC_STEALTH);
+				}
+				break;
+			}
+		case 5:
+			if (!have_flag(o_ptr->flags, OF_FREE_ACT))
+			{
+				add_flag(o_ptr->flags, OF_FREE_ACT);
+				break;
+			}
+		case 6:
+			if (!have_flag(o_ptr->flags, OF_RES_DISEN) && level > 40 && one_in_(2))
+			{
+				add_flag(o_ptr->flags, OF_RES_DISEN);
+				break;
+			}
+			else
+			{
+				if (!have_flag(o_ptr->flags, OF_RES_DARK))
+				{
+					add_flag(o_ptr->flags, OF_RES_DARK);
+					break;
+				}
+			}
+		case 7:
+			if (!have_flag(o_ptr->flags, OF_RES_BLIND) && one_in_(2))
+			{
+				add_flag(o_ptr->flags, OF_RES_BLIND);
+				break;
+			}
+			else
+			{
+				if (!have_flag(o_ptr->flags, OF_SEARCH))
+				{
+					add_flag(o_ptr->flags, OF_SEARCH);
+					break;
+				}
+			}
+		case 8:
+			if (!have_flag(o_ptr->flags, OF_TUNNEL) && one_in_(2))
+			{
+				add_flag(o_ptr->flags, OF_TUNNEL);
+				break;
+			}
+		case 9:
+			if (!have_flag(o_ptr->flags, OF_SUST_CON) && one_in_(2))
+			{
+				add_flag(o_ptr->flags, OF_SUST_CON);
+				break;
+			}
+			else
+			{
+				if (!have_flag(o_ptr->flags, OF_SUST_STR))
+				{
+					add_flag(o_ptr->flags, OF_SUST_STR);
+					break;
+				}
+			}
+		case 10:
+			o_ptr->to_h += randint1(3) + m_bonus(5, level);
+			o_ptr->to_d += randint1(3) + m_bonus(5, level);
+			break;
+		default:
+			break;
 		}
 	}
 }
