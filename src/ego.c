@@ -2823,7 +2823,6 @@ static void _ego_create_armor_elvenkind(object_type *o_ptr, int level)
 }
 static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 {
-	int powers;
 	assert(o_ptr->name2 == EGO_ARMOR_DWARVEN);
 	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
 	o_ptr->ac += k_info[o_ptr->k_idx].ac / 4;

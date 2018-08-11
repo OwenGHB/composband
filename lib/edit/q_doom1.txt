@@ -21,6 +21,7 @@ D:I've sent out someone else to do the job. Now leave me alone!
 
 T:QUEST:NORMAL:NO_ROTATE
 L:#:PERMANENT
+L:%:QUARTZ
 L:.:FLOOR
 L:+:CLOSED_DOOR
 L:W:PERMANENT_GLASS_WALL
