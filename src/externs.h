@@ -1320,7 +1320,6 @@ extern bool save_player(void);
 extern bool load_player(void);
 extern void remove_loc(void);
 extern bool save_floor(saved_floor_type *sf_ptr, u32b mode);
-extern byte versio_sovitus(void);
 
 /* spells1.c */
 extern bool allow_ticked_off(monster_race *r_ptr);
