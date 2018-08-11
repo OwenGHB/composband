@@ -3837,7 +3837,11 @@ static cptr do_death_spell(int spell, int mode)
         if (desc) return "Fires 3 bolts. Each of the bolts absorbs some HP from a monster and gives them to you.";
 
         {
-            int dam = spell_power(100 + p_ptr->to_d_spell/3);
+			int dice = 1;
+			int sides = spell_power(plev * 2);
+			int base = spell_power(plev * 2 + p_ptr->to_d_spell/3);
+			
+			int dam = base + damroll(dice, sides);
 
             if (info) return format("%s3*%d", s_dam, dam);
 

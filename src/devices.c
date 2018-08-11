@@ -6159,7 +6159,7 @@ cptr do_effect(effect_t *effect, int mode, int boost)
     {
         int dam = _extra(effect, 50 + effect->power/2);
         if (name) return "Vampirism";
-        if (desc) return "It fires a bolt that steals life from a foe when you use it.";
+        if (desc) return "It fires a bolt that steals life from a foe when you use it. You will also gain nutritional sustenance from this.";
         if (info) return info_damage(0, 0, _BOOST(dam));
         if (value) return format("%d", 35*dam);
         if (color) return format("%d", TERM_L_DARK);
@@ -6169,8 +6169,14 @@ cptr do_effect(effect_t *effect, int mode, int boost)
             dam = _BOOST(dam);
             if (drain_life(dir, dam))
             {
-                vamp_player(dam);
+				hp_player(dam);
                 device_noticed = TRUE;
+
+				dam = p_ptr->food + MIN(5000, 100 * dam);
+
+				/* Not gorged already */
+				if (p_ptr->food < PY_FOOD_MAX)
+					set_food(dam >= PY_FOOD_MAX ? PY_FOOD_MAX - 1 : dam);
             }
         }
         break;
