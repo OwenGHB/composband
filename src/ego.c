@@ -302,6 +302,7 @@ static void _create_ring_aux(object_type *o_ptr, int level, int power, int mode)
 static bool _check_rand_art(int base, int level, int power, int mode)
 {
     if (mode & AM_CRAFTING) return FALSE;
+	if (mode & AM_SPECIAL) return TRUE;
     if (ABS(power) > 2) return TRUE;
 	if (ABS(power) < 2) return FALSE;
     /*if (statistics_hack && one_in_(3)) return TRUE;  XXX Temp */

@@ -1911,7 +1911,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
         if (grid->flags & ROOM_GRID_ART_RANDOM)
             mode = AM_GOOD | AM_GREAT | AM_SPECIAL | AM_NO_FIXED_ART;
 		else if (grid->flags & ROOM_GRID_ART_CURSED)
-			mode = AM_CURSED | AM_GOOD | AM_GREAT | AM_SPECIAL | AM_NO_FIXED_ART;
+			mode = AM_CURSED | AM_SPECIAL | AM_NO_FIXED_ART;
         else if (grid->flags & ROOM_GRID_EGO_RANDOM) /* EGO(*) should allow artifacts */
             mode = AM_GOOD | AM_GREAT;
         else if (grid->object_level)
@@ -1959,7 +1959,7 @@ obj_ptr room_grid_make_obj(room_grid_ptr grid, int level)
             }
 			else if (grid->flags & ROOM_GRID_ART_CURSED)
 			{
-				mode = AM_CURSED | AM_GOOD | AM_GREAT | AM_SPECIAL | AM_NO_FIXED_ART;
+				mode = AM_CURSED | AM_SPECIAL | AM_NO_FIXED_ART;
 			}
             else if (grid->flags & ROOM_GRID_EGO_RANDOM)
             {
