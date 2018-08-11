@@ -32,7 +32,6 @@ static caster_info * _caster_info(void)
         me.encumbrance.enc_wgt = 800;
         me.min_fail = 5;
         me.min_level = 3;
-        me.options = CASTER_GLOVE_ENCUMBRANCE | CASTER_ALLOW_DEC_MANA;
         init = TRUE;
     }
     return &me;
