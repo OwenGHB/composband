@@ -57,7 +57,7 @@ byte sf_extra;        /* Savefile's encoding key */
 
 byte z_major;           /* Savefile version for Hengband */
 byte z_minor;
-char z_patch[16];
+byte z_patch;
 
 /*
  * Savefile information

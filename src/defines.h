@@ -18,7 +18,7 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 1
-#define VER_PATCH "alpha"
+#define VER_PATCH 0
 #define VER_EXTRA 0
 
 #define GAME_MODE_BEGINNER  0

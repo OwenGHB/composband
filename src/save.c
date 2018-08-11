@@ -15,15 +15,15 @@
 /*Exo's character information patch*/
 void updatecharinfoS(void)
 {
+	race_t         *race = get_true_race();
+	class_t        *class_ = get_class();
+	dragon_realm_ptr drealm = dragon_get_realm(p_ptr->dragon_realm);
+
 	//File Output + Lookup Tables
 	char tmp_Path[1024];
 	FILE *oFile;
 	path_build(tmp_Path, sizeof(tmp_Path), ANGBAND_DIR_USER, "CharOutput.txt");
 	oFile = fopen(tmp_Path, "w");
-
-	race_t         *race = get_true_race();
-	class_t        *class_ = get_class();
-	dragon_realm_ptr drealm = dragon_get_realm(p_ptr->dragon_realm);
 
 	fprintf(oFile, "{\n");
 	fprintf(oFile, "race: \"%s\",\n", race->name);
@@ -1363,33 +1363,6 @@ bool save_player(void)
     return (result);
 }
 
-static char *versio_nimi(int tavu)
-{
-	switch (tavu)
-	{
-		case 0: return "toffee";
-		case 1: return "chocolate";
-		case 2: return "liquorice";
-		case 3: return "salmiak";
-		case 4: return "strawberry";
-		case 5: return "peppermint";
-		case 6: return "mango";
-		case 7: return "nougat";
-		case 8: return "raspberry";
-		default: return "cloudberry";
-	}
-}
-
-extern byte versio_sovitus(void)
-{
-	int i;
-	for (i = 0; i < 9; i++)
-	{
-		if (streq(VER_PATCH, versio_nimi(i))) return i;
-	}
-	return 4;
-}
-
 /*
  * Attempt to Load a "savefile"
  *
@@ -1544,7 +1517,7 @@ bool load_player(void)
         /* Extract version */
         z_major = vvv[0];
         z_minor = vvv[1];
-        strcpy(z_patch, versio_nimi(vvv[2]));
+        z_patch = vvv[2];
         sf_extra = vvv[3];
 
 
@@ -1595,9 +1568,9 @@ bool load_player(void)
         /* Give a conversion warning */
         if ((VER_MAJOR != z_major) ||
             (VER_MINOR != z_minor) ||
-            (!streq(VER_PATCH, z_patch)))
+            (VER_PATCH!= z_patch))
         {
-            msg_format("Converted a %d.%d.%s savefile.",
+            msg_format("Converted a %d.%d.%d savefile.",
                 (z_major > 9) ? z_major-10 : z_major , z_minor, z_patch);
             msg_print(NULL);
         }
@@ -1661,7 +1634,7 @@ bool load_player(void)
 
 
     /* Message */
-    msg_format("Error (%s) reading %d.%d.%s savefile.",
+    msg_format("Error (%s) reading %d.%d.%d savefile.",
            what, (z_major>9) ? z_major - 10 : z_major, z_minor, z_patch);
     msg_print(NULL);
 

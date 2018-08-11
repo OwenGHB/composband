@@ -113,7 +113,7 @@ extern byte sf_extra;
 extern u32b sf_system;
 extern byte z_major;
 extern byte z_minor;
-extern char z_patch[16];
+extern byte z_patch;
 extern u32b sf_when;
 extern u16b sf_lives;
 extern u16b sf_saves;

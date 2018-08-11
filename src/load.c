@@ -17,15 +17,15 @@
 /*Exo's patch for updating character info*/
 void updatecharinfoL(void)
 {
+	race_t         *race = get_true_race();
+	class_t        *class_ = get_class();
+	dragon_realm_ptr drealm = dragon_get_realm(p_ptr->dragon_realm);
+
 	//File Output + Lookup Tables
 	char tmp_Path[1024];
 	FILE *oFile;
 	path_build(tmp_Path, sizeof(tmp_Path), ANGBAND_DIR_USER, "CharOutput.txt");
 	oFile = fopen(tmp_Path, "w");
-
-	race_t         *race = get_true_race();
-	class_t        *class_ = get_class();
-	dragon_realm_ptr drealm = dragon_get_realm(p_ptr->dragon_realm);
 
 	fprintf(oFile, "{\n");
 	fprintf(oFile, "race: \"%s\",\n", race->name);
@@ -1023,7 +1023,7 @@ static errr rd_savefile_new_aux(savefile_ptr file)
 
     /* Mention the savefile version */
     note(format(
-             "Loading a %d.%d.%s savefile...",
+             "Loading a %d.%d.%d savefile...",
              (z_major > 9) ? z_major - 10 : z_major, z_minor, z_patch));
 
     /* Savefiles break iff VER_MAJOR bumps */
