@@ -2353,7 +2353,7 @@ static void _add_html_header(doc_ptr doc)
     string_append_s(header, "<head>\n");
     string_append_s(header, " <meta name='filetype' value='character dump'>\n");
     string_printf(header,  " <meta name='variant' value='%s'>\n", VERSION_NAME);
-    string_printf(header,  " <meta name='variant_version' value='%d.%d.%s'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
+    string_printf(header,  " <meta name='variant_version' value='%d.%d.%d'>\n", VER_MAJOR, VER_MINOR, VER_PATCH);
     string_printf(header,  " <meta name='character_name' value='%s'>\n", player_name);
 	string_printf(header,  " <meta name='race' value='%s'>\n", get_true_race()->name);
     string_printf(header,  " <meta name='class' value='%s'>\n", get_class()->name);

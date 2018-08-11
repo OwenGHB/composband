@@ -27,7 +27,7 @@ static void _help_file(cptr name, _file_fn fn)
     }
 
     fn(fp);
-    fprintf(fp, "\n\n<color:s>Automatically generated for Composband %d.%d.%s.</color>\n",
+    fprintf(fp, "\n\n<color:s>Automatically generated for Composband %d.%d.%d.</color>\n",
             VER_MAJOR, VER_MINOR, VER_PATCH);
 
     my_fclose(fp);
