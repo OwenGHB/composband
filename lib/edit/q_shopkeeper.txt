@@ -23,11 +23,11 @@ L:+:CLOSED_DOOR
 L:.:FLOOR
 L:<:UP_STAIR
 L:^:TRAP(*, 25%)
-L:a:OBJ(mithril shod boots):EGO(dwarven)
-L:b:OBJ(mithril shield):EGO(dwarven)
-L:c:OBJ(mithril plate):EGO(dwarven)
-L:d:OBJ(mithril helm):EGO(dwarven)
-L:e:OBJ(mithril gauntlets):EGO(dwarven)
+L:a:OBJ(mithril shod boots):EGO(57)
+L:b:OBJ(mithril shield):EGO(57)
+L:c:OBJ(mithril plate):EGO(57)
+L:d:OBJ(mithril helm):EGO(57)
+L:e:OBJ(mithril gauntlets):EGO(57)
 L:f:MON(colossus)
 L:g:OBJ(*, DEPTH+7):MON(silent watcher)
 L:h:MON(eog golem)
