@@ -2795,7 +2795,7 @@ bool device_init_fixed(object_type *o_ptr, int effect, int level)
     if (!_is_valid_device(o_ptr))
         return FALSE;
 
-	o_ptr->xtra3 = _bounds_check(_rand_normal(level * 95 / 100, 10), 1, 100);
+	o_ptr->xtra3 = _bounds_check(_rand_normal(level, 10), 1, 100); //fixed devices are little better
 
     switch (o_ptr->tval)
     {
