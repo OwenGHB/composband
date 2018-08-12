@@ -2372,14 +2372,14 @@ bool effect_add(object_type *o_ptr, int type)
 device_effect_info_t wand_effect_table[] =
 {
     /*                            Lvl Cost Rarity  Max  Difficulty Flags */
-    {EFFECT_BOLT_MISSILE,           1,   3,     1,  20,    10,  0, _STOCK_TOWN},
+    {EFFECT_BOLT_MISSILE,           1,   2,     1,  30,    10,  0, _STOCK_TOWN},
     {EFFECT_HEAL_MONSTER,           2,   3,     1,  50,     0,  0, 0},
-    {EFFECT_BEAM_LITE_WEAK,         2,   3,     1,  20,    10,  0, _STOCK_TOWN},
-    {EFFECT_BALL_POIS,              5,   4,     1,  20,    33,  0, _STOCK_TOWN},
-    {EFFECT_SLEEP_MONSTER,          5,   5,     1,  20,    33,  0, _STOCK_TOWN},
-    {EFFECT_SLOW_MONSTER,           5,   5,     1,  20,    33,  0, _STOCK_TOWN},
-    {EFFECT_CONFUSE_MONSTER,        5,   5,     1,  20,    33,  0, _STOCK_TOWN},
-    {EFFECT_SCARE_MONSTER,          7,   5,     1,  20,    33,  0, _STOCK_TOWN},
+    {EFFECT_BEAM_LITE_WEAK,         2,   3,     1,  30,    10,  0, _STOCK_TOWN},
+    {EFFECT_BALL_POIS,              5,   4,     1,  30,    33,  0, _STOCK_TOWN},
+    {EFFECT_SLEEP_MONSTER,          5,   5,     1,  30,    33,  0, _STOCK_TOWN},
+    {EFFECT_SLOW_MONSTER,           5,   5,     1,  30,    33,  0, _STOCK_TOWN},
+    {EFFECT_CONFUSE_MONSTER,        5,   5,     1,  30,    33,  0, _STOCK_TOWN},
+    {EFFECT_SCARE_MONSTER,          7,   5,     1,  30,    33,  0, _STOCK_TOWN},
     {EFFECT_STONE_TO_MUD,          10,   5,     1,   0,    10,  0, _COMMON},
     {EFFECT_POLYMORPH,             12,   6,     1,  30,     0,  0, 0},
     {EFFECT_BOLT_COLD,             12,   7,     1,  30,    33,  0, _STOCK_TOWN},
