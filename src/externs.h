@@ -1265,7 +1265,7 @@ extern bool kind_is_weapon(int k_idx);
 extern bool kind_is_bow_ammo(int k_idx);
 extern bool kind_is_misc(int k_idx);
 extern void place_object(int y, int x, u32b mode);
-extern bool make_gold(object_type *j_ptr, bool do_boost);
+extern bool make_gold(object_type *j_ptr);
 extern void place_gold(int y, int x);
 extern s16b drop_near(object_type *o_ptr, int chance, int y, int x);
 extern void acquirement(int y1, int x1, int num, bool great, bool known);

@@ -3799,7 +3799,7 @@ void place_object(int y, int x, u32b mode)
  *
  * The location must be a legal, clean, floor grid.
  */
-bool make_gold(object_type *j_ptr, bool do_boost)
+bool make_gold(object_type *j_ptr)
 {
     int i, au;
 
@@ -3830,8 +3830,6 @@ bool make_gold(object_type *j_ptr, bool do_boost)
     /* Determine how much the treasure is "worth" */
     au = (base + (8 * randint1(base)) + randint1(8));
     au = au * (625 - virtue_current(VIRTUE_SACRIFICE)) / 625;
-    if (do_boost)
-        au += au * object_level / 7;
     if (au > MAX_SHORT)
         au = MAX_SHORT;
     j_ptr->pval = au;
@@ -3875,7 +3873,7 @@ void place_gold(int y, int x)
     object_wipe(q_ptr);
 
     /* Make some gold */
-    if (!make_gold(q_ptr, FALSE)) return;
+    if (!make_gold(q_ptr)) return;
 
 
     /* Make an object */

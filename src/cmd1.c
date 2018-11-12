@@ -6784,7 +6784,6 @@ void travel_step(void)
     int old_run = travel.run;
     int dirs[8] = { 2, 4, 6, 8, 1, 7, 9, 3 };
     point_t pt_best = {0};
-	cave_type *c_ptr;
 	int py_old=py;
 	int px_old=px;
 

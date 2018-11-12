@@ -367,7 +367,7 @@ static void chest_death(bool scatter, int y, int x, s16b o_idx)
     for (i = 0; i < ct_gold; i++)
     {
         object_type forge = {0};
-        if (!make_gold(&forge, TRUE)) continue;
+        if (!make_gold(&forge)) continue;
         if (scatter) _chest_scatter(&forge);
         else drop_near(&forge, -1, y, x);
     }
