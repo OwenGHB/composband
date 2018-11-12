@@ -603,7 +603,7 @@ bool get_monster_drop(int m_idx, object_type *o_ptr)
 
     if (do_gold && (!do_item || (randint0(100) < 20)))
     {
-        if (!make_gold(o_ptr, TRUE))
+        if (!make_gold(o_ptr))
         {
             obj_drop_theme = 0;
             return FALSE;
@@ -2013,7 +2013,7 @@ void monster_death(int m_idx, bool drop_item)
         for (i = 0; i < n; i++)
         {
             object_type gold = {0};
-            if (make_gold(&gold, TRUE))
+            if (make_gold(&gold))
                 drop_near(&gold, -1, y, x);
         }
         object_level = base_level;
