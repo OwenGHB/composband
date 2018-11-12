@@ -678,9 +678,9 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 	}
 	add_flag(o_ptr->flags, resistance);
 	if (aura) {
-		if (one_in_(50)) {
+		if (one_in_(40)) {
 			add_flag(o_ptr->flags, immunity);
-			if (one_in_(5))
+			if (one_in_(4))
 			{
 				add_flag(o_ptr->flags, brand);
 				if (one_in_(2))
@@ -693,7 +693,7 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 				add_flag(o_ptr->flags, aura);
 			}
 		}
-		else if (one_in_(5)) 
+		else if (one_in_(4)) 
 		{
 			add_flag(o_ptr->flags, brand);
 			if (one_in_(2))
@@ -710,16 +710,16 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 	}
 	else
 	{
-		if (one_in_(50)) {
+		if (one_in_(40)) {
 			add_flag(o_ptr->flags, immunity);
-			if (one_in_(5))
+			if (one_in_(4))
 			{
 				add_flag(o_ptr->flags, brand);
 			}
 			if (one_in_(ACTIVATION_CHANCE))
 				effect_add_random(o_ptr, activation_bias);
 		}
-		else if (one_in_(5))
+		else if (one_in_(4))
 		{
 			add_flag(o_ptr->flags, brand);
 			if (one_in_(ACTIVATION_CHANCE))
@@ -730,7 +730,6 @@ static void _ego_create_ring_elemental_focus(object_type *o_ptr)
 			effect_add_random(o_ptr, activation_bias);
 		}
 	}
-	o_ptr->to_a += 5 + randint0(15);
 }
 static void _ego_create_jewelry_elemental(object_type *o_ptr, int level, int power)
 {
@@ -816,6 +815,7 @@ static void _ego_create_jewelry_elemental(object_type *o_ptr, int level, int pow
 			_ego_create_ring_elemental_focus(o_ptr);
 			break;
 		}
+		o_ptr->to_a += randint1(5) + m_bonus(5, level);
     }
     else
     {
@@ -2823,10 +2823,13 @@ static void _ego_create_armor_elvenkind(object_type *o_ptr, int level)
 }
 static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 {
+	int tmp;
 	assert(o_ptr->name2 == EGO_ARMOR_DWARVEN);
 	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
 	o_ptr->ac += k_info[o_ptr->k_idx].ac / 4;
-	for (int powers = m_bonus(8, level) + randint0(1); powers > 0; --powers)
+	tmp = m_bonus(5, level);
+	if (o_ptr->tval = TV_HARD_ARMOR) tmp += damroll(2, 2);
+	for (int powers = tmp; powers > 0; --powers)
 	{
 		switch (randint1(10))
 		{
@@ -2920,8 +2923,7 @@ static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 				}
 			}
 		case 10:
-			o_ptr->to_h += randint1(3) + m_bonus(5, level);
-			o_ptr->to_d += randint1(3) + m_bonus(5, level);
+			o_ptr->to_a += randint1(3) + m_bonus(5, level);
 			break;
 		default:
 			break;
