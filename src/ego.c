@@ -2828,7 +2828,7 @@ static void _ego_create_armor_dwarven(object_type *o_ptr, int level)
 	o_ptr->weight = (2 * k_info[o_ptr->k_idx].weight / 3);
 	o_ptr->ac += k_info[o_ptr->k_idx].ac / 4;
 	tmp = m_bonus(5, level);
-	if (o_ptr->tval = TV_HARD_ARMOR) tmp += damroll(2, 2);
+	if (o_ptr->tval == TV_HARD_ARMOR) tmp += damroll(2, 2);
 	for (int powers = tmp; powers > 0; --powers)
 	{
 		switch (randint1(10))
