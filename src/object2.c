@@ -3807,12 +3807,12 @@ bool make_gold(object_type *j_ptr)
 
 
     /* Hack -- Pick a Treasure variety */
-    i = MIN(randint0(object_level/4),MAX_GOLD);
+    i = object_level/8 + randint0(10);
 
     /* Apply "extra" magic */
     if (one_in_(GREAT_OBJ))
     {
-        i += randint1(object_level/4);
+        i += randint0(i);
     }
 
     /* Hack -- Creeping Coins only generate "themselves" */
