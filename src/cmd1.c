@@ -4184,7 +4184,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     msg_format("%^s is unaffected.", m_name_subject);
                 }
                 else if (randint0(100) < r_ptr->level)
-                    msg_format("%^s is unaffected.", m_name_subject);
+                    msg_format("%^s resists.", m_name_subject);
                 else
                 {
                     msg_format("%^s appears confused.", m_name_subject);
@@ -4265,6 +4265,24 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     obj_release(q_ptr, OBJ_RELEASE_QUIET);
                 }
             }
+
+			/* Slowing attack */
+			if ( mode == DRACONIAN_STRIKE_INERT)
+			{
+				/* Slow the monster */
+				if (r_ptr->flags3 & RFR_RES_INER || r_ptr->flags1 & RF1_UNIQUE)
+				{
+					if (!(r_ptr->flags1 & RF1_UNIQUE)) mon_lore_3(m_ptr, RFR_RES_INER);
+					msg_format("%^s is unaffected.", m_name_subject);
+				}
+				else if (randint0(100) < r_ptr->level)
+					msg_format("%^s resists.", m_name_subject);
+				else
+				{
+					msg_format("%^s appears slowed.", m_name_subject);
+					(void)set_monster_slowed(c_ptr->m_idx, MON_SLOWED(m_ptr) + 10 + randint0(p_ptr->lev) / 5);
+				}
+			}
 
             if ( p_ptr->pclass == CLASS_DUELIST
               && o_ptr

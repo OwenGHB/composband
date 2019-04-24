@@ -661,7 +661,8 @@
 #define DRAGON_BRONZE   11
 #define DRAGON_GOLD     12
 #define DRAGON_STEEL    13
-#define DRAGON_MAX      14
+#define DRAGON_SILVER   14
+#define DRAGON_MAX      15
 
 #define DRACONIAN_RED      0
 #define DRACONIAN_WHITE    1
@@ -672,7 +673,8 @@
 #define DRACONIAN_CRYSTAL  6
 #define DRACONIAN_GOLD     7
 #define DRACONIAN_SHADOW   8
-#define DRACONIAN_MAX      9
+#define DRACONIAN_SILVER   9
+#define DRACONIAN_MAX      10
 
 #define GIANT_FIRE      0
 #define GIANT_FROST     1
@@ -4577,6 +4579,9 @@ extern int PlayerUID;
 #define MON_AUDE				1148
 #define MON_HELGA				1149
 #define MON_GERTRUDE            1150
+#define MON_YOUNG_SILVER_DRAGON 1208
+#define MON_MATURE_SILVER_DRAGON	1209
+#define MON_ANCIENT_SILVER_DRAGON    1210
 #define MON_NIGHTMARE_DRAGON    1215
 #define MON_JUSTSHORN           1225
 #define MON_SHEEP               1226
@@ -4748,6 +4753,8 @@ extern int PlayerUID;
 #define MODE_THROWING        87
 
 #define PY_ATTACK_MANA       88
+
+#define DRACONIAN_STRIKE_INERT 89
 
 #define HISSATSU_IAI    100
 
