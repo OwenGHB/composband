@@ -4280,7 +4280,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
 				else
 				{
 					msg_format("%^s appears slowed.", m_name_subject);
-					(void)set_monster_slowed(c_ptr->m_idx, MON_SLOWED(m_ptr) + 10 + randint0(p_ptr->lev) / 5);
+					(void)set_monster_slow(c_ptr->m_idx, MON_SLOW(m_ptr) + 10 + randint0(p_ptr->lev) / 5);
 				}
 			}
 
