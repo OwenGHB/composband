@@ -101,6 +101,7 @@ class_t *mage_get_class(void)
 
 		me.birth = _birth;
 		me.caster_info = _caster_info;
+		me.gain_level = _gain_level;
 		/* TODO: This class uses spell books, so we are SOL
 		me.get_spells = _get_spells;*/
 		me.character_dump = spellbook_character_dump;

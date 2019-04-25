@@ -35,7 +35,7 @@ static void _birth(void)
 	py_birth_spellbooks();
 }
 
-class_t *hex_mage_get_class(void)
+class_t *hexblade_get_class(void)
 {
 	static class_t me = { 0 };
 	static bool init = FALSE;
