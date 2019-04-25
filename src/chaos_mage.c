@@ -58,7 +58,7 @@ static void _gain_level(int new_level)
 	}
 }
 
-class_t *mage_get_class(void)
+class_t *chaos_mage_get_class(void)
 {
 	static class_t me = { 0 };
 	static bool init = FALSE;
