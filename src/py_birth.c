@@ -2843,7 +2843,7 @@ static void _birth_finalize(void)
 
     /* Everybody gets a chaos patron. The chaos warrior is obvious,
      * but anybody else can acquire MUT_CHAOS_GIFT during the game */
-	if (p_ptr->pclass!=CLASS_CHAOS_WARRIOR) p_ptr->chaos_patron = randint0(MAX_PATRON);
+	if (p_ptr->pclass!=CLASS_CHAOS_WARRIOR && p_ptr->pclass != CLASS_CHAOS_MAGE) p_ptr->chaos_patron = randint0(MAX_PATRON);
 
     get_max_stats();
     do_cmd_rerate_aux();
