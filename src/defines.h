@@ -796,10 +796,11 @@ enum _mimic_types {
 #define CLASS_SKILLMASTER       47
 #define CLASS_LAWYER            48
 #define CLASS_NINJA_LAWYER      49
-#define MAX_CLASS               50
+#define CLASS_HEXBLADE	        50
+#define CLASS_CHAOS_MAGE        51
+#define MAX_CLASS               52
 
 /*
-#define CLASS_LOGRUS_MASTER     47
 #define CLASS_TERRAMANCER       48
 #define CLASS_CANNIBAL          49 */
 

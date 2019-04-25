@@ -967,12 +967,12 @@ static _class_group_t _class_groups[_MAX_CLASS_GROUPS] = {
     { "Archery", {CLASS_ARCHER, CLASS_SNIPER, -1} },
     { "Martial Arts", {CLASS_FORCETRAINER, CLASS_MONK, CLASS_MYSTIC, -1} },
     { "Magic", {CLASS_BLOOD_MAGE, CLASS_GRAY_MAGE, CLASS_HIGH_MAGE, CLASS_MAGE,
-                    CLASS_NECROMANCER, CLASS_SORCERER, CLASS_YELLOW_MAGE, -1} },
+                    CLASS_NECROMANCER, CLASS_SORCERER, CLASS_YELLOW_MAGE, CLASS_CHAOS_MAGE, -1} },
     { "Devices", {CLASS_DEVICEMASTER, CLASS_MAGIC_EATER, -1} },
     { "Prayer", {CLASS_PRIEST, -1} },
     { "Stealth", {CLASS_NINJA, CLASS_ROGUE, CLASS_SCOUT, -1} },
     { "Hybrid", {CLASS_CHAOS_WARRIOR, CLASS_NINJA_LAWYER, CLASS_PALADIN, CLASS_RANGER,
-                    CLASS_RED_MAGE, CLASS_WARRIOR_MAGE, -1} },
+                    CLASS_RED_MAGE, CLASS_WARRIOR_MAGE, CLASS_HEXBLADE, -1} },
     { "Riding", {CLASS_BEASTMASTER, CLASS_CAVALRY, -1} },
     { "Mind", {CLASS_MINDCRAFTER, CLASS_MIRROR_MASTER, CLASS_PSION,
                     CLASS_TIME_LORD, CLASS_WARLOCK, -1} },
@@ -1144,7 +1144,7 @@ static int _subclass_ui(void)
             rc = _devicemaster_ui();
         else if (p_ptr->pclass == CLASS_GRAY_MAGE)
             rc = _gray_mage_ui();
-		else if (p_ptr->pclass == CLASS_CHAOS_WARRIOR)
+		else if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE)
 			rc = _chaos_patron_ui(); /* not really a subclass */
         else
         {
@@ -1349,7 +1349,7 @@ static int _gray_mage_ui(void)
 
 static int _chaos_patron_ui(void)
 {
-	assert(p_ptr->pclass == CLASS_CHAOS_WARRIOR);
+	assert(p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE);
 	for (;;)
 	{
 		int cmd, i;
@@ -2174,6 +2174,7 @@ static void _stats_init(void)
         case CLASS_MIRROR_MASTER:
         case CLASS_BLOOD_MAGE:
         case CLASS_NECROMANCER:
+		case CLASS_CHAOS_MAGE:
         {
             int stats[6] = { 16, 17, 9, 9, 16, 9 };
             _stats_init_aux(stats);
@@ -2206,6 +2207,7 @@ static void _stats_init(void)
         case CLASS_RED_MAGE:
         case CLASS_RUNE_KNIGHT:
         case CLASS_DEVICEMASTER:
+		case CLASS_HEXBLADE:
         {
             int stats[6] = { 16, 16, 9, 16, 14, 10 };
             _stats_init_aux(stats);

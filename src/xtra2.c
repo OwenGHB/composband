@@ -2064,7 +2064,7 @@ void monster_death(int m_idx, bool drop_item)
         p_ptr->total_winner = TRUE;
 
         /* Redraw the "title" */
-        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || mut_present(MUT_CHAOS_GIFT))
+        if ((p_ptr->pclass == CLASS_CHAOS_WARRIOR) || (p_ptr->pclass == CLASS_CHAOS_MAGE) || mut_present(MUT_CHAOS_GIFT))
         {
             msg_format("The voice of %s booms out:", chaos_patrons[p_ptr->chaos_patron]);
             msg_print("'Thou art donst well, mortal!'");
@@ -2771,7 +2771,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         monster_death(m_idx, TRUE);
 
 		/* Chaos patrons take interest */
-		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || mut_present(MUT_CHAOS_GIFT))
+		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || (p_ptr->pclass == CLASS_CHAOS_MAGE) || mut_present(MUT_CHAOS_GIFT))
 		{
 			if (r_ptr->flags1 & RF1_UNIQUE && (r_ptr->level + randint1(r_ptr->level) > p_ptr->lev * 2))
 			{
