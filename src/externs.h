@@ -2549,6 +2549,11 @@ extern class_t *weaponsmith_get_class(void);
 
 extern class_t *yellow_mage_get_class(void);
 
+extern class_t *hexblade_get_class(void);
+
+extern class_t *chaos_mage_get_class(void);
+
+
 /* necromancer.c */
 extern bool     repose_of_the_dead;
 extern cptr     do_necromancy_spell(int spell, int mode);

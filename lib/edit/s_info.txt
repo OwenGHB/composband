@@ -16273,7 +16273,7 @@ S:1:0:8000  # Dual Wielding
 S:2:0:2000  # Riding
 
 ### Hexblade ###
-N:51
+N:50
 # Bow
 W:0:0:0:1  # 0
 W:0:1:0:1  #
@@ -16605,7 +16605,7 @@ S:1:0:6000  # Dual Wielding
 S:2:0:4000  # Riding
 
 ### Chaos Mage ###
-N:52
+N:51
 # Bow
 W:0:0:0:1  # 0
 W:0:1:0:1  #
