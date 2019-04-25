@@ -45,8 +45,8 @@ class_t *hexblade_get_class(void)
 		skills_t bs = { 30,  35,  36,   2,  18,  16,  50,  50 };
 		skills_t xs = { 7,  10,  10,   0,   0,   0,  15,  15 };
 
-		me.name = "Hex-Mage";
-		me.desc = "A Hex-Blade is a warrior-mage using Hex magic ";
+		me.name = "Hexblade";
+		me.desc = "A Hexblade is a warrior-mage using Hex magic ";
 
 		me.stats[A_STR] = 2;
 		me.stats[A_INT] = 2;

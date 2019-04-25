@@ -68,7 +68,7 @@ class_t *chaos_mage_get_class(void)
 		skills_t bs = { 28,  40,  38,   3,  15,  20,  35,  20 };
 		skills_t xs = { 7,  15,  11,   0,   0,   0,   6,   7 };
 
-		me.name = "Mage";
+		me.name = "Chaos-Mage";
 		me.desc = "Chaos Mages are the arcane students of the terrible Demon Lords "
 			"of Chaos. Every Chaos Mage has a Patron Demon and, when "
 			"gaining a level, may receive a reward from his Patron. He might "

@@ -76,7 +76,13 @@ void updatecharinfoS(void)
 		fprintf(oFile, "subRace: \"%s\",\n", nimi);
 	};
 	fprintf(oFile, "class: \"%s\",\n", class_->name);
-	if (class_->subname)fprintf(oFile, "subClass: \"%s\",\n", class_->subname);
+	if (class_->subname) {
+		fprintf(oFile, "subClass: \"%s\",\n", class_->subname);
+	}
+	else if(!strcmp("Chaos-Mage", class_->name))
+	{
+		fprintf(oFile, "subClass: \"%s\",\n", chaos_patrons[p_ptr->chaos_patron]);
+	}
 	fprintf(oFile, "mapName: \"%s\",\n", map_name());
 	fprintf(oFile, "dLvl: \"%i\",\n", dun_level);
 	if (p_ptr->realm1 > 0)fprintf(oFile, "mRealm1: \"%s\",\n", realm_names[p_ptr->realm1]);
