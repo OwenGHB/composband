@@ -482,7 +482,7 @@ void chaos_patron_reward(void)
 	else
 	{
 		effect = chaos_rewards[p_ptr->chaos_patron][type];
-		chaos_warrior_event(effect);
+		chaos_patron_event(effect);
 	}
 }
 void chaos_patron_event(int effect)

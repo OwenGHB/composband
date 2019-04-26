@@ -254,8 +254,20 @@ void check_experience(void)
             if (class_ptr->gain_level != NULL)
                 (class_ptr->gain_level)(p_ptr->lev);
 
-            if (mut_present(MUT_CHAOS_GIFT))
-                chaos_warrior_reward();
+			if (mut_present(MUT_CHAOS_GIFT)) {
+				if (one_in_(2))
+				{
+					chaos_patron_reward();
+				}
+				else if (one_in_(13))
+				{
+					chaos_patron_punish();
+				}
+				else
+				{
+					chaos_patron_random();
+				}
+			}
 
             /* N.B. The class hook or the Chaos Gift mutation may result in a race
                change (stupid Chaos-Warriors), so we better always requery the player's
