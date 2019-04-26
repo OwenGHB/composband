@@ -5738,17 +5738,26 @@ enum effect_e
 #define LAWYER_HACK_FAILRATE 3
 
 /* patron interaction triggers */
-#define PATRON_HIT 1
-#define PATRON_KILL_WEAK 2
-#define PATRON_KILL 3
-#define PATRON_KILL_UNIQUE 4
-#define PATRON_KILL_FAMOUS 5
-#define PATRON_KILL_GOOD 6
-#define PATRON_KILL_DEMON 7
-#define PATRON_CAST 8
-#define PATRON_VILLIANY 9
-#define PATRON_CHANCE 10
-#define PATRON_TAKE_HIT 11
+#define PATRON_HIT 0
+#define PATRON_KILL_WEAK 1
+#define PATRON_KILL 2
+#define PATRON_KILL_UNIQUE 3
+#define PATRON_KILL_FAMOUS 4
+#define PATRON_KILL_GOOD 5
+#define PATRON_KILL_DEMON 6
+#define PATRON_CAST 7
+#define PATRON_VILLIANY 8
+#define PATRON_CHANCE 9
+#define PATRON_TAKE_HIT 10
+#define PATRON_EFFECT_MAX 11
+
+/* patron attitudes */
+#define AMBIVALENT 0
+#define SCORNFUL 1
+#define AMUSED 2
+#define INTERESTED 3
+#define APPROVING 4
+#define ATTITUDE_MAX 5
 
 /* patrons by name */
 #define PATRON_SLORTAR 0

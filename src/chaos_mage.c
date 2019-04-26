@@ -39,21 +39,21 @@ static void _birth(void)
 
 static void _gain_level(int new_level)
 {
-	/* Chaos warriors can expect a certain number of rewards and mutations levelling up */
+	/* Chaos worshippers can expect a certain number of rewards and mutations levelling up */
 	/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
 	if (new_level > 1)
 	{
 		if (one_in_(2))
 		{
-			chaos_warrior_reward();
+			chaos_patron_reward();
 		}
 		else if (one_in_(13))
 		{
-			chaos_warrior_punish();
+			chaos_patron_punish();
 		}
 		else
 		{
-			chaos_warrior_random();
+			chaos_patron_random();
 		}
 	}
 }

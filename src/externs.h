@@ -2413,12 +2413,7 @@ extern class_t *cavalry_get_class(void);
 extern void     rodeo_spell(int cmd, variant *res);
 
 extern class_t *chaos_warrior_get_class(void);
-extern void     chaos_choose_effect(int);
-extern void     chaos_warrior_punish(void);
-extern void     chaos_warrior_random(void);
-extern void     chaos_warrior_reward(void);
-extern void     chaos_warrior_event(int);
-extern cptr     chaos_patron_name(int);
+
 extern class_t *devicemaster_get_class(int psubclass);
 extern bool     devicemaster_desperation;
 extern cptr     devicemaster_speciality_name(int psubclass);
@@ -2659,3 +2654,12 @@ extern void wild_reset_counters(void);
 extern void wild_dispel_player(void);
 extern bool wild_has_power(int power);
 extern void wild_reset_counter(int power);
+
+/* chaos_patron.c */
+
+extern void     chaos_choose_effect(int);
+extern void     chaos_patron_punish(void);
+extern void     chaos_patron_random(void);
+extern void     chaos_patron_reward(void);
+extern void     chaos_patron_event(int);
+extern cptr     chaos_patron_name(int);
