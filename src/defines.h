@@ -2149,6 +2149,7 @@ enum {
 #define PROJECT_WHO_GLASS_SHARDS -2
 #define PROJECT_WHO_TRAP         -3
 #define PROJECT_WHO_MIRROR       -4
+#define PROJECT_WHO_DEITY        -5
 
 #define SUMMON_WHO_BIRTHER -2
 #define SUMMON_WHO_PLAYER  -1
@@ -5749,7 +5750,8 @@ enum effect_e
 #define PATRON_VILLIANY 8
 #define PATRON_CHANCE 9
 #define PATRON_TAKE_HIT 10
-#define PATRON_EFFECT_MAX 11
+#define PATRON_LEVEL_UP 11
+#define PATRON_EFFECT_MAX 12
 
 /* patron attitudes */
 #define AMBIVALENT 0
@@ -5757,7 +5759,8 @@ enum effect_e
 #define AMUSED 2
 #define INTERESTED 3
 #define APPROVING 4
-#define ATTITUDE_MAX 5
+#define COMMENDING 5
+#define ATTITUDE_MAX 6
 
 /* patrons by name */
 #define PATRON_SLORTAR 0

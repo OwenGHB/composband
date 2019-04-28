@@ -4294,7 +4294,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             }
 
 			/* Will our chaos patron notice we're fighting? */
-			if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE || mut_present(MUT_CHAOS_GIFT))
+			if (worships_chaos())
 			{
 				if (chaos_effect) 
 				{ 
@@ -4564,7 +4564,7 @@ bool py_attack(int y, int x, int mode)
                 virtue_add(VIRTUE_HONOUR, -1);
                 virtue_add(VIRTUE_JUSTICE, -1);
                 virtue_add(VIRTUE_COMPASSION, -1);
-				if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE || mut_present(MUT_CHAOS_GIFT))
+				if (worships_chaos())
 				{
 					chaos_choose_effect(PATRON_VILLIANY);
 				}

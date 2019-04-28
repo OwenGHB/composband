@@ -28,16 +28,34 @@
 #define REW_GENOCIDE    25
 #define REW_MASS_GEN    26
 #define REW_DISPEL_C    27
-#define REW_UNUSED_1    28
-#define REW_UNUSED_2    29
-#define REW_UNUSED_3    30
-#define REW_UNUSED_4    31
-#define REW_UNUSED_5    32
+#define REW_DAMNATION   28 /* new chaos mage rewards */
+#define REW_DISORDER    29
+#define REW_EXULTATION  30
+#define REW_ENERGISE    31
+#define REW_DEVICE      32 /* fin */
 #define REW_IGNORE      33
 #define REW_SER_UNDE    34
 #define REW_SER_DEMO    35
 #define REW_SER_MONS    36  
 
+#define REW_TYPE_PUNISH  0
+#define REW_TYPE_ANNOY   1
+#define REW_TYPE_REWARD  2
+#define REW_TYPE_FAVOUR  3
+#define REW_CATEGORIES   4
+
+
+struct chaos_patron
+{
+	int stat;
+	int punishments[5];
+	int blessings[10];
+	int rewards[5];
+	cptr name;
+	cptr title;
+	int noticechance[PATRON_EFFECT_MAX];
+	int attitudes[PATRON_EFFECT_MAX];
+};
 
 int chaos_stats[MAX_PATRON] =
 {
@@ -62,269 +80,133 @@ int chaos_stats[MAX_PATRON] =
 	A_STR,  /* Khaine */
 };
 
-int chaos_punishments[MAX_PATRON][5] =
+int chaos_rewards[MAX_PATRON][REW_CATEGORIES][5] =
 {
 	/* Slortar the Old: */
 	{
-		REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP },
+		{ REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL, REW_AUGM_ABL }
 	},
 
 	/* Mabelode the Faceless: */
 	{
-		REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_H_SUMMON, REW_SUMMON_M
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_H_SUMMON, REW_SUMMON_M },
+		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_WND },
+		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_ABL, REW_SER_UNDE },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GOOD_OBS }
 	},
 
 	/* Chardros the Reaper: */
 	{
-		REW_WRATH, REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_H_SUMMON
+		{ REW_WRATH, REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_H_SUMMON },
+		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_DESTRUCT, REW_SER_UNDE },
+		{ REW_GENOCIDE, REW_MASS_GEN, REW_MASS_GEN, REW_DISPEL_C, REW_GOOD_OBJ },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
 	},
 
 	/* Hionhurn the Executioner: */
 	{
-		REW_WRATH, REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL
+		{ REW_WRATH, REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_SER_UNDE, REW_DESTRUCT, REW_GENOCIDE },
+		{ REW_MASS_GEN, REW_MASS_GEN, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
 	},
 
 	/* Xiombarg the Sword-Queen: */
 	{
-		REW_TY_CURSE, REW_TY_CURSE, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL
+		{ REW_TY_CURSE, REW_TY_CURSE, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND, REW_POLY_WND },
+		{ REW_GENOCIDE, REW_DISPEL_C, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS },
+		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GAIN_EXP, REW_AUGM_ABL, REW_GOOD_OBS }
 	},
 
 
 	/* Pyaray the Tentacled Whisperer of Impossible Secretes: */
 	{
-		REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_H_SUMMON, REW_H_SUMMON
+		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_H_SUMMON, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_SER_DEMO, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
+		{ REW_CHAOS_WP, REW_DO_HAVOC, REW_GOOD_OBJ, REW_GREA_OBJ, REW_GREA_OBS }
 	},
 
 	/* Balaan the Grim: */
 	{
-		REW_TY_CURSE, REW_HURT_LOT, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL
+		{ REW_TY_CURSE, REW_HURT_LOT, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
+		{ REW_SUMMON_M, REW_LOSE_EXP, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
+		{ REW_SER_UNDE, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_GAIN_EXP },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GREA_OBS, REW_AUGM_ABL }
 	},
-
 	/* Arioch, Duke of Hell: */
 	{
-		REW_WRATH, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_EXP, REW_H_SUMMON
+		{ REW_WRATH, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_EXP, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_MASS_GEN, REW_SER_DEMO, REW_HEAL_FUL, REW_CHAOS_WP },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GAIN_EXP, REW_GREA_OBJ, REW_AUGM_ABL }
 	},
 
 	/* Eequor, Blue Lady of Dismay: */
-	{
-		REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_CURSE_WP, REW_RUIN_ABL
+	{ 
+		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_CURSE_WP, REW_RUIN_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
+		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS, REW_HEAL_FUL, REW_GAIN_EXP },
+		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GOOD_OBS, REW_GREA_OBJ, REW_AUGM_ABL }
 	},
 
 	/* Narjhan, Lord of Beggars: */
 	{
-		REW_WRATH, REW_CURSE_AR, REW_CURSE_WP, REW_CURSE_WP, REW_CURSE_AR
+		{ REW_WRATH, REW_CURSE_AR, REW_CURSE_WP, REW_CURSE_WP, REW_CURSE_AR },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF },
+		{ REW_POLY_WND, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_AUGM_ABL },
+		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GREA_OBS }
 	},
 
 	/* Balo the Jester: */
 	{
-		REW_WRATH, REW_SER_DEMO, REW_CURSE_WP, REW_CURSE_AR, REW_LOSE_EXP
+		{ REW_WRATH, REW_SER_DEMO, REW_CURSE_WP, REW_CURSE_AR, REW_LOSE_EXP },
+		{ REW_GAIN_ABL, REW_LOSE_ABL, REW_POLY_WND, REW_POLY_SLF, REW_IGNORE },
+		{ REW_DESTRUCT, REW_MASS_GEN, REW_CHAOS_WP, REW_GREA_OBJ, REW_HURT_LOT },
+		{ REW_AUGM_ABL, REW_RUIN_ABL, REW_H_SUMMON, REW_GREA_OBS, REW_AUGM_ABL }
 	},
 
 	/* Khorne the Bloodgod: */
-	{
-		REW_WRATH, REW_HURT_LOT, REW_HURT_LOT, REW_H_SUMMON, REW_H_SUMMON
+	{ 
+		{ REW_WRATH, REW_HURT_LOT, REW_HURT_LOT, REW_H_SUMMON, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_SER_MONS, REW_SER_DEMO, },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GOOD_OBJ },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_GREA_OBJ, REW_GREA_OBS }
 	},
 
 	/* Slaanesh: */
 	{
-		REW_WRATH, REW_PISS_OFF, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL
+		{ REW_WRATH, REW_PISS_OFF, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_SER_DEMO, },
+		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_EXP },
+		{ REW_GAIN_EXP, REW_CHAOS_WP, REW_GAIN_ABL, REW_GREA_OBJ, REW_AUGM_ABL }
 	},
 
 	/* Nurgle: */
 	{
-		REW_WRATH, REW_PISS_OFF, REW_HURT_LOT, REW_RUIN_ABL, REW_LOSE_ABL
+		{ REW_WRATH, REW_PISS_OFF, REW_HURT_LOT, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_ABL },
+		{ REW_GAIN_ABL, REW_SER_UNDE, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL }
 	},
-
 	/* Tzeentch: */
-	{
-		REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL
+	{ 
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_CHAOS_WP, REW_GREA_OBJ }, 
+		{ REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP, REW_GAIN_EXP, REW_AUGM_ABL }
 	},
 
 	/* Khaine: */
 	{
-		REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_LOSE_ABL, REW_LOSE_EXP
-	}
-};
-int chaos_random[MAX_PATRON][10] =
-{
-	/* Slortar the Old: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF,
-		REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP
-	},
-
-	/* Mabelode the Faceless: */
-	{
-		REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_WND,
-		REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_ABL, REW_SER_UNDE
-	},
-
-	/* Chardros the Reaper: */
-	{
-		REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_DESTRUCT, REW_SER_UNDE,
-		REW_GENOCIDE, REW_MASS_GEN, REW_MASS_GEN, REW_DISPEL_C, REW_GOOD_OBJ
-	},
-
-	/* Hionhurn the Executioner: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_SER_UNDE, REW_DESTRUCT, REW_GENOCIDE,
-		REW_MASS_GEN, REW_MASS_GEN, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL
-	},
-
-	/* Xiombarg the Sword-Queen: */
-	{
-		REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND, REW_POLY_WND,
-		REW_GENOCIDE, REW_DISPEL_C, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS
-	},
-
-
-	/* Pyaray the Tentacled Whisperer of Impossible Secretes: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF,
-		REW_POLY_SLF, REW_SER_DEMO, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL
-	},
-
-	/* Balaan the Grim: */
-	{
-		REW_SUMMON_M, REW_LOSE_EXP, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND,
-		REW_SER_UNDE, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_GAIN_EXP
-	},
-
-	/* Arioch, Duke of Hell: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF,
-		REW_POLY_SLF, REW_MASS_GEN, REW_SER_DEMO, REW_HEAL_FUL, REW_CHAOS_WP
-	},
-
-	/* Eequor, Blue Lady of Dismay: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND,
-		REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS, REW_HEAL_FUL, REW_GAIN_EXP
-	},
-
-	/* Narjhan, Lord of Beggars: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF,
-		REW_POLY_WND, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_AUGM_ABL
-	},
-
-	/* Balo the Jester: */
-	{
-		REW_GAIN_ABL, REW_LOSE_ABL, REW_POLY_WND, REW_POLY_SLF, REW_IGNORE,
-		REW_DESTRUCT, REW_MASS_GEN, REW_CHAOS_WP, REW_GREA_OBJ, REW_HURT_LOT
-	},
-
-	/* Khorne the Bloodgod: */
-	{
-		REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_SER_MONS, REW_SER_DEMO,
-		REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GOOD_OBJ
-	},
-
-	/* Slaanesh: */
-	{
-		REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_SER_DEMO,
-		REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_EXP
-	},
-
-	/* Nurgle: */
-	{
-		REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF,
-		REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_ABL
-	},
-
-	/* Tzeentch: */
-	{
-		REW_LOSE_EXP, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_SLF,
-		REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_CHAOS_WP, REW_GREA_OBJ
-	},
-
-	/* Khaine: */
-	{
-		REW_IGNORE,   REW_IGNORE,   REW_DISPEL_C, REW_DO_HAVOC, REW_DO_HAVOC,
-		REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_EXP, REW_GAIN_ABL, REW_GAIN_ABL
-	}
-};
-int chaos_rewards[MAX_PATRON][5] =
-{
-	/* Slortar the Old: */
-	{
-		REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL, REW_AUGM_ABL
-	},
-
-	/* Mabelode the Faceless: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GOOD_OBS
-	},
-
-	/* Chardros the Reaper: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL
-	},
-
-	/* Hionhurn the Executioner: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL
-	},
-
-	/* Xiombarg the Sword-Queen: */
-	{
-		REW_GAIN_ABL, REW_CHAOS_WP, REW_GAIN_EXP, REW_AUGM_ABL, REW_GOOD_OBS
-	},
-
-
-	/* Pyaray the Tentacled Whisperer of Impossible Secretes: */
-	{
-		REW_CHAOS_WP, REW_DO_HAVOC, REW_GOOD_OBJ, REW_GREA_OBJ, REW_GREA_OBS
-	},
-
-	/* Balaan the Grim: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GREA_OBS, REW_AUGM_ABL
-	},
-
-	/* Arioch, Duke of Hell: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBJ, REW_GAIN_EXP, REW_GREA_OBJ, REW_AUGM_ABL
-	},
-
-	/* Eequor, Blue Lady of Dismay: */
-	{
-		REW_GAIN_ABL, REW_CHAOS_WP, REW_GOOD_OBS, REW_GREA_OBJ, REW_AUGM_ABL
-	},
-
-	/* Narjhan, Lord of Beggars: */
-	{
-		REW_GOOD_OBJ, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GREA_OBS
-	},
-
-	/* Balo the Jester: */
-	{
-		REW_AUGM_ABL, REW_RUIN_ABL, REW_H_SUMMON, REW_GREA_OBS, REW_AUGM_ABL
-	},
-
-	/* Khorne the Bloodgod: */
-	{
-		REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_GREA_OBJ, REW_GREA_OBS
-	},
-
-	/* Slaanesh: */
-	{
-		REW_GAIN_EXP, REW_CHAOS_WP, REW_GAIN_ABL, REW_GREA_OBJ, REW_AUGM_ABL
-	},
-
-	/* Nurgle: */
-	{
-		REW_GAIN_ABL, REW_SER_UNDE, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL
-	},
-
-	/* Tzeentch: */
-	{
-		REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP, REW_GAIN_EXP, REW_AUGM_ABL
-	},
-
-	/* Khaine: */
-	{
-		REW_SER_MONS, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GOOD_OBS
+		{ REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_LOSE_ABL, REW_LOSE_EXP },
+		{ REW_IGNORE, REW_IGNORE, REW_DISPEL_C, REW_DO_HAVOC, REW_DO_HAVOC, },
+		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_EXP, REW_GAIN_ABL, REW_GAIN_ABL }, 
+		{ REW_SER_MONS, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GOOD_OBS }
 	}
 };
 
@@ -354,26 +236,58 @@ cptr chaos_patron_name(int which)
 	return name;
 }
 
-/* make these arrays 2d to tweak attitudes by patron */
-
 /* assigns chances for a patron noticing the player */
-int chaos_effect_notice[PATRON_EFFECT_MAX] =
+int chaos_effect_notice[MAX_PATRON][PATRON_EFFECT_MAX] =
 {
-	343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+ { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
 };
 
 /* defines attitudes toward player actions */
-/* melee hit , kill weakling, kill, kill unique, kill famous, kill good, kill demon, cast, villiany, chance, take hit */
-int chaos_attitudes[EFFECT_MAX] =
+/* melee hit , kill weakling, kill, kill unique, kill famous, kill good, kill demon, cast, villiany, chance, take hit, level up */
+int chaos_attitudes[MAX_PATRON][PATRON_EFFECT_MAX] =
 {
-	AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING }
 };
 
+bool worships_chaos(void) 
+{	
+	return (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE || mut_present(MUT_CHAOS_GIFT));
+}
 
 /* do we want a punishment, a questionable reward, or a good reward? */
 void chaos_choose_effect(int reason)
 {
-	int attitude = chaos_attitudes[reason];
+	int attitude = chaos_attitudes[p_ptr->chaos_patron][reason];
 	int punish_chance = 0;
 	int reward_chance = 0;
 	switch (attitude)
@@ -401,94 +315,210 @@ void chaos_choose_effect(int reason)
 	default:
 		break;
 	}
-	if (one_in_(chaos_effect_notice[reason]))
+	if (one_in_(chaos_effect_notice[p_ptr->chaos_patron][reason]))
 	{
 		if (punish_chance && one_in_(punish_chance))
 		{
-			chaos_patron_punish();
+			chaos_patron_reward(REW_TYPE_PUNISH);
 		}
 		else if (reward_chance && one_in_(reward_chance))
 		{
-			chaos_patron_reward();
+			if (randint0(8) < 3)
+			{
+				chaos_patron_mutate();
+			}
+			else
+			{
+				chaos_patron_reward(REW_TYPE_FAVOUR);
+			}
 		}
 		else
 		{
-			chaos_patron_random();
+			if (one_in_(2)) 
+			{
+				chaos_patron_reward(REW_TYPE_ANNOY);
+			}
+			else
+			{
+				chaos_patron_reward(REW_TYPE_REWARD);
+			}
 		}
 	}
 }
-void chaos_patron_punish(void)
+
+void chaos_patron_reward(int category)
 {
 	int         type, effect;
 	type = randint1(5);
 	if (type < 1) type = 1;
 	if (type > 5) type = 5;
 	type--;
-	effect = chaos_punishments[p_ptr->chaos_patron][type];
+	effect = chaos_rewards[p_ptr->chaos_patron][category][type];
 	chaos_patron_event(effect);
 }
-void chaos_patron_random(void)
-{
-	int         type, effect;
-	type = randint1(10);
-	if (type < 1) type = 1;
-	if (type > 10) type = 10;
-	type--;
-	effect = chaos_random[p_ptr->chaos_patron][type];
-	chaos_patron_event(effect);
-}
-void chaos_patron_reward(void)
-{
-	int         type, effect;
-	type = randint1(8);
-	if (type < 1) type = 1;
-	if (type > 8) type = 8;
-	type--;
-	if (type>4)
+
+void chaos_patron_mutate(void) {
+	int count;
+	count = mut_count(mut_unlocked_pred);
+	if (count>randint1(5))
 	{
-		int count;
-		count = mut_count(mut_unlocked_pred);
-		if (count>randint1(5))
+		if (one_in_(3))
 		{
-			if (one_in_(3))
+			int newmuts = 1;
+			msg_format("%^s rewards you with new mutations!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
+			while (one_in_(newmuts))
 			{
-				int newmuts = 1;
-				msg_format("%^s rewards you with new mutations!",
-					chaos_patrons[p_ptr->chaos_patron]);
+				mut_lose_random(NULL);
 				mut_gain_random(NULL);
-				while (one_in_(newmuts))
-				{
-					mut_lose_random(NULL);
-					mut_gain_random(NULL);
-					newmuts++;
-				}
-			}
-			else
-			{
-				msg_format("%^s rewards you with a new mutation!",
-					chaos_patrons[p_ptr->chaos_patron]);
-				mut_gain_random(NULL);
+				newmuts++;
 			}
 		}
 		else
 		{
-			{
-				msg_format("%^s rewards you with a mutation!",
-					chaos_patrons[p_ptr->chaos_patron]);
-				mut_gain_random(NULL);
-			}
+			msg_format("%^s rewards you with a new mutation!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
 		}
 	}
 	else
 	{
-		effect = chaos_rewards[p_ptr->chaos_patron][type];
-		chaos_patron_event(effect);
+		{
+			msg_format("%^s rewards you with a mutation!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
+		}
 	}
+}
+void chaos_forge_weapon() {
+	object_type forge;
+	int         dummy = 0, dummy2 = 0;
+
+	dummy = TV_SWORD;
+	switch (randint1(p_ptr->lev))
+	{
+	case 0: case 1:
+		dummy2 = SV_DAGGER;
+		break;
+	case 2: case 3:
+		dummy2 = SV_MAIN_GAUCHE;
+		break;
+	case 4:
+		dummy2 = SV_TANTO;
+		break;
+	case 5: case 6:
+		dummy2 = SV_RAPIER;
+		break;
+	case 7: case 8:
+		dummy2 = SV_SMALL_SWORD;
+		break;
+	case 9: case 10:
+		dummy2 = SV_BASILLARD;
+		break;
+	case 11: case 12: case 13:
+		dummy2 = SV_SHORT_SWORD;
+		break;
+	case 14: case 15:
+		dummy2 = SV_SABRE;
+		break;
+	case 16: case 17:
+		dummy2 = SV_CUTLASS;
+		break;
+	case 18:
+		dummy2 = SV_WAKIZASHI;
+		break;
+	case 19:
+		dummy2 = SV_KHOPESH;
+		break;
+	case 20:
+		dummy2 = SV_TULWAR;
+		break;
+	case 21:
+		dummy2 = SV_BROAD_SWORD;
+		break;
+	case 22: case 23:
+		dummy2 = SV_LONG_SWORD;
+		break;
+	case 24: case 25:
+		dummy2 = SV_SCIMITAR;
+		break;
+	case 26:
+		dummy2 = SV_NINJATO;
+		break;
+	case 27:
+		dummy2 = SV_KATANA;
+		break;
+	case 28: case 29:
+		dummy2 = SV_BASTARD_SWORD;
+		break;
+	case 30:
+		dummy2 = SV_GREAT_SCIMITAR;
+		break;
+	case 31:
+		dummy2 = SV_CLAYMORE;
+		break;
+	case 32:
+		dummy2 = SV_ESPADON;
+		break;
+	case 33:
+		dummy2 = SV_TWO_HANDED_SWORD;
+		break;
+	case 34:
+		dummy2 = SV_FLAMBERGE;
+		break;
+	case 35:
+		dummy2 = SV_NO_DACHI;
+		break;
+	case 36:
+		dummy2 = SV_EXECUTIONERS_SWORD;
+		break;
+	case 37:
+		dummy2 = SV_ZWEIHANDER;
+		break;
+	case 38:
+		dummy2 = SV_HAYABUSA;
+		break;
+	default:
+		dummy2 = SV_BLADE_OF_CHAOS;
+	}
+
+	object_prep(&forge, lookup_kind(dummy, dummy2));
+	forge.to_h = 3 + randint1(dun_level) % 10;
+	forge.to_d = 3 + randint1(dun_level) % 10;
+	one_resistance(&forge);
+	forge.name2 = EGO_WEAPON_CHAOS;
+
+	drop_near(&forge, -1, py, px);
+}
+void chaos_gift_device() {
+	object_type forge;
+	int         dummy = 0;
+
+	switch (randint0(4))
+	{
+	case 0:
+		dummy = TV_STAFF;
+		break;
+	case 1:
+		dummy = TV_WAND;
+		break;
+	case 2: case 3:
+		dummy = TV_ROD;
+		break;
+	}
+
+	object_prep(&forge, lookup_kind(dummy, 0));
+	if (!obj_create_device(&forge, rand_range(p_ptr->lev, p_ptr->lev * 2), 0, AM_GOOD)) 
+	{
+		obj_create_device(&forge, rand_range(p_ptr->lev, p_ptr->lev * 2), 0, 0);
+	}
+
+	drop_near(&forge, -1, py, px);
 }
 void chaos_patron_event(int effect)
 {
 	char        wrath_reason[32] = "";
-	int         dummy = 0, dummy2 = 0;
 	int         count = 0;
 	switch (effect)
 	{
@@ -555,107 +585,11 @@ void chaos_patron_event(int effect)
 		break;
 	case REW_CHAOS_WP:
 	{
-		object_type forge;
-
 		msg_format("The voice of %s booms out:",
 			chaos_patrons[p_ptr->chaos_patron]);
 		msg_print("'Thy deed hath earned thee a worthy blade.'");
 
-		dummy = TV_SWORD;
-		switch (randint1(p_ptr->lev))
-		{
-		case 0: case 1:
-			dummy2 = SV_DAGGER;
-			break;
-		case 2: case 3:
-			dummy2 = SV_MAIN_GAUCHE;
-			break;
-		case 4:
-			dummy2 = SV_TANTO;
-			break;
-		case 5: case 6:
-			dummy2 = SV_RAPIER;
-			break;
-		case 7: case 8:
-			dummy2 = SV_SMALL_SWORD;
-			break;
-		case 9: case 10:
-			dummy2 = SV_BASILLARD;
-			break;
-		case 11: case 12: case 13:
-			dummy2 = SV_SHORT_SWORD;
-			break;
-		case 14: case 15:
-			dummy2 = SV_SABRE;
-			break;
-		case 16: case 17:
-			dummy2 = SV_CUTLASS;
-			break;
-		case 18:
-			dummy2 = SV_WAKIZASHI;
-			break;
-		case 19:
-			dummy2 = SV_KHOPESH;
-			break;
-		case 20:
-			dummy2 = SV_TULWAR;
-			break;
-		case 21:
-			dummy2 = SV_BROAD_SWORD;
-			break;
-		case 22: case 23:
-			dummy2 = SV_LONG_SWORD;
-			break;
-		case 24: case 25:
-			dummy2 = SV_SCIMITAR;
-			break;
-		case 26:
-			dummy2 = SV_NINJATO;
-			break;
-		case 27:
-			dummy2 = SV_KATANA;
-			break;
-		case 28: case 29:
-			dummy2 = SV_BASTARD_SWORD;
-			break;
-		case 30:
-			dummy2 = SV_GREAT_SCIMITAR;
-			break;
-		case 31:
-			dummy2 = SV_CLAYMORE;
-			break;
-		case 32:
-			dummy2 = SV_ESPADON;
-			break;
-		case 33:
-			dummy2 = SV_TWO_HANDED_SWORD;
-			break;
-		case 34:
-			dummy2 = SV_FLAMBERGE;
-			break;
-		case 35:
-			dummy2 = SV_NO_DACHI;
-			break;
-		case 36:
-			dummy2 = SV_EXECUTIONERS_SWORD;
-			break;
-		case 37:
-			dummy2 = SV_ZWEIHANDER;
-			break;
-		case 38:
-			dummy2 = SV_HAYABUSA;
-			break;
-		default:
-			dummy2 = SV_BLADE_OF_CHAOS;
-		}
-
-		object_prep(&forge, lookup_kind(dummy, dummy2));
-		forge.to_h = 3 + randint1(dun_level) % 10;
-		forge.to_d = 3 + randint1(dun_level) % 10;
-		one_resistance(&forge);
-		forge.name2 = EGO_WEAPON_CHAOS;
-
-		drop_near(&forge, -1, py, px);
+		chaos_forge_weapon();
 		break;
 	}
 	case REW_GOOD_OBS:
@@ -683,7 +617,7 @@ void chaos_patron_event(int effect)
 		msg_format("The voice of %s booms out:",
 			chaos_patrons[p_ptr->chaos_patron]);
 		msg_print("'My pets, destroy the arrogant mortal!'");
-		for (dummy = 0; dummy < randint1(5) + 1; dummy++)
+		for (int i = 0; i < randint1(5) + 1; i++)
 			summon_specific(0, py, px, dun_level, 0, (PM_ALLOW_GROUP | PM_ALLOW_UNIQUE | PM_NO_PET));
 		break;
 	case REW_H_SUMMON:
@@ -723,8 +657,8 @@ void chaos_patron_event(int effect)
 		msg_print("'Thou needst a lesson in humility, mortal!'");
 		msg_print("You feel less powerful!");
 
-		for (dummy = 0; dummy < 6; dummy++)
-			dec_stat(dummy, 10 + randint1(15), TRUE);
+		for (int i = 0; i < 6; i++)
+			dec_stat(i, 10 + randint1(15), TRUE);
 		break;
 	case REW_POLY_WND:
 		msg_format("You feel the power of %s touch you.", chaos_patrons[p_ptr->chaos_patron]);
@@ -734,8 +668,8 @@ void chaos_patron_event(int effect)
 		msg_format("The voice of %s booms out:",
 			chaos_patrons[p_ptr->chaos_patron]);
 		msg_print("'Receive this modest gift from me!'");
-		for (dummy = 0; dummy < 6; dummy++)
-			do_inc_stat(dummy);
+		for (int i = 0; i < 6; i++)
+			do_inc_stat(i);
 		break;
 	case REW_HURT_LOT:
 		msg_format("The voice of %s booms out:",
@@ -756,8 +690,8 @@ void chaos_patron_event(int effect)
 		set_stun(0, TRUE);
 		set_cut(0, TRUE);
 		hp_player(5000);
-		for (dummy = 0; dummy < 6; dummy++)
-			do_res_stat(dummy);
+		for (int i = 0; i < 6; i++)
+			do_res_stat(i);
 		break;
 	case REW_CURSE_WP:
 	{
@@ -810,8 +744,8 @@ void chaos_patron_event(int effect)
 			}
 			break;
 		default:
-			for (dummy = 0; dummy < 6; dummy++)
-				dec_stat(dummy, 10 + randint1(15), TRUE);
+			for (int i = 0; i < 6; i++)
+				dec_stat(i, 10 + randint1(15), TRUE);
 			break;
 		}
 		break;
@@ -820,8 +754,8 @@ void chaos_patron_event(int effect)
 		msg_print("'Die, mortal!'");
 
 		take_hit(DAMAGE_LOSELIFE, p_ptr->lev * 4, wrath_reason);
-		for (dummy = 0; dummy < 6; dummy++)
-			dec_stat(dummy, 10 + randint1(15), FALSE);
+		for (int i = 0; i < 6; i++)
+			dec_stat(i, 10 + randint1(15), FALSE);
 		activate_hi_summon(py, px, FALSE);
 		activate_ty_curse(FALSE, &count);
 		if (one_in_(2))
@@ -859,6 +793,68 @@ void chaos_patron_event(int effect)
 		msg_format("You can feel the power of %s assault your enemies!",
 			chaos_patrons[p_ptr->chaos_patron]);
 		dispel_monsters(p_ptr->lev * 4);
+		break;
+		/* these next few entries exist outside the standard patron tables */
+	case REW_DAMNATION:
+		/* no saves! */
+		msg_format("The voice of %s booms out:",
+			chaos_patrons[p_ptr->chaos_patron]);
+		msg_print("Your soul is mine mortal!");
+		switch (randint0(4)) {
+		case 0:
+			set_confused(p_ptr->confused + randint0(6) + 3, FALSE);
+			break;
+		case 1:
+			set_image(p_ptr->image + randint0(12) + 6, FALSE);
+			break;
+		case 2:
+			curse_equipment(100, 1);
+			break;
+		case 3:
+			p_ptr->csp = randint0(p_ptr->csp/2);
+			break;
+		}
+		break;
+	case REW_DISORDER:
+		msg_format("The voice of %s booms out:",
+			chaos_patrons[p_ptr->chaos_patron]);
+		msg_print("Let Chaos reign!");
+		project_hack(GF_CHAOS, randint1(6));
+		break;
+	case REW_EXULTATION:
+		msg_format("The voice of %s booms out:",
+			chaos_patrons[p_ptr->chaos_patron]);
+		msg_print("Onward my servant!");
+		switch (randint0(4)) 
+		{
+		case 0:
+			set_hero(p_ptr->hero + rand_range(50,100), FALSE);
+			break;
+		case 1:
+			set_blessed(p_ptr->blessed + rand_range(50, 100), FALSE);
+			break;
+		case 2:
+			set_fast(p_ptr->fast + rand_range(30, 60), FALSE);
+			break;
+		case 4:
+			set_tim_sh_fire(p_ptr->tim_sh_fire + rand_range(20, 70), FALSE);
+			break;
+		case 3:
+			set_mimic(rand_range(50, 100), MIMIC_DEMON, FALSE);
+			break;
+		}
+		break;
+	case REW_ENERGISE:
+		msg_format("The voice of %s booms out:",
+			chaos_patrons[p_ptr->chaos_patron]);
+		msg_print("Let the power of chaos flow!");
+		do_energise();
+		break;
+	case REW_DEVICE:
+		msg_format("The voice of %s whispers:",
+			chaos_patrons[p_ptr->chaos_patron]);
+		msg_print("'Use my gift wisely.'");
+		chaos_gift_device();
 		break;
 	case REW_IGNORE:
 		msg_format("%s pointedly ignores you.",

@@ -36,18 +36,7 @@ static void _gain_level(int new_level)
 	/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
 	if (new_level > 1)
 	{
-		if (one_in_(2))
-		{
-			chaos_patron_reward();
-		}
-		else if (one_in_(13))
-		{
-			chaos_patron_punish();
-		}
-		else
-		{
-			chaos_patron_random();
-		}
+		chaos_patron_reward(PATRON_LEVEL_UP);
 	}
 }
 
@@ -121,7 +110,10 @@ class_t *chaos_warrior_get_class(void)
         me.get_flags = _get_flags;
         me.caster_info = _caster_info;
         me.get_powers = _get_powers;
-        me.gain_level = _gain_level;
+		/* level gain in xtra2.c */
+        //me.gain_level = _gain_level;
+		/* Chaos worshippers can expect a certain number of rewards and mutations levelling up */
+		/* These are rarely detrimental, patrons are liable to inflict punishment at other times */
         me.character_dump = spellbook_character_dump;
         init = TRUE;
     }

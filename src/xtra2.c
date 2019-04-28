@@ -254,20 +254,7 @@ void check_experience(void)
             if (class_ptr->gain_level != NULL)
                 (class_ptr->gain_level)(p_ptr->lev);
 
-			if (mut_present(MUT_CHAOS_GIFT)) {
-				if (one_in_(2))
-				{
-					chaos_patron_reward();
-				}
-				else if (one_in_(13))
-				{
-					chaos_patron_punish();
-				}
-				else
-				{
-					chaos_patron_random();
-				}
-			}
+			if (worships_chaos()) chaos_choose_effect(PATRON_LEVEL_UP);
 
             /* N.B. The class hook or the Chaos Gift mutation may result in a race
                change (stupid Chaos-Warriors), so we better always requery the player's
@@ -2783,7 +2770,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
         monster_death(m_idx, TRUE);
 
 		/* Chaos patrons take interest */
-		if (p_ptr->pclass == CLASS_CHAOS_WARRIOR || (p_ptr->pclass == CLASS_CHAOS_MAGE) || mut_present(MUT_CHAOS_GIFT))
+		if (worships_chaos())
 		{
 			if (r_ptr->flags1 & RF1_UNIQUE && (r_ptr->level + randint1(r_ptr->level) > p_ptr->lev * 2))
 			{

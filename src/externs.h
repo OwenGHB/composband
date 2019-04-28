@@ -1763,6 +1763,9 @@ extern void gain_exp(s32b amount);
 extern void lose_exp(s32b amount);
 extern int  drain_exp(s32b drain, s32b slip, int hold_life_prob);
 extern void do_poly_self(void);
+extern void do_energise(void);
+extern void do_poly_wounds(void);
+extern void change_race(int new_race, cptr effect_msg);
 extern bool set_ultimate_res(int v, bool do_dec);
 extern bool set_tim_res_nether(int v, bool do_dec);
 extern bool set_tim_res_time(int v, bool do_dec);
@@ -1869,8 +1872,6 @@ extern bool get_hack_dir(int *dp);
 extern int get_rep_dir(int *dp, bool under);
 extern bool get_rep_dir2(int *dp);
 extern bool tgt_pt (int *x, int *y, int rng);
-extern void do_poly_wounds(void);
-extern void change_race(int new_race, cptr effect_msg);
 extern int mon_damage_mod(monster_type *m_ptr, int dam, bool is_psy_spear);
 extern int mon_damage_mod_mon(monster_type *m_ptr, int dam, bool is_psy_spear);
 extern s16b gain_energy(void);
@@ -2658,8 +2659,5 @@ extern void wild_reset_counter(int power);
 /* chaos_patron.c */
 
 extern void     chaos_choose_effect(int);
-extern void     chaos_patron_punish(void);
-extern void     chaos_patron_random(void);
-extern void     chaos_patron_reward(void);
-extern void     chaos_patron_event(int);
+extern bool		worships_chaos();
 extern cptr     chaos_patron_name(int);
