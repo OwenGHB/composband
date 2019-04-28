@@ -2776,7 +2776,7 @@ bool mon_take_hit(int m_idx, int dam, bool *fear, cptr note)
 			{
 				chaos_choose_effect(PATRON_KILL_FAMOUS);
 			}
-			else if (r_ptr->flags1 & RF1_UNIQUE)
+			else if (r_ptr->flags1 & RF1_UNIQUE && (m_ptr->smart & (1U << SM_CLONED)) == 0 )
 			{
 				chaos_choose_effect(PATRON_KILL_UNIQUE);
 			}
