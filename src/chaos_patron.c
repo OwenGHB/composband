@@ -358,6 +358,10 @@ void chaos_choose_effect(int reason)
 		punish_chance = 13;
 		reward_chance = 7;
 		break;
+	case COMMENDING:
+		punish_chance = 13;
+		reward_chance = 2;
+		break;
 	default:
 		break;
 	}
