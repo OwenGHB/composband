@@ -284,6 +284,52 @@ bool worships_chaos(void)
 	return (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE || mut_present(MUT_CHAOS_GIFT));
 }
 
+void chaos_patron_reward(int category)
+{
+	int         type, effect;
+	type = randint1(5);
+	if (type < 1) type = 1;
+	if (type > 5) type = 5;
+	type--;
+	effect = chaos_rewards[p_ptr->chaos_patron][category][type];
+	chaos_patron_event(effect);
+}
+
+void chaos_patron_mutate(void) {
+	int count;
+	count = mut_count(mut_unlocked_pred);
+	if (count>randint1(5))
+	{
+		if (one_in_(3))
+		{
+			int newmuts = 1;
+			msg_format("%^s rewards you with new mutations!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
+			while (one_in_(newmuts))
+			{
+				mut_lose_random(NULL);
+				mut_gain_random(NULL);
+				newmuts++;
+			}
+		}
+		else
+		{
+			msg_format("%^s rewards you with a new mutation!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
+		}
+	}
+	else
+	{
+		{
+			msg_format("%^s rewards you with a mutation!",
+				chaos_patrons[p_ptr->chaos_patron]);
+			mut_gain_random(NULL);
+		}
+	}
+}
+
 /* do we want a punishment, a questionable reward, or a good reward? */
 void chaos_choose_effect(int reason)
 {
@@ -346,51 +392,7 @@ void chaos_choose_effect(int reason)
 	}
 }
 
-void chaos_patron_reward(int category)
-{
-	int         type, effect;
-	type = randint1(5);
-	if (type < 1) type = 1;
-	if (type > 5) type = 5;
-	type--;
-	effect = chaos_rewards[p_ptr->chaos_patron][category][type];
-	chaos_patron_event(effect);
-}
 
-void chaos_patron_mutate(void) {
-	int count;
-	count = mut_count(mut_unlocked_pred);
-	if (count>randint1(5))
-	{
-		if (one_in_(3))
-		{
-			int newmuts = 1;
-			msg_format("%^s rewards you with new mutations!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-			while (one_in_(newmuts))
-			{
-				mut_lose_random(NULL);
-				mut_gain_random(NULL);
-				newmuts++;
-			}
-		}
-		else
-		{
-			msg_format("%^s rewards you with a new mutation!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-		}
-	}
-	else
-	{
-		{
-			msg_format("%^s rewards you with a mutation!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-		}
-	}
-}
 void chaos_forge_weapon() {
 	object_type forge;
 	int         dummy = 0, dummy2 = 0;
