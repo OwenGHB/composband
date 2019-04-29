@@ -37,20 +37,27 @@
 #define REW_SER_UNDE    34
 #define REW_SER_DEMO    35
 #define REW_SER_MONS    36  
+#define REW_MUTATE		37
 
+/* reward types */
 #define REW_TYPE_PUNISH  0
 #define REW_TYPE_ANNOY   1
 #define REW_TYPE_REWARD  2
 #define REW_TYPE_FAVOUR  3
 #define REW_CATEGORIES   4
 
+/* patron attitudes */
+#define AMBIVALENT 0
+#define SCORNFUL 1
+#define AMUSED 2
+#define INTERESTED 3
+#define APPROVING 4
+#define ATTITUDE_MAX 5
 
 struct chaos_patron
 {
 	int stat;
-	int punishments[5];
-	int blessings[10];
-	int rewards[5];
+	int rewards[REW_CATEGORIES][5];
 	cptr name;
 	cptr title;
 	int noticechance[PATRON_EFFECT_MAX];
@@ -80,322 +87,10 @@ int chaos_stats[MAX_PATRON] =
 	A_STR,  /* Khaine */
 };
 
-int chaos_rewards[MAX_PATRON][REW_CATEGORIES][5] =
-{
-	/* Slortar the Old: */
-	{
-		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
-		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
-		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP },
-		{ REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL, REW_AUGM_ABL }
-	},
-
-	/* Mabelode the Faceless: */
-	{
-		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_H_SUMMON, REW_SUMMON_M },
-		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_WND },
-		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_ABL, REW_SER_UNDE },
-		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GOOD_OBS }
-	},
-
-	/* Chardros the Reaper: */
-	{
-		{ REW_WRATH, REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_H_SUMMON },
-		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_DESTRUCT, REW_SER_UNDE },
-		{ REW_GENOCIDE, REW_MASS_GEN, REW_MASS_GEN, REW_DISPEL_C, REW_GOOD_OBJ },
-		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
-	},
-
-	/* Hionhurn the Executioner: */
-	{
-		{ REW_WRATH, REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
-		{ REW_IGNORE, REW_IGNORE, REW_SER_UNDE, REW_DESTRUCT, REW_GENOCIDE },
-		{ REW_MASS_GEN, REW_MASS_GEN, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
-		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
-	},
-
-	/* Xiombarg the Sword-Queen: */
-	{
-		{ REW_TY_CURSE, REW_TY_CURSE, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
-		{ REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND, REW_POLY_WND },
-		{ REW_GENOCIDE, REW_DISPEL_C, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS },
-		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GAIN_EXP, REW_AUGM_ABL, REW_GOOD_OBS }
-	},
-
-
-	/* Pyaray the Tentacled Whisperer of Impossible Secretes: */
-	{
-		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_H_SUMMON, REW_H_SUMMON },
-		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
-		{ REW_POLY_SLF, REW_SER_DEMO, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
-		{ REW_CHAOS_WP, REW_DO_HAVOC, REW_GOOD_OBJ, REW_GREA_OBJ, REW_GREA_OBS }
-	},
-
-	/* Balaan the Grim: */
-	{
-		{ REW_TY_CURSE, REW_HURT_LOT, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
-		{ REW_SUMMON_M, REW_LOSE_EXP, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
-		{ REW_SER_UNDE, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_GAIN_EXP },
-		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GREA_OBS, REW_AUGM_ABL }
-	},
-	/* Arioch, Duke of Hell: */
-	{
-		{ REW_WRATH, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_EXP, REW_H_SUMMON },
-		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
-		{ REW_POLY_SLF, REW_MASS_GEN, REW_SER_DEMO, REW_HEAL_FUL, REW_CHAOS_WP },
-		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GAIN_EXP, REW_GREA_OBJ, REW_AUGM_ABL }
-	},
-
-	/* Eequor, Blue Lady of Dismay: */
-	{ 
-		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_CURSE_WP, REW_RUIN_ABL },
-		{ REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
-		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS, REW_HEAL_FUL, REW_GAIN_EXP },
-		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GOOD_OBS, REW_GREA_OBJ, REW_AUGM_ABL }
-	},
-
-	/* Narjhan, Lord of Beggars: */
-	{
-		{ REW_WRATH, REW_CURSE_AR, REW_CURSE_WP, REW_CURSE_WP, REW_CURSE_AR },
-		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF },
-		{ REW_POLY_WND, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_AUGM_ABL },
-		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GREA_OBS }
-	},
-
-	/* Balo the Jester: */
-	{
-		{ REW_WRATH, REW_SER_DEMO, REW_CURSE_WP, REW_CURSE_AR, REW_LOSE_EXP },
-		{ REW_GAIN_ABL, REW_LOSE_ABL, REW_POLY_WND, REW_POLY_SLF, REW_IGNORE },
-		{ REW_DESTRUCT, REW_MASS_GEN, REW_CHAOS_WP, REW_GREA_OBJ, REW_HURT_LOT },
-		{ REW_AUGM_ABL, REW_RUIN_ABL, REW_H_SUMMON, REW_GREA_OBS, REW_AUGM_ABL }
-	},
-
-	/* Khorne the Bloodgod: */
-	{ 
-		{ REW_WRATH, REW_HURT_LOT, REW_HURT_LOT, REW_H_SUMMON, REW_H_SUMMON },
-		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_SER_MONS, REW_SER_DEMO, },
-		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GOOD_OBJ },
-		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_GREA_OBJ, REW_GREA_OBS }
-	},
-
-	/* Slaanesh: */
-	{
-		{ REW_WRATH, REW_PISS_OFF, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
-		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_SER_DEMO, },
-		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_EXP },
-		{ REW_GAIN_EXP, REW_CHAOS_WP, REW_GAIN_ABL, REW_GREA_OBJ, REW_AUGM_ABL }
-	},
-
-	/* Nurgle: */
-	{
-		{ REW_WRATH, REW_PISS_OFF, REW_HURT_LOT, REW_RUIN_ABL, REW_LOSE_ABL },
-		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
-		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_ABL },
-		{ REW_GAIN_ABL, REW_SER_UNDE, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL }
-	},
-	/* Tzeentch: */
-	{ 
-		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
-		{ REW_LOSE_EXP, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_SLF },
-		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_CHAOS_WP, REW_GREA_OBJ }, 
-		{ REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP, REW_GAIN_EXP, REW_AUGM_ABL }
-	},
-
-	/* Khaine: */
-	{
-		{ REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_LOSE_ABL, REW_LOSE_EXP },
-		{ REW_IGNORE, REW_IGNORE, REW_DISPEL_C, REW_DO_HAVOC, REW_DO_HAVOC, },
-		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_EXP, REW_GAIN_ABL, REW_GAIN_ABL }, 
-		{ REW_SER_MONS, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GOOD_OBS }
-	}
-};
-
-cptr chaos_patron_name(int which)
-{
-	cptr name;
-	switch (which)
-	{
-	case 0: name = "Slortar the Old"; break;
-	case 1: name = "Mabelode the Faceless"; break;
-	case 2: name = "Chardros the Reaper"; break;
-	case 3: name = "Hionhurn the Executioner"; break;
-	case 4: name = "Xiombarg the Sword-Queen"; break;
-	case 5: name = "Pyaray the Tentacled Whisperer of Impossible Secrets"; break;
-	case 6: name = "Balaan the Grim"; break;
-	case 7: name = "Arioch, Duke of Hell"; break;
-	case 8: name = "Eequor, Blue Lady of Dismay"; break;
-	case 9: name = "Narjhan, Lord of Beggars"; break;
-	case 10: name = "Balo the Jester"; break;
-	case 11: name = "Khorne the Blood God"; break;
-	case 12: name = "Slaanesh the Prince of Pleasure"; break;
-	case 13: name = "Nurgle the Plague Lord"; break;
-	case 14: name = "Tzeentch the Changer of Ways"; break;
-	case 15: name = "Khaela Mensha Khaine"; break;
-	default: name = "Gwarl the Destroyer"; break;
-	}
-	return name;
-}
-
-/* assigns chances for a patron noticing the player */
-int chaos_effect_notice[MAX_PATRON][PATRON_EFFECT_MAX] =
-{
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
- { 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
-};
-
-/* defines attitudes toward player actions */
-/* melee hit , kill weakling, kill, kill unique, kill famous, kill good, kill demon, cast, villiany, chance, take hit, level up */
-int chaos_attitudes[MAX_PATRON][PATRON_EFFECT_MAX] =
-{
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING },
-	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, COMMENDING }
-};
-
 bool worships_chaos(void) 
 {	
 	return (p_ptr->pclass == CLASS_CHAOS_WARRIOR || p_ptr->pclass == CLASS_CHAOS_MAGE || mut_present(MUT_CHAOS_GIFT));
 }
-
-void chaos_patron_reward(int category)
-{
-	int         type, effect;
-	type = randint1(5);
-	if (type < 1) type = 1;
-	if (type > 5) type = 5;
-	type--;
-	effect = chaos_rewards[p_ptr->chaos_patron][category][type];
-	chaos_patron_event(effect);
-}
-
-void chaos_patron_mutate(void) {
-	int count;
-	count = mut_count(mut_unlocked_pred);
-	if (count>randint1(5))
-	{
-		if (one_in_(3))
-		{
-			int newmuts = 1;
-			msg_format("%^s rewards you with new mutations!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-			while (one_in_(newmuts))
-			{
-				mut_lose_random(NULL);
-				mut_gain_random(NULL);
-				newmuts++;
-			}
-		}
-		else
-		{
-			msg_format("%^s rewards you with a new mutation!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-		}
-	}
-	else
-	{
-		{
-			msg_format("%^s rewards you with a mutation!",
-				chaos_patrons[p_ptr->chaos_patron]);
-			mut_gain_random(NULL);
-		}
-	}
-}
-
-/* do we want a punishment, a questionable reward, or a good reward? */
-void chaos_choose_effect(int reason)
-{
-	int attitude = chaos_attitudes[p_ptr->chaos_patron][reason];
-	int punish_chance = 0;
-	int reward_chance = 0;
-	switch (attitude)
-	{
-	case AMBIVALENT:
-		punish_chance = 39;
-		reward_chance = 21;
-		break;
-	case SCORNFUL:
-		punish_chance = 13;
-		reward_chance = 169;
-		break;
-	case AMUSED:
-		punish_chance = 39;
-		reward_chance = 7;
-		break;
-	case APPROVING:
-		punish_chance = 666;
-		reward_chance = 3;
-		break;
-	case INTERESTED:
-		punish_chance = 13;
-		reward_chance = 7;
-		break;
-	case COMMENDING:
-		punish_chance = 13;
-		reward_chance = 2;
-		break;
-	default:
-		break;
-	}
-	if (one_in_(chaos_effect_notice[p_ptr->chaos_patron][reason]))
-	{
-		if (punish_chance && one_in_(punish_chance))
-		{
-			chaos_patron_reward(REW_TYPE_PUNISH);
-		}
-		else if (reward_chance && one_in_(reward_chance))
-		{
-			if (randint0(8) < 3)
-			{
-				chaos_patron_mutate();
-			}
-			else
-			{
-				chaos_patron_reward(REW_TYPE_FAVOUR);
-			}
-		}
-		else
-		{
-			if (one_in_(2)) 
-			{
-				chaos_patron_reward(REW_TYPE_ANNOY);
-			}
-			else
-			{
-				chaos_patron_reward(REW_TYPE_REWARD);
-			}
-		}
-	}
-}
-
 
 void chaos_forge_weapon() {
 	object_type forge;
@@ -507,15 +202,15 @@ void chaos_gift_device() {
 		dummy = TV_STAFF;
 		break;
 	case 1:
-		dummy = TV_WAND;
+		dummy = TV_ROD;
 		break;
 	case 2: case 3:
-		dummy = TV_ROD;
+		dummy = TV_WAND;
 		break;
 	}
 
 	object_prep(&forge, lookup_kind(dummy, 0));
-	if (!obj_create_device(&forge, rand_range(p_ptr->lev, p_ptr->lev * 2), 0, AM_GOOD)) 
+	if (!obj_create_device(&forge, rand_range(p_ptr->lev, p_ptr->lev * 2), 0, AM_GOOD))
 	{
 		obj_create_device(&forge, rand_range(p_ptr->lev, p_ptr->lev * 2), 0, 0);
 	}
@@ -817,7 +512,7 @@ void chaos_patron_event(int effect)
 			curse_equipment(100, 1);
 			break;
 		case 3:
-			p_ptr->csp = randint0(p_ptr->csp/2);
+			p_ptr->csp = randint0(p_ptr->csp / 2);
 			break;
 		}
 		break;
@@ -825,16 +520,16 @@ void chaos_patron_event(int effect)
 		msg_format("The voice of %s booms out:",
 			chaos_patrons[p_ptr->chaos_patron]);
 		msg_print("Let Chaos reign!");
-		project_hack(GF_CHAOS, randint1(6));
+		project_hack(GF_CHAOS, randint1(p_ptr->lev));
 		break;
 	case REW_EXULTATION:
 		msg_format("The voice of %s booms out:",
 			chaos_patrons[p_ptr->chaos_patron]);
 		msg_print("Onward my servant!");
-		switch (randint0(4)) 
+		switch (randint0(4))
 		{
 		case 0:
-			set_hero(p_ptr->hero + rand_range(50,100), FALSE);
+			set_hero(p_ptr->hero + rand_range(50, 100), FALSE);
 			break;
 		case 1:
 			set_blessed(p_ptr->blessed + rand_range(50, 100), FALSE);
@@ -842,10 +537,10 @@ void chaos_patron_event(int effect)
 		case 2:
 			set_fast(p_ptr->fast + rand_range(30, 60), FALSE);
 			break;
-		case 4:
+		case 3:
 			set_tim_sh_fire(p_ptr->tim_sh_fire + rand_range(20, 70), FALSE);
 			break;
-		case 3:
+		case 4:
 			set_mimic(rand_range(50, 100), MIMIC_DEMON, FALSE);
 			break;
 		}
@@ -881,8 +576,351 @@ void chaos_patron_event(int effect)
 		if (!summon_specific(-1, py, px, dun_level, SUMMON_UNDEAD, PM_FORCE_PET))
 			msg_print("Nobody ever turns up...");
 		break;
+	case REW_MUTATE:
+		if (mut_count(mut_unlocked_pred) > randint1(5))
+		{
+			if (one_in_(3))
+			{
+				int newmuts = 1;
+				msg_format("%^s rewards you with new mutations!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+				while (one_in_(newmuts))
+				{
+					mut_lose_random(NULL);
+					mut_gain_random(NULL);
+					newmuts++;
+				}
+			}
+			else
+			{
+				msg_format("%^s rewards you with a new mutation!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+			}
+		}
+		else
+		{
+			{
+				msg_format("%^s rewards you with a mutation!",
+					chaos_patrons[p_ptr->chaos_patron]);
+				mut_gain_random(NULL);
+			}
+		}
+		break;
 	default:
 		msg_format("The voice of %s stammers:", chaos_patrons[p_ptr->chaos_patron]);
 		msg_format("'Uh... uh... the answer's %d, what's the question?'", effect);
 	}
 }
+
+int chaos_rewards[MAX_PATRON][REW_CATEGORIES][5] =
+{
+	/* Slortar the Old: */
+	{
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP },
+		{ REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL, REW_AUGM_ABL }
+	},
+
+	/* Mabelode the Faceless: */
+	{
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_H_SUMMON, REW_SUMMON_M },
+		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_WND },
+		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_ABL, REW_SER_UNDE },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GOOD_OBS }
+	},
+
+	/* Chardros the Reaper: */
+	{
+		{ REW_WRATH, REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_H_SUMMON },
+		{ REW_SUMMON_M, REW_IGNORE, REW_IGNORE, REW_DESTRUCT, REW_SER_UNDE },
+		{ REW_GENOCIDE, REW_MASS_GEN, REW_MASS_GEN, REW_DISPEL_C, REW_GOOD_OBJ },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
+	},
+
+	/* Hionhurn the Executioner: */
+	{
+		{ REW_WRATH, REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_SER_UNDE, REW_DESTRUCT, REW_GENOCIDE },
+		{ REW_MASS_GEN, REW_MASS_GEN, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_AUGM_ABL, REW_AUGM_ABL }
+	},
+
+	/* Xiombarg the Sword-Queen: */
+	{
+		{ REW_TY_CURSE, REW_TY_CURSE, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND, REW_POLY_WND },
+		{ REW_GENOCIDE, REW_DISPEL_C, REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS },
+		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GAIN_EXP, REW_AUGM_ABL, REW_GOOD_OBS }
+	},
+
+
+	/* Pyaray the Tentacled Whisperer of Impossible Secretes: */
+	{
+		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_H_SUMMON, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_SER_DEMO, REW_HEAL_FUL, REW_GAIN_ABL, REW_GAIN_ABL },
+		{ REW_CHAOS_WP, REW_DO_HAVOC, REW_GOOD_OBJ, REW_GREA_OBJ, REW_GREA_OBS }
+	},
+
+	/* Balaan the Grim: */
+	{
+		{ REW_TY_CURSE, REW_HURT_LOT, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL },
+		{ REW_SUMMON_M, REW_LOSE_EXP, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
+		{ REW_SER_UNDE, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_GAIN_EXP },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GOOD_OBS, REW_GREA_OBS, REW_AUGM_ABL }
+	},
+	/* Arioch, Duke of Hell: */
+	{
+		{ REW_WRATH, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_EXP, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_MASS_GEN, REW_SER_DEMO, REW_HEAL_FUL, REW_CHAOS_WP },
+		{ REW_CHAOS_WP, REW_GOOD_OBJ, REW_GAIN_EXP, REW_GREA_OBJ, REW_AUGM_ABL }
+	},
+
+	/* Eequor, Blue Lady of Dismay: */
+	{
+		{ REW_WRATH, REW_TY_CURSE, REW_PISS_OFF, REW_CURSE_WP, REW_RUIN_ABL },
+		{ REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_WND },
+		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_SER_MONS, REW_HEAL_FUL, REW_GAIN_EXP },
+		{ REW_GAIN_ABL, REW_CHAOS_WP, REW_GOOD_OBS, REW_GREA_OBJ, REW_AUGM_ABL }
+	},
+
+	/* Narjhan, Lord of Beggars: */
+	{
+		{ REW_WRATH, REW_CURSE_AR, REW_CURSE_WP, REW_CURSE_WP, REW_CURSE_AR },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF },
+		{ REW_POLY_WND, REW_HEAL_FUL, REW_HEAL_FUL, REW_GAIN_EXP, REW_AUGM_ABL },
+		{ REW_GOOD_OBJ, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GREA_OBS }
+	},
+
+	/* Balo the Jester: */
+	{
+		{ REW_WRATH, REW_SER_DEMO, REW_CURSE_WP, REW_CURSE_AR, REW_LOSE_EXP },
+		{ REW_GAIN_ABL, REW_LOSE_ABL, REW_POLY_WND, REW_POLY_SLF, REW_IGNORE },
+		{ REW_DESTRUCT, REW_MASS_GEN, REW_CHAOS_WP, REW_GREA_OBJ, REW_HURT_LOT },
+		{ REW_AUGM_ABL, REW_RUIN_ABL, REW_H_SUMMON, REW_GREA_OBS, REW_AUGM_ABL }
+	},
+
+	/* Khorne the Bloodgod: */
+	{
+		{ REW_WRATH, REW_HURT_LOT, REW_HURT_LOT, REW_H_SUMMON, REW_H_SUMMON },
+		{ REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_SER_MONS, REW_SER_DEMO },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GOOD_OBJ },
+		{ REW_CHAOS_WP, REW_GOOD_OBS, REW_GOOD_OBS, REW_GREA_OBJ, REW_GREA_OBS }
+	},
+
+	/* Slaanesh: */
+	{
+		{ REW_WRATH, REW_PISS_OFF, REW_PISS_OFF, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_POLY_WND, REW_SER_DEMO },
+		{ REW_POLY_SLF, REW_HEAL_FUL, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_EXP },
+		{ REW_GAIN_EXP, REW_CHAOS_WP, REW_GAIN_ABL, REW_GREA_OBJ, REW_AUGM_ABL }
+	},
+
+	/* Nurgle: */
+	{
+		{ REW_WRATH, REW_PISS_OFF, REW_HURT_LOT, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_IGNORE, REW_IGNORE, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_GOOD_OBJ, REW_GAIN_ABL },
+		{ REW_GAIN_ABL, REW_SER_UNDE, REW_CHAOS_WP, REW_GREA_OBJ, REW_AUGM_ABL }
+	},
+	/* Tzeentch: */
+	{
+		{ REW_WRATH, REW_CURSE_WP, REW_CURSE_AR, REW_RUIN_ABL, REW_LOSE_ABL },
+		{ REW_LOSE_EXP, REW_IGNORE, REW_POLY_SLF, REW_POLY_SLF, REW_POLY_SLF },
+		{ REW_POLY_SLF, REW_POLY_WND, REW_HEAL_FUL, REW_CHAOS_WP, REW_GREA_OBJ },
+		{ REW_GAIN_ABL, REW_GAIN_ABL, REW_GAIN_EXP, REW_GAIN_EXP, REW_AUGM_ABL }
+	},
+
+	/* Khaine: */
+	{
+		{ REW_WRATH, REW_HURT_LOT, REW_PISS_OFF, REW_LOSE_ABL, REW_LOSE_EXP },
+		{ REW_IGNORE, REW_IGNORE, REW_DISPEL_C, REW_DO_HAVOC, REW_DO_HAVOC, },
+		{ REW_POLY_SLF, REW_POLY_SLF, REW_GAIN_EXP, REW_GAIN_ABL, REW_GAIN_ABL },
+		{ REW_SER_MONS, REW_GOOD_OBJ, REW_CHAOS_WP, REW_GREA_OBJ, REW_GOOD_OBS }
+	}
+};
+
+void chaos_patron_reward(int category)
+{
+	int         type, effect;
+	type = randint1(5);
+	if (type < 1) type = 1;
+	if (type > 5) type = 5;
+	type--;
+	effect = chaos_rewards[p_ptr->chaos_patron][category][type];
+	chaos_patron_event(effect);
+}
+
+/* Patron name and title */
+cptr chaos_patron_name(int which)
+{
+	cptr name;
+	switch (which)
+	{
+	case 0: name = "Slortar the Old"; break;
+	case 1: name = "Mabelode the Faceless"; break;
+	case 2: name = "Chardros the Reaper"; break;
+	case 3: name = "Hionhurn the Executioner"; break;
+	case 4: name = "Xiombarg the Sword-Queen"; break;
+	case 5: name = "Pyaray the Tentacled Whisperer of Impossible Secrets"; break;
+	case 6: name = "Balaan the Grim"; break;
+	case 7: name = "Arioch, Duke of Hell"; break;
+	case 8: name = "Eequor, Blue Lady of Dismay"; break;
+	case 9: name = "Narjhan, Lord of Beggars"; break;
+	case 10: name = "Balo the Jester"; break;
+	case 11: name = "Khorne the Blood God"; break;
+	case 12: name = "Slaanesh the Prince of Pleasure"; break;
+	case 13: name = "Nurgle the Plague Lord"; break;
+	case 14: name = "Tzeentch the Changer of Ways"; break;
+	case 15: name = "Khaela Mensha Khaine"; break;
+	default: name = "Gwarl the Destroyer"; break;
+	}
+	return name;
+}
+
+/* assigns chances for a patron noticing the player */
+/* melee hit , kill weakling, kill, kill unique, kill famous, kill good, kill demon, cast, villiany, chance, take hit, level up */
+int chaos_effect_notice[MAX_PATRON][PATRON_EFFECT_MAX] =
+{
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 273, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 6, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 6, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+	{ 343, 216, 81, 7, 2, 7, 27, 131, 21, 14, 7, 1 },
+};
+
+/* defines attitudes toward player actions */
+/* melee hit , kill weakling, kill, kill unique, kill famous, kill good, kill demon, cast, villiany, chance, take hit, level up */
+int chaos_attitudes[MAX_PATRON][PATRON_EFFECT_MAX] =
+{
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, SCORNFUL, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING },
+	{ AMBIVALENT, SCORNFUL, AMBIVALENT, AMUSED, APPROVING, APPROVING, INTERESTED, AMBIVALENT, AMUSED, AMUSED, AMBIVALENT, APPROVING }
+};
+
+/* do we want a punishment, a questionable reward, or a good reward? */
+/* extra logic goes in this function to retain the integrity of the Zangband reward tables */
+/* unfortunately khorne makes for a rather benign deity unless you manage to piss him off badly */
+/* his scornful attitude toward spellcasting leads to some special behaviour */
+void chaos_choose_effect(int reason)
+{
+	int attitude = chaos_attitudes[p_ptr->chaos_patron][reason];
+	int punish_chance = 0;
+	int reward_chance = 0;
+	switch (attitude)
+	{
+	case AMBIVALENT:
+		punish_chance = 39;
+		reward_chance = 21;
+		break;
+	case SCORNFUL:
+		punish_chance = 13;
+		reward_chance = 169;
+		break;
+	case AMUSED:
+		punish_chance = 39;
+		reward_chance = 7;
+		break;
+	case APPROVING:
+		punish_chance = 91;
+		reward_chance = 2;
+		break;
+	case INTERESTED:
+		punish_chance = 13;
+		reward_chance = 7;
+		break;
+	default:
+		break;
+	}
+	/* Khorne never rewards casters! */
+	if (attitude == SCORNFUL && reason == PATRON_CAST) reward_chance == 0;
+	if (one_in_(chaos_effect_notice[p_ptr->chaos_patron][reason]))
+	{
+		if (punish_chance && one_in_(punish_chance))
+		{
+			chaos_patron_reward(REW_TYPE_PUNISH);
+		}
+		else if (reward_chance && one_in_(reward_chance))
+		{
+			if (one_in_(6) && p_ptr->chaos_patron != PATRON_KHORNE)
+			{
+				chaos_patron_event(REW_DEVICE);
+			}
+			chaos_patron_reward(REW_TYPE_FAVOUR);
+		}
+		else
+		{
+			if (attitude == SCORNFUL && reason == PATRON_CAST)
+			{
+				/* getting off easy! */
+				chaos_patron_event(REW_DAMNATION);
+			}
+			/* mutations may be too much here, we'll have to see - small chance to mutate every time we're not given explicit favour or punishment */
+			else if (one_in_(16)) {
+				chaos_patron_event(REW_MUTATE);
+			}
+			else if (randint0(punish_chance + reward_chance) < punish_chance) 
+			{
+				/* new good effects will be sponging off the old ones */
+				if (one_in_(8)) 
+				{
+					chaos_patron_event(REW_ENERGISE);
+				}
+				else if (one_in_(7))
+				{
+					chaos_patron_event(REW_EXULTATION);
+				}
+				else if (one_in_(6))
+				{
+					chaos_patron_event(REW_DISORDER);
+				}
+				else 
+				{
+					chaos_patron_reward(REW_TYPE_REWARD);
+				}
+			}
+			else
+			{
+				if (one_in_(6)) 
+				{
+					chaos_patron_event(REW_DAMNATION);
+				}
+				else 
+				{
+					chaos_patron_reward(REW_TYPE_ANNOY);
+				}
+			}
+		}
+	}
+}
+
+
+

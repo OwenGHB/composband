@@ -5753,15 +5753,6 @@ enum effect_e
 #define PATRON_LEVEL_UP 11
 #define PATRON_EFFECT_MAX 12
 
-/* patron attitudes */
-#define AMBIVALENT 0
-#define SCORNFUL 1
-#define AMUSED 2
-#define INTERESTED 3
-#define APPROVING 4
-#define COMMENDING 5
-#define ATTITUDE_MAX 6
-
 /* patrons by name */
 #define PATRON_SLORTAR 0
 #define PATRON_MABELODE 1
