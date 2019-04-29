@@ -890,7 +890,7 @@ void chaos_choose_effect(int reason)
 			else if (randint0(punish_chance + reward_chance) < punish_chance) 
 			{
 				/* new good effects will be sponging off the old ones */
-				if (one_in_(8)) 
+				if (one_in_(8) && p_ptr->chaos_patron != PATRON_KHORNE)
 				{
 					chaos_patron_event(REW_ENERGISE);
 				}
