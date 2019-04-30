@@ -874,7 +874,7 @@ void chaos_choose_effect(int reason)
 			{
 				chaos_patron_event(REW_DEVICE);
 			}
-			chaos_patron_reward(REW_TYPE_FAVOUR);
+			else chaos_patron_reward(REW_TYPE_FAVOUR);
 		}
 		else
 		{
