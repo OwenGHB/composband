@@ -851,7 +851,7 @@ void chaos_choose_effect(int reason)
 		break;
 	case APPROVING:
 		punish_chance = 91;
-		reward_chance = 2;
+		reward_chance = 3;
 		break;
 	case INTERESTED:
 		punish_chance = 13;
