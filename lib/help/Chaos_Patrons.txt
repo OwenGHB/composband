@@ -85,7 +85,7 @@ May increase or decrease abilities, polymorph followers or their wounds, destruc
 
 Gifts augmented abilities, ruined abilities, strong hostile opponents, equipment and devices.
 
-<topic:Khorne><color:r>Khorne<color>
+<topic:Khorne><color:r>Khorne</color>
 The Blood God delights in battle and favours warriors as his followers. He has a special scorn for spellcasters and will never react favourably to noticing a follower casting a spell. He is amused when his followers engage in close combat with their opponents, and his reactions are usually favourable. He frequently takes notice when his followers kill unique opponents.
 
 May grant servants or demonic servants, polymorph followers or their wounds, heal all wounds, gift equipment.
