@@ -1382,10 +1382,11 @@ struct player_type
 
     u32b cursed;         /* Player is cursed */
 
-    bool can_swim;       /* No damage falling */
+    bool can_swim;       /* Crosses water - hijacked for water breathing */
     bool levitation;     /* No damage falling */
+	bool pathfinding;	 /* No movement penalty in trees */
     bool lite;           /* Permanent light */
-    s16b free_act;       /* Resist paralysis; perhaps slowing */
+    s16b free_act;       /* Resist paralysis and slowing */
     s16b see_inv;        /* Can see invisible */
     s16b regen;          /* Rate of regeneration: 100 = 100%, 200 = 200%, etc. */
     s16b hold_life;      /* Resist life draining */

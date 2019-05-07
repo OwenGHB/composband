@@ -629,7 +629,8 @@ void obj_learn_slay(object_type *o_ptr, int which, cptr msg)
 const int _xtra_lore_flags[] = {
     OF_LEVITATION, OF_REGEN, OF_EASY_SPELL, OF_DEC_MANA,
     OF_AURA_FIRE, OF_AURA_ELEC, OF_AURA_COLD, OF_AURA_SHARDS,
-    OF_LITE, OF_DARKNESS, OF_SLOW_DIGEST,
+    OF_LITE, OF_DARKNESS, OF_SLOW_DIGEST, OF_PATHFINDING,
+	OF_WATER_BREATHING,
     OF_INVALID
 };
 

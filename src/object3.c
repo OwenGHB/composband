@@ -166,6 +166,8 @@ static s32b _abilities_q(u32b flgs[OF_ARRAY_SIZE])
     cost += _check_flag_and_score(flgs, OF_HOLD_LIFE, 1000, &count);
     cost += _check_flag_and_score(flgs, OF_REGEN, 1000, &count);
     cost += _check_flag_and_score(flgs, OF_LORE, 5000, &count);
+	cost += _check_flag_and_score(flgs, OF_PATHFINDING, 500, &count);
+	cost += _check_flag_and_score(flgs, OF_WATER_BREATHING, 500, &count);
 
     /* Great Abilities */
     count = 0;

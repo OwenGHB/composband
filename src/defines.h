@@ -2851,6 +2851,10 @@ enum obj_flags_e {
     OF_AGGRAVATE,
     OF_TY_CURSE,
 
+	/* More abilities */
+	OF_PATHFINDING,
+	OF_WATER_BREATHING,
+
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
     OF_COUNT,
 };
