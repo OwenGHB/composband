@@ -1374,7 +1374,7 @@ static int _chaos_patron_ui(void)
 		if (cmd == ESCAPE) return UI_CANCEL;
 		else if (cmd == '\t') _inc_rcp_state();
 		else if (cmd == '=') _birth_options();
-		else if (cmd == '?') doc_display_help("Chaos_Patron.txt", NULL);
+		else if (cmd == '?') doc_display_help("Chaos_Patrons.txt", NULL);
 		else
 		{
 			if (cmd == '*') i = randint0(MAX_PATRON);
