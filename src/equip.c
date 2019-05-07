@@ -1421,8 +1421,6 @@ void equip_calc_bonuses(void)
 
         if (have_flag(flgs, OF_SEE_INVIS))   p_ptr->see_inv++;
         if (have_flag(flgs, OF_LEVITATION))  p_ptr->levitation = TRUE;
-		if (have_flag(flgs, OF_WATER_BREATHING))  p_ptr->can_swim = TRUE;
-		if (have_flag(flgs, OF_PATHFINDING))  p_ptr->pathfinding = TRUE;
         if (have_flag(flgs, OF_FREE_ACT))    p_ptr->free_act++;
         if (have_flag(flgs, OF_HOLD_LIFE))   p_ptr->hold_life++;
         if (have_flag(flgs, OF_WARNING))

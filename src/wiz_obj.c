@@ -469,8 +469,6 @@ static _flag_info_t _ability_flags[] = {
     { OF_NO_MAGIC, "Antimagic" },
     { OF_WARNING, "Warning" },
     { OF_LEVITATION, "Levitation" },
-	{ OF_PATHFINDING, "Pathfinding" },
-	{ OF_WATER_BREATHING, "Water Breathing" },
     { OF_REFLECT, "Reflection" },
     { OF_AURA_FIRE, "Aura Fire" },
     { OF_AURA_ELEC, "Aura Elec" },

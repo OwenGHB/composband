@@ -921,14 +921,6 @@ race_t *vampire_get_race(void)
 /****************************************************************
  * Wood-Elf
  ****************************************************************/
-static void _wood_elf_calc_bonuses(void)
-{
-	p_ptr->pathfinding = TRUE;
-}
-static void _wood_elf_get_flags(u32b flgs[OF_ARRAY_SIZE])
-{
-	add_flag(flgs, OF_PATHFINDING);
-}
 static power_info _wood_elf_powers[] =
 {
     { A_WIS, {20, 15, 50, nature_awareness_spell}},
@@ -973,9 +965,7 @@ race_t *wood_elf_get_race(void)
         me.infra = 3;
         me.shop_adjust = 95;
 
-		me.calc_bonuses = _wood_elf_calc_bonuses;
-		me.get_powers = _wood_elf_get_powers;
-		me.get_flags = _wood_elf_get_flags;
+        me.get_powers = _wood_elf_get_powers;
         init = TRUE;
     }
 

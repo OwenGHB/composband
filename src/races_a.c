@@ -673,7 +673,6 @@ static void _centaur_calc_bonuses(void)
 {
     int slot = equip_find_first(object_is_body_armour);
     p_ptr->pspeed += p_ptr->lev / 10;
-	p_ptr->pathfinding = TRUE;
 
     if (slot)
     {
@@ -691,8 +690,7 @@ static void _centaur_calc_bonuses(void)
 
 static void _centaur_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
-	add_flag(flgs,OF_PATHFINDING);
-	if (p_ptr->lev >= 10)
+    if (p_ptr->lev >= 10)
         add_flag(flgs, OF_SPEED);
 }
 
@@ -1678,14 +1676,12 @@ static int _ent_get_powers(spell_info* spells, int max)
 static void _ent_calc_bonuses(void)
 {
     /*res_add_vuln(RES_FIRE); cf resists.c res_pct_aux() for an alternative*/
-	p_ptr->pathfinding = TRUE;
     if (!equip_find_first(object_is_melee_weapon))
         p_ptr->skill_dig += p_ptr->lev * 10;
 }
 static void _ent_get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
     /*add_flag(flgs, TR_VULN_FIRE);*/
-	add_flag(flgs, OF_PATHFINDING);
 }
 static void _ent_birth(void)
 {

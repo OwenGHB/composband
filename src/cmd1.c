@@ -5770,7 +5770,6 @@ void move_player(int dir, bool do_pickup, bool break_trap)
           && !prace_is_(RACE_CENTAUR)
           && !prace_is_(RACE_WOOD_ELF)
           && !p_ptr->levitation
-		  && !p_ptr->pathfinding
           && (!p_ptr->riding || !(riding_r_ptr->flags8 & RF8_WILD_WOOD)))
         {
             energy_use *= 2;

@@ -428,9 +428,7 @@ static int _unfettered_mind(int ct)
 static void _calc_bonuses(void)
 {
     int ct = _count_open_terrain();
-	bool disrupt = heavy_armor();
-
-	p_ptr->pathfinding = TRUE;
+    bool disrupt = heavy_armor();
 
     /* Hack: Heavy Armor negates advantages of being in the open, and
        actually incurs penalties for being entrenched! */
@@ -461,7 +459,6 @@ static void _calc_bonuses(void)
 }
 static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
 {
-	add_flag(flgs, OF_PATHFINDING);
 }
 
 static void _character_dump(doc_ptr doc)

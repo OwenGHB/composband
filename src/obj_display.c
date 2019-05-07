@@ -539,10 +539,6 @@ static void _display_abilities(u32b flgs[OF_ARRAY_SIZE], doc_ptr doc)
         vec_add(v, string_copy_s("<color:D>Permanent Darkness</color>"));
     else if (have_flag(flgs, OF_LITE))
         vec_add(v, string_copy_s("<color:y>Permanent Light</color>"));
-	if (have_flag(flgs, OF_PATHFINDING))
-		vec_add(v, string_copy_s("<color:G>Pathfinding</color>"));
-	if (have_flag(flgs, OF_LEVITATION))
-		vec_add(v, string_copy_s("<color:b>Water Breathing</color>"));
     if (vec_length(v))
     {
         _print_list(v, doc, ';', '\0');

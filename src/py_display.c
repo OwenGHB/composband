@@ -645,8 +645,6 @@ static void _build_flags2(doc_ptr doc, _flagzilla_ptr flagzilla)
     doc_printf(doc, " %3d%%\n", p_ptr->regen); /* TODO: Only display known amount ... but then again, you can feel this, no? */
 
     _build_flags(doc, "Levitation", OF_LEVITATION, OF_INVALID, flagzilla);
-	_build_flags(doc, "Pathfinding", OF_PATHFINDING, OF_INVALID, flagzilla);
-	_build_flags(doc, "Water Breathing", OF_WATER_BREATHING, OF_INVALID, flagzilla);
     _build_flags(doc, "Perm Lite", OF_LITE, OF_DARKNESS, flagzilla);
     _build_flags(doc, "Reflection", OF_REFLECT, OF_INVALID, flagzilla);
 
