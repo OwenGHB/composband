@@ -40,6 +40,7 @@ Race,Dis,Dev,Sav,Stl,Srh,Fos,Thn,Thb,Stats,Exp
 "Draconian:Crystal",-2,0,2,0,1,10,12,3,6,250
 "Draconian:Gold",-2,6,5,1,1,10,5,3,9,220
 "Draconian:Shadow",-2,5,2,4,1,10,0,3,9,225
+"Draconian:Silver",-2,3,2,1,1,10,5,3,8,215
 "Mindflayer",10,11,9,2,5,12,-10,-5,2,150
 "Imp",-3,1,-1,1,-1,10,5,-3,0,90
 "Golem",-5,-5,6,-1,-1,8,20,0,-4,185
