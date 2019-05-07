@@ -329,12 +329,17 @@ bool teleport_player_aux(int dis, u32b mode)
     int total_candidates, cur_candidates;
     int y = 0, x = 0, min, pick, i;
 
-    int left = MAX(1, px - dis);
-    int right = MIN(cur_wid - 2, px + dis);
-    int top = MAX(1, py - dis);
-    int bottom = MIN(cur_hgt - 2, py + dis);
+    int left;
+    int right;
+    int top;
+    int bottom;
 
 	dis = MAX(1, (2 * dis / 3) + randint0(dis / 3));
+
+	left = MAX(1, px - dis);
+	right = MIN(cur_wid - 2, px + dis);
+	top = MAX(1, py - dis);
+	bottom = MIN(cur_hgt - 2, py + dis);
 
     if (p_ptr->wild_mode) return FALSE;
 
