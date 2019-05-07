@@ -1368,6 +1368,7 @@ static int _chaos_patron_ui(void)
 			);
 		}
 		doc_insert(_doc, "  <color:y>*</color>) Random\n");
+		doc_insert(_doc, "     Use SHIFT+choice to display help topic\n");
 
 		_sync_term(_doc);
 		cmd = _inkey();
@@ -1375,6 +1376,14 @@ static int _chaos_patron_ui(void)
 		else if (cmd == '\t') _inc_rcp_state();
 		else if (cmd == '=') _birth_options();
 		else if (cmd == '?') doc_display_help("Chaos_Patrons.txt", NULL);
+		else if (isupper(cmd))
+		{
+			i = A2I(tolower(cmd));
+			if (0 <= i && i < MAX_PATRON)
+			{
+				doc_display_help("Chaos_Patrons.txt", chaos_patrons[i]);
+			}
+		}
 		else
 		{
 			if (cmd == '*') i = randint0(MAX_PATRON);
