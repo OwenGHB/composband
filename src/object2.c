@@ -3807,7 +3807,9 @@ bool make_gold(object_type *j_ptr)
 
 
     /* Hack -- Pick a Treasure variety */
-    i = object_level/8 + randint0(10);
+
+    
+	i = MAX(damroll((object_level / 6) + 1, 6) % ((2 * object_level / 6) + 6), randint1(object_level / 6));
 
     /* Apply "extra" magic */
     if (one_in_(GREAT_OBJ))
@@ -3838,6 +3840,10 @@ bool make_gold(object_type *j_ptr)
     return (TRUE);
 }
 
+int _pick_treasure_variety(void) {
+	/* this is a gnarly function and it should work */
+	return MAX(damroll((object_level / 6) + 1, 6) % MIN(((2 * (object_level / 6)) + 6), 18), randint1(object_level / 6));
+}
 
 /*
  * Places a treasure (Gold or Gems) at given location
