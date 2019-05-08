@@ -2663,7 +2663,7 @@ bool recharge_simple() {
 
 	amt = device_max_sp(prompt.obj) - device_sp(prompt.obj);
 	device_increase_sp(prompt.obj, amt);
-	object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+	object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_COLOR_CODED));
 	msg_format("Your %s glows.", o_name);
 
 	return TRUE;
