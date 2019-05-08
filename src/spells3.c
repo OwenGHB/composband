@@ -2649,7 +2649,8 @@ bool recharge_from_device(int power)
 
 bool recharge_simple() {
 	obj_prompt_t prompt = { 0 };
-	int amt;
+	int			 amt;
+	char         o_name[MAX_NLEN];
 
 	_obj_recharge_src_ptr = NULL;
 	prompt.prompt = "Recharge which item?";
@@ -2662,6 +2663,8 @@ bool recharge_simple() {
 
 	amt = device_max_sp(prompt.obj) - device_sp(prompt.obj);
 	device_increase_sp(prompt.obj, amt);
+	object_desc(o_name, prompt.obj, (OD_OMIT_PREFIX | OD_NAME_ONLY));
+	msg_format("Your %s glows.", o_name);
 
 	return TRUE;
 }
