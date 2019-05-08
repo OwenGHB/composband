@@ -3842,7 +3842,10 @@ bool make_gold(object_type *j_ptr)
 
 int _pick_treasure_variety(void) {
 	/* this is a gnarly function and it should work */
-	return MAX(damroll((object_level / 6) + 1, 6) % MIN(((2 * (object_level / 6)) + 6), 18), randint1(object_level / 6));
+	/* broken down by advice */
+	int a = damroll((object_level / 6) + 1, 6) % MIN(((2 * (object_level / 6)) + 6),18);
+	int b = randint1(object_level / 6);
+	return MAX(a, b);
 }
 
 /*
