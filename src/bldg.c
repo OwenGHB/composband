@@ -3471,13 +3471,15 @@ static void bldg_process_command(building_type *bldg, int i)
     case BACT_LEARN:
         do_cmd_study();
         break;
-    case BACT_HEALING: /* needs work */
+    case BACT_HEAL_UNCURSE: /* needs work */
         hp_player(200);
         set_poisoned(0, TRUE);
         set_blind(0, TRUE);
         set_confused(0, TRUE);
         set_cut(0, TRUE);
         set_stun(0, TRUE);
+
+		remove_curse();
 
         if (p_ptr->riding)
         {

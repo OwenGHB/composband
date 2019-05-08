@@ -3843,7 +3843,7 @@ extern int PlayerUID;
 #define BACT_RECHARGE               25
 #define BACT_IDENTS                 26
 #define BACT_LEARN                  27
-#define BACT_HEALING                28
+#define BACT_HEAL_UNCURSE           28
 #define BACT_RESTORE                29
 #define BACT_ENCHANT_ARROWS         30
 #define BACT_ENCHANT_BOW            31
