@@ -2496,9 +2496,8 @@ static void _recharge_aux(object_type *o_ptr, int amt, int power)
     {
         /* Do nothing for now. My experience is that players get too conservative
          * using recharge in the dungeon if there is any chance of failure at all.
-         * Remember, you're lucky if you find just one wand of rockets all game long!
-         * I plan on removing the town recharging service to compensate for this
-         * generosity, though. */
+         * Remember, you're lucky if you find just one wand of rockets all game long! */
+
          msg_print("Failed!");
          return;
     }
@@ -2646,6 +2645,43 @@ bool recharge_from_device(int power)
     }
 
     return TRUE;
+}
+
+bool recharge_simple() {
+	obj_prompt_t prompt = { 0 };
+	int amt;
+
+	_obj_recharge_src_ptr = NULL;
+	prompt.prompt = "Recharge which item?";
+	prompt.error = "You have nothing to recharge.";
+	prompt.filter = _obj_recharge_dest;
+	prompt.where[0] = INV_PACK;
+
+	obj_prompt(&prompt);
+	if (!prompt.obj) return FALSE;
+
+	amt = device_max_sp(prompt.obj) - device_sp(prompt.obj);
+	device_increase_sp(prompt.obj, amt);
+
+	return TRUE;
+}
+
+bool recharge_pack() {
+	slot_t slot;
+	bool result=FALSE;
+	int amt;
+	for (slot = 1; slot <= pack_max(); slot++)
+	{
+		obj_ptr obj = pack_obj(slot);
+
+		if (!obj) continue;
+		if (!object_is_device(obj)) continue;
+
+		amt = device_max_sp(obj) - device_sp(obj);
+		device_increase_sp(obj, amt);
+		result = TRUE;
+	}
+	return result;
 }
 
 /*

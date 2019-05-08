@@ -1493,6 +1493,7 @@ extern bool mundane_spell(bool only_equip);
 extern bool identify_item(object_type *o_ptr);
 extern bool recharge_from_player(int power);
 extern bool recharge_from_device(int power);
+extern bool recharge_simple();
 extern bool bless_weapon(void);
 extern bool polish_shield(void);
 extern bool potion_smash_effect(int who, int y, int x, int k_idx);
