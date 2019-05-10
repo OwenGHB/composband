@@ -4571,12 +4571,13 @@ static void _prof_skill_doc(doc_ptr doc)
 
 static void do_cmd_knowledge_weapon_exp(void)
 {
-    doc_ptr doc = doc_alloc(80);
+    //this will have to do for now
+    doc_ptr doc = doc_alloc(81);
     doc_ptr cols[3] = {0};
-    int     i;
 
-    for (i = 0; i < 3; i++)
-        cols[i] = doc_alloc(26);
+    cols[0] = doc_alloc(27);
+    cols[1] = doc_alloc(27);
+    cols[2] = doc_alloc(27);
 
     _prof_weapon_doc(cols[0], TV_SWORD);
     _prof_weapon_doc(cols[1], TV_POLEARM);
@@ -4585,11 +4586,11 @@ static void do_cmd_knowledge_weapon_exp(void)
     _prof_weapon_doc(cols[2], TV_DIGGING);
     _prof_skill_doc(cols[2]);
 
-    doc_insert_cols(doc, cols, 3, 1);
+    doc_insert_cols(doc, cols, 3, 0);
     doc_display(doc, "Proficiency", 0);
 
     doc_free(doc);
-    for (i = 0; i < 3; i++)
+    for (int i = 0; i < 3; i++)
         doc_free(cols[i]);
 }
 
