@@ -4515,7 +4515,7 @@ static void _prof_weapon_doc(doc_ptr doc, int tval)
         char         name[MAX_NLEN];
 
         strip_name(name, k_ptr->idx);
-        doc_printf(doc, "<color:%c>%-19s</color> ", equip_find_obj(k_ptr->tval, k_ptr->sval) ? 'B' : 'w', name);
+        doc_printf(doc, "<color:%c>%-16s</color>", equip_find_obj(k_ptr->tval, k_ptr->sval) ? 'B' : 'w', name);
         doc_printf(doc, "<color:%c>%-4s</color>/<color:%c>%-4s</color>", _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl], _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
         doc_newline(doc);
     }
@@ -4554,7 +4554,7 @@ static void _prof_skill_aux(doc_ptr doc, int skill)
 		max_lvl = weapon_exp_level(max);
         break;
     }
-    doc_printf(doc, "<color:%c>%-19s</color> ", color, name);
+    doc_printf(doc, "<color:%c>%-16s</color>", color, name);
     doc_printf(doc, "<color:%c>%-4s</color>/<color:%c>%-4s</color>", _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl], _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
     doc_newline(doc);
 }
@@ -4576,7 +4576,7 @@ static void do_cmd_knowledge_weapon_exp(void)
     int     i;
 
     for (i = 0; i < 3; i++)
-        cols[i] = doc_alloc(30);
+        cols[i] = doc_alloc(26);
 
     _prof_weapon_doc(cols[0], TV_SWORD);
     _prof_weapon_doc(cols[1], TV_POLEARM);
