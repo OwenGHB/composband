@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 /* File: object2.c */
 
 /*
@@ -9170,4 +9169,4 @@ bool process_warning(int xx, int yy)
 
     return TRUE;
 }
->>>>>>> d0bd9b77552c450b68e18991f7f8a4cf500358f5
+
