@@ -4482,7 +4482,7 @@ static vec_ptr _prof_weapon_alloc(int tval)
     return v;
 }
  
-static cptr _prof_exp_str[5]   = {"[Un]", "[Be]", "[Sk]", "[Ex]", "[Ma]"};
+static cptr _prof_exp_str[5]   = {"Un", "Be", "Sk", "Ex", "Ma"};
 static char _prof_exp_color[5] = {'w',    'G',    'y',    'r',    'v'};
 static cptr _prof_weapon_heading(int tval)
 {
