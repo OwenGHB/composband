@@ -4516,8 +4516,7 @@ static void _prof_weapon_doc(doc_ptr doc, int tval)
 
         strip_name(name, k_ptr->idx);
         doc_printf(doc, "<color:%c>%-19s</color> ", equip_find_obj(k_ptr->tval, k_ptr->sval) ? 'B' : 'w', name);
-		doc_printf(doc, "%c<color:%c>%-8s</color>", _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl]);
-        doc_printf(doc, "%c<color:%c>%-4s</color>",'/', _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
+        doc_printf(doc, "%c<color:%c>%-4s</color>", _prof_exp_str[exp_lvl], _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
         doc_newline(doc);
     }
     doc_newline(doc);
@@ -4526,7 +4525,7 @@ static void _prof_weapon_doc(doc_ptr doc, int tval)
 
 static void _prof_skill_aux(doc_ptr doc, int skill)
 {
-    int  exp, max, exp_lvl;
+    int  exp, max, exp_lvl, max_lvl;
     cptr name;
     char color = 'w';
 
@@ -4537,12 +4536,14 @@ static void _prof_skill_aux(doc_ptr doc, int skill)
         exp = skills_martial_arts_current();
         max = skills_martial_arts_max();
         exp_lvl = weapon_exp_level(exp);
+		max_lvl = weapon_exp_level(max);
         break;
     case SKILL_DUAL_WIELDING:
         name = "Dual Wielding";
         exp = skills_dual_wielding_current();
         max = skills_dual_wielding_max();
         exp_lvl = weapon_exp_level(exp);
+		max_lvl = weapon_exp_level(max);
         break;
     case SKILL_RIDING:
     default: /* gcc warnings ... */
@@ -4550,10 +4551,11 @@ static void _prof_skill_aux(doc_ptr doc, int skill)
         exp = skills_riding_current();
         max = skills_riding_max();
         exp_lvl = riding_exp_level(exp);
+		max_lvl = weapon_exp_level(max);
         break;
     }
     doc_printf(doc, "<color:%c>%-19s</color> ", color, name);
-    doc_printf(doc, "%c<color:%c>%-4s</color>", exp >= max ? '!' : ' ', _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl]);
+    doc_printf(doc, "%c/<color:%c>%-4s</color>", _prof_exp_str[exp_lvl], _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
     doc_newline(doc);
 }
 
