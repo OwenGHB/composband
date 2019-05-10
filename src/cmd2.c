@@ -2393,11 +2393,11 @@ static bool _travel_next_obj(int mode)
             int j = is_autopick(o_ptr);
 
             if (j < 0) continue;
-            if (!(autopick_list[j].action & (DO_AUTODESTROY | DO_AUTOPICK))) continue;
+            if (!(autopick_list[j].action & (DO_AUTODESTROY | DO_AUTO_ID | DO_AUTOPICK))) continue;
             if (o_ptr->loc.x == px && o_ptr->loc.y == py)
             {
-                /* Full pack aborts the travel sequence */
-                if (autopick_list[j].action & DO_AUTOPICK)
+                /* Full pack or no id aborts the travel sequence */
+                if (autopick_list[j].action & (DO_AUTOPICK | DO_AUTO_ID))
                     return FALSE;
                 continue; /* paranoia ... we should have destroyed this object */
             }
