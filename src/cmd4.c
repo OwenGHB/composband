@@ -4511,11 +4511,13 @@ static void _prof_weapon_doc(doc_ptr doc, int tval)
         int          exp = skills_weapon_current(k_ptr->tval, k_ptr->sval);
         int          max = skills_weapon_max(k_ptr->tval, k_ptr->sval);
         int          exp_lvl = weapon_exp_level(exp);
+		int          max_lvl = weapon_exp_level(max);
         char         name[MAX_NLEN];
 
         strip_name(name, k_ptr->idx);
         doc_printf(doc, "<color:%c>%-19s</color> ", equip_find_obj(k_ptr->tval, k_ptr->sval) ? 'B' : 'w', name);
-        doc_printf(doc, "%c<color:%c>%-4s</color>", exp >= max ? '!' : ' ', _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl]);
+		doc_printf(doc, "%c<color:%c>%-8s</color>", _prof_exp_color[exp_lvl], _prof_exp_str[exp_lvl]);
+        doc_printf(doc, "%c<color:%c>%-4s</color>",'/', _prof_exp_color[max_lvl], _prof_exp_str[max_lvl]);
         doc_newline(doc);
     }
     doc_newline(doc);
