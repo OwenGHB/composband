@@ -1452,10 +1452,10 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 					msg_format("You <color:W>freeze</color> %s.", m_name_object);
 					break;
 				case OF_BRAND_POIS:
-					msg_format("You  <color:G>poison</color> %s.", m_name_object);
+					msg_format("You <color:G>poison</color> %s.", m_name_object);
 					break;
 				default:
-					msg_format("You  <color:G>smite</color> %s.", m_name_object);
+					msg_format("You smite %s.", m_name_object);
 					break;
 				}
 			}
