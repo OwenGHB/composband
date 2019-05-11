@@ -3554,7 +3554,7 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
                     && !(r_ptr->flags3 & (RF3_NO_STUN))
                     && !mon_save_p(m_ptr->r_idx, A_DEX) )
                 {
-                    msg_format("%^s is dealt a <color:B>stunning</color> blow (%d).", m_name_subject, k);
+                    msg_format("%^s is dealt a <color:B>stunning</color> blow.", m_name_subject);
                     mon_stun(m_ptr, mon_stun_amount(d));
                 }
                 if ( p_ptr->lev >= 20    /* Wounding Strike */
