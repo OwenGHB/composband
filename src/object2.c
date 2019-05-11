@@ -3796,8 +3796,8 @@ void place_object(int y, int x, u32b mode)
 /* this is a gnarly function and it should work */
 /* broken down by advice */
 int _pick_treasure_variety(void) {
-	int a = damroll((object_level / 6) + 1, 6) % MIN(((2 * (object_level / 6)) + 6), 18);
-	int b = randint1(object_level / 6);
+	int a = damroll((object_level + 1 / 6) + 1, 6) % MIN(((2 * (object_level + 1 / 6)) + 6), 18);
+	int b = randint1(object_level + 1 / 6);
 	return MAX(a, b);
 }
 
@@ -3808,10 +3808,7 @@ int _pick_treasure_variety(void) {
  */
 bool make_gold(object_type *j_ptr)
 {
-    int i, au;
-
-    s32b base;
-
+    int i, au, base;
 
     /* Hack -- Pick a Treasure variety */
 	i = _pick_treasure_variety();
@@ -3835,7 +3832,7 @@ bool make_gold(object_type *j_ptr)
     base = k_info[OBJ_GOLD_LIST+i].cost;
 
     /* Determine how much the treasure is "worth" */
-    au = (base + (8 * randint1(base)) + randint1(8));
+    au = base + damroll(base,8);
     au = au * (625 - virtue_current(VIRTUE_SACRIFICE)) / 625;
     if (au > MAX_SHORT)
         au = MAX_SHORT;
