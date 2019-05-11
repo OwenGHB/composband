@@ -88,7 +88,6 @@ static int _max_vampiric_drain(void)
                     {
                         feed = TRUE;
                         o_ptr->dd++;
-                        o_ptr->to_a -= randint1(3);
                     }
                 }
             }
@@ -103,7 +102,6 @@ static int _max_vampiric_drain(void)
                     {
                         feed = TRUE;
                         o_ptr->ds++;
-                        o_ptr->to_a -= randint1(3);
                     }
                 }
             }
@@ -119,7 +117,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_BRAND_POIS);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 2:
@@ -127,7 +124,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_BRAND_FIRE);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 3:
@@ -135,7 +131,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_BRAND_COLD);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 4:
@@ -143,7 +138,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_BRAND_ELEC);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 5:
@@ -172,7 +166,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_BRAND_ACID);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 9:
@@ -194,7 +187,6 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_SLAY_EVIL);
-                    o_ptr->to_a -= randint1(5);
                 }
                 else if (one_in_(24))
                 {
@@ -207,13 +199,11 @@ static int _max_vampiric_drain(void)
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_VORPAL2);
-                    o_ptr->to_a -= randint1(5);
                 }
                 else if (one_in_(24))
                 {
                     feed = TRUE;
                     add_flag(o_ptr->flags, OF_VORPAL);
-                    o_ptr->to_a -= randint1(5);
                 }
                 break;
             case 13:
