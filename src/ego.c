@@ -2211,15 +2211,16 @@ static void _ego_create_weapon(object_type *o_ptr, int level)
                 done = FALSE;
             else
             {
-                if (one_in_(2))
+				int dice_added = 0;
+				int chance = (o_ptr->dd*o_ptr->ds);
+				do
                 {
-                    do
-                    {
-                        o_ptr->dd++;
-                    }
-                    while (one_in_(o_ptr->dd));
+                    o_ptr->dd++;
+					dice_added++;
                 }
-                if (one_in_(7))
+                while (randint0(2*o_ptr->ds/3+dice_added)<(1+(dice_added>0)));
+                
+				if (one_in_(7))
                     add_flag(o_ptr->flags, OF_VORPAL2);
                 else
                     add_flag(o_ptr->flags, OF_VORPAL);
