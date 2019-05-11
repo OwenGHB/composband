@@ -738,7 +738,10 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 
     u32b flgs[OF_ARRAY_SIZE] = {0};
     char o_name[MAX_NLEN];
+	char m_name_object[MAX_NLEN];
 	int  damage_type = 0;
+
+	monster_desc(m_name_object,m_ptr, MD_PRON_VISIBLE | MD_OBJECTIVE);
 
     /* Extract the flags */
     if (thrown)
@@ -1434,94 +1437,31 @@ s16b tot_dam_aux(object_type *o_ptr, int tdam, monster_type *m_ptr, s16b hand, i
 			/*damage bonus feedback on attacks (except force)*/
 			if (mult > 10)
 			{
-				if (mult > 30)
-				{
-					switch (damage_type)
-					{
-					case OF_BRAND_ELEC:
-						msg_format("It is badly <color:b>shocked</color>!");
-						break;
-					case OF_BRAND_ACID:
-						msg_format("It is badly <color:g>dissolved</color>!");
-						break;
-					case OF_BRAND_FIRE:
-						msg_format("It is badly <color:r>burned</color>!");
-						break;
-					case OF_BRAND_COLD:
-						msg_format("It is badly <color:W>frozen</color>!");
-						break;
-					case OF_BRAND_POIS:
-						msg_format("It is badly <color:G>poisoned</color>!");
-						break;
-					default:
-						switch (randint1(6))
-						{
-						case 1:
-							msg_format("It howls!");
-							break;
-						case 2:
-							msg_format("It wails!");
-							break;
-						case 3:
-							msg_format("It screeches!");
-							break;
-						case 4:
-							msg_format("It convulses!");
-							break;
-						case 5:
-							msg_format("It shrieks!");
-							break;
-						case 6:
-							msg_format("It cowers!");
-							break;
-						}
-						break;
-					}
-				}
-				else switch (damage_type)
+				switch (damage_type)
 				{
 				case OF_BRAND_ELEC:
-					msg_format("It is <color:b>shocked</color>.");
+					msg_format("You <color:b>shock</color> %s.", m_name_object);
 					break;
 				case OF_BRAND_ACID:
-					msg_format("It is <color:g>dissolved</color>.");
+					msg_format("You <color:g>dissolve</color> %s.", m_name_object);
 					break;
 				case OF_BRAND_FIRE:
-					msg_format("It is <color:r>burned</color>.");
+					msg_format("You <color:r>burn</color> %s.", m_name_object);
 					break;
 				case OF_BRAND_COLD:
-					msg_format("It is <color:W>frozen</color>.");
+					msg_format("You <color:W>freeze</color> %s.", m_name_object);
 					break;
 				case OF_BRAND_POIS:
-					msg_format("It is <color:G>poisoned</color>.");
-					break;
-				case OF_LITE:
-					msg_format("It is <color:y>dazzled</color>.");
+					msg_format("You  <color:G>poison</color> %s.", m_name_object);
 					break;
 				default:
-					switch (randint1(6))
-					{
-					case 1:
-						msg_format("It cringes.");
-						break;
-					case 2:
-						msg_format("It winces.");
-						break;
-					case 3:
-						msg_format("It recoils.");
-						break;
-					case 4:
-						msg_format("It staggers.");
-						break;
-					case 5:
-						msg_format("It groans.");
-						break;
-					case 6:
-						msg_format("It shudders.");
-						break;
-					}
+					msg_format("You  <color:G>smite</color> %s.", m_name_object);
 					break;
 				}
+			}
+			else
+			{
+				msg_format("You hit %s.", m_name_object);
 			}
 
             if (have_flag(flgs, OF_BRAND_MANA) || p_ptr->tim_force)
@@ -3178,7 +3118,8 @@ static bool py_attack_aux(int y, int x, bool *fear, bool *mdeath, s16b hand, int
             else if (fuiuchi) cmsg_format(TERM_L_GREEN, "You make a surprise attack, and hit %s with a powerful blow!", m_name_object);
             else if (stab_fleeing) cmsg_format(TERM_L_GREEN, "You backstab %s!",  m_name_object);
             else if (perfect_strike) msg_format("You land a <color:G>perfect strike</color> against %s.", m_name_object);
-            else if (!monk_attack) msg_format("You hit.", m_name_object);
+            /* moved to tot_dam_aux
+			else if (!monk_attack) msg_format("You hit.", m_name_object);*/
 
             /* Hack -- bare hands do one damage */
             k = 1;
