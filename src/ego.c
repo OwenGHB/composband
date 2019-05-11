@@ -2491,7 +2491,7 @@ void obj_create_weapon(object_type *o_ptr, int level, int power, int mode)
         }
     }
 
-    if ((ABS(power) <= 1) && (!mode & AM_SPECIAL))
+    if ((ABS(power) <= 1) && !(mode & AM_SPECIAL))
         return;
 
     if (mode & AM_FORCE_EGO)
