@@ -3244,7 +3244,7 @@ void do_cmd_version(void)
 /*        if (VER_PATCH == 0) xtra = " (Alpha)"; */
         xtra = " (Beta)";
     }
-    msg_format("You are playing <color:B>Composband</color> <color:r>%d.%d.%s%s</color>.",
+    msg_format("You are playing <color:B>Composband</color> <color:r>%d.%d.%d%s</color>.",
         VER_MAJOR, VER_MINOR, VER_PATCH, xtra);
     if (1)
     {
