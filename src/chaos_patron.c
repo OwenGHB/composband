@@ -863,7 +863,7 @@ void chaos_choose_effect(int reason)
 		break;
 	}
 	/* Khorne never rewards casters! */
-	if (attitude == SCORNFUL && reason == PATRON_CAST) reward_chance == 0;
+	if (attitude == SCORNFUL && reason == PATRON_CAST) reward_chance = 0;
 	if (one_in_(chaos_effect_notice[p_ptr->chaos_patron][reason]))
 	{
 		if (punish_chance && one_in_(punish_chance))
