@@ -3005,6 +3005,7 @@ enum {
     RBE_DRAIN_CHARGES,
     RBE_DRAIN_EXP,
     RBE_CUT,
+	RBE_DRAIN_FOOD
 };
 
 /*** Monster flag values (hard-coded) ***/
