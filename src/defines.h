@@ -943,7 +943,7 @@ enum {
 /* #define FF_HURT_FIRE     45 */
 /* #define FF_HURT_COLD     46 */
 /* #define FF_HURT_ACID     47 */
-/* #define FF_ICE           48 */
+#define FF_ICE           48 
 #define FF_ACID          49
 /* #define FF_OIL           50 */
 /* #define FF_XXX04      51 */
@@ -1014,7 +1014,7 @@ enum {
 #define FF_ROGUE_TRAP_2  114
 #define FF_ROGUE_TRAP_3  115
 #define FF_WEB           116
-#define FF_SEMI_PUN 117
+#define FF_SEMI_PUN      117
 #define FF_FLAG_MAX      118
 #define FF_FLAG_SIZE     (1 + ((FF_FLAG_MAX - 1) / 32))
 
