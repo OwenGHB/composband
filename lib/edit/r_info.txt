@@ -22704,14 +22704,31 @@ D:A great purple rat with sharp teeth and sorcerous powers.
 # Some originals
 
 #N:1258:Melissa the Emaciated Wight
+#G:W:W
+#I:130:70d100:100:150:5:160
+#W:77:3:999:50000:0:0
+#B:HIT:VAMP(10d10):UNLIFE(10d10)
+#B:CLAW:HURT(10d10):DISEASE
+#B:TOUCH:DRAIN_FOOD
+#F:UNIQUE | FEMALE | UNDEAD |
+#F:FORCE_SLEEP | FORCE_MAXHP | SMART |
+#F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
+#F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
+#F:EVIL | RES_COLD | RES_POIS | RES_NETHER | RES_CHAOS
+#F:NO_CONF | NO_SLEEP 
+#F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
+#P:Copy:Skeleton:Mage
+#P:Stats:-1:1:0:0:0:0
+#S:1_IN_2 | S_HI_UNDEAD | HELL_LANCE | BRAIN_SMASH |
+#S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | 
 #D:The creature you see here resembles the corpse of a woman, although not
 #D:quite. It is not yet ridden with decay, but the skin is held tight across the
 #D:bones, with little in the way of flesh to intervene.
 
 #N:1259:Ychram the Anathema
 #G:p:v
-#I:130:70d100:60:120:5:160
-#W:80:3:999:40000:0:0
+#I:130:70d100:100:120:5:160
+#W:71:3:999:40000:0:0
 #B:HIT:HURT(8d8):BLIND
 #B:HIT:HURT(8d8):CONFUSE
 #B:HIT:HURT(8d8):CUT(8d8)
@@ -22736,10 +22753,25 @@ D:A great purple rat with sharp teeth and sorcerous powers.
 #D:in to relieve you of your loot.
 
 #N:1260:Eleri the Blademistress
+#G:p:r
+#I:130:50d100:100:120:5:150
+#W:60:3:999:28000:0:0
+#B:HIT:HURT(9d9)
+#B:HIT:HURT(9d9):CUT(4d4):LOSE_DEX(30%)
+#B:HIT:HURT(9d9):POISON(5d5):LOSE_STR(30%)
+#F:FORCE_MAXHP | HUMAN | FEMALE
+#F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
+#F:OPEN_DOOR | BASH_DOOR | AURA_REVENGE | AURA_COLD
+#F:RES_SHAR | RES_SOUN | RES_FIRE | RES_COLD | RES_DISE | RES_CHAO
+#F:NO_CONF | NO_SLEEP
+#S:1_IN_6 | HEAL | TELEPORT
+#P:Copy:Human:Warrior
+#P:Stats:3:0:0:0:4:0
 #D:An androgynous looking wood elf with a lithe and muscular build, standing
 #D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
 #D:freckles, and besides a strong jaw she shares the delicate features of her
 #D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
+
 
 N:1261:City Watchman
 G:t:B
