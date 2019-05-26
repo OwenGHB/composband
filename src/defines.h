@@ -922,7 +922,7 @@ enum {
 #define FF_FLOOR         25
 #define FF_WALL          26
 #define FF_PERMANENT     27
-/* #define FF_XXX00         28 */
+/* #define FF_XXX01      28 */
 /* #define FF_XXX01         29 */
 /* #define FF_XXX02         30 */
 #define FF_HIT_TRAP      31
@@ -940,7 +940,7 @@ enum {
 #define FF_DEEP          42
 /* #define FF_FILLED        43 */
 #define FF_HURT_ROCK     44
-/* #define FF_HURT_FIRE     45 */
+#define FF_HURT_FIRE     45
 /* #define FF_HURT_COLD     46 */
 /* #define FF_HURT_ACID     47 */
 #define FF_ICE           48 
@@ -4782,8 +4782,8 @@ extern int PlayerUID;
 #define DF1_CAVERN              0x00000800
 #define DF1_RANDOM              0x00001000
 #define DF1_SMALL               0x00002000
-#define DF1_XXX14               0x00004000
-#define DF1_XXX15               0x00008000
+#define DF1_ICE_RIVER           0x00004000
+#define DF1_LAKE_ICE            0x00008000
 #define DF1_FORGET              0x00010000
 #define DF1_LAKE_WATER          0x00020000
 #define DF1_LAKE_LAVA           0x00040000
@@ -4801,7 +4801,7 @@ extern int PlayerUID;
 #define DF1_XXX30               0x40000000
 #define DF1_XXX31               0x80000000
 
-#define DF1_LAKE_MASK (DF1_LAKE_WATER | DF1_LAKE_LAVA | DF1_LAKE_RUBBLE | DF1_LAKE_TREE)
+#define DF1_LAKE_MASK (DF1_LAKE_WATER | DF1_LAKE_LAVA | DF1_LAKE_RUBBLE | DF1_LAKE_TREE | DF1_LAKE_ICE)
 
 #define DUNGEON_ANGBAND  1
 #define DUNGEON_CAMELOT  2
@@ -4816,7 +4816,7 @@ extern int PlayerUID;
 #define DUNGEON_OCEAN    11
 #define DUNGEON_CASTLE   12
 #define DUNGEON_CTH      13
-#define DUNGEON_MOUNTAIN 14
+#define DUNGEON_GLACIER  14
 #define DUNGEON_GOLD     15
 #define DUNGEON_NO_MAGIC 16
 #define DUNGEON_NO_MELEE 17

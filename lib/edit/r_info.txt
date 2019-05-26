@@ -22036,7 +22036,7 @@ F:ANIMAL | RIDING | WILD_MOUNTAIN
 F:DROP_CORPSE | POS_GAIN_AC
 P:Copy:Human:Mauler
 P:Body:Elephant
-S:BERSERK
+S:1_IN_4 | BIRD_DROP
 D:A great winged reptile in search of prey.
 
 N:1221:Giant land sloth
@@ -22703,74 +22703,74 @@ D:A great purple rat with sharp teeth and sorcerous powers.
 
 # Some originals
 
-#N:1258:Melissa the Emaciated Wight
-#G:W:W
-#I:130:70d100:100:150:5:160
-#W:77:3:999:50000:0:0
-#B:HIT:VAMP(10d10):UNLIFE(10d10)
-#B:CLAW:HURT(10d10):DISEASE
-#B:TOUCH:DRAIN_FOOD
-#F:UNIQUE | FEMALE | UNDEAD |
-#F:FORCE_SLEEP | FORCE_MAXHP | SMART |
-#F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
-#F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
-#F:EVIL | RES_COLD | RES_POIS | RES_NETHER | RES_CHAOS
-#F:NO_CONF | NO_SLEEP 
-#F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
-#P:Copy:Skeleton:Mage
-#P:Stats:-1:1:0:0:0:0
-#S:1_IN_2 | S_HI_UNDEAD | HELL_LANCE | BRAIN_SMASH |
-#S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | 
-#D:The creature you see here resembles the corpse of a woman, although not
-#D:quite. It is not yet ridden with decay, but the skin is held tight across the
-#D:bones, with little in the way of flesh to intervene.
+N:1258:Melissa the Emaciated Wight
+G:W:W
+I:130:70d100:100:150:5:160
+W:77:3:999:50000:0:0
+B:HIT:VAMP(10d10):UNLIFE(10d10)
+B:CLAW:HURT(10d10):DISEASE
+B:TOUCH:DRAIN_FOOD
+F:UNIQUE | FEMALE | UNDEAD |
+F:FORCE_SLEEP | FORCE_MAXHP | SMART |
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
+F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
+F:EVIL | RES_COLD | RES_POIS | RES_NETHER | RES_CHAOS
+F:NO_CONF | NO_SLEEP 
+F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
+P:Copy:Skeleton:Mage
+P:Stats:-1:1:0:0:0:0
+S:1_IN_2 | S_HI_UNDEAD | DRAIN_MANA | BRAIN_SMASH |
+S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | 
+D:The creature you see here resembles the corpse of a woman, although not
+D:quite. It is not yet ridden with decay, but the skin is held tight across the
+D:bones, with little in the way of flesh to intervene.
 
-#N:1259:Ychram the Anathema
-#G:p:v
-#I:130:70d100:100:120:5:160
-#W:71:3:999:40000:0:0
-#B:HIT:HURT(8d8):BLIND
-#B:HIT:HURT(8d8):CONFUSE
-#B:HIT:HURT(8d8):CUT(8d8)
-#B:TOUCH:LOSE_STR:LOSE_CON
-#F:UNIQUE | MALE | HUMAN |
-#F:FORCE_SLEEP | FORCE_MAXHP | SMART |
-#F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
-#F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
-#F:EVIL | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS
-#F:NO_CONF | NO_SLEEP | RES_NETHER | RES_CHAOS
-#F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
-#P:Copy:Human:Mage
-#P:Stats:3:2:0:2:0:0
-#S:1_IN_2 | BA_ICE | HELL_LANCE | MIND_BLAST |
-#S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | HASTE_SELF |
-#D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
-#D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
-#D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
-#D:and citizenship. The Imperial death squads sent to dispose of their former
-#D:champion so far have joined his countless victims, but without friends or refuge
-#D:he grows more desperate by the hour. With unnerving speed and efficiency he moves
-#D:in to relieve you of your loot.
+N:1259:Ychram the Anathema
+G:p:v
+I:130:70d100:100:120:5:160
+W:71:3:999:40000:0:0
+B:HIT:HURT(8d8):BLIND
+B:HIT:HURT(8d8):CONFUSE
+B:HIT:HURT(8d8):CUT(8d8)
+B:TOUCH:LOSE_STR:LOSE_CON
+F:UNIQUE | MALE | HUMAN |
+F:FORCE_SLEEP | FORCE_MAXHP | SMART |
+F:ONLY_ITEM | DROP_1D2 | DROP_4D2 | DROP_GOOD |
+F:INVISIBLE | OPEN_DOOR | BASH_DOOR |
+F:EVIL | RES_FIRE | RES_COLD | RES_ELEC | RES_POIS
+F:NO_CONF | NO_SLEEP | RES_NETHER | RES_CHAOS
+F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
+P:Copy:Human:Mage
+P:Stats:3:2:0:2:0:0
+S:1_IN_2 | BA_ICE | HELL_LANCE | MIND_BLAST |
+S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | HASTE_SELF |
+D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
+D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
+D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
+D:and citizenship. The Imperial death squads sent to dispose of their former
+D:champion so far have joined his countless victims, but without friends or refuge
+D:he grows more desperate by the hour. With unnerving speed and efficiency he moves
+D:in to relieve you of your loot.
 
-#N:1260:Eleri the Blademistress
-#G:p:r
-#I:130:50d100:100:120:5:150
-#W:60:3:999:28000:0:0
-#B:HIT:HURT(9d9)
-#B:HIT:HURT(9d9):CUT(4d4):LOSE_DEX(30%)
-#B:HIT:HURT(9d9):POISON(5d5):LOSE_STR(30%)
-#F:FORCE_MAXHP | HUMAN | FEMALE
-#F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
-#F:OPEN_DOOR | BASH_DOOR | AURA_REVENGE | AURA_COLD
-#F:RES_SHAR | RES_SOUN | RES_FIRE | RES_COLD | RES_DISE | RES_CHAO
-#F:NO_CONF | NO_SLEEP
-#S:1_IN_6 | HEAL | TELEPORT
-#P:Copy:Human:Warrior
-#P:Stats:3:0:0:0:4:0
-#D:An androgynous looking wood elf with a lithe and muscular build, standing
-#D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
-#D:freckles, and besides a strong jaw she shares the delicate features of her
-#D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
+N:1260:Eleri the Blademistress
+G:h:r
+I:125:40d100:100:120:5:150
+W:51:3:999:28000:0:0
+B:HIT:HURT(7d8)
+B:HIT:HURT(7d8):CUT(4d5):LOSE_DEX(30%)
+B:HIT:HURT(7d8):POISON(4d5):LOSE_STR(30%)
+F:FORCE_MAXHP | HUMAN | FEMALE
+F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
+F:OPEN_DOOR | BASH_DOOR | AURA_REVENGE | AURA_COLD
+F:RES_SHAR | RES_SOUN | RES_FIRE | RES_COLD | RES_DISE | RES_CHAO | RES_NEXU
+F:NO_CONF | NO_SLEEP
+S:1_IN_6 | HEAL | TELEPORT
+P:Copy:Human:Warrior
+P:Stats:3:0:0:0:4:0
+D:An androgynous looking wood elf with a lithe and muscular build, standing
+D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
+D:freckles, and besides a strong jaw she shares the delicate features of her
+D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
 
 
 N:1261:City Watchman
