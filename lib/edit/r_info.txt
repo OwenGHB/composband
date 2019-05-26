@@ -22743,7 +22743,7 @@ F:DROP_CORPSE | DROP_SKELETON | POS_SEE_INVIS
 P:Copy:Human:Mage
 P:Stats:3:2:0:2:0:0
 S:1_IN_2 | BA_ICE | HELL_LANCE | MIND_BLAST |
-S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | HASTE_SELF |
+S:TELE_TO | PARALYZE | CAUSE_3 | TELE_SELF | HASTE |
 D:A gaunt man with a pale face clothed in worn black armour, dull and bloodstained. 
 D:His eyes are bloodshot and rimmed in dark circles. He was once the most feared
 D:warlock of the Black Sect, but defiance of the priesthood cost him his rank
