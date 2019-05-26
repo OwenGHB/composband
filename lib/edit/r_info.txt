@@ -22764,7 +22764,7 @@ F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
 F:OPEN_DOOR | BASH_DOOR | AURA_REVENGE | AURA_COLD
 F:RES_SHAR | RES_SOUN | RES_FIRE | RES_COLD | RES_DISE | RES_CHAO | RES_NEXU
 F:NO_CONF | NO_SLEEP
-S:1_IN_6 | HEAL | TELEPORT
+S:1_IN_6 | HEAL | TELE_SELF
 P:Copy:Human:Warrior
 P:Stats:3:0:0:0:4:0
 D:An androgynous looking wood elf with a lithe and muscular build, standing
