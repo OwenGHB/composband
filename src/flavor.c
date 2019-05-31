@@ -1971,14 +1971,14 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
 					info = do_device(o_ptr, SPELL_INFO, boost);
 
 					if ((info && strlen(info)) && (obj_is_identified_fully(o_ptr) || (o_ptr->known_xtra & OFL_DEVICE_POWER)))
-						t = object_desc_str(t, format("%s ", info));
+						t = object_desc_str(t, format("%s, ", info));
 
                     if ((mode & OD_COLOR_CODED) && charges < max_charges)
                     {
                         if (!charges)
-                            t = object_desc_str(t, format("<color:r>%d/</color>%d", charges, max_charges));
+                            t = object_desc_str(t, format("<color:r>%d</color>/%d", charges, max_charges));
                         else
-                            t = object_desc_str(t, format("<color:y>%d/</color>%d", charges, max_charges));
+                            t = object_desc_str(t, format("<color:y>%d</color>/%d", charges, max_charges));
                     }
                     else
                         t = object_desc_str(t, format("%d/%d", charges, max_charges));
