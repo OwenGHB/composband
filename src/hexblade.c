@@ -19,8 +19,8 @@ static caster_info * _caster_info(void)
 	{
 		me.magic_desc = "spell";
 		me.which_stat = A_CHR;
-		me.encumbrance.max_wgt = 430;
-		me.encumbrance.weapon_pct = 33;
+		me.encumbrance.max_wgt = 450;
+		me.encumbrance.weapon_pct = 20;
 		me.encumbrance.enc_wgt = 1200;
 		me.options = CASTER_ALLOW_DEC_MANA;
 		init = TRUE;
@@ -30,8 +30,8 @@ static caster_info * _caster_info(void)
 
 static void _birth(void)
 {
-	py_birth_obj_aux(TV_SWORD, SV_SHORT_SWORD, 1);
-	py_birth_obj_aux(TV_SOFT_ARMOR, SV_SOFT_LEATHER_ARMOR, 1);
+	py_birth_obj_aux(TV_SWORD, SV_LONG_SWORD, 1);
+	py_birth_obj_aux(TV_HARD_ARMOR, SV_RING_MAIL, 1);
 	py_birth_spellbooks();
 }
 
