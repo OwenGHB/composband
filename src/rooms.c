@@ -3550,7 +3550,7 @@ void build_lake(int type)
     int c1, c2, c3;
 
     /* paranoia - exit if lake type out of range. */
-    if ((type < LAKE_T_LAVA) || (type > LAKE_T_FIRE_VAULT))
+    if ((type < LAKE_T_LAVA) || (type > LAKE_T_ICE_VAULT))
     {
         msg_format("Invalid lake type (%d)", type);
         return;
