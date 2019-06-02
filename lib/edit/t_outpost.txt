@@ -61,13 +61,13 @@ L:r:QUEST_ENTER(2)
 ?:[EQU $QUEST2 Taken Completed Failed]
 L:b:BUILDING_1(2)
 ?:[EQU $QUEST2 Finished FailedDone]
-L:b:BUILDING_1(77)
+L:b:BUILDING_1(78)
 ?:1
-############### Quest 77 - Poisoning of Water (from Kangband 12)
-?:[EQU $QUEST77 Taken]
-L:u:QUEST_ENTER(77)
-?:[EQU $QUEST77 Taken Completed Failed]
-L:b:BUILDING_1(77)
+############### Quest 78 - Poisoning of Water (from Kangband 12)
+?:[EQU $QUEST78 Taken]
+L:u:QUEST_ENTER(78)
+?:[EQU $QUEST78 Taken Completed Failed]
+L:b:BUILDING_1(78)
 ?:[EQU $QUEST77 Finished FailedDone]
 L:b:BUILDING_1(25)
 ?:1
