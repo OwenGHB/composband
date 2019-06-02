@@ -1976,9 +1976,9 @@ void object_desc(char *buf, object_type *o_ptr, u32b mode)
                     if ((mode & OD_COLOR_CODED) && charges < max_charges)
                     {
                         if (!charges)
-                            t = object_desc_str(t, format("<color:r>%d</color>/%d", charges, max_charges));
+                            t = object_desc_str(t, format("<color:r>%d/%d</color>", charges, max_charges));
                         else
-                            t = object_desc_str(t, format("<color:y>%d</color>/%d", charges, max_charges));
+                            t = object_desc_str(t, format("<color:y>%d/%d</color>", charges, max_charges));
                     }
                     else
                         t = object_desc_str(t, format("%d/%d", charges, max_charges));
