@@ -3479,7 +3479,8 @@ static void bldg_process_command(building_type *bldg, int i)
         set_cut(0, TRUE);
         set_stun(0, TRUE);
 
-		remove_curse();
+		if (remove_curse())
+			msg_print("You feel something watching over you.");
 
         if (p_ptr->riding)
         {
