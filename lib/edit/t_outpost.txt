@@ -68,7 +68,7 @@ L:b:BUILDING_1(78)
 L:u:QUEST_ENTER(78)
 ?:[EQU $QUEST78 Taken Completed Failed]
 L:b:BUILDING_1(78)
-?:[EQU $QUEST77 Finished FailedDone]
+?:[EQU $QUEST78 Finished FailedDone]
 L:b:BUILDING_1(25)
 ?:1
 ############### Quest 25 - Haunted House ###############
