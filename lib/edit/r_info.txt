@@ -22754,23 +22754,24 @@ D:in to relieve you of your loot.
 
 N:1260:Eleri the Blademistress
 G:h:r
-I:130:40d100:100:120:5:150
+I:125:40d100:100:120:5:150
 W:51:3:999:28000:0:0
 B:HIT:HURT(7d8)
-B:HIT:HURT(7d8):CUT(7d8):LOSE_DEX(30%)
-B:HIT:HURT(7d8):POISON(7d8):LOSE_STR(30%)
+B:HIT:HURT(7d8):CUT(4d5):LOSE_DEX(30%)
+B:HIT:HURT(7d8):POISON(4d5):LOSE_STR(30%)
 F:UNIQUE | FORCE_MAXHP | HUMAN | FEMALE | CAN_SPEAK
 F:ONLY_ITEM | DROP_4D2 | DROP_GOOD
 F:OPEN_DOOR | BASH_DOOR | AURA_REVENGE | AURA_COLD
 F:RES_SHAR | RES_SOUN | RES_FIRE | RES_COLD | RES_DISE | RES_CHAO | RES_NEXU
 F:NO_CONF | NO_SLEEP | NO_QUEST
-S:1_IN_4 | HEAL | TELE_SELF
+S:1_IN_6 | HEAL | TELE_SELF
 P:Copy:Human:Warrior
 P:Stats:3:0:0:0:4:0
 D:An androgynous looking wood elf with a lithe and muscular build, standing
 D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
 D:freckles, and besides a strong jaw she shares the delicate features of her
 D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
+
 
 N:1261:City Watchman
 G:t:B
@@ -22784,115 +22785,6 @@ P:Copy:Human:Warrior
 P:Stats:0:0:0:0:-1:-1
 P:Life:85
 D:He is here to keep the peace.
-
-#copied from frog
-
-N:1262:Metatron, the High Angel
-G:A:G
-I:136:108d148:100:192:2:250
-W:100:1:999:80586:0:0
-B:HIT:HURT(20d20):DISENCHANT(6d6, 66%)
-B:GAZE:HURT(7d7):TERRIFY
-B:GAZE:HURT(7d7):LOSE_ALL
-B:HIT:HURT(42d7):STUN(4d5, 69%)
-A:LIGHT(3d6):DARK(3d6)
-F:FORCE_SLEEP | FORCE_MAXHP | GOOD | SELF_LITE_2 |
-F:ONLY_ITEM | DROP_2D2 | DROP_3D2 | DROP_4D2 | DROP_GOOD | DROP_GREAT
-F:SMART | KILL_ITEM | OPEN_DOOR | BASH_DOOR | MOVE_BODY | RES_DISE |
-F:RES_ACID | IM_FIRE | IM_COLD | RES_ELEC | RES_POIS | RES_LITE | RES_DARK |
-F:AURA_FEAR | ESCORT | UNIQUE | REGENERATE | NO_STUN | MALE | RES_NEXU
-F:NO_CONF | NO_SLEEP | CAN_FLY | KILL_WALL | NO_FEAR | REFLECTING | RES_TELE
-F:POS_HOLD_LIFE | POS_SEE_INVIS | POS_GAIN_AC |
-P:Copy:Archon:Paladin
-P:Stats:2:2:2:2:2:6
-P:Speed:+10
-S:FREQ_36 |
-S:TELE_TO | INVULN | BR_FIRE | BR_DISENCHANT | BR_MANA | S_ANGEL
-S:BA_LITE | BO_MANA | BRAIN_SMASH | HASTE | HEAL | ANTI_MAGIC | BR_GRAVITY
-S:BLINK | BR_NEXUS | MANA_STORM | BA_DARK | S_HI_DRAGON | PSY_SPEAR(1d200+150)
-D:You assume that, as the leading angel in Heaven, he must be officially good;
-D:but you sense in him a ruthless scheming manipulator, one who has remained
-D:home and ruled in absolute comfort as Michael and Raphael have led the
-D:heavenly legions to the world outside in their fight against evil.
-D:Surrounded by light and darkness, master of contradictions and opposites,
-D:Metatron is an imposing and immensely powerful figure... but it is his low
-D:cunning you truly fear.
-
-N:1263:Kundry, Queen of the Lost Haven
-G:p:B
-I:132:43d121:100:86:0:120
-W:69:6:999:41140:0:0
-B:TOUCH:HURT(5d9):SLOW:STUN(4d4, 80%)
-B:TOUCH:TIME(3d7):TIME(2d5, 40%)
-B:GAZE:CONFUSE:PARALYZE
-B:TOUCH:DRAIN_EXP(20d6):EAT_GOLD(20%)
-F:UNIQUE | FEMALE | HUMAN | ONLY_GOLD | RES_CHAO | RES_TELE | REFLECTING
-F:DROP_CORPSE | DROP_SKELETON | HAS_LITE_2 | RES_TIME | NO_CONF | NO_SLEEP |
-F:FORCE_SLEEP | FORCE_MAXHP | DROP_4D2 | DROP_3D2 | DROP_2D2 | CAN_SWIM |
-F:RES_POIS | IM_ELEC | RES_TIME | RES_FIRE | SMART | REGENERATE | OPEN_DOOR |
-F:BASH_DOOR | NO_FEAR | RES_DISE | RES_SOUN | RES_WATE | RES_NETH | RES_INER
-F:TAKE_ITEM
-S:FREQ_42 |
-S:SCARE | PARALYZE | CONFUSE | TELE_SELF | BLINK | TELE_OTHER |
-S:TELE_TO | BRAIN_SMASH | AMNESIA | S_HI_DEMON | S_KIN | BO_TIME(120) |
-S:BO_MANA | BA_WATER(1d138+50) | PSY_SPEAR | DISPEL_MAGIC
-D:A charming sorceress cursed to suffer eternally as punishment for using
-D: the Holy Grail as a washpot, Kundry has sought to turn her acquired
-D: immortality into a virtue, which is even less difficult than it sounds.
-D: Now rumoured to be the ruler of a fabulously wealthy hidden realm, she
-D: still bears a grudge against those she considers responsible for her
-D: plight, and the smile on her face conceals a general bitterness that
-D: has grown stronger with every passing year.
-P:Copy:Dunadan:Mage
-
-N:1264:Gazhak, the Ogre Tyrant
-G:O:r
-I:123:13d151:40:110:20:500
-W:38:3:999:4000:0:0
-B:HIT:HURT(8d9):STUN(4d4, 44%)
-B:HIT:HURT(8d9)
-B:GAZE:TERRIFY
-B:BITE:HURT(5d6):CUT(7d7)
-F:UNIQUE | MALE | CAN_SPEAK |
-F:FORCE_MAXHP | FORCE_SLEEP |
-F:ESCORT | HAS_LITE_2 |
-F:DROP_3D2 | DROP_60 | DROP_GOOD | MOVE_BODY |
-F:OPEN_DOOR | BASH_DOOR | CAN_SWIM | NO_CONF | NO_FEAR | RES_WALL
-F:EVIL | GIANT | RES_POIS | RES_SOUN | RES_COLD | AURA_REVENGE
-F:DROP_CORPSE
-P:Copy:Ogre:Warrior
-P:Stats:3:1:-1:0:3:-1
-O:DROP_WARRIOR
-S:FREQ_16 |
-S:BERSERK | S_KIN | S_MONSTER(1d3) | SCARE | THROW
-D:A brutal and feared ogre king, known not to be too picky about what he has
-D: for lunch.
-
-N:1265:Baba Yaga
-G:O:G
-I:121:33d66:33:99:5:110
-W:43:3:999:8228:0:0
-B:GAZE:PARALYZE:SLOW
-B:TOUCH:POIS(2d46)
-B:HIT:HURT(7d8):TERRIFY
-B:TOUCH:DRAIN_CHARGES:DISENCHANT(4d8, 40%)
-A:CAUSE_2(1d3)
-F:UNIQUE | FEMALE | CAN_FLY | FORCE_SLEEP | FORCE_MAXHP | MOVE_BODY |
-F:ONLY_ITEM | DROP_2D2 | DROP_GOOD | CAN_SWIM | EVIL | GIANT | REGENERATE |
-F:SMART | TAKE_ITEM | OPEN_DOOR | RES_WATE | RES_NETH | RES_DISE |
-F:RES_FIRE | RES_POIS | RES_CHAO | RES_ACID | RES_SOUN | DROP_CORPSE |
-F:NO_SLEEP | NO_CONF | WILD_SWAMP | WILD_WOOD | CAN_SPEAK | RES_TELE |
-S:FREQ_37 |
-S:POLYMORPH | BO_MANA | TELE_TO | PARALYZE | HEAL | BRAIN_SMASH |
-S:S_SPIDER | CAUSE_3 | CAUSE_4 | BO_WATER | BO_FIRE(18d8+26) | TELE_SELF
-S:S_UNDEAD | ANTI_MAGIC | DETECT_MONSTERS | MAPPING | IDENTIFY
-P:Copy:Ogre:Mage
-O:DROP_MAGE
-D:Famed for living in a flying chicken-legged hut guarded by skeletons,
-D:Baba Yaga is the mightiest of all ogre spellcasters, and also the most
-D:intelligent. She has little respect for those not as versed in the arts
-D:of magic, and tends to view adventurers as either tools or food.
-
 
 
 # N: serial number : monster name
