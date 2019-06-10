@@ -22785,7 +22785,7 @@ P:Stats:0:0:0:0:-1:-1
 P:Life:85
 D:He is here to keep the peace.
 
-N:1262:Tharuzg the Corrupter
+N:1262:Tharuzg the Putrid
 G:d:D
 I:115:56d10:20:106:40:350
 W:40:2:999:2500:0:0
