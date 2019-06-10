@@ -22772,7 +22772,6 @@ D:six feet tall. Her hair is a deep auburn red. Her green eyes are spotted with
 D:freckles, and besides a strong jaw she shares the delicate features of her
 D:kin. Guardian of the nexus vault, she fights to maintain the cosmic balance.
 
-
 N:1261:City Watchman
 G:t:B
 I:110:10d8:10:35:25:225
@@ -22785,6 +22784,27 @@ P:Copy:Human:Warrior
 P:Stats:0:0:0:0:-1:-1
 P:Life:85
 D:He is here to keep the peace.
+
+N:1262:Tharuzg the Corrupter
+G:d:D
+I:115:56d10:20:106:40:350
+W:40:2:999:2500:0:0
+B:CLAW:HURT(1d12)
+B:CLAW:HURT(1d12)
+B:CLAW:HURT(1d12)
+B:BITE:HURT(3d10):ACID(1d15):CUT(1d14, 30%)
+F:UNIQUE | MALE | CAN_SPEAK |
+F:FORCE_SLEEP | FORCE_MAXHP |
+F:ONLY_ITEM | DROP_3D2 | DROP_4D2 | DROP_GOOD |
+F:OPEN_DOOR | BASH_DOOR | MOVE_BODY |
+F:EVIL | DRAGON | IM_ACID | RES_FIRE | RIDING |
+F:NO_CONF | NO_SLEEP
+F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
+P:Copy:Barbarian:Beastmaster
+P:Body:Dragon
+S:FREQ_35 | BLIND | CONFUSE | SCARE | BR_ACID | S_DRAGON | S_HI_DRAGON | DETECT_OBJECTS 
+D:A wingless black worm, acid dripping from both its fangs and hatefully whispered words.
+D:It has sired many spawns in the forgotten lands of Rhun and many in the Trollshaws have fallen prey to it.
 
 
 # N: serial number : monster name

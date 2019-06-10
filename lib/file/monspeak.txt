@@ -852,6 +852,12 @@ says, 'The balance must be maintained.'
 says, 'My blades will be the last thing you see.'
 says, 'Feel the cold heart of judgement.'
 
+N:1262:Tharuzg the Putrid
+says, 'Long have I lingered under the earth; so shall you!'
+says, 'The East taught me well.'
+says, 'Of all my spawns, he were the least pestersome.'
+says, 'Arnor and Rhun have fallen; little do you have left to fight for!'
+
 N:*:Default lines
 cackles evilly.
 cackles diabolically.
