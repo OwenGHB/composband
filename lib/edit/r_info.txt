@@ -22803,7 +22803,7 @@ F:DROP_CORPSE | POS_SEE_INVIS | POS_GAIN_AC
 P:Copy:Barbarian:Beastmaster
 P:Body:Dragon
 S:FREQ_35 | BLIND | CONFUSE | SCARE | BR_ACID | S_DRAGON | S_HI_DRAGON | DETECT_OBJECTS 
-D:A wingless black worm, acid dripping from both its fangs and hatefully whispered words.
+D:A wingless black wyrm, acid dripping from both its fangs and hatefully whispered words.
 D:It has sired many spawns in the forgotten lands of Rhun and many in the Trollshaws have fallen prey to it.
 
 
