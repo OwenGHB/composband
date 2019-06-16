@@ -17,7 +17,7 @@ D:Thank you! Please accept this reward.
 D:You have failed me, beware you do not do so again!
 ?:1
 
-T:QUEST_NORMAL
+T:QUEST:NORMAL
 L:#:PERMANENT
 L:.:GRASS
 L:<:UP_STAIR
