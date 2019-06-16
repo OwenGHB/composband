@@ -22,8 +22,8 @@ L:.:GRASS
 L:<:UP_STAIR
 L:W:DEEP_WATER
 L:V:SHALLOW_WATER
-L:a:MON(water troll)
-L:b:MON(troll king)
+L:a:MON(water troll, NO_GROUP)
+L:b:MON(troll king, NO_GROUP)
 
 # Dungeon
 M:##########################################################################
