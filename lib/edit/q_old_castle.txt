@@ -406,6 +406,12 @@ R:ART(tuor)
 R:ART(falis)
 ?:[AND [EQU $CLASS Rage-Mage] [GEQ [MOD $RANDOM27 5] 1] ]
 R:ART(balli stonehand)
+##########################################################################
+# Hexblade
+?:[AND [EQU $CLASS Hexblade] [EQU [MOD $RANDOM27 5] 0] ]
+R:ART(doomcaller)
+?:[AND [EQU $CLASS Hexblade] [GEQ [MOD $RANDOM27 5] 1] ]
+R:ART(harness of the hell)
 # End of Class specific random Old Castle rewards ... phew!
 ##########################################################################
 

@@ -362,10 +362,10 @@ static cptr r_info_flags3[] =
     "HURT_FIRE",
     "HURT_COLD",
     "OLYMPIAN",
-    "XXX",
-    "XXX",
-    "XXX",
-    "XXX",
+    "EGYPTIAN",
+    "KAIJU",
+    "ZELAZNIAN",
+    "PAINTED",
     "XXX",
     "XXX",
     "XXX",
@@ -765,6 +765,10 @@ static cptr k_info_flags[OF_COUNT] =
     "TELEPORT",
     "AGGRAVATE",
     "TY_CURSE",
+
+	/* New Things */
+	"PATHFINDING",
+	"WATER_BREATHING",
 };
 
 
@@ -4788,7 +4792,7 @@ static errr process_dungeon_file_aux(char *buf, int options)
 
 
 static char tmp[255];
-static cptr variant_name = "FROGCOMPOSBAND";
+static cptr variant_name = "COMPOSBAND";
 
 /*
  * Helper function for "process_dungeon_file()"

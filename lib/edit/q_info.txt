@@ -290,7 +290,7 @@ N:61:35:Clear the Wreckage (Thalos)
 T:TOWN | GENERATE
 F:q_shipwreck.txt
 
-N:63:15:Mushrooms (Thalos)
+N:63:10:Mushrooms (Thalos)
 T:TOWN
 W:icky
 G:KILL(magic mushroom, 10)
@@ -304,13 +304,13 @@ N:66:40:Basilisk Cave (Thalos)
 T:TOWN | GENERATE
 F:q_basilisk.txt
 
-N:67:40:Crystal Quest (Anambar)
+N:67:40:Crystal Quest (Thalos)
 T:TOWN
 W:crystal
 G:KILL(great crystal drake, 5)
 F:q_crystal.txt
 
-N:77:30:The Logrus Master (Anambar)
+N:77:30:The Logrus Master (Angwil)
 T:TOWN | GENERATE
 G:KILL(logrus master)
 F:q_logrus_master.txt
@@ -323,10 +323,6 @@ F:q_poison.txt
 # FrogComposband quests
 #####################################################################
 
-N:68:33:Dinosaur Quest (Anambar)
-T:TOWN | GENERATE
-F:q_dino.txt
-
 N:69:32:The Old Watchtower (Telmora)
 T:TOWN | GENERATE
 F:q_wtower.txt
@@ -335,31 +331,16 @@ N:70:25:Djinni's Cavern (Thalos)
 T:TOWN | GENERATE
 F:q_djinni.txt
 
-N:71:20:Shadow Fairies (Anambar)
+N:71:20:Shadow Fairies (Angwil)
 T:TOWN | GENERATE
 F:q_fairy.txt
 
-N:72:70:The Killer in the Cellar (Anambar)
-T:TOWN | GENERATE
-F:q_cellar.txt
-
-N:73:30:Smugglers' Den (Anambar)
+N:73:30:Smugglers' Den (Telmora)
 T:TOWN | GENERATE
 F:q_smug.txt
 
-N:74:12:Cop Quest (Anambar)
-T:TOWN | GENERATE
-F:q_cq1.txt
-
-N:75:55:The Mystery of Apina Island (Anambar)
+N:75:55:The Mystery of Apina Island (Thalos)
 T:TOWN | GENERATE
 F:q_apina.txt
-
-# Altered for composband
-N:76:40:Holy Vengeance (Telmora)
-T:TOWN | GENERATE
-F:q_staff.txt
-
-
 
 # vim: filetype=qi :

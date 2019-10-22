@@ -18,7 +18,7 @@
 
 #define VER_MAJOR 7
 #define VER_MINOR 1
-#define VER_PATCH 2
+#define VER_PATCH 3
 #define VER_EXTRA 0
 
 #define GAME_MODE_BEGINNER  0
@@ -2851,6 +2851,10 @@ enum obj_flags_e {
     OF_AGGRAVATE,
     OF_TY_CURSE,
 
+	/* More abilities */
+	OF_PATHFINDING,
+	OF_WATER_BREATHING,
+
     /* A few places loop from 0 <= i < OF_COUNT ... (init1, race_sword and race_ring) */
     OF_COUNT,
 };
@@ -3103,10 +3107,10 @@ enum {
 #define RF3_HURT_FIRE       0x00004000  /* Hurt badly by fire */
 #define RF3_HURT_COLD       0x00008000  /* Hurt badly by cold */
 #define RF3_OLYMPIAN        0x00010000
-#define RF3_XXX17           0x00020000
-#define RF3_XXX18           0x00040000
-#define RF3_XXX19           0x00080000
-#define RF3_XXX20           0x00100000
+#define RF3_EGYPTIAN        0x00020000
+#define RF3_KAIJU           0x00040000
+#define RF3_ZELAZNIAN       0x00080000
+#define RF3_PAINTED         0x00100000
 #define RF3_XXX21           0x00200000
 #define RF3_XXX22           0x00400000
 #define RF3_XXX23           0x00800000

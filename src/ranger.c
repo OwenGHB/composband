@@ -5,6 +5,12 @@ static void _calc_bonuses(void)
     /* rangers are decent shooters all around, but especially good with bows */
     slot_t slot = equip_find_obj(TV_BOW, SV_ANY); /* fyi, shooter_info not set yet ... */
     if (slot) p_ptr->skills.thb += 20 + p_ptr->lev;
+	p_ptr->pathfinding = TRUE;
+}
+
+static void _get_flags(u32b flgs[OF_ARRAY_SIZE])
+{
+	add_flag(flgs, OF_PATHFINDING);
 }
 
 static void _calc_shooter_bonuses(object_type *o_ptr, shooter_info_t *info_ptr)
@@ -100,6 +106,7 @@ class_t *ranger_get_class(void)
         /* TODO: This class uses spell books, so we are SOL
         me.get_spells = _get_spells;*/
         me.get_powers = _get_powers;
+		me.get_flags = _get_flags;
         me.character_dump = spellbook_character_dump;
         init = TRUE;
     }

@@ -546,6 +546,8 @@ static flag_insc_table flag_insc_misc[] =
     { "Ds", OF_DARKNESS, -1 },
     { "Wm", OF_WEAPONMASTERY, -1 },
     { "Id", OF_LORE, -1 },
+	{ "Pf", OF_PATHFINDING },
+	{ "Wb", OF_WATER_BREATHING },
     { NULL, 0, -1 }
 };
 

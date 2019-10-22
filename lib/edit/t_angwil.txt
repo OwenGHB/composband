@@ -30,6 +30,28 @@ L:v:TREE
 # Default for Quest 36 = entrance is tree
 L:s:DIRT
 
+# Default for Quest 71 = entrance is tree
+L:r:TREE
+
+# Default for Quest 77 = entrance is dirt
+L:q:DIRT
+
+############### Quest 71 - Shadow Faeries
+?:[EQU $QUEST71 Taken]
+L:r:QUEST_ENTER(71)
+?:[EQU $QUEST71 Untaken Taken Completed Failed]
+L:b:BUILDING_1(71)
+?:[EQU $QUEST71 Finished FailedDone]
+L:b:BUILDING_1(77)
+?:1
+############### Quest 77 - The Logrus Master
+?:[EQU $QUEST77 Taken]
+L:q:QUEST_ENTER(77)
+?:[EQU $QUEST77 Untaken Taken Completed Failed]
+L:b:BUILDING_1(77)
+?:[EQU $QUEST77 Finished FailedDone]
+L:b:BUILDING_1(19)
+?:1
 ############### Quest 19 - Doom Quest 1
 ?:[EQU $QUEST19 Taken]
 L:z:QUEST_ENTER(19)
@@ -187,7 +209,7 @@ M:                   ######TT       T,T
 M:                                  T,T                                                                           
 M:                                  T,T                                                                           
 M:          #####                   T,T                                                                           
-M:          #####                   T,T                  ##   ##                                                  
+M:          #####        r          T,T                  ##   ##                                                  
 M:          #####                   T,T                  #######                                                  
 M:  ####    #####                   T,T              TTTTT#####                                                   
 M:  ####TTTT##6##   #####           T,T              T,,,,l####          ######                                   
@@ -217,7 +239,7 @@ M:        #       #        ###,###--T                                           
 M:                         ###,###T--T                                               T-#######-T                  
 M:                         ###,###TT-T                                              T--#######--T                 
 M:                           #,#   T-TTT                                           -T,#-#####-#--T                
-M:                          ##,##  T----T                                            --#-----#--T                 
+M:                          ##q##  T----T                                            --#-----#--T                 
 M:                          #####  TTTTT-T                                            ---T-,-------T              
 M:                          #####      TT-T####                                                                   
 M:                          #####       TT-####                                                                   

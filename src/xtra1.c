@@ -3619,6 +3619,7 @@ void calc_bonuses(void)
     p_ptr->regen = 100;
     p_ptr->can_swim = FALSE;
     p_ptr->levitation = FALSE;
+	p_ptr->pathfinding = FALSE;
     p_ptr->hold_life = 0;
     p_ptr->auto_id = FALSE;
     p_ptr->auto_id_sp = 0;
@@ -3637,6 +3638,7 @@ void calc_bonuses(void)
     p_ptr->esp_nonliving = FALSE;
     p_ptr->esp_unique = FALSE;
     p_ptr->esp_magical = FALSE;
+	p_ptr->esp_living = FALSE;
     p_ptr->lite = FALSE;
     p_ptr->sustain_str = FALSE;
     p_ptr->sustain_int = FALSE;

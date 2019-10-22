@@ -32,10 +32,10 @@ L:d:MON(nexus spider)
 L:e:MON(^master mystic$)
 L:f:MON(^mystic$)
 
-L:k:OBJ(BOOTS, DEPTH+10):EGO(elvenkind)
-L:l:OBJ(SOFT_ARMOR, DEPTH+10):EGO(elvenkind)
+L:k:OBJ(BOOTS, DEPTH+10):EGO(elvenkind, 50%)
+L:l:OBJ(SOFT_ARMOR, DEPTH+10):EGO(elvenkind, 50%)
 L:m:OBJ(RING, DEPTH+10):EGO(defender)
-L:n:OBJ(SHIELD, DEPTH+10):EGO(elvenkind)
+L:n:OBJ(SHIELD, DEPTH+10):EGO(elvenkind, 50%)
 !:SCRAMBLE(k,l,m,n)
 
 # Dungeon layout
