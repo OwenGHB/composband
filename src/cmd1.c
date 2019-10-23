@@ -5689,11 +5689,7 @@ void move_player(int dir, bool do_pickup, bool break_trap)
      */
     else if (have_flag(f_ptr->flags, FF_TREE) && !p_can_kill_walls)
     {
-        if ( p_ptr->pclass != CLASS_RANGER
-          && p_ptr->pclass != CLASS_SCOUT
-          && !prace_is_(RACE_ENT)
-          && !prace_is_(RACE_CENTAUR)
-          && !prace_is_(RACE_WOOD_ELF)
+        if ( !p_ptr->pathfinding
           && !p_ptr->levitation
           && (!p_ptr->riding || !(riding_r_ptr->flags8 & RF8_WILD_WOOD)))
         {
