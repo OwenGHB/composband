@@ -1583,8 +1583,8 @@ s16b get_mon_num_aux(int level, int min_level, u32b options)
             if ((r_ptr->flags2 & RF2_CAMELOT) && dungeon_type != DUNGEON_CAMELOT) continue;
             if ((r_ptr->flags2 & RF2_SOUTHERING) && dungeon_type != DUNGEON_HIDEOUT) continue;
             if ((r_ptr->flags3 & RF3_OLYMPIAN) && dungeon_type != DUNGEON_OLYMPUS) continue;
-			if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_WOOD) continue;
-			if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_CASTLE) continue;
+	    if ((r_ptr->flags2 & RF2_FOREST) && dungeon_type != DUNGEON_WOOD) continue;
+	    if ((r_ptr->flags2 & RF3_PAINTED) && dungeon_type != DUNGEON_CASTLE) continue;
         }
 
         /* Hack: Some monsters are restricted from quests and summons */
